@@ -1,6 +1,8 @@
 
 class Manager::VideosController < Manager::ManagerController
 
+  before_filter :set_lists
+  
   def index
     @videos = Video.all
   end
@@ -11,7 +13,7 @@ class Manager::VideosController < Manager::ManagerController
 
   def update
     @video = Video.find params[:id]
-    @video.update params[:video].permit( :youtube_id, :title, :descr )
+    @video.update params[:video].permit( :youtube_id, :title, :descr, :merit_badge_id )
     if @video.save
       flash[:notice] = 'Success.'
       redirect_to :action => 'index'

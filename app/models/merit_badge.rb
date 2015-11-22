@@ -16,4 +16,11 @@ class MeritBadge
   embeds_one :accomplished_photo, :class_name => 'Photo', :inverse_of => :accomplished_badge
   embeds_one :title_photo,        :class_name => 'Photo', :inverse_of => :title_badge
 
+  has_many :videos
+
+  def self.list
+    out = self.order_by( :title => :asc )
+    [['', nil]] + out.map { |item| [ item.title, item.id ] }
+  end
+  
 end

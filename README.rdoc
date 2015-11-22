@@ -11,6 +11,7 @@ The fighers guild!
 @TODO: badges list should be alphabetic
 @TODO: #show of a merit badge should have human url
 @TODO: video2 is video. video is video_legacy
+@TODO: video link should be human-readable
 
 == Change Log
 * 20151122 .htaccess on manager

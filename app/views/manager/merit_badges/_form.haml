@@ -44,37 +44,6 @@
 
       = f.label :descr
       = f.text_area :descr, { :class => :tinymce }
-
-      %hr
-      %h5 Tasks
-      %ol
-        %li
-          = f.fields_for :task_1 do |task|
-            .row
-              .large-6.columns
-                = task.label :title
-                = task.text_field :title, :value => @badge.task_1.title
-              .large-6.columns
-                = task.label :mouseover
-                = task.text_field :mouseover, :value => @badge.task_1.mouseover
-        %li
-          = f.fields_for :task_2 do |task|
-            .row
-              .large-6.columns
-                = task.label :title
-                = task.text_field :title, :value => @badge.task_2.title
-              .large-6.columns
-                = task.label :mouseover
-                = task.text_field :mouseover, :value => @badge.task_2.mouseover
-        %li
-          = f.fields_for :task_3 do |task|
-            .row
-              .large-6.columns
-                = task.label :title
-                = task.text_field :title, :value => @badge.task_3.title
-              .large-6.columns
-                = task.label :mouseover
-                = task.text_field :mouseover, :value => @badge.task_3.mouseover
                   
       %br
       = f.submit nil, :class => [ :button, :small ]

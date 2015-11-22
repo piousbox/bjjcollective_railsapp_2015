@@ -14,5 +14,10 @@ class Manager::ManagerController < ApplicationController
       end
     end
   end
+
+  def set_lists
+    @merit_badges_list = MeritBadge.all.list
+  end
+  
   
 end

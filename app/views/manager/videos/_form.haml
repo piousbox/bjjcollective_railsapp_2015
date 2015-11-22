@@ -5,8 +5,14 @@
   - url = manager_videos_path
 
 = form_for @video, :url => url do |f|
+  
   = f.label :title
   = f.text_field :title
+  
   = f.label :youtube_id
   = f.text_field :youtube_id
+
+  = f.label :merit_badge
+  = select :video, :merit_badge_id, @merit_badges_list
+  
   = f.submit

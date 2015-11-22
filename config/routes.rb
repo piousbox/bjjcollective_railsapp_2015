@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'fighters-guild' => 'fighters_guild/welcome#home', :as => :fg_root
   namespace :fighters_guild, :as => :fg do
     resources :merit_badges, :as => :badges
+    resources :videos
   end
 
   devise_for :users, controllers: {
@@ -21,7 +22,9 @@ Rails.application.routes.draw do
   #            }
 
   namespace :manager do
-    resources :merit_badges, :as => :badges
+    resources :merit_badges, :as => :badges do
+      resources :videos
+    end
     resources :users
     resources :questsets
     resources :videos
