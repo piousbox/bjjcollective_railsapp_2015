@@ -7,9 +7,6 @@ class Manager::MeritBadgesController < Manager::ManagerController
 
   def new
     @badge = MeritBadge.new
-    @badge.build_task_1
-    @badge.build_task_2
-    @badge.build_task_3
   end
 
   def edit

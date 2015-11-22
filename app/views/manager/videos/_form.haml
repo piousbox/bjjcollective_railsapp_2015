@@ -5,6 +5,7 @@
   - url = manager_videos_path
 
 = form_for @video, :url => url do |f|
+  = f.submit nil, :class => [ :button, :small ]
   
   = f.label :title
   = f.text_field :title
@@ -12,7 +13,18 @@
   = f.label :youtube_id
   = f.text_field :youtube_id
 
+  - if @video.youtube_id
+    = image_tag( "http://img.youtube.com/vi/#{@video.youtube_id}/1.jpg" )
+    %br
+    %br
+
   = f.label :merit_badge
   = select :video, :merit_badge_id, @merit_badges_list
+
+  = f.label :descr
+  = f.text_area :descr, { :class => :tinymce }
+
+  = render 'manager/tasks/embedded_form', :f => f, :video => @video
   
-  = f.submit
+  %br
+  = f.submit nil, :class => [ :button, :small ]

@@ -6,7 +6,7 @@
     %li
       = link_to "Merit Badges", manager_badges_path, { :class => :inline }
       (#{MeritBadge.all.length})
-      = link_to "[+]", new_manager_badge_path, { :class => :inline, 'data-no-turbolink' => true }
+      = link_to "[+]", new_manager_badge_path, { :class => :inline, :'data-no-turbolink' => true }
     %li
       Quest sets
       [+]
@@ -15,4 +15,4 @@
       [+]
     %li
       = link_to 'Videos', manager_videos_path, { :class => :inline }
-      = link_to '[+]', new_manager_video_path, { :class => :inline, 'data-no-turbolink' => true }
+      = link_to '[+]', new_manager_video_path, { :class => :inline, :'data-no-turbolink' => true }
