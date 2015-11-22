@@ -8,8 +8,10 @@ class Manager::ManagerController < ApplicationController
   protected
   
   def authenticate
-    authenticate_or_request_with_http_basic do |username, password|
-      username == "bjjc" && password == "technique-conquers-all"
+    if Rails.env.production?
+      authenticate_or_request_with_http_basic do |username, password|
+        username == "bjjc" && password == "technique-conquers-all"
+      end
     end
   end
   
