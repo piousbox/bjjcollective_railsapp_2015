@@ -9,6 +9,7 @@ The fighers guild!
 @TODO: view of a badge
 @TODO: there needs to be disaster recovery
 @TODO: badges list should be alphabetic
+@TODO: #show of a merit badge should have human url
 
 == Change Log
 * 20151122 .htaccess on manager
