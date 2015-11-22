@@ -10,6 +10,7 @@ The fighers guild!
 @TODO: there needs to be disaster recovery
 @TODO: badges list should be alphabetic
 @TODO: #show of a merit badge should have human url
+@TODO: video2 is video. video is video_legacy
 
 == Change Log
 * 20151122 .htaccess on manager

@@ -1,2 +1,12 @@
 
 %h5.text-center Videos Index
+
+%ul
+  - @videos.each do |video|
+    %li
+      = link_to '[~]', edit_manager_video_path( video )
+      = video.title
+      = video.youtube_id
+      .video-embed
+        %iframe{ :width => '560', :height => '315', :src => "http://www.youtube.com/embed/#{video.youtube_id}", :frameborder => "0", :allowfulscreen => true }
+    
