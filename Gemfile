@@ -13,6 +13,7 @@ gem 'libv8'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -21,8 +22,11 @@ gem 'unicorn'
 gem 'mongoid', '~> 5.0.0'
 
 gem 'devise'
+
 gem "paperclip", "~> 4.3"
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
+gem 'aws-sdk'
+gem "aws-s3",            :require => "aws/s3"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

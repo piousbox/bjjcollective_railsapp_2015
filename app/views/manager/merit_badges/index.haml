@@ -1,5 +1,13 @@
 
 .row
   .large-12.columns
-    %h3 Merit Badges
-    
+    %h3
+      Merit Badges
+      = link_to '[+]', new_manager_badge_path
+
+    %ul
+      - @badges.each do |badge|
+        %li
+          = badge.title
+          = badge.shaded_photo.inspect
+        

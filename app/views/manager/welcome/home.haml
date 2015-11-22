@@ -5,7 +5,17 @@
     %h1 Welcome home, manager!
 
     %ul
-      %li= link_to "Home", manager_root_path
+      %li= link_to "Home", root_path
+      %li= link_to "Manager Home", manager_root_path
       %li
         = link_to "Badges", manager_badges_path
         = link_to "[+]", new_manager_badge_path
+      %li
+        Quest sets
+        [+]
+      %li.hide
+        Quests
+        [+]
+      %li
+        Videos
+        [+]
