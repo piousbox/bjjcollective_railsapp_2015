@@ -18,3 +18,13 @@
 //= require utils
 // 
 //= require_tree .
+
+$(document).ready(function() {
+    $('.badge-item').mouseover(function() {
+        $('.mouseover', this).show();
+    });
+    $('.badge-item').mouseout(function() {
+        $('.mouseover', this).hide();
+    });
+
+});

@@ -3,15 +3,15 @@
   .large-12.columns
     %h4.text-center Fighters Guild
 
-.row
+.row.fighters-guild-welcome-home
   .large-3.columns
     %h5.text-center Quests
   .large-9.columns
     %h5.text-center Merit Badges
     %ul.large-block-grid-3
       - @badges.each do |badge|
-        %li
+        %li.badge-item
           = link_to image_tag( badge.shaded_photo.photo.url(:thumb2) ), fg_badge_path( badge )
+          .mouseover= badge.shaded_mouseover
           .text-center= badge.title
-          = badge.shaded_mouseover
     

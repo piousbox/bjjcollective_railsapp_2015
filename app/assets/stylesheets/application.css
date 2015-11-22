@@ -27,3 +27,7 @@ textarea.tinymce {
 .gray, .grey {
     color: #cccccc;
 }
+
+.relative {
+    position: relative;
+}

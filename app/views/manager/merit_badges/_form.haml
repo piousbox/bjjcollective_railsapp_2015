@@ -29,7 +29,15 @@
 
   = f.label :subhead
   = f.text_field :subhead
-  
+
+  .row
+    .large-6.columns
+      = f.label :shaded_mouseover
+      = f.text_field :shaded_mouseover
+    .large-6.columns
+      = f.label :accomplished_mouseover
+      = f.text_field :accomplished_mouseover
+      
   = f.label :descr
   = f.text_area :descr, { :class => :tinymce }
   
