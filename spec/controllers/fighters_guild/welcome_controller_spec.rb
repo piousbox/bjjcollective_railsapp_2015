@@ -11,5 +11,7 @@ describe FightersGuild::WelcomeController do
     get :home
     response.should be_success
     response.should render_template( 'fighters_guild/welcome/home' )
+    assigns( :badges ).should_not eql nil
   end
+  
 end

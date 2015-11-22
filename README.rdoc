@@ -7,7 +7,7 @@ The fighers guild!
 
 @TODO: specs please
 @TODO: view of a badge
-
+@TODO: there needs to be disaster recovery
 
 == Change Log
 * 20151122 .htaccess on manager

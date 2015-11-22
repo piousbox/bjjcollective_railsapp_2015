@@ -1,7 +1,12 @@
 
-- url ||= manager_badges_path
+- if params[:action] == 'edit'
+  - url = manager_badge_path( @badge )
+- else
+  - url = manager_badges_path
 
 = form_for @badge, :url => url do |f|
+  = f.submit
+  
   = f.label :title
   = f.text_field :title
 
@@ -9,12 +14,18 @@
     .large-4.columns
       = f.label :shaded_photo
       = f.file_field :shaded_photo
+      - if @badge.shaded_photo
+        = image_tag @badge.shaded_photo.photo.url(:thumb2)
     .large-4.columns
       = f.label :accomplished_photo
       = f.file_field :accomplished_photo
+      - if @badge.accomplished_photo
+        = image_tag @badge.accomplished_photo.photo.url(:thumb2)
     .large-4.columns
       = f.label :title_photo
       = f.file_field :title_photo
+      - if @badge.title_photo
+        = image_tag @badge.title_photo.photo.url(:thumb2)
 
   = f.label :subhead
   = f.text_field :subhead

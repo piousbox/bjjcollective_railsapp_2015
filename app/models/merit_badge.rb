@@ -12,7 +12,7 @@ class MeritBadge
 
   embeds_many :tasks
   
-  has_one :shaded_photo,       :class_name => 'Photo', :inverse_of => :shaded_badge
-  has_one :accomplished_photo, :class_name => 'Photo', :inverse_of => :accomplished_badge
-  has_one :title_photo,        :class_name => 'Photo', :inverse_of => :title_badge
+  embeds_one :shaded_photo,       :class_name => 'Photo', :inverse_of => :shaded_badge
+  embeds_one :accomplished_photo, :class_name => 'Photo', :inverse_of => :accomplished_badge
+  embeds_one :title_photo,        :class_name => 'Photo', :inverse_of => :title_badge
 end

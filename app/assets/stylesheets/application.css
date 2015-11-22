@@ -23,3 +23,7 @@
 textarea.tinymce {
     min-height: 300px;
 }
+
+.gray, .grey {
+    color: #cccccc;
+}
