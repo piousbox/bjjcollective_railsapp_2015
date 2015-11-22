@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :videos
 
-  get 'fighters-guild' => 'fighters_guild#welcome', :as => :fg_root
+  get 'fighters-guild' => 'fighters_guild/welcome#home', :as => :fg_root
   namespace :fighters_guild, :as => :fg do
     resources :merit_badges, :as => :badges
   end
