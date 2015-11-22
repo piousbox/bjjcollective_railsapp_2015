@@ -1,0 +1,9 @@
+
+- url ||= manager_badges_path
+
+= form_for @badge, :url => url do |f|
+  = f.label :title
+  = f.text_field :title
+
+  = f.submit
+  
