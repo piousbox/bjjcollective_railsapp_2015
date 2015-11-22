@@ -14,5 +14,5 @@
       Quests
       [+]
     %li
-      Videos
-      [+]
+      = link_to 'Videos', manager_videos_path, { :class => :inline }
+      = link_to '[+]', new_manager_video_path, { :class => :inline, 'data-no-turbolink' => true }

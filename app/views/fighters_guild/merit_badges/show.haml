@@ -3,10 +3,18 @@
   .large-3.columns
     Videos
   .large-9.columns
-    %h2= @badge.title
+    .panel
+      %h2.text-center= @badge.title
+      = image_tag @badge.title_photo.photo.url(:small)
+      = @badge.subhead
+      = raw @badge.descr
 
-    = image_tag @badge.title_photo.photo.url(:small)
-
-    = @badge.subhead
-
-    = raw @badge.descr
+    %ul.tasks
+      %li
+        = @badge.task_1.title
+      %li
+        = @badge.task_2.title
+      %li
+        = @badge.task_3.title
+       
+    
