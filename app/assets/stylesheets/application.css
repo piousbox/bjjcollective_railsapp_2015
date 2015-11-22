@@ -15,3 +15,11 @@
  *= require foundation
  *
  */
+
+.inline {
+    display: inline !important;
+}
+
+textarea.tinymce {
+    min-height: 300px;
+}

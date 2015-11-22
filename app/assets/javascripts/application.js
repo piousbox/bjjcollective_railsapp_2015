@@ -15,5 +15,6 @@
 //= require turbolinks
 //
 //= require foundation
+//= require utils
 // 
 //= require_tree .
