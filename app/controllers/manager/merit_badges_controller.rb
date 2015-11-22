@@ -10,20 +10,40 @@ class Manager::MeritBadgesController < Manager::ManagerController
   end
 
   def create
-    @badge = MeritBadge.new params[:merit_badge].permit( :title, :shaded_photo )
+    @badge = MeritBadge.new params[:merit_badge].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover )
 
     # shaded_photo
     photo = Photo.new
     photo.photo = params[:merit_badge][:shaded_photo]
     photo.shaded_badge = @badge
     if photo.save
-      puts! photo, "photos is"
+      ;
     else
       flash[:alert] = "No Luck: #{photo.errors.inspect}."
       render :action => :new and return
     end
-    # @badge.shaded_photo = photo
-    # puts! @badge, "badge is"
+
+    # accomplished_photo
+    photo = Photo.new
+    photo.photo = params[:merit_badge][:accomplished_photo]
+    photo.accomplished_badge = @badge
+    if photo.save
+      ;
+    else
+      flash[:alert] = "No Luck: #{photo.errors.inspect}."
+      render :action => :new and return
+    end
+
+    # title_photo
+    photo = Photo.new
+    photo.photo = params[:merit_badge][:title_photo]
+    photo.title_badge = @badge
+    if photo.save
+      ;
+    else
+      flash[:alert] = "No Luck: #{photo.errors.inspect}."
+      render :action => :new and return
+    end
     
     if @badge.save
       flash[:notice] = 'Success.'

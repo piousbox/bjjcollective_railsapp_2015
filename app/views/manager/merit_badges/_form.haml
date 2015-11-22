@@ -5,8 +5,22 @@
   = f.label :title
   = f.text_field :title
 
-  = f.label :shaded_photo
-  = f.file_field :shaded_photo
+  .row
+    .large-4.columns
+      = f.label :shaded_photo
+      = f.file_field :shaded_photo
+    .large-4.columns
+      = f.label :accomplished_photo
+      = f.file_field :accomplished_photo
+    .large-4.columns
+      = f.label :title_photo
+      = f.file_field :title_photo
+
+  = f.label :subhead
+  = f.text_field :subhead
+  
+  = f.label :descr
+  = f.text_area :descr, { :class => :tinymce }
   
   = f.submit
   

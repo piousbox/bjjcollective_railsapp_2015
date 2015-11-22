@@ -1,0 +1,18 @@
+
+.main-menu
+  %ul.inline-list
+    %li= link_to "Home", root_path
+    %li= link_to "Manager Home", manager_root_path
+    %li
+      = link_to "Merit Badges", manager_badges_path, { :class => :inline }
+      (#{MeritBadge.all.length})
+      = link_to "[+]", new_manager_badge_path, { :class => :inline }
+    %li
+      Quest sets
+      [+]
+    %li.hide
+      Quests
+      [+]
+    %li
+      Videos
+      [+]

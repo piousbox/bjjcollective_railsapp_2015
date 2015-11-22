@@ -2,6 +2,8 @@
 class Manager::ManagerController < ApplicationController
 
   before_filter :authenticate
+
+  layout 'manager'
   
   protected
   

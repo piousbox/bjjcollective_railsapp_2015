@@ -8,7 +8,10 @@
     %ul
       - @badges.each do |badge|
         %li
-          = badge.title
+          = link_to '[~]', edit_manager_badge_path( badge )
           - if badge.shaded_photo
-            = image_tag badge.shaded_photo.photo.url(:small)
+            = image_tag badge.shaded_photo.photo.url(:mini)
+          - if badge.accomplished_photo
+            = image_tag badge.accomplished_photo.photo.url(:mini)
+          = badge.title
         

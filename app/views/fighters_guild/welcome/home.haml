@@ -1,0 +1,15 @@
+
+.row
+  .large-12.columns
+    %h1 Welcome to fighters guild
+
+.row
+  .large-3.columns
+    %h2 Quests
+  .large-9.columns
+    %h2 Merit Badges
+    %ul.large-block-grid-3
+      - @badges.each do |badge|
+        %li= link_to image_tag( badge.shaded_photo.photo.url(:thumb2) ), fg_badge_path( badge )
+        
+    

@@ -19,16 +19,17 @@ class Photo
                             :styles => {
                               :mini => '20x20#',
                               :thumb => "100x100#",
-                              # :two_hundred => '200x200#',
+                              :thumb2 => '200x200#',
                               :small  => "400x400>",
-                              # :small_square => "400x400#",
+                              :small_square => "400x400#",
                               :large => '950x950>'
                             }
 
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  belongs_to :shaded_badge, :class_name => 'MeritBadge', :inverse_of => :shaded_photo
-  belongs_to :accomplished_badge, :class_name => 'MeritBadge', :inverse_of => :accomplished_photo
+  belongs_to :shaded_badge,         :class_name => 'MeritBadge', :inverse_of => :shaded_photo
+  belongs_to :accomplished_badge,   :class_name => 'MeritBadge', :inverse_of => :accomplished_photo
+  belongs_to :title_badge,          :class_name => 'MeritBadge', :inverse_of => :title_photo
   
   set_callback(:create, :before) do |doc|
 #    if doc.is_public
