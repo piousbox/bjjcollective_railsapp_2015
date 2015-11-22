@@ -9,4 +9,6 @@
   %body
     %p{ :class => :notice}= notice
     %p{ :class => :alert}= alert
-    = yield
+    .row
+      .large-12.columns
+        = yield
