@@ -9,5 +9,6 @@
       - @badges.each do |badge|
         %li
           = badge.title
-          = badge.shaded_photo.inspect
+          - if badge.shaded_photo
+            = image_tag badge.shaded_photo.photo.url(:small)
         
