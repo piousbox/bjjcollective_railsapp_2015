@@ -7,6 +7,9 @@ class Manager::MeritBadgesController < Manager::ManagerController
 
   def new
     @badge = MeritBadge.new
+    @badge.build_task_1
+    @badge.build_task_2
+    @badge.build_task_3
   end
 
   def edit
@@ -16,12 +19,16 @@ class Manager::MeritBadgesController < Manager::ManagerController
   def create
     @badge = MeritBadge.new params[:merit_badge].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover )
     do_update_photos
+    do_update_tasks
+    do_save
   end
 
   def update
     @badge = MeritBadge.find params[:id]
     @badge.update_attributes( params[:merit_badge].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover ) )
     do_update_photos
+    do_update_tasks
+    do_save
   end
 
   private
@@ -61,7 +68,9 @@ class Manager::MeritBadgesController < Manager::ManagerController
         render :action => :new and return
       end
     end
-    
+  end
+
+  def do_save
     if @badge.save
       flash[:notice] = 'Success.'
       redirect_to manager_badges_path
@@ -69,6 +78,22 @@ class Manager::MeritBadgesController < Manager::ManagerController
       flash[:alert] = "#{flash[:alert]} No Luck: #{@badge.errors.inspect}."
       render :action => :new
     end
+  end
+
+  def do_update_tasks
+    if params[:merit_badge][:task_1]
+      task = Task.new params[:merit_badge][:task_1].permit( :title, :mouseover )
+      @badge.task_1 = task
+    end
+    if params[:merit_badge][:task_2]
+      task = Task.new params[:merit_badge][:task_2].permit( :title, :mouseover )
+      @badge.task_2 = task
+    end
+    if params[:merit_badge][:task_3]
+      task = Task.new params[:merit_badge][:task_3].permit( :title, :mouseover )
+      @badge.task_3 = task
+    end
+    
   end
 
 end

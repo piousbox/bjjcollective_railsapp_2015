@@ -5,10 +5,12 @@
   - url = manager_badges_path
 
 = form_for @badge, :url => url do |f|
-  = f.submit
+  .row
+    .large-12.columns
+      = f.submit nil, :class => [ :button, :small ]
   
-  = f.label :title
-  = f.text_field :title
+      = f.label :title
+      = f.text_field :title
 
   .row
     .large-4.columns
@@ -26,10 +28,7 @@
       = f.file_field :title_photo
       - if @badge.title_photo
         = image_tag @badge.title_photo.photo.url(:thumb2)
-
-  = f.label :subhead
-  = f.text_field :subhead
-
+        
   .row
     .large-6.columns
       = f.label :shaded_mouseover
@@ -37,9 +36,47 @@
     .large-6.columns
       = f.label :accomplished_mouseover
       = f.text_field :accomplished_mouseover
-      
-  = f.label :descr
-  = f.text_area :descr, { :class => :tinymce }
+
+  .row
+    .large-12.columns
+      = f.label :subhead
+      = f.text_field :subhead
+
+      = f.label :descr
+      = f.text_area :descr, { :class => :tinymce }
+
+      %hr
+      %h5 Tasks
+      %ol
+        %li
+          = f.fields_for :task_1 do |task|
+            .row
+              .large-6.columns
+                = task.label :title
+                = task.text_field :title, :value => @badge.task_1.title
+              .large-6.columns
+                = task.label :mouseover
+                = task.text_field :mouseover, :value => @badge.task_1.mouseover
+        %li
+          = f.fields_for :task_2 do |task|
+            .row
+              .large-6.columns
+                = task.label :title
+                = task.text_field :title, :value => @badge.task_2.title
+              .large-6.columns
+                = task.label :mouseover
+                = task.text_field :mouseover, :value => @badge.task_2.mouseover
+        %li
+          = f.fields_for :task_3 do |task|
+            .row
+              .large-6.columns
+                = task.label :title
+                = task.text_field :title, :value => @badge.task_3.title
+              .large-6.columns
+                = task.label :mouseover
+                = task.text_field :mouseover, :value => @badge.task_3.mouseover
+                  
+      %br
+      = f.submit nil, :class => [ :button, :small ]
   
-  = f.submit
-  
+%hr

@@ -3,4 +3,10 @@
   .large-3.columns
     Videos
   .large-9.columns
-    description
+    %h2= @badge.title
+
+    = image_tag @badge.title_photo.photo.url(:small)
+
+    = @badge.subhead
+
+    = raw @badge.descr
