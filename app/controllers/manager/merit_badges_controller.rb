@@ -77,21 +77,5 @@ class Manager::MeritBadgesController < Manager::ManagerController
     end
   end
 
-  def do_update_tasks
-    if params[:merit_badge][:task_1]
-      task = Task.new params[:merit_badge][:task_1].permit( :title, :mouseover )
-      @badge.task_1 = task
-    end
-    if params[:merit_badge][:task_2]
-      task = Task.new params[:merit_badge][:task_2].permit( :title, :mouseover )
-      @badge.task_2 = task
-    end
-    if params[:merit_badge][:task_3]
-      task = Task.new params[:merit_badge][:task_3].permit( :title, :mouseover )
-      @badge.task_3 = task
-    end
-    
-  end
-
 end
 
