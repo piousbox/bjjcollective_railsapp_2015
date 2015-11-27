@@ -1,7 +1,8 @@
 
-.row
+.row.fg-videos-show
   .large-3.columns
     %h4.text-center Videos
+    = render 'fighters_guild/merit_badges/videos', :badge => @badge
 
   .large-9.columns
     .text-center
@@ -10,10 +11,22 @@
     = raw @video.descr
 
     %h4 Tasks
-    %ul
-      %li
-        = @video.task_1.title
-      %li
-        = @video.task_2.title
-      %li
-        = @video.task_3.title
+    = @player_video.inspect
+    
+    %div{ :class => 'player-video-id', 'player-video-id' => @player_video.id }
+    = form_for [ :fg, @player_video ] do |f|
+      %ul
+        %li
+          = @video.task_1.title
+          = f.check_box :task_1_ok, :checked => @player_video.task_1_ok, :class => 'task-1'
+          %span{ :class => :'task-1-response' }
+        %li
+          = @video.task_2.title
+          = f.check_box :task_2_ok, :checked => @player_video.task_2_ok, :class => 'task-2'
+          %span{ :class => :'task-2-response' }
+        %li
+          = @video.task_3.title
+          = f.check_box :task_3_ok, :checked => @player_video.task_3_ok, :class => 'task-3'
+          %span{ :class => :'task-3-response' }
+
+    

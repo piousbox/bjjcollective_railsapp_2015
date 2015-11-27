@@ -5,6 +5,9 @@ class Manager::VideosController < Manager::ManagerController
   
   def index
     @videos = Video.all
+    if params[:badge_id]
+      @videos = @videos.where( :merit_badge_id => params[:badge_id] )
+    end
   end
 
   def edit

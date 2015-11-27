@@ -2,12 +2,8 @@
 .row
   .large-3.columns
     %h4.text-center Videos
-    %ul
-      - @badge.videos.each do |v|
-        %li
-          = image_tag( "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg" )
-          %br
-          = link_to v.title, fg_video_path( v )
+    = render 'fighters_guild/merit_badges/videos', :badge => @badge
+    
   .large-9.columns
     .panel
       %h4.text-center= @badge.title

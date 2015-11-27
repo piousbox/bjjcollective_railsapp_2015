@@ -16,3 +16,4 @@
           = badge.title
           = link_to 'Videos', manager_badge_videos_path( badge )
           (#{badge.videos.length})
+          = link_to '[+]', new_manager_badge_video_path( badge )

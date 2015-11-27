@@ -1,0 +1,6 @@
+%ul
+  - badge.videos.each do |v|
+    %li
+      = image_tag( "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg" )
+      %br
+      = link_to v.title, fg_video_path( v )

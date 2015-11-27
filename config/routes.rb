@@ -7,10 +7,12 @@ Rails.application.routes.draw do
 
   resources :videos
 
-  get 'fighters-guild' => 'fighters_guild/welcome#home', :as => :fg_root
+  get 'fighters_guild' => 'fighters_guild/welcome#home', :as => :fg_root
   namespace :fighters_guild, :as => :fg do
+    # root :to => 'fighters_guild/welcome#home'
     resources :merit_badges, :as => :badges
     resources :videos
+    post "player_videos/:id", :to => "player_videos#update", :as => :player_video
   end
 
   devise_for :users, controllers: {

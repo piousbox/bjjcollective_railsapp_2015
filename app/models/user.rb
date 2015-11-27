@@ -58,4 +58,6 @@ class User
   
   field :group_id, :type => Integer, :default => 3
 
+  has_one :player
+
 end
