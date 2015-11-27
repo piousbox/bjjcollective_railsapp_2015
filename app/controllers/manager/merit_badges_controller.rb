@@ -16,7 +16,6 @@ class Manager::MeritBadgesController < Manager::ManagerController
   def create
     @badge = MeritBadge.new params[:merit_badge].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover )
     do_update_photos
-    do_update_tasks
     do_save
   end
 
@@ -24,7 +23,6 @@ class Manager::MeritBadgesController < Manager::ManagerController
     @badge = MeritBadge.find params[:id]
     @badge.update_attributes( params[:merit_badge].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover ) )
     do_update_photos
-    do_update_tasks
     do_save
   end
 
