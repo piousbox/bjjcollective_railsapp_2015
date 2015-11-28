@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :merit_badges, :as => :badges
     resources :videos
     post "player_videos/:id", :to => "player_videos#update", :as => :player_video
+    resources :questsets
   end
 
   devise_for :users, controllers: {

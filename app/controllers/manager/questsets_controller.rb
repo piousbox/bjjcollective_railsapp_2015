@@ -18,6 +18,13 @@ class Manager::QuestsetsController < Manager::ManagerController
   def edit
     @questset = Questset.find params[:id]
   end
+
+  def update
+    @questset = Questset.find params[:id]
+    @questset.update_attributes params[:questset].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover )
+    do_update_photos
+    do_save
+  end
   
   private
 

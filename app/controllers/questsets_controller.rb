@@ -1,4 +1,0 @@
-
-class QuestsetsController < ApplicationController
-
-end

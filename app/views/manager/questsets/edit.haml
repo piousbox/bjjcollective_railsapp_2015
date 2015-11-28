@@ -1,3 +1,4 @@
 
-%h3 Edit questset #{@questset.title}
+%h3 Edit questset "#{@questset.title}"
 
+= render 'manager/merit_badges/form', :item => @questset, :url => manager_questset_path( @questset )

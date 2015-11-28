@@ -3,7 +3,9 @@
   .large-3.columns
     %h5.text-center Quests
     %ul
-      %li= image_tag 'missing.png'
+      - @questsets.each do |q|
+        %li= link_to image_tag( q.shaded_photo.photo.url(:humb2) ), fg_questset_path( q )
+      
   .large-9.columns
     %h5.text-center Merit Badges
     %ul.large-block-grid-3
