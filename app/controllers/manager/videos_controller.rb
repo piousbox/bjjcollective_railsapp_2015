@@ -2,8 +2,6 @@
 class Manager::VideosController < Manager::ManagerController
 
   before_filter :set_lists
-
-  permitted_params = [ :youtube_id, :title, :descr, :merit_badge_id, :questset_id, :badge_id ]
   
   def index
     @videos = Video.all
@@ -68,5 +66,9 @@ class Manager::VideosController < Manager::ManagerController
       @video.task_3 = task
     end  
   end
-
+  
+  def permitted_params
+    return [ :youtube_id, :title, :descr, :merit_badge_id, :questset_id, :badge_id ]
+  end
+  
 end
