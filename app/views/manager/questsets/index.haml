@@ -1,0 +1,23 @@
+
+-#
+-# questsets index
+-#
+  
+.row
+  .large-12.columns
+    %h3
+      Questsets
+      = link_to '[+]', new_manager_questset_path, { 'data-no-turbolink' => true }
+
+    %ul
+      - @questsets.each do |badge|
+        %li
+          = link_to '[~]', edit_manager_badge_path( badge ), { 'data-no-turbolink' => true }
+          - if badge.shaded_photo
+            = image_tag badge.shaded_photo.photo.url(:mini)
+          - if badge.accomplished_photo
+            = image_tag badge.accomplished_photo.photo.url(:mini)
+          = badge.title
+          = link_to 'Videos', manager_badge_videos_path( badge )
+          (#{badge.videos.length})
+          = link_to '[+]', new_manager_badge_video_path( badge )
