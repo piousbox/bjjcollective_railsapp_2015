@@ -1,18 +1,16 @@
 
 .main-menu
   %ul.inline-list
-    %li= link_to "Home", root_path
-    %li= link_to "Manager Home", manager_root_path
+    %li= link_to "Manager", manager_root_path
+    %li= link_to "Fighters Guild", fg_root_path
     %li
       = link_to "Merit Badges", manager_badges_path, { :class => :inline }
       (#{MeritBadge.all.length})
       = link_to "[+]", new_manager_badge_path, { :class => :inline, :'data-no-turbolink' => true }
     %li
-      Quest sets
-      [+]
-    %li.hide
-      Quests
-      [+]
+      = link_to "Questsets", manager_questsets_path, { :class => :inline }
+      (#{Questset.all.length})
+      = link_to '[+]', new_manager_questset_path, { :class => :inline, :'data-no-turbolink' => true }
     %li
       = link_to 'Videos', manager_videos_path, { :class => :inline }
       (#{Video.all.length})

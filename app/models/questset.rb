@@ -1,0 +1,5 @@
+
+class Questset < MeritBadge
+
+end
+
