@@ -15,6 +15,9 @@ class Video
   embeds_one :task_3, :class_name => 'Task', :inverse_of => :video_3
 
   belongs_to :merit_badge
+  # belongs_to :badge
+  belongs_to :questset
+  
   has_many :player_video
   
 end

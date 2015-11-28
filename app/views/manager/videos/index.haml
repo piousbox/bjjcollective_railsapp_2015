@@ -4,6 +4,7 @@
 %ul
   - @videos.each do |video|
     %li
+      = video.inspect
       = link_to '[~]', edit_manager_video_path( video ), { :'data-no-turbolink' => true }
       = video.title
       = video.youtube_id
