@@ -10,14 +10,14 @@
       = link_to '[+]', new_manager_questset_path, { 'data-no-turbolink' => true }
 
     %ul
-      - @questsets.each do |badge|
+      - @questsets.each do |q|
         %li
-          = link_to '[~]', edit_manager_badge_path( badge ), { 'data-no-turbolink' => true }
-          - if badge.shaded_photo
-            = image_tag badge.shaded_photo.photo.url(:mini)
-          - if badge.accomplished_photo
-            = image_tag badge.accomplished_photo.photo.url(:mini)
-          = badge.title
-          = link_to 'Videos', manager_badge_videos_path( badge )
-          (#{badge.videos.length})
-          = link_to '[+]', new_manager_badge_video_path( badge )
+          = link_to '[~]', edit_manager_questset_path( q ), { 'data-no-turbolink' => true }
+          - if q.shaded_photo
+            = image_tag q.shaded_photo.photo.url(:mini)
+          - if q.accomplished_photo
+            = image_tag q.accomplished_photo.photo.url(:mini)
+          = q.title
+          = link_to 'Videos', manager_questset_videos_path( q )
+          (#{q.videos.length})
+          = link_to '[+]', new_manager_questset_video_path( q )

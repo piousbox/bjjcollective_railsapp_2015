@@ -28,7 +28,9 @@ Rails.application.routes.draw do
       resources :videos
     end
     resources :users
-    resources :questsets
+    resources :questsets do
+      resources :videos
+    end
     resources :videos
   end
 

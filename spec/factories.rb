@@ -13,6 +13,10 @@ FactoryGirl.define do
     f.email 'user@gmail.com'
     f.password "s1mple123"
   end
+
+  factory :questset do |f|
+    f.title 'New Questset'
+  end
   
 end
 
