@@ -3,6 +3,7 @@ class FightersGuild::QuestsetsController < FightersGuild::FightersGuildControlle
 
   def show
     @questset = Questset.find params[:id]
+    @videos = Video.where( :questset_id => @questset.id )
   end
 
 end

@@ -111,6 +111,19 @@ def puts! args, label=""
   puts args.inspect
 end
 
+def setup_questsets
+  Questset.all.each { |q| q.remove }
+  @questset = FactoryGirl.create :questset
+end
 
+def setup_merit_badges
+  MeritBadge.all.each { |b| b.remove }
+  @merit_badge = FactoryGirl.create :merit_badge
+end
 
+def setup_videos
+  Video.all.each { |v| v.remove }
+  @video_for_questset = FactoryGirl.create :video_for_questset
+  @video_for_badge = FactoryGirl.create :video_for_merit_badge
+end
 

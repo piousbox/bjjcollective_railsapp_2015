@@ -7,9 +7,11 @@
 = form_for @video, :url => url do |f|
   = f.submit nil, :class => [ :button, :small ]
 
-  = f.label :merit_badge, 'Merit badge or questset'
+  = f.label :merit_badge
   -# = select :video, :merit_badge_id, @merit_badges_list, { :selected => (@video.merit_badge_id||params[:merit_badge_id]) }
   = f.select :merit_badge_id, @merit_badges_list, { :selected => (@video.merit_badge_id||params[:merit_badge_id]) }
+  = f.label :questset
+  = f.select :questset_id, @questsets_list, { :selected => (@video.questset_id||params[:questset_id]) }
   
   = f.label :title
   = f.text_field :title

@@ -2,6 +2,8 @@
 class Manager::VideosController < Manager::ManagerController
 
   before_filter :set_lists
+
+  permitted_params = [ :youtube_id, :title, :descr, :merit_badge_id, :questset_id, :badge_id ]
   
   def index
     @videos = Video.all
@@ -16,7 +18,7 @@ class Manager::VideosController < Manager::ManagerController
 
   def update
     @video = Video.find params[:id]
-    @video.update params[:video].permit( :youtube_id, :title, :descr, :merit_badge_id )
+    @video.update params[:video].permit( permitted_params )
 
     do_update_tasks
     
@@ -37,7 +39,7 @@ class Manager::VideosController < Manager::ManagerController
   end
 
   def create
-    @video = Video.create params[:video].permit( :youtube_id, :title, :descr )
+    @video = Video.create params[:video].permit( permitted_params ) # :youtube_id, :title, :descr, :merit_badge_id, :questset_id, :badge_id )
 
     do_update_tasks
     

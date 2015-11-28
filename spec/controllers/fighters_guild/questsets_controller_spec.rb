@@ -4,8 +4,9 @@ require 'spec_helper'
 describe FightersGuild::QuestsetsController do
 
   before :each do
-    Questset.all.each { |q| q.remove }
-    @questset = FactoryGirl.create :questset
+    setup_questsets
+    setup_merit_badges
+    setup_videos
   end
 
   it '#show' do
