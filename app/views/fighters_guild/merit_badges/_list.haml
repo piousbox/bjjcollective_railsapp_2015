@@ -9,6 +9,9 @@
     - else
       - path = fg_badge_path( q )
     %li.badge-item
-      = link_to image_tag( q.shaded_photo.photo.url(:thumb2) ), path
+      - if q.shaded_photo
+        = link_to image_tag( q.shaded_photo.photo.url(:thumb2) ), path
+      - else
+        = image_tag 'missing.png'
       .mouseover= q.shaded_mouseover
       .text-center= link_to q.title, path

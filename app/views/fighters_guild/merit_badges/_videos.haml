@@ -1,6 +1,8 @@
-%ul
+%ul.large-block-grid-1
   - badge.videos.each do |v|
-    %li
+    %li.text-center
       = image_tag( "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg" )
       %br
       = link_to v.title, fg_video_path( v ), { :'data-no-turbolink' => true }
+  - if 0 == badge.videos.length
+    %li No videos

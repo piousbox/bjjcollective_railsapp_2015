@@ -5,10 +5,6 @@
     = render 'fighters_guild/merit_badges/videos', :badge => @badge
     
   .large-9.columns
-    .panel
-      %h4.text-center= @badge.title
-      = image_tag @badge.title_photo.photo.url(:small)
-      = @badge.subhead
-      = raw @badge.descr
+    = render 'show', :item => @badge
        
     

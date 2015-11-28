@@ -3,6 +3,9 @@
 
 .panel
   %h4.text-center= item.title
-  = image_tag item.title_photo.photo.url(:small)
+  - if item.title_photo
+    = image_tag item.title_photo.photo.url(:small)
+  - else
+    = image_tag 'missing.png'
   = item.subhead
   = raw item.descr
