@@ -3,7 +3,7 @@
   .large-12.columns
     %h3
       Merit Badges
-      = link_to '[+]', new_manager_badge_path
+      = link_to '[+]', new_manager_badge_path, { 'data-no-turbolink' => true }
 
     %ul
       - @badges.each do |badge|

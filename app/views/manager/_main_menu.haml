@@ -15,4 +15,5 @@
       [+]
     %li
       = link_to 'Videos', manager_videos_path, { :class => :inline }
+      (#{Video.all.length})
       = link_to '[+]', new_manager_video_path, { :class => :inline, :'data-no-turbolink' => true }
