@@ -31,3 +31,9 @@ textarea.tinymce {
 .relative {
     position: relative;
 }
+
+.fighters-guild-welcome-home .quests-list {
+    border-right: 2px solid #dedede;
+    min-height: 800px;
+    margin-bottom: 20px;
+}

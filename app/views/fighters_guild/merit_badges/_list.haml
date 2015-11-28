@@ -1,0 +1,14 @@
+
+- grid ||= 3
+- items ||= @badges
+
+%ul{ :class => "large-block-grid-#{grid}" }
+  - items.each do |q|
+    - if "Questset" == q.class.name
+      - path = fg_questset_path( q )
+    - else
+      - path = fg_badge_path( q )
+    %li.badge-item
+      = link_to image_tag( q.shaded_photo.photo.url(:thumb2) ), path
+      .mouseover= q.shaded_mouseover
+      .text-center= link_to q.title, path

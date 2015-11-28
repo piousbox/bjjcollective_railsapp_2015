@@ -1,0 +1,8 @@
+
+- item ||= @badge
+
+.panel
+  %h4.text-center= item.title
+  = image_tag item.title_photo.photo.url(:small)
+  = item.subhead
+  = raw item.descr
