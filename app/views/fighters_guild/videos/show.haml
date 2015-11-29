@@ -16,15 +16,15 @@
       = form_for [ :fg, @player_video ] do |f|
         %ul
           %li
-            = @video.task_1.title
+            = (@video.task_1||Task.new).title
             = f.check_box :task_1_ok, :checked => @player_video.task_1_ok, :class => 'task-1'
             %span{ :class => :'task-1-response' }
           %li
-            = @video.task_2.title
+            = (@video.task_2||Task.new).title
             = f.check_box :task_2_ok, :checked => @player_video.task_2_ok, :class => 'task-2'
             %span{ :class => :'task-2-response' }
           %li
-            = @video.task_3.title
+            = (@video.task_3||Task.new).title
             = f.check_box :task_3_ok, :checked => @player_video.task_3_ok, :class => 'task-3'
             %span{ :class => :'task-3-response' }
     - else
