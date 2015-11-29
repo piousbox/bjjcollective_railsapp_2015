@@ -121,6 +121,11 @@ def setup_merit_badges
   @merit_badge = FactoryGirl.create :merit_badge
 end
 
+def setup_users
+  User.all.each { |u| u.remove }
+  @user = FactoryGirl.create :user
+end
+
 def setup_videos
   Video.all.each { |v| v.remove }
   @video_for_questset = FactoryGirl.create :video_for_questset
