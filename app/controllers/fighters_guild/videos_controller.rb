@@ -13,9 +13,9 @@ class FightersGuild::VideosController < FightersGuild::FightersGuildController
 
 
     # tasks
-   #  @video.task_1 ||= Task.new
-   #  @video.task_2 ||= Task.new
-   #  @video.task_3 ||= Task.new
+    @video.task_1 ||= Task.new
+    @video.task_2 ||= Task.new
+    @video.task_3 ||= Task.new
 
     
     # videos
