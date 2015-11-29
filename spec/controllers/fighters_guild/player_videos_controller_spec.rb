@@ -18,7 +18,6 @@ describe FightersGuild::PlayerVideosController do
 
     PlayerVideo.all.each { |pv| pv.remove }
     @player_video = PlayerVideo.create :user_id => @user.id, :video_id => @video_for_questset.id
-    puts! @player_video.errors, 'errors of pv'
   end
 
   it 'update' do

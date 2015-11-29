@@ -1,5 +1,5 @@
 
-%ul.large-block-grid-1
+%ul.large-block-grid-1.fg-videos-show
   - videos.each do |v|
     %li.text-center
       = image_tag( "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg" )
@@ -7,9 +7,9 @@
       = link_to v.title, fg_video_path( v ), { :'data-no-turbolink' => true }
       %br
       = form_for [ :fg, v[:player_video] ] do |f|
-        = f.check_box :task_1_ok, :checked => v[:player_video].task_1_ok, :class => :'task-1'
-        = f.check_box :task_2_ok, :checked => v[:player_video].task_2_ok, :class => :'task-2', :disabled => !v[:player_video].task_1_ok # ? false : true
-        = f.check_box :task_3_ok, :checked => v[:player_video].task_3_ok, :class => :'task-3', :disabled => !v[:player_video].task_2_ok # ? false : true
+        = f.check_box :task_1_ok, :checked => v[:player_video].task_1_ok, :class => :task, :'player-video-id' => v[:player_video].id, :'param-name' => :task_1_ok
+        = f.check_box :task_2_ok, :checked => v[:player_video].task_2_ok, :class => :task, :'player-video-id' => v[:player_video].id, :'param-name' => :task_2_ok, :disabled => !v[:player_video].task_1_ok
+        = f.check_box :task_3_ok, :checked => v[:player_video].task_3_ok, :class => :task, :'player-video-id' => v[:player_video].id, :'param-name' => :task_3_ok, :disabled => !v[:player_video].task_2_ok
       %span{ :class => :'video-tasks-response' }
   - if 0 == videos.length
     %li No videos
