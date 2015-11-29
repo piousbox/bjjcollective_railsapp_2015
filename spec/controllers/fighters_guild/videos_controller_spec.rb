@@ -37,5 +37,16 @@ describe FightersGuild::VideosController do
     assigns( :video ).should_not eql nil
     assigns( :questset ).should_not eql nil
   end
+
+  it 'show in quest not-siged-in' do
+    sign_out :user
+    get :show, :id => @video_for_questset.id
+    response.should be_success
+    videos = assigns( :videos )
+    videos.length.should > 0
+    videos.each do |v|
+      v[:player_video].should_not eql nil
+    end
+  end
   
 end
