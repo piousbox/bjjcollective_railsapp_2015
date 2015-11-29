@@ -2,16 +2,7 @@
 class FightersGuild::VideosController < FightersGuild::FightersGuildController
 
   def show
-    @video = Video.find params[:id]
-    
-    puts! @video.inspect, 'video is'
-    MeritBadge.all.each do |b|
-      puts! b.inspect, 'some badge'
-    end
-    Questset.all.each do |q|
-      puts! q.inspect, 'some questset'
-    end
-    
+    @video = Video.find params[:id]    
     if @video.merit_badge_id
       @badge = MeritBadge.find @video.merit_badge_id
     elsif @video.questset_id
