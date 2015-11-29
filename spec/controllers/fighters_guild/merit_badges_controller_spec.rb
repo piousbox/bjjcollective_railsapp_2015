@@ -26,13 +26,38 @@ describe FightersGuild::MeritBadgesController do
     videos.should_not eql nil
   end
 
-
   it 'show - not signed in' do
     sign_out :user
 
     get :show, :id => @badge.id
     response.should be_success
     assigns( :badge ).should_not eql nil
+  end
+
+  #
+  # hidden
+  #
+  proc do # nothing
+  describe 'accomplished' do
+    before :each do
+      pv = PlayerVideo.new :video_id => @video.id, :user_id => @user.id
+      pv.task_1_ok = true
+      pv.task_2_ok = true
+      pv.task_3_ok = true
+      pv.save
+    end
+    it 'show - accomplished, 1 video' do
+      sign_in :user, @user
+    end
+    describe '2 video' do
+      before :each do
+      end
+      it 'show - accomplished, 2 video' do
+      end
+      it 'show - shaded, 2 video' do
+      end
+    end
+  end
   end
   
 end

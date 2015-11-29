@@ -8,11 +8,17 @@
     %h5.text-center Merit Badges
     %ul.large-block-grid-3
       - @badges.each do |badge|
-        %li.badge-item
-          - if badge.shaded_photo
-            = link_to image_tag( badge.shaded_photo.photo.url(:thumb2) ), fg_badge_path( badge )
-          - else
-            = image_tag 'missing.png'
+        - photo_url = image_tag 'missing.png'
+        - is_accomplished = ''
+        - if badge.shaded_photo
+          - photo_url = badge.shaded_photo.photo.url(:thumb2)
+          - if user_signed_in?
+            - if badge[:player][:is_accomplished] && badge.accomplished_photo
+              - photo_url = badge.accomplished_photo.photo.url(:thumb2)
+              - is_accomplished = "is_accomplished"
+
+        %li{ :class => "badge-item #{is_accomplished}", 'merit-badge-id' => badge.id }
+          = link_to image_tag( photo_url  ), fg_badge_path( badge ), { :'data-no-turbolink' => true }
           .mouseover= badge.shaded_mouseover
           .text-center= badge.title
     

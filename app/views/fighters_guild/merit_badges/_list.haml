@@ -10,7 +10,7 @@
       - path = fg_badge_path( q )
     %li.badge-item
       - if q.shaded_photo
-        = link_to image_tag( q.shaded_photo.photo.url(:thumb2) ), path
+        = link_to image_tag( q.shaded_photo.photo.url(:thumb2) ), path, { :'data-no-turbolink' => true }
       - else
         = image_tag 'missing.png'
       .mouseover= q.shaded_mouseover
