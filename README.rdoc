@@ -5,17 +5,18 @@ The fighers guild!
 
 == Development
 
-@TODO: there needs to be disaster recovery
-@TODO: badges list should be alphabetic
-@TODO: show of a merit badge should have human url
-@TODO: video2 is video. video is video_legacy
-@TODO: video link should be human-readable
-@TODO: cancan for permissions of tasks
-@TODO: google analytics UA-56558063-1
-@TODO: accomplished mouseover should change
+@TODO: There needs to be disaster recovery
+@TODO: Show of a merit badge should have human url
+@TODO: Video2 is video. video is video_legacy
+@TODO: Video link should be human-readable
+@TODO: Cancan for permissions of tasks
 @TODO: I should not be able to create a video linked to both a badge and a questset.
-@TODO: remove turbolinks
+@TODO: All questsets are shaded, and once you accomplish a questset, the pic changes, and the next one opens up
+@TODO: Be able to delete questsets
+@TODO: Better s3 creds for BJJC
 
 == Change Log
 * 20151122 .htaccess on manager
+* 20151203 tasks from the first email
+
 
