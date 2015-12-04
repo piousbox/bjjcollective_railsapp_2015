@@ -8,12 +8,13 @@
     %ul
       - @badges.each do |badge|
         %li
-          = link_to '[~]', edit_manager_badge_path( badge ), { 'data-no-turbolink' => true }
+          %h5= badge.title
+          = link_to '[edit]', edit_manager_badge_path( badge ), { 'data-no-turbolink' => true }
           - if badge.shaded_photo
             = image_tag badge.shaded_photo.photo.url(:mini)
           - if badge.accomplished_photo
             = image_tag badge.accomplished_photo.photo.url(:mini)
-          = badge.title
+          = badge.order_value
           = link_to 'Videos', manager_badge_videos_path( badge )
           (#{badge.videos.length})
           = link_to '[+]', new_manager_badge_video_path( badge )

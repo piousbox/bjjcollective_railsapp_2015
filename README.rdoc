@@ -5,15 +5,16 @@ The fighers guild!
 
 == Development
 
-@TODO: specs please
-@TODO: view of a badge
 @TODO: there needs to be disaster recovery
 @TODO: badges list should be alphabetic
-@TODO: #show of a merit badge should have human url
+@TODO: show of a merit badge should have human url
 @TODO: video2 is video. video is video_legacy
 @TODO: video link should be human-readable
 @TODO: cancan for permissions of tasks
+@TODO: google analytics UA-56558063-1
+@TODO: accomplished mouseover should change
 @TODO: I should not be able to create a video linked to both a badge and a questset.
+@TODO: remove turbolinks
 
 == Change Log
 * 20151122 .htaccess on manager

@@ -2,7 +2,7 @@
 class Manager::MeritBadgesController < Manager::ManagerController
 
   def index
-    @badges = MeritBadge.all
+    @badges = MeritBadge.all.order_by( :order_value => 'asc' ).to_a
   end
 
   def new
@@ -14,14 +14,14 @@ class Manager::MeritBadgesController < Manager::ManagerController
   end
 
   def create
-    @badge = MeritBadge.new params[:merit_badge].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover )
+    @badge = MeritBadge.new params[:merit_badge].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover, :order_value )
     do_update_photos
     do_save
   end
 
   def update
     @badge = MeritBadge.find params[:id]
-    @badge.update_attributes( params[:merit_badge].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover ) )
+    @badge.update_attributes( params[:merit_badge].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover, :order_value ) )
     do_update_photos
     do_save
   end

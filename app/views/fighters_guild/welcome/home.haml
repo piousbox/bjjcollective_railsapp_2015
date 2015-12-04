@@ -19,6 +19,13 @@
 
         %li{ :class => "badge-item #{is_accomplished}", 'merit-badge-id' => badge.id }
           = link_to image_tag( photo_url  ), fg_badge_path( badge ), { :'data-no-turbolink' => true }
-          .mouseover= badge.shaded_mouseover
-          .text-center= badge.title
+          - if '' != is_accomplished
+            .mouseover= badge.accomplished_mouseover
+          - else
+            .mouseover= badge.shaded_mouseover         
+          .text-center
+            = badge.title
+            %br
+            - if badge[:player]
+              #{badge[:player][:percent_done].round}% done
     

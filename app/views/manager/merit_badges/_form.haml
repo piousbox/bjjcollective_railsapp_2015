@@ -47,8 +47,15 @@
 
       = f.label :descr
       = f.text_area :descr, { :class => :tinymce }
-                  
-      %br
+
+  .row
+    .large-6.columns
+      = f.label :order_value, 'alpha-numeric order value. 2 comes before 3. aa comes before aaa.'
+      = f.text_field :order_value
+    .large-6.columns
+      
+  .row
+    .large-12.columns
       = f.submit nil, :class => [ :button, :small ]
   
 %hr

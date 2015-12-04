@@ -9,6 +9,7 @@ class Badge
   field :descr,                     :type => String
   field :shaded_mouseover,          :type => String
   field :accomplished_mouseover,    :type => String
+  field :order_value,               :type => String, :default => "jjj"
 
   embeds_many :tasks
   
