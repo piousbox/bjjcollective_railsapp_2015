@@ -43,6 +43,7 @@ describe FightersGuild::WelcomeController do
   
   describe 'questsets at #home' do
     before :each do
+      sign_out :user
       setup_questsets
       get :home
     end

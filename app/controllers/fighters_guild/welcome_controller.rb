@@ -64,6 +64,7 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
     end
     if 0 == videos.length
       badge[:player][:percent_done] = 0
+      badge[:player][:is_accomplished] = false
     end
   end
 
@@ -72,9 +73,15 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
     
     @questsets.each_with_index do |q, idx|
       if 0 == idx
-        q[:is_unavailable] = false
+        q[:is_available] = true
+      elsif user_signed_in?
+        if qs[idx-1][:player][:is_accomplished]
+          q[:is_available] = true
+        else
+          q[:is_available] = false
+        end
       else
-        q[:is_unavailable] = false
+        q[:is_available] = false
       end
     end
   end

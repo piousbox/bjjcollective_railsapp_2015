@@ -115,13 +115,16 @@ def setup_questsets
   Questset.all.each { |q| q.remove }
   
   @questset = FactoryGirl.create :questset
+  photo = Photo.new ; photo.unavailable_badge = @questset ; photo.save
   
   @questset_2 = FactoryGirl.create :questset_2
+  photo = Photo.new ; photo.unavailable_badge = @questset_2 ; photo.save
   photo = Photo.new
   photo.shaded_badge = @questset_2
   photo.save
 
   @questset_3 = FactoryGirl.create :questset_3  
+  photo = Photo.new ; photo.unavailable_badge = @questset_3 ; photo.save
   photo = Photo.new
   photo.shaded_badge = @questset_3
   photo.save

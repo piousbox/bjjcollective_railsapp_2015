@@ -19,11 +19,7 @@
 
     - # @TODO: remove badge reference from here. Only questset.
     %li{ :class => "badge-item questset-item #{is_accomplished}", 'merit-badge-id' => item.id, 'questset-id' => item.id }
-      - if item[:is_unavailable]
-        = image_tag( item.unavailable_photo.photo.url :thumb2 )
-        .mouseover= item.shaded_mouseover
-        .text-center= item.title
-      - else
+      - if item[:is_available]
         = link_to image_tag( photo_url ), fg_questset_path( item ), { :'data-no-turbolink' => true }
         - if '' != is_accomplished
           .mouseover= item.accomplished_mouseover
@@ -34,3 +30,7 @@
           %br
           - if item[:player]
             #{item[:player][:percent_done].round}% done
+      - else
+        = image_tag( item.unavailable_photo.photo.url :thumb2 )
+        .mouseover= item.shaded_mouseover
+        .text-center= item.title
