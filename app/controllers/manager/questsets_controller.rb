@@ -10,7 +10,7 @@ class Manager::QuestsetsController < Manager::ManagerController
   end
 
   def create
-    @questset = Questset.new params[:questset].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover )
+    @questset = Questset.new params[:questset].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover, :order_value )
     do_update_photos
     do_save
   end
@@ -21,7 +21,7 @@ class Manager::QuestsetsController < Manager::ManagerController
 
   def update
     @questset = Questset.find params[:id]
-    @questset.update_attributes params[:questset].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover )
+    @questset.update_attributes params[:questset].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover, :order_value )
     do_update_photos
     do_save
   end

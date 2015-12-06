@@ -3,6 +3,8 @@ require 'spec_helper'
 
 describe Manager::WelcomeController do
 
+  render_views
+  
   before :each do
     ;
   end

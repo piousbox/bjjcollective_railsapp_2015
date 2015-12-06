@@ -3,6 +3,8 @@ require 'spec_helper'
 
 describe Manager::VideosController do
 
+  render_views
+  
   before :each do
     MeritBadge.all.each { |b| b.remove }
     @badge = FactoryGirl.create :badge

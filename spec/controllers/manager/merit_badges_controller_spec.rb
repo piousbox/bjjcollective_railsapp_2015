@@ -3,6 +3,8 @@ require 'spec_helper'
 
 describe Manager::MeritBadgesController do
 
+  render_views
+  
   before :each do
     ;
   end
