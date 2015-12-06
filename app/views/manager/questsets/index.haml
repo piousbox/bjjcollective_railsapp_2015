@@ -10,19 +10,3 @@
       = link_to '[+]', new_manager_questset_path, { 'data-no-turbolink' => true }
 
     = render 'manager/merit_badges/list', :items => @questsets
-
-  - # 
-  - # hidden
-  - proc do # nothing
-    %ul
-      - @questsets.each do |q|
-        %li
-          = link_to '[~]', edit_manager_questset_path( q ), { 'data-no-turbolink' => true }
-          - if q.shaded_photo
-            = image_tag q.shaded_photo.photo.url(:mini)
-          - if q.accomplished_photo
-            = image_tag q.accomplished_photo.photo.url(:mini)
-          = q.title
-          = link_to 'Videos', manager_questset_videos_path( q )
-          (#{q.videos.length})
-          = link_to '[+]', new_manager_questset_video_path( q )

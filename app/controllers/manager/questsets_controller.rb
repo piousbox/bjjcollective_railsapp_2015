@@ -29,6 +29,17 @@ class Manager::QuestsetsController < Manager::ManagerController
   private
 
   def do_update_photos
+    if params[:questset][:unavailable_photo]
+      photo = Photo.new
+      photo.photo = params[:questset][:unavailable_photo]
+      photo.unavailable_badge = @questset
+      if photo.save
+      else
+        flash[:alert] = "No Luck: #{photo.errors.inspect}."
+        render :action => :new and return
+      end
+    end
+
     if params[:questset][:shaded_photo]
       photo = Photo.new
       photo.photo = params[:questset][:shaded_photo]

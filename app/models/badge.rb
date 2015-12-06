@@ -16,7 +16,8 @@ class Badge
   embeds_one :shaded_photo,       :class_name => 'Photo', :inverse_of => :shaded_badge
   embeds_one :accomplished_photo, :class_name => 'Photo', :inverse_of => :accomplished_badge
   embeds_one :title_photo,        :class_name => 'Photo', :inverse_of => :title_badge
-
+  embeds_one :unavailable_photo,  :class_name => 'Photo', :inverse_of => :unavailable_badge
+  
   has_many :videos
 
   def self.list

@@ -16,17 +16,22 @@
       = f.text_field :title
 
   .row
-    .large-4.columns
+    .large-3.columns
+      = f.label :unavailable_photo
+      = f.file_field :unavailable_photo
+      - if item.unavailable_photo
+        = image_tag item.unavailable_photo.photo.url(:thumb2)
+    .large-3.columns
       = f.label :shaded_photo
       = f.file_field :shaded_photo
       - if item.shaded_photo
         = image_tag item.shaded_photo.photo.url(:thumb2)
-    .large-4.columns
+    .large-3.columns
       = f.label :accomplished_photo
       = f.file_field :accomplished_photo
       - if item.accomplished_photo
         = image_tag item.accomplished_photo.photo.url(:thumb2)
-    .large-4.columns
+    .large-3.columns
       = f.label :title_photo
       = f.file_field :title_photo
       - if item.title_photo

@@ -1,0 +1,32 @@
+
+- #
+- # questsets/_list
+- #
+
+- grid  ||= 3
+- items ||= @badges
+
+%ul{ :class => "large-block-grid-#{grid}" }
+  - items.each_with_index do |item, idx|
+    - photo_url = image_tag 'missing.png'
+    - is_accomplished = ''
+    - is_unavailable = 0 == idx ? false : true
+    - if item.shaded_photo
+      - photo_url = item.shaded_photo.photo.url :thumb2
+      - if user_signed_in?
+        - if item[:player][:is_accomplished] && item.accomplished_photo
+          - photo_url = item.accomplished_photo.photo.url :thumb2
+          - is_accomplished = "is_accomplished"
+
+    - # @TODO: remove badge reference from here. Only questset.
+    %li{ :class => "badge-item questset-item #{is_accomplished}", 'merit-badge-id' => item.id, 'questset-id' => item.id }
+      = link_to image_tag( photo_url ), fg_questset_path( item ), { :'data-no-turbolink' => true }
+      - if '' != is_accomplished
+        .mouseover= item.accomplished_mouseover
+      - else
+        .mouseover= item.shaded_mouseover         
+      .text-center
+        = item.title
+        %br
+        - if item[:player]
+          #{item[:player][:percent_done].round}% done
