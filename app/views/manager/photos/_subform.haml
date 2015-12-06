@@ -1,0 +1,29 @@
+
+  
+.manager-photos--subform
+  - if merit_badge
+    .merit-badge-id{ :'merit-badge-id' => merit_badge.id }
+  - if questset
+    .questset-id{ :'questset-id' => questset.id }
+  #fileuploader Upload
+
+  .response
+  %br
+  %br
+  %br
+
+
+
+
+
+
+- #
+- # hidden
+- #
+- proc do #nothing
+  
+  %h5 Upload another Image
+  = file_field_tag :photo
+  %a#upload_another_image [Upload This Image]
+
+  .response

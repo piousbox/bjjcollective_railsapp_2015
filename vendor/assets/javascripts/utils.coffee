@@ -16,7 +16,7 @@ $(document).ready ->
     tinymce.init
       mode: "specific_textareas",
       editor_selector: 'tinymce',
-      plugins: 'link'
+      plugins: 'link image'
 
   if $("#temp_layout").length > 0
     MyApp.addInitializer (options) ->

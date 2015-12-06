@@ -41,10 +41,17 @@
     .large-6.columns
       = f.label :shaded_mouseover
       = f.text_field :shaded_mouseover
-    .large-6.columns
+      
       = f.label :accomplished_mouseover
       = f.text_field :accomplished_mouseover
-
+    .large-6.columns      
+      = f.label :order_value, 'alpha-numeric order value. 2 comes before 3. aa comes before aaa.'
+      = f.text_field :order_value
+      
+  .row
+    .large-12.columns
+      = render 'manager/photos/subform', :merit_badge => @badge, :questset => @questset
+      
   .row
     .large-12.columns
       = f.label :subhead
@@ -55,8 +62,6 @@
 
   .row
     .large-6.columns
-      = f.label :order_value, 'alpha-numeric order value. 2 comes before 3. aa comes before aaa.'
-      = f.text_field :order_value
     .large-6.columns
       
   .row

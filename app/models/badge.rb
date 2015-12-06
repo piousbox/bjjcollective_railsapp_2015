@@ -17,6 +17,7 @@ class Badge
   embeds_one :accomplished_photo, :class_name => 'Photo', :inverse_of => :accomplished_badge
   embeds_one :title_photo,        :class_name => 'Photo', :inverse_of => :title_badge
   embeds_one :unavailable_photo,  :class_name => 'Photo', :inverse_of => :unavailable_badge
+  embeds_many :photos,                                    :inverse_of => :badge
   
   has_many :videos
 

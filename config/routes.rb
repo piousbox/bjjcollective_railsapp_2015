@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :merit_badges, :as => :badges do
       resources :videos
     end
+    resources :photos
     resources :users
     resources :questsets do
       resources :videos
