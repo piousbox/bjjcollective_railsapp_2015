@@ -1,17 +1,28 @@
 
-- grid ||= 3
+- grid  ||= 3
 - items ||= @badges
 
 %ul{ :class => "large-block-grid-#{grid}" }
-  - items.each do |q|
-    - if "Questset" == q.class.name
-      - path = fg_questset_path( q )
-    - else
-      - path = fg_badge_path( q )
-    %li.badge-item
-      - if q.shaded_photo
-        = link_to image_tag( q.shaded_photo.photo.url(:thumb2) ), path, { :'data-no-turbolink' => true }
+  - items.each do |item|
+    - photo_url = image_tag 'missing.png'
+    - path      = "Questset" == item.class.name ? fg_questset_path( item ) : fg_badge_path( item )
+    - show_path = "Questset" == item.class.name ? fg_questset_path( item ) : fg_badge_path( item )
+    - is_accomplished = ''
+    - if item.shaded_photo
+      - photo_url = item.shaded_photo.photo.url :thumb2
+      - if user_signed_in?
+        - if item[:player][:is_accomplished] && item.accomplished_photo
+          - photo_url = item.accomplished_photo.photo.url :thumb2
+          - is_accomplished = "is_accomplished"
+
+    %li{ :class => "badge-item #{is_accomplished}", 'merit-badge-id' => item.id }
+      = link_to image_tag( photo_url ), path, { :'data-no-turbolink' => true }
+      - if '' != is_accomplished
+        .mouseover= item.accomplished_mouseover
       - else
-        = image_tag 'missing.png'
-      .mouseover= q.shaded_mouseover
-      .text-center= link_to q.title, path
+        .mouseover= item.shaded_mouseover         
+      .text-center
+        = item.title
+        %br
+        - if item[:player]
+          #{item[:player][:percent_done].round}% done

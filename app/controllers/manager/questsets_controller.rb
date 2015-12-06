@@ -2,7 +2,7 @@
 class Manager::QuestsetsController < Manager::ManagerController
 
   def index
-    @questsets = Questset.all
+    @questsets = Questset.all.order_by( :order_value => 'asc' )
   end
 
   def new

@@ -27,9 +27,9 @@ class Photo
 
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  embedded_in :shaded_badge,         :class_name => 'MeritBadge', :inverse_of => :shaded_photo
-  embedded_in :accomplished_badge,   :class_name => 'MeritBadge', :inverse_of => :accomplished_photo
-  embedded_in :title_badge,          :class_name => 'MeritBadge', :inverse_of => :title_photo
+  embedded_in :shaded_badge,         :class_name => 'Badge', :inverse_of => :shaded_photo
+  embedded_in :accomplished_badge,   :class_name => 'Badge', :inverse_of => :accomplished_photo
+  embedded_in :title_badge,          :class_name => 'Badge', :inverse_of => :title_photo
   
   set_callback(:create, :before) do |doc|
 #    if doc.is_public

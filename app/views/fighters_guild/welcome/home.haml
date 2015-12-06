@@ -6,6 +6,11 @@
           
   .large-9.columns
     %h5.text-center Merit Badges
+    = render 'fighters_guild/merit_badges/list', :grid => 3, :items => @badges
+
+  - #
+  - # hidden
+  - proc do # nothing
     %ul.large-block-grid-3
       - @badges.each do |badge|
         - photo_url = image_tag 'missing.png'

@@ -7,7 +7,7 @@ FactoryGirl.define do
 
   factory :video_for_questset, :class => 'Video' do |f|
     f.title "video for questset"
-    f.questset_id ( Questset.all.first ).id
+    f.questset_id ( Questset.where( :title => 'New Questset' ).first || Questset.all.first || Questset.new ).id # @TODO: wtf is this?
   end
 
   factory :video_for_merit_badge, :class => 'Video'  do |f|

@@ -27,6 +27,20 @@ describe FightersGuild::WelcomeController do
     assigns( :questsets ).should_not eql nil
   end
 
+  describe 'home - signed in' do
+    before :each do
+      setup_questsets      
+      sign_in :user, @user
+      get :home
+    end
+
+    it 'renders' do
+      response.should be_success
+      questsets = assigns( :questsets )
+    end
+    
+  end
+  
   describe 'questsets at #home' do
     before :each do
       setup_questsets
