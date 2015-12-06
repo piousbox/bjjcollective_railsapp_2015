@@ -21,6 +21,8 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
         churn_badge :badge => @questsets[idx], :videos => videos
       end
     end
+    churn_questsets
+    
   end
 
   def about
@@ -62,6 +64,18 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
     end
     if 0 == videos.length
       badge[:player][:percent_done] = 0
+    end
+  end
+
+  def churn_questsets
+    qs = @questsets
+    
+    @questsets.each_with_index do |q, idx|
+      if 0 == idx
+        q[:is_unavailable] = false
+      else
+        q[:is_unavailable] = false
+      end
     end
   end
   
