@@ -1,0 +1,17 @@
+
+%ul.large-block-grid-1.fg-videos-show
+  - videos.each do |v|
+    %li.text-center
+      = link_to image_tag( "http://img.youtube.com/vi/#{v.youtube_id}/1.jpg" ), fg_video_path( v ), { :'data-no-turbolink' => true }
+      %br
+      = link_to v.title, fg_video_path( v ), { :'data-no-turbolink' => true }
+  - if 0 == videos.length
+    %li No videos
+
+
+- #
+- # hidden
+- proc do # nothing
+  %span{ :class => :'video-tasks-response' }
+    - unless user_signed_in?
+      Sign up or Sign in to be able to click off tasks!

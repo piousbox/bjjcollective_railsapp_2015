@@ -28,9 +28,7 @@ $(document).ready(function() {
         $('.mouseover', this).hide();
     });
 
-    if ($('.fg-videos-show').length > 0) {
-        var player_video_id = $(".player-video-id").attr("player-video-id");
-
+    if ($('.fg-videos-show').length > 0 || $('.fg-videos--tasks').length > 0 ) {
         $('input.task').click(function(a) {
             var value = $(this).prop('checked') ? true : false;
             var name = $(this).attr('param-name');

@@ -30,6 +30,8 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
 
   def churn_badge args={}
     badge  = args[:badge]
+    @a = badge
+    
     videos = args[:videos]
     
     videos.each do |video|
@@ -64,5 +66,4 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
   end
   
 end
-
 
