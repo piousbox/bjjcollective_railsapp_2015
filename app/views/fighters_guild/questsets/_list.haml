@@ -31,6 +31,9 @@
           - if item[:player]
             #{item[:player][:percent_done].round}% done
       - else
-        = image_tag( item.unavailable_photo.photo.url :thumb2 )
+        - if item.unavailable_photo
+          = image_tag( item.unavailable_photo.photo.url :thumb2 )
+        - else
+          = image_tag 'missing.png'
         .mouseover= item.shaded_mouseover
         .text-center= item.title
