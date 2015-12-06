@@ -41,7 +41,7 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
       end
     end
     
-    @questsets = Questset.all
+    @questsets = Questset.all.order_by( :order_value => 'asc' )
   end
 
   def about

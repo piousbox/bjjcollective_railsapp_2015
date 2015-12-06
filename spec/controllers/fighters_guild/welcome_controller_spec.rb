@@ -27,6 +27,23 @@ describe FightersGuild::WelcomeController do
     assigns( :questsets ).should_not eql nil
   end
 
+  describe 'questsets at #home' do
+    before :each do
+      setup_questsets
+      get :home
+    end
+    
+    it 'correct ordering of questsets' do
+      questsets = assigns( :questsets )
+      questsets.length.should >= 2
+      questsets.each_with_index do |q, idx|
+        break unless questsets[idx+1]
+        # break if idx + 1 == questsets.length
+        questsets[idx].order_value.should < questsets[idx+1].order_value
+      end
+    end
+  end
+
   describe 'accomplished' do
     before :each do
       @badge.title = 'Accomplished Title'

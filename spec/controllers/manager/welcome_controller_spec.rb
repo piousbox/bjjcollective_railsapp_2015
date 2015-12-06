@@ -9,10 +9,15 @@ describe Manager::WelcomeController do
     ;
   end
 
-  it '#home' do
-    get :home
-    response.should be_success
-    response.should render_template( 'manager/welcome/home' )
+  describe 'home' do
+    before :each do
+      get :home
+    end
+    
+    it 'shows up' do
+      response.should be_success
+      response.should render_template( 'manager/welcome/home' )
+    end
   end
   
 end
