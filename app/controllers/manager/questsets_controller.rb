@@ -10,7 +10,7 @@ class Manager::QuestsetsController < Manager::ManagerController
   end
 
   def create
-    @questset = Questset.new params[:questset].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover, :order_value )
+    @questset = Questset.new params[:questset].permit( permit_params )
     do_update_photos
     do_save
   end
@@ -21,7 +21,7 @@ class Manager::QuestsetsController < Manager::ManagerController
 
   def update
     @questset = Questset.find params[:id]
-    @questset.update_attributes params[:questset].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover, :order_value )
+    @questset.update_attributes params[:questset].permit( permit_params )
     do_update_photos
     do_save
   end
@@ -82,6 +82,12 @@ class Manager::QuestsetsController < Manager::ManagerController
       flash[:alert] = "#{flash[:alert]} No Luck: #{@questset.errors.inspect}."
       render :action => :new
     end
+  end
+
+  def permit_params
+    [ :title, :subhead, :descr,
+      :unavailable_mouseover, :shaded_mouseover, :accomplished_mouseover,
+      :order_value ]
   end
 
   

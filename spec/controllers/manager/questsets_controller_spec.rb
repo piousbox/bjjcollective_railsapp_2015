@@ -21,6 +21,8 @@ describe Manager::QuestsetsController do
     get :new
     response.should be_success
     response.should render_template( 'manager/questsets/new' )
+    expect(response.body).to have_tag( "body" )
+    expect(response.body).to have_tag( "#questset_unavailable_mouseover" )
     assigns( :questset ).should_not eql nil
   end
 
@@ -29,6 +31,12 @@ describe Manager::QuestsetsController do
     response.should be_success
     response.should render_template( 'manager/questsets/edit' )
     assigns( :questset ).should_not eql nil
+  end
+
+  it '#update' do
+    patch :update, :id => @questset.id, :questset => { :unavailable_mouseover => 'xxunavailable_mouseoverxx' }
+    result = Questset.find @questset.id
+    result.unavailable_mouseover.should eql 'xxunavailable_mouseoverxx'
   end
 
   describe 'updates' do
