@@ -2,10 +2,12 @@
 %h5.text-center Videos Index
 
 %ul
-  - @videos.each do |video|
+  - @videos.each do |video|    
     %li
+      %h5= video.title
       = link_to '[~]', edit_manager_video_path( video ), { :'data-no-turbolink' => true }
-      = video.title
+      = video.order_value
+      
       -# = video.inspect
       <b>#{video.youtube_id}</b>
       - if video.merit_badge

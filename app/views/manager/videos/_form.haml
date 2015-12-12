@@ -19,6 +19,9 @@
   = f.label :youtube_id
   = f.text_field :youtube_id
 
+  = f.label :order_value
+  = f.text_field :order_value
+  
   - if @video.youtube_id
     = image_tag( "http://img.youtube.com/vi/#{@video.youtube_id}/1.jpg" )
     %br

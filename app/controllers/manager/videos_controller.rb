@@ -4,9 +4,12 @@ class Manager::VideosController < Manager::ManagerController
   before_filter :set_lists
   
   def index
-    @videos = Video.all
+    @videos = Video.all.order_by( :order_value => 'asc' )
     if params[:badge_id]
       @videos = @videos.where( :merit_badge_id => params[:badge_id] )
+    end
+    if params[:questset_id]
+      @videos = @videos.where( :questset_id => params[:questset_id] )
     end
   end
 
@@ -68,7 +71,7 @@ class Manager::VideosController < Manager::ManagerController
   end
   
   def permitted_params
-    return [ :youtube_id, :title, :descr, :merit_badge_id, :questset_id, :badge_id ]
+    return [ :youtube_id, :title, :descr, :merit_badge_id, :questset_id, :badge_id, :order_value ]
   end
   
 end

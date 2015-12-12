@@ -3,7 +3,7 @@ class FightersGuild::QuestsetsController < FightersGuild::FightersGuildControlle
 
   def show
     @questset = Questset.find params[:id]
-    @videos = Video.where( :questset_id => @questset.id ).to_a
+    @videos = Video.where( :questset_id => @questset.id ).order_by( :order_value => 'asc' ).to_a
 
     if user_signed_in?
       @videos.each do |video|

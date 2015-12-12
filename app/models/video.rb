@@ -18,5 +18,7 @@ class Video
   belongs_to :questset
   
   has_many :player_videos
-  
+
+  field :order_value, :type => String, :default => "jjj"
+
 end
