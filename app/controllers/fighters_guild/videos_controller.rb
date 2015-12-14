@@ -2,6 +2,7 @@
 class FightersGuild::VideosController < FightersGuild::FightersGuildController
 
   def show
+    authorize! :show, Video
     
     # video
     @video = Video.find params[:id]    

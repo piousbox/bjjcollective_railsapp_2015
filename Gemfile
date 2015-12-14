@@ -22,6 +22,7 @@ gem 'unicorn'
 gem 'mongoid', '~> 5.0.0'
 
 gem 'devise'
+gem 'cancan'
 
 gem "paperclip", "~> 4.3"
 gem "mongoid-paperclip", :require => "mongoid_paperclip"

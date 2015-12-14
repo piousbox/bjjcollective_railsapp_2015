@@ -36,7 +36,8 @@ Rails.application.routes.draw do
       resources :videos
     end
     resources :videos do
-      resources :tasks
+      resources :tasks do
+      end
     end
   end
 

@@ -47,8 +47,14 @@ $(document).ready(function() {
   });
 
   if ($(".manager-tasks--form").length > 0) {
-    $("#new_task").on("ajax:success", function(e, data, statux, xhr) {
+    $("#new_task").on("ajax:success", function(e, data, status, xhr) {
       console.log("created new task", data);
+    });
+
+    $(".edit_task").on("ajax:success", function(e, data, status, xhr) {
+      console.log("data", data);
+      console.log("updated task", data.id);
+      $(".video-task-" + data.id + "-status").html(data.status);
     });
   }
 

@@ -6,6 +6,6 @@ class PlayerVideo
   belongs_to :user
   belongs_to :video
 
-  field :tasks, :type => Array
+  field :tasks, :type => Array, :default => []
   
 end

@@ -9,5 +9,7 @@
       .large-4.columns
         = f.label :mouseover
         = f.text_field :mouseover
-      .large-4.columns
+      .large-2.columns
         = f.submit nil, :class => [ :button, :small ]
+      .large-2.columns
+        %div{ :class => "video-task-#{task.id}-status" }

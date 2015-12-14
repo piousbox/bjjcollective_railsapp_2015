@@ -15,5 +15,17 @@ class Manager::TasksController < Manager::ManagerController
     end
   end
 
+  def update
+    video = Video.find params[:video_id]
+    task = video.tasks.find params[:id]
+    task.update_attributes params[:task].permit( :title, :mouseover )
+    flag = video.save
+    if flag
+      render :json => { :status => :ok, :id => task.id.to_s }
+    else
+      render :json => { :status => :not_ok }
+    end
+  end
+
 end
 

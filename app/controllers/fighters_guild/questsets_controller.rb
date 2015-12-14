@@ -2,6 +2,8 @@
 class FightersGuild::QuestsetsController < FightersGuild::FightersGuildController
 
   def show
+    authorize! :show, Questset
+    
     @questset = Questset.find params[:id]
     @videos = Video.where( :questset_id => @questset.id ).order_by( :order_value => 'asc' ).to_a
 

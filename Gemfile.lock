@@ -52,6 +52,7 @@ GEM
     bson (3.2.6)
     builder (3.2.2)
     byebug (6.0.2)
+    cancan (1.6.10)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -230,6 +231,7 @@ DEPENDENCIES
   aws-s3
   aws-sdk (< 2.0)
   byebug
+  cancan
   coffee-rails (~> 4.1.0)
   devise
   factory_girl (~> 4.0)

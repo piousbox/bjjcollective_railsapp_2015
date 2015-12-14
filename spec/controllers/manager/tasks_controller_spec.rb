@@ -22,14 +22,17 @@ describe Manager::TasksController do
       @video.tasks.length.should eql 0
     end
     
-    it '#create' do  
+    it '#create, update' do  
       post :create, :task => { :title => 'xxtitlexx', :mouseover => 'xxmouseover' }, :video_id => @video.id
 
       result = Video.find @video.id
       result.tasks.length.should eql 1
       result.tasks[0].title.should eql 'xxtitlexx'
+
+      patch :update, :task => { :title => 'xxtitle_2xx' }, :video_id => @video.id, :id => result.tasks[0].id
+      result = Video.find result.id
+      result.tasks[0].title.should eql 'xxtitle_2xx'  
     end
   end
-  
   
 end

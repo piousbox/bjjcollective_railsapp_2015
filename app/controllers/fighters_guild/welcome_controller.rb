@@ -2,6 +2,7 @@
 class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
 
   def home
+    authorize! :home, Ability
     
     @badges = MeritBadge.all.order_by( :order_value => 'asc' ).to_a
     if user_signed_in?
@@ -28,6 +29,7 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
   end
 
   def about
+    authorize! :about, Ability
   end
 
   private
