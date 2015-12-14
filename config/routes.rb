@@ -30,11 +30,14 @@ Rails.application.routes.draw do
       resources :videos
     end
     resources :photos
+    resources :tasks
     resources :users
     resources :questsets do
       resources :videos
     end
-    resources :videos
+    resources :videos do
+      resources :tasks
+    end
   end
 
 

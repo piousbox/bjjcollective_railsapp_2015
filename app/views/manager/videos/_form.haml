@@ -27,11 +27,26 @@
     %br
     %br
     
-
   = f.label :descr
   = f.text_area :descr, { :class => :tinymce }
-
-  = render 'manager/tasks/embedded_form', :f => f, :video => @video
   
   %br
   = f.submit nil, :class => [ :button, :small ]
+
+
+- #
+- # Tasks
+- #
+%hr
+.a
+  %h5 New Task
+  = render 'manager/tasks/form', :task => Task.new, :video => @video
+  
+  %h4
+    Tasks (#{@video.tasks.length})
+    -# = link_to '[+]', "javascript:void(0);", :class => :'add-
+    
+  - @video.tasks.each do |task|
+    = render 'manager/tasks/form', :task => task, :video => @video
+    
+  -# = render 'manager/tasks/embedded_form', :f => f, :video => @video

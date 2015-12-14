@@ -46,6 +46,13 @@ $(document).ready(function() {
     }
   });
 
+  if ($(".manager-tasks--form").length > 0) {
+    $("#new_task").on("ajax:success", function(e, data, statux, xhr) {
+      console.log("created new task", data);
+    });
+  }
+
+
 });
 
 

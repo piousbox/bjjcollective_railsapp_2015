@@ -6,24 +6,33 @@
       %div{ :class => 'player-video-id', 'player-video-id' => player_video.id }
       = form_for [ :fg, player_video ], :url => '' do |f|
         %ul
+          - video.tasks.each_with_index do |task, idx|
+            %li
+              = f.check_box "task_#{idx}_ok", :checked => player_video.tasks[idx], :class => :task, :'player-video-id' => player_video.id, :'param-name' => "task_#{idx}_ok"
+              = video.tasks[idx].title
+
+        - #
+        - # hidden
+        - #
+        - proc do # nothing      
           %li
-            = video.task_1.title
             = f.check_box :task_1_ok, :checked => player_video.task_1_ok, :class => :task, :'player-video-id' => player_video.id, :'param-name' => :task_1_ok
+            = video.task_1.title
             %span{ :class => :'task-1-response' }
           %li
-            = video.task_2.title
             = f.check_box :task_2_ok, :checked => player_video.task_2_ok, :class => :task, :'player-video-id' => player_video.id, :'param-name' => :task_2_ok
+            = video.task_2.title
             %span{ :class => :'task-2-response' }
           %li
-            = video.task_3.title
             = f.check_box :task_3_ok, :checked => player_video.task_3_ok, :class => :task, :'player-video-id' => player_video.id, :'param-name' => :task_3_ok
+            = video.task_3.title
             %span{ :class => :'task-3-response' }
+
+              
     - else
       %ul
-        %li= video.task_1.title
-        %li= video.task_2.title
-        %li= video.task_3.title
-        -# %li <b>Login or Register to tick off tasks and open badges and quests!</b>
-    %span{ :class => :'video-tasks-response' }
+        - video.tasks.each do |task|
+          %li= task.title
+    %span.video-tasks-response
       - unless user_signed_in?
         Sign up or Sign in to be able to click off tasks!

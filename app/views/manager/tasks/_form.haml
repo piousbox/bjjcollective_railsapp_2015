@@ -1,0 +1,13 @@
+
+.manager-tasks--form
+  = form_for [ :manager, video, task ], :remote => true do |f|
+    = hidden_field :video_id, video.id
+    .row
+      .large-4.columns
+        = f.label :title
+        = f.text_field :title
+      .large-4.columns
+        = f.label :mouseover
+        = f.text_field :mouseover
+      .large-4.columns
+        = f.submit nil, :class => [ :button, :small ]

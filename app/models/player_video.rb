@@ -6,8 +6,6 @@ class PlayerVideo
   belongs_to :user
   belongs_to :video
 
-  field :task_1_ok, :type => Boolean, :default => false
-  field :task_2_ok, :type => Boolean, :default => false
-  field :task_3_ok, :type => Boolean, :default => false
+  field :tasks, :type => Array
   
 end

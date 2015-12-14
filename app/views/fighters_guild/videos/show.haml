@@ -16,7 +16,5 @@
 
     - if @video.questset
       = render 'fighters_guild/videos/tasks', :video => @video, :player_video => @player_video
-
-    - if @video.questset_id
       = link_to "Back to #{@video.questset.title}", fg_questset_path( @video.questset )
       

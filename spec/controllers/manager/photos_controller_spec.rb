@@ -14,7 +14,7 @@ describe Manager::PhotosController do
     post :create, :photo => {}, :merit_badge_id => @merit_badge.id
     @merit_badge.photos.length.should eql 1
   end
-
+  
   it 'create in questset' do
     post :create, :photo => {}, :questset_id => @questset.id
     @questset.photos.length.should eql 1

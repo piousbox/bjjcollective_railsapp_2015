@@ -10,13 +10,6 @@ class FightersGuild::VideosController < FightersGuild::FightersGuildController
     elsif @video.questset_id
       @questset = Questset.find @video.questset_id
     end
-
-
-    # tasks
-    @video.task_1 ||= Task.new
-    @video.task_2 ||= Task.new
-    @video.task_3 ||= Task.new
-
     
     # videos
     if @badge
