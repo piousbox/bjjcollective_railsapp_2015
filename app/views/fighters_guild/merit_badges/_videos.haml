@@ -7,9 +7,6 @@
       = link_to v.title, fg_video_path( v ), { :'data-no-turbolink' => true }
       %br
       = form_for [ :fg, v[:player_video] ], :url => '' do |f|
-        = puts "+++ +++ v"
-        = puts v.inspect
-        -# = hidden_field "player-video-id", v[:played_video]
         - v.tasks.each_with_index do |task, idx|
           = f.check_box :task, :checked => v[:player_video].tasks.include?( task.id ), :class => :task
   - if 0 == videos.length

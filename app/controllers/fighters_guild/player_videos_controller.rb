@@ -3,6 +3,9 @@ class FightersGuild::PlayerVideosController < FightersGuild::FightersGuildContro
 
   def update
     @player_video = PlayerVideo.find params[:id]
+    authorize! :update, @player_video
+
+    puts! params
     
     if "true" === params[:task_1_ok]
       @player_video.task_1_ok = true
@@ -23,10 +26,11 @@ class FightersGuild::PlayerVideosController < FightersGuild::FightersGuildContro
       @player_video.task_3_ok = false
     end
 
-    if @player_video.save
+    flag = @player_video.save
+    if flag
       render :json => { :status => :ok }
     else
-      ;
+      render :json => { :status => :not_ok }
     end
     
   end

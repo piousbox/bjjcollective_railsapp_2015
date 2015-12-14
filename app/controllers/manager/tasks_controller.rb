@@ -8,7 +8,7 @@ class Manager::TasksController < Manager::ManagerController
     video.tasks << task
     flag = video.save
     if flag
-      render :json => { :status => :ok }
+      render :json => { :status => :ok, :id => task.id.to_s }
     else
       puts! video.errors, "Cannot save video when manager creates a task."
       render :json => { :status => :not_ok, :errors => video.errors.to_json }
@@ -23,6 +23,7 @@ class Manager::TasksController < Manager::ManagerController
     if flag
       render :json => { :status => :ok, :id => task.id.to_s }
     else
+      puts! video.errors, "Cannot update task in a video."
       render :json => { :status => :not_ok }
     end
   end
