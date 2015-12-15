@@ -31,7 +31,14 @@ $(document).ready(function() {
       });
     });
   }
-  
+
+  if ($(".fg-videos--tasks").length > 0) {
+    $(".edit_player_video").on("ajax:success", function(e, data, status, xhr) {
+      console.log(data);
+      $(".task-" + data.task_id + "-status").html(data.status);
+    });
+  }
+
 });
 
 

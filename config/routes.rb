@@ -12,9 +12,10 @@ Rails.application.routes.draw do
     # root :to => 'fighters_guild/welcome#home'
     get "about", :to => "welcome#about"
     resources :merit_badges, :as => :badges
-    resources :videos
     post "player_videos/:id", :to => "player_videos#update", :as => :player_video
+    resources :player_videos
     resources :questsets
+    resources :videos
   end
 
   devise_for :users, controllers: {

@@ -8,4 +8,6 @@ class PlayerVideo
 
   field :tasks, :type => Array, :default => []
   
+  # attr_accessor :tasks_hash
+
 end

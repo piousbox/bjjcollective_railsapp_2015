@@ -15,6 +15,6 @@
     = raw @video.descr
 
     - if @video.questset
-      = render 'fighters_guild/videos/tasks', :video => @video, :player_video => @player_video
+      = render 'fighters_guild/videos/tasks', :video => @video, :player_video => @player_video, :tasks_hash => @tasks_hash
       = link_to "Back to #{@video.questset.title}", fg_questset_path( @video.questset )
       

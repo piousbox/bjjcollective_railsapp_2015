@@ -2,37 +2,39 @@
 .fg-videos--tasks
   .b
     %h4 Tasks
-    - if defined? player_video
-      %div{ :class => 'player-video-id', 'player-video-id' => player_video.id }
-      = form_for [ :fg, player_video ], :url => '' do |f|
-        %ul
-          - video.tasks.each_with_index do |task, idx|
-            %li
-              = f.check_box "task_#{idx}_ok", :checked => player_video.tasks[idx], :class => :task, :'player-video-id' => player_video.id, :'param-name' => "task_#{idx}_ok"
-              = video.tasks[idx].title
+    - if defined?( player_video ) && player_video
+      %div.player-video-id{ :'player-video-id' => player_video.id }
 
-        - #
-        - # hidden
-        - #
-        - proc do # nothing      
+      %ul
+        - video.tasks.each do |task|
           %li
-            = f.check_box :task_1_ok, :checked => player_video.task_1_ok, :class => :task, :'player-video-id' => player_video.id, :'param-name' => :task_1_ok
-            = video.task_1.title
-            %span{ :class => :'task-1-response' }
-          %li
-            = f.check_box :task_2_ok, :checked => player_video.task_2_ok, :class => :task, :'player-video-id' => player_video.id, :'param-name' => :task_2_ok
-            = video.task_2.title
-            %span{ :class => :'task-2-response' }
-          %li
-            = f.check_box :task_3_ok, :checked => player_video.task_3_ok, :class => :task, :'player-video-id' => player_video.id, :'param-name' => :task_3_ok
-            = video.task_3.title
-            %span{ :class => :'task-3-response' }
-
-              
+            = task.title
+            .mouseover= task.mouseover
+            .row
+              - if tasks_hash[task.id.to_s]
+                .large-4.columns
+                  Completed
+                .large-4.columns
+                  = form_for [ :fg, player_video ], :remote => true do |f|
+                    .hide
+                      = text_field_tag :task_id, task.id.to_s
+                    = f.submit "Undo", :class => [ :button, :small ]
+              - else
+                .large-4.columns
+                  Not Completed
+                .large-4.columns
+                  = form_for [ :fg, player_video ], :remote => true do |f|
+                    .hide= text_field_tag :task_id, task.id.to_s
+                    = f.submit "Complete", :class => [ :button, :small ]
+              .large-4.columns
+                %span{ :class => "task-#{task.id}-status" }
+            
     - else
       %ul
         - video.tasks.each do |task|
-          %li= task.title
+          %li
+            = task.title
+            .mouseover= task.mouseover
     %span.video-tasks-response
       - unless user_signed_in?
         Sign up or Sign in to be able to click off tasks!

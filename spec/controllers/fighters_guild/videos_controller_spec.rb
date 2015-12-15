@@ -22,7 +22,7 @@ describe FightersGuild::VideosController do
     @video_for_questset = Video.create( :title => 'Video for questset', :questset => @questset )
   end
 
-  it 'show in badge' do
+  it 'show in badge signed-in' do
     get :show, :id => @video_for_badge.id
     response.should be_success
     response.should render_template( 'fighters_guild/videos/show' )
@@ -30,7 +30,16 @@ describe FightersGuild::VideosController do
     assigns( :badge ).should_not eql nil
   end
 
-  it 'show in questset' do
+  it 'show in badge not signed in' do
+    sign_out :user
+    get :show, :id => @video_for_badge.id
+    response.should be_success
+    assigns( :video ).should_not eql nil
+    assigns( :player_video ).should_not eql nil
+    assigns( :video ).id.should eql @video_for_badge.id
+  end
+
+  it 'show in questset signed-in' do
     get :show, :id => @video_for_questset.id
     response.should be_success
     response.should render_template( 'fighters_guild/videos/show' )
@@ -47,6 +56,7 @@ describe FightersGuild::VideosController do
     videos.each do |v|
       v[:player_video].should_not eql nil
     end
+    assigns( :player_video ).should_not eql nil
   end
   
 end

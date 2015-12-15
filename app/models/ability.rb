@@ -9,6 +9,10 @@ class Ability
     can [ :show ], MeritBadge
     can [ :show ], Questset
     can [ :show ], Video
+
+    can [ :update ], PlayerVideo do |player_video|
+      player_video.user_id == user.id
+    end
     
     # The first argument to `can` is the action you are giving the user 
     # permission to do.

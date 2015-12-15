@@ -5,30 +5,20 @@ class FightersGuild::PlayerVideosController < FightersGuild::FightersGuildContro
     @player_video = PlayerVideo.find params[:id]
     authorize! :update, @player_video
 
-    puts! params
+    if 'Complete' == params[:commit]
+      @player_video.tasks << params[:task_id] unless @player_video.tasks.include?( params[:task_id] )
+    elsif 'Undo' == params[:commit]
+      @player_video.tasks.delete params[:task_id]
+    else
+      message = "Unknown commit! Should be either Complete or Undo."
+      puts! message
+      render :json => { :status => :not_ok, :message => message }
+      return
+    end
     
-    if "true" === params[:task_1_ok]
-      @player_video.task_1_ok = true
-    end
-    if "true" === params[:task_2_ok]
-      @player_video.task_2_ok = true
-    end
-    if "true" === params[:task_3_ok]
-      @player_video.task_3_ok = true
-    end
-    if "false" === params[:task_1_ok]
-      @player_video.task_1_ok = false
-    end
-    if "false" === params[:task_2_ok]
-      @player_video.task_2_ok = false
-    end
-    if "false" === params[:task_3_ok]
-      @player_video.task_3_ok = false
-    end
-
     flag = @player_video.save
     if flag
-      render :json => { :status => :ok }
+      render :json => { :status => :ok, :task_id => params[:task_id].to_s }
     else
       render :json => { :status => :not_ok }
     end
