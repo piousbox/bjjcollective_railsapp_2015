@@ -43,7 +43,7 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
       player_video = PlayerVideo.where( :user_id => current_user.id, :video_id => video.id ).first
       if player_video
         video.tasks.each do |task|
-          if player_video.tasks.include? task.id
+          if player_video.tasks.include? task.id.to_s
             badge[:player][:n_done] += 1
           else
             badge[:player][:n_not_done] += 1
