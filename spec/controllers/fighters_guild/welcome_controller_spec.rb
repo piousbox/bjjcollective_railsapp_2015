@@ -65,9 +65,6 @@ describe FightersGuild::WelcomeController do
       @badge.save
       
       pv = PlayerVideo.new :video_id => @video.id, :user_id => @user.id
-      pv.task_1_ok = true
-      pv.task_2_ok = true
-      pv.task_3_ok = true
       pv.save
     end
     

@@ -3,27 +3,34 @@
 .manager-photos--subform
   - if merit_badge
     .merit-badge-id{ :'merit-badge-id' => merit_badge.id }
+    - item = merit_badge
   - if questset
     .questset-id{ :'questset-id' => questset.id }
-  #fileuploader Upload
-
+    - item = questset
+  .row
+    .large-6.columns
+      #fileuploader Upload
+    .large-6.columns
+      %p Styles are:
+      %ul
+        %li mini (20x20)
+        %li thumb (100x100)
+        %li thumb2 (200x200)
+        %li small (400x400)
+        %li large (950x950)
+        %li original
+    
+  .addToggle
+    %a [<>] (collapse/expand)
   .response
+    %ul
+      - item.photos.each do |photo|
+        %li
+          = image_tag( photo.photo.url( :thumb ) )
+          = photo.photo.url( :small )
+      
   %br
   %br
   %br
 
 
-
-
-
-
-- #
-- # hidden
-- #
-- proc do #nothing
-  
-  %h5 Upload another Image
-  = file_field_tag :photo
-  %a#upload_another_image [Upload This Image]
-
-  .response

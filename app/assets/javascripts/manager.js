@@ -41,8 +41,9 @@ $(document).ready(function() {
     },
     onSuccess: function(files, data, xhr, pd) {
       console.log('data is', data.photo);
-      $(".manager-photos--subform .response").html( $(".manager-photos--subform .response").html() + 
-        "<br /><b>" + data.photo.photo_file_name + "</b> Use this link: " + data.photo.original_path );
+      $(".manager-photos--subform .response").append(
+        "<li><img src=\"" + data.photo.thumb_url + "\" alt='' /> " + data.photo.original_path + "</li>"
+      );
     }
   });
 

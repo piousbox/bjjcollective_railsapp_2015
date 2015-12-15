@@ -34,9 +34,6 @@ class Manager::VideosController < Manager::ManagerController
   
   def new
     @video = Video.new
-    @video.build_task_1
-    @video.build_task_2
-    @video.build_task_3
   end
 
   def create

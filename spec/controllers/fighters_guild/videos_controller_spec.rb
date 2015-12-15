@@ -35,7 +35,6 @@ describe FightersGuild::VideosController do
     get :show, :id => @video_for_badge.id
     response.should be_success
     assigns( :video ).should_not eql nil
-    assigns( :player_video ).should_not eql nil
     assigns( :video ).id.should eql @video_for_badge.id
   end
 
@@ -53,10 +52,6 @@ describe FightersGuild::VideosController do
     response.should be_success
     videos = assigns( :videos )
     videos.length.should > 0
-    videos.each do |v|
-      v[:player_video].should_not eql nil
-    end
-    assigns( :player_video ).should_not eql nil
   end
   
 end

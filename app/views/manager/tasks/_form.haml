@@ -1,15 +1,18 @@
 
-.manager-tasks--form
-  = form_for [ :manager, video, task ], :remote => true do |f|
-    = hidden_field :video_id, video.id
-    .row
-      .large-4.columns
-        = f.label :title
-        = f.text_field :title
-      .large-4.columns
-        = f.label :mouseover
-        = f.text_field :mouseover
-      .large-2.columns
-        = f.submit nil, :class => [ :button, :small ]
-      .large-2.columns
-        %div{ :class => "video-task-#{task.id}-status" }
+- if 'new' == params[:action]
+  %p Create the video first, then add tasks to it. You cannot create tasks in a video that does not exist yet.
+- else # unless 'new' == params[:action]
+  .manager-tasks--form
+    = form_for [ :manager, video, task ], :remote => true do |f|
+      = hidden_field :video_id, video.id
+      .row
+        .large-4.columns
+          = f.label :title
+          = f.text_field :title
+        .large-4.columns
+          = f.label :mouseover
+          = f.text_field :mouseover
+        .large-2.columns
+          = f.submit nil, :class => [ :button, :small ]
+        .large-2.columns
+          %div{ :class => "video-task-#{task.id}-status" }
