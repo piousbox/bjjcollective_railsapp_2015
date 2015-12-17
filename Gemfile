@@ -31,7 +31,7 @@ gem "aws-s3",            :require => "aws/s3"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  # gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
   gem 'rspec-html-matchers'
   gem 'factory_girl', "~> 4.0"
