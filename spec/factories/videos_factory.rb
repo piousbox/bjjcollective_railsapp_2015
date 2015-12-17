@@ -12,7 +12,7 @@ FactoryGirl.define do
 
   factory :video_for_merit_badge, :class => 'Video'  do |f|
     f.title "Video for merit badge"
-    f.merit_badge_id ( MeritBadge.all.first ).id
+    f.merit_badge_id ( MeritBadge.all.first || MeritBadge.create( :title => 'xxtitlexx' ) ).id
   end
 
 end

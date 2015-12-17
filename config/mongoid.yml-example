@@ -3,21 +3,21 @@ development:
     default:
       database: bjjc_development
       hosts:
-        - localhost:27017
+        - 10.0.1.12:27017
         
 development-production:
   clients:
     default:
       database: bjjc_development
       hosts:
-        - localhost:27017
+        - 10.0.1.12:27017
 
 production:
   clients:
     default:
       database: bjjc_development
       hosts:
-        - localhost:27017
+        - 10.0.1.12:27017
 
 test:
   clients:
