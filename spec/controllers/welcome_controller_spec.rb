@@ -10,8 +10,7 @@ describe WelcomeController do
   describe "#home" do
     it 'renders' do
       get :home
-      response.should be_redirect
-      response.should redirect_to( '/fighters_guild' )
+      response.should render_template 'welcome/home'
     end
   end
   
