@@ -7,9 +7,14 @@
       = link_to v.title, fg_video_path( v ), { :'data-no-turbolink' => true }
       %br
       - if v[:player_video]
+        -# - puts "+++ +++ pv", v[:player_video].tasks
+        
         = form_for [ :fg, v[:player_video] ], :url => '' do |f|
           - v.tasks.each_with_index do |task, idx|
-            = f.check_box :task, :checked => v[:player_video].tasks.include?( task.id ), :class => :task
+            -# = f.check_box :task, :checked => v[:player_video].tasks.include?( task.id ), :class => :task, :"player-video-id" => v[:player_video].id, :"task-id" => task.id
+            - is_checked = v[:player_video].tasks.include?( task.id.to_s )
+            - puts "+++ +++ is checked", v[:player_video].tasks.inspect, task.id.to_s, is_checked
+            = f.check_box :task, :checked => is_checked, :class => :task, :"player-video-id" => v[:player_video].id, :"task-id" => task.id
       - else
         %nbsp
   - if 0 == videos.length

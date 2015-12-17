@@ -4,7 +4,7 @@ class Manager::VideosController < Manager::ManagerController
   before_filter :set_lists
   
   def index
-    @videos = Video.all.order_by( :order_value => 'asc' )
+    @videos = Video.all
     if params[:badge_id]
       @videos = @videos.where( :merit_badge_id => params[:badge_id] )
     end

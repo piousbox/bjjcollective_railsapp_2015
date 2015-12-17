@@ -28,12 +28,16 @@ $(document).ready(function() {
 
   if ($('.fg-videos-show').length > 0 || $('.fg-videos--tasks').length > 0 ) {
     $('input.task').click(function() {
-      var value = $(this).prop('checked') ? true : false;
-      var name = $(this).attr('param-name');
-      var data = {};
-      data[name] = value;
-      var pv_id = $(this).attr("player-video-id");
-      $.post( "/fighters_guild/player_videos/" + pv_id, data ).done(function() {
+      var commit = $(this).prop('checked') ? "Complete" : "Undo";
+
+      var id = $(this).attr("player-video-id");
+      console.log("id is", id);
+
+      var task_id = $(this).attr("task-id");
+      console.log("task id is", task_id);
+
+      var data = { commit: commit, id: id, task_id: task_id };
+      $.post( "/fighters_guild/player_videos/" + data.id, data ).done(function() {
         $(".video-tasks-response").html("Saved");
       });
     });
