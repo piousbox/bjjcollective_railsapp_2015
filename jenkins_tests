@@ -6,7 +6,8 @@
 
 set -ex
 
-cp config/database.yml-example config/database.yml
+cp -u config/database.yml-example config/database.yml
+cp -u config/mongoid.yml-example config/mongoid.yml
 
 bundle install --path vendor/bundle
 bundle exec rspec spec
