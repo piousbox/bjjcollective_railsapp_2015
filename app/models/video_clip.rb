@@ -5,6 +5,6 @@ class VideoClip < ActiveRecord::Base
   self.primary_key = :clip_id
   self.inheritance_column = :model_type
   
-  belongs_to :video
+  belongs_to :video_legacy
   
 end

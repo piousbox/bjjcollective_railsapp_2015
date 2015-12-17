@@ -16,8 +16,6 @@ class Video
   belongs_to :questset
   
   belongs_to :category
-  has_one :video_clip
-  has_one :video_thumbnail
 
   has_many :player_videos
 
