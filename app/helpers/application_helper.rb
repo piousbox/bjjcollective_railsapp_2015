@@ -13,5 +13,9 @@ module ApplicationHelper
   def ads_enabled?
     true
   end
+
+  def logo_image_tag
+    image_tag "icons/40x40/bjjc_logo.jpg"
+  end
   
 end

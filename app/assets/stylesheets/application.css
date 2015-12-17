@@ -39,6 +39,14 @@ textarea.tinymce {
 }
 
 
+
+/* main header */
+.main-header {
+    margin-top: 10px;
+}
+
+
+
 /* categories */
 .categories-index ol,
 .categories-index ol li {
