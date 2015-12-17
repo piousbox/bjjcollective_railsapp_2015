@@ -7,10 +7,12 @@ describe WelcomeController do
     ;
   end
 
-  it '#home' do
-    get :home
-    response.should be_redirect
-    response.should redirect_to( '/fighters_guild' )
+  describe "#home" do
+    it 'renders' do
+      get :home
+      response.should be_redirect
+      response.should redirect_to( '/fighters_guild' )
+    end
   end
   
 end

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#
+# run rspec
+#
+
+set -ex
+
+bundle install --path vendor/bundle
+bundle exec rspec spec
+
+echo OK
