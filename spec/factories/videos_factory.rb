@@ -7,6 +7,17 @@ FactoryGirl.define do
 
   factory :video_for_questset, :class => 'Video' do |f|
     f.title "video for questset"
+    f.order_value "jjj_1"
+    f.questset_id ( Questset.where( :title => 'New Questset' ).first || Questset.all.first || Questset.new ).id # @TODO: wtf is this?
+  end
+  factory :video_for_questset_1, :class => 'Video' do |f|
+    f.title "video for questset"
+    f.order_value "jjj_3"
+    f.questset_id ( Questset.where( :title => 'New Questset' ).first || Questset.all.first || Questset.new ).id # @TODO: wtf is this?
+  end
+  factory :video_for_questset_2, :class => 'Video' do |f|
+    f.title "video for questset"
+    f.order_value "jjj_2"
     f.questset_id ( Questset.where( :title => 'New Questset' ).first || Questset.all.first || Questset.new ).id # @TODO: wtf is this?
   end
 

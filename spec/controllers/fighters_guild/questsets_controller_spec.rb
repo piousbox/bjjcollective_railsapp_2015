@@ -15,6 +15,10 @@ describe FightersGuild::QuestsetsController do
     setup_videos
     @video_for_questset.questset = @questset
     @video_for_questset.save
+    @video_for_questset_1.questset = @questset
+    @video_for_questset_1.save
+    @video_for_questset_2.questset = @questset
+    @video_for_questset_2.save
   end
 
   describe "#show" do
@@ -47,7 +51,7 @@ describe FightersGuild::QuestsetsController do
       videos.length.should > 1
       videos.each_with_index do |video, idx|
         break if idx+1 == videos.length
-        videos[idx].order_value.should >= videos[idx+1]
+        videos[idx].order_value.should <= videos[idx+1].order_value
       end
     end
   end

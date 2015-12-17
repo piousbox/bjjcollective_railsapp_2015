@@ -17,4 +17,6 @@ class Video
   
   has_many :player_videos
 
+  default_scope proc { order_by( :order_value => 'desc' ) }
+  
 end
