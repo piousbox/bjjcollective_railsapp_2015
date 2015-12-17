@@ -6,6 +6,8 @@
 
 set -ex
 
+cp config/database.yml-example config/database.yml
+
 bundle install --path vendor/bundle
 bundle exec rspec spec
 
