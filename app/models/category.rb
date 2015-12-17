@@ -1,8 +1,8 @@
 
-class Category < ActiveRecord::Base
+class Category
 
-  self.table_name = :tbx_category
-  self.primary_key = :category_id
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
   has_many :videos
   

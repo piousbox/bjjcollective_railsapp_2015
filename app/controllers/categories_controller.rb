@@ -15,6 +15,7 @@ class CategoriesController < ApplicationController
         @categories[arr[0]][arr[1]][arr[2]][arr[3]][arr[4]][arr[5]] = { 'link' => category.url_name } unless @categories[arr[0]][arr[1]][arr[2]][arr[3]][arr[4]].has_key?( arr[5] )
       end
     end
+    render :index_2
   end
 
   def show

@@ -37,3 +37,20 @@ textarea.tinymce {
     min-height: 800px;
     margin-bottom: 20px;
 }
+
+
+/* categories */
+.categories-index ol,
+.categories-index ol li {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.categories-index .c0 > li {
+}
+.categories-index .c1 {
+  display: inline-block;
+}
+.categories-index .c1 > li {
+  display: inline-block;
+}

@@ -15,6 +15,10 @@ class Video
   belongs_to :merit_badge
   belongs_to :questset
   
+  belongs_to :category
+  has_one :video_clip
+  has_one :video_thumbnail
+
   has_many :player_videos
 
   default_scope proc { order_by( :order_value => 'asc' ) }
