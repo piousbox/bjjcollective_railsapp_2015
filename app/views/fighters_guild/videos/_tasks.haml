@@ -5,7 +5,7 @@
     - if defined?( player_video ) && player_video
       %div.player-video-id{ :'player-video-id' => player_video.id }
 
-      %ul
+      %ul.video-tasks
         - video.tasks.each do |task|
           %li
             = task.title
@@ -30,7 +30,7 @@
                 %span{ :class => "task-#{task.id}-status" }
             
     - else
-      %ul
+      %ul.video-tasks
         - video.tasks.each do |task|
           %li
             = task.title

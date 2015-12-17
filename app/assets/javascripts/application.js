@@ -19,6 +19,13 @@ $(document).ready(function() {
     $('.mouseover', this).hide();
   });
 
+  $('ul.video-tasks li').mouseover(function() {
+    $('.mouseover', this).show();
+  });
+  $('ul.video-tasks li').mouseout(function() {
+    $('.mouseover', this).hide();
+  });
+
   if ($('.fg-videos-show').length > 0 || $('.fg-videos--tasks').length > 0 ) {
     $('input.task').click(function() {
       var value = $(this).prop('checked') ? true : false;
