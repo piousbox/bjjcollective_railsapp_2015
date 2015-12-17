@@ -6,11 +6,10 @@
 
 set -ex
 
-cp -u config/database.yml-example config/database.yml
-cp -u config/mongoid.yml-example config/mongoid.yml
 if [ ! -d /home/piousbox ] ; then
     # probably running on jenkins
     cp config/mongoid.yml-example config/mongoid.yml
+    cp config/database.yml-example config/database.yml
 fi
 
 bundle install --path vendor/bundle
