@@ -9,5 +9,9 @@ class ApplicationController < ActionController::Base
     puts "+++ +++ #{label}"
     puts args.inspect
   end
+
+  def ads_enabled?
+    true
+  end
   
 end
