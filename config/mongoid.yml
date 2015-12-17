@@ -24,7 +24,7 @@ test:
     default:
       database: bjjc_test
       hosts:
-        - localhost:27017
+        - 10.0.1.12:27017
       options:
         read:
           mode: :primary
