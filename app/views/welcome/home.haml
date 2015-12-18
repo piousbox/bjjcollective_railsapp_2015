@@ -1,8 +1,19 @@
 
-%h3 Welcome home!
+%h3 BJJ Technique Database
+%h4 Categories
 
-%ul
-  %li= link_to 'Categories', categories_path
-  %li= link_to 'Manager', manager_root_path
-  %li= link_to 'Fighters Guild', fg_root_path
-  
+.row
+  .large-5.columns
+    - cache( action_suffix: 'categories_tree' ) do
+      .categories-tree
+        = render 'categories/tree', :categories => @categories
+                      
+  .large-7.columns
+    - @categories.each do |category|
+      %h5 #{category.title} (#{category.categories.length})
+      %ul.large-block-grid-5
+        - category.categories.each do |c1|
+          %li
+            = image_tag c1.photo.photo.url( :thumb2 )
+            %br
+            .text-center= c1.title

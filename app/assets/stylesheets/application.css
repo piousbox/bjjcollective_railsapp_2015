@@ -47,7 +47,10 @@ textarea.tinymce {
 
 
 
-/* categories */
+/* 
+ * categories
+ */
+/* legacy */
 .categories-index ol,
 .categories-index ol li {
   margin: 0;
@@ -62,3 +65,39 @@ textarea.tinymce {
 .categories-index .c1 > li {
   display: inline-block;
 }
+
+
+/* categories show */
+.categories-show ol.videos-list li {
+    margin-bottom: 10px;
+}
+/* categories-tree */
+.categories-tree * {
+    font-size: 12px;
+}
+.categories-tree ul {
+  display: none;
+}
+.categories-tree > ul {
+  display: inline-block;
+}
+.categories-tree span.category-name {
+  margin-left: 20px;
+}
+.categories-tree ul li {
+  position: relative;
+}
+.categories-tree a.addToggle {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+
+
+
+
+
+
+
+

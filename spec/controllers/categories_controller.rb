@@ -1,0 +1,23 @@
+
+require 'spec_helper'
+
+describe CategoriesController do
+
+  render_views
+  
+  before :each do
+    setup_categories
+  end
+
+  describe "show" do
+    it 'does' do
+      get :show, :slug => @category.slug
+      response.should render_template 'categories/show'
+      
+      assigns( :categories ).should_not eql nil
+      assigns( :category   ).should_not eql nil
+      assigns( :videos     ).should_not eql nil
+    end
+  end
+  
+end

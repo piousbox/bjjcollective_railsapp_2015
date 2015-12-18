@@ -20,6 +20,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 
 gem 'mongoid', '~> 5.0.0'
+gem 'kaminari'
 
 gem 'devise'
 gem 'cancan'

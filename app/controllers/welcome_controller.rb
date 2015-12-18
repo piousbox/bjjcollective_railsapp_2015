@@ -2,8 +2,8 @@
 class WelcomeController < ApplicationController
 
   def home
-    # redirect_to fg_root_path and return
-    
+    @categories = Category.where( :category => nil )
+     
     respond_to do |format|
       format.html do
         render

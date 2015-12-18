@@ -1,10 +1,19 @@
 
-%h1 Category #{@category.name}
+.categories-show
+  .row
+    .large-5.columns
+      - cache( action_suffix: 'categories_tree' ) do
+        .categories-tree
+          = render 'categories/tree', :categories => @categories
+    .large-7.columns
+      Category
+      %h5 #{@category.title}
 
-%ol
-  - @videos.each do |video|
-    %li
-      = image_tag video.video_thumbnail.thumbnail
-      = link_to video.title, video_path( video )
+      %ol.videos-list
+        - @videos.each do |video|
+          %li
+            -# = image_tag video.video_thumbnail.thumbnail
+            = link_to image_tag( "http://img.youtube.com/vi/#{video.youtube_id}/1.jpg" ), video_path( video ), { :'data-no-turbolink' => true }
+            = link_to video.title, video_path( video )
 
-= will_paginate @videos
+      = paginate @videos, :param_name => :videos_page

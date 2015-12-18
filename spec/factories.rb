@@ -1,6 +1,10 @@
 
 FactoryGirl.define do
 
+  factory :category do |f|
+    f.title 'xxtitlexx'
+  end
+  
   factory :badge, :class => 'MeritBadge' do |f|
     f.title "Some badge"
   end

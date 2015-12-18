@@ -15,7 +15,11 @@ module ApplicationHelper
   end
 
   def logo_image_tag
-    image_tag "icons/40x40/bjjc_logo.jpg"
+    image_tag "icons/80x80/bjjc_logo.jpg"
+  end
+
+  def category_human_path category
+    "/categories/view/#{category.slug}"
   end
   
 end

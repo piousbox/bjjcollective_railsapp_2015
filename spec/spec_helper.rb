@@ -111,6 +111,11 @@ def puts! args, label=""
   puts args.inspect
 end
 
+def setup_categories
+  Category.all.each { |c| c.remove }
+  @category = FactoryGirl.create :category
+end
+
 def setup_questsets
   Questset.all.each { |q| q.remove }
   
