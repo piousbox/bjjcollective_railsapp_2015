@@ -1,4 +1,12 @@
 
-%h1 Video #{@video.title}
+Video
+%h3 #{@video.title}
 
-= raw @video.video_clip.clip
+= render 'videos/embed', :video => @video
+
+%br
+%br
+
+= @video.descr
+
+= render 'ads/leaderboard'
