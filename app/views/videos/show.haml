@@ -1,8 +1,13 @@
 
+%ul.breadcrumbs
+  - @categories_list.each_with_index do |c, idx|
+    %li= link_to c.title, category_path( c )
+
 Video
 %h3 #{@video.title}
 
-= render 'videos/embed', :video => @video
+.text-center
+  = render 'videos/embed', :video => @video
 
 %br
 %br
