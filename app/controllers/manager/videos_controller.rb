@@ -4,13 +4,14 @@ class Manager::VideosController < Manager::ManagerController
   before_filter :set_lists
   
   def index
-    @videos = Video.all.page( params[:videos_page] ).per( 20 )
+    @videos = Video.all
     if params[:badge_id]
       @videos = @videos.where( :merit_badge_id => params[:badge_id] )
     end
     if params[:questset_id]
       @videos = @videos.where( :questset_id => params[:questset_id] )
     end
+    @videos = @videos.page( params[:videos_page] ).per( 20 )
   end
 
   def edit
