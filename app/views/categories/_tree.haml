@@ -12,8 +12,6 @@
         - if c.photo
           = image_tag c.photo.photo.url :mini
         = c.title
-        -# = link_to c.title, category_human_path( c )
-        -# (#{c.videos.length})
         %a.addToggle [+]
         = render 'categories/tree', :categories => c.categories
       - else
