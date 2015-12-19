@@ -15,7 +15,7 @@ describe FightersGuild::PlayerVideosController do
     @questset = FactoryGirl.create :questset
     
     Video.all.each { |v| v.remove }
-    @video_for_questset = Video.create( :title => 'Video for questset', :questset => @questset )
+    @video_for_questset = Video.create( :title => 'Video for questset', :questset => @questset, :youtube_id => "0234567890a" )
     @video_for_questset.tasks << Task.new( :title => 'New Task', :mouseover => 'xxmouseoverxx' )
     @video_for_questset.save.should eql true
     @video_for_questset.tasks[0].should_not eql nil

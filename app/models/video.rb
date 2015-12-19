@@ -6,7 +6,7 @@ class Video
 
   field                   :youtube_id, :type => String
   validates_uniqueness_of :youtube_id
-  # validates_length_od     :youtube_id, :mimimum => 11, :maximum => 11, :allow_blank => false
+  validates_length_of     :youtube_id, :mimimum => 11, :maximum => 11, :allow_blank => false
   
   field :title,        :type => String
   field :descr,        :type => String

@@ -11,7 +11,7 @@ describe Manager::TasksController do
     setup_questsets
 
     Video.all.each { |v| v.remove }
-    @video = Video.create
+    @video = Video.create :youtube_id => '0234567890a'
     @video.merit_badge_id = @merit_badge.id
     @video.save.should eql true
   end

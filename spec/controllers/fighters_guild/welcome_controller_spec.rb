@@ -16,7 +16,7 @@ describe FightersGuild::WelcomeController do
     photo.save
 
     Video.all.each { |v| v.remove }
-    @video = Video.create :merit_badge_id => @badge.id, :title => 'some video title'
+    @video = Video.create :merit_badge_id => @badge.id, :title => 'some video title', :youtube_id => '1234567890a'
   end
   
   it '#home - not signed in' do

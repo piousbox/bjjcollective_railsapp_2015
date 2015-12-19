@@ -62,7 +62,7 @@ describe FightersGuild::VideosController do
   end
 
   #
-  #
+  # private
   #
   private
   
