@@ -19,5 +19,8 @@
         - if c.photo
           = image_tag c.photo.photo.url :mini
         = link_to c.title, category_human_path( c )
+        - #
+        - # this is slow
+        - #
         (#{c.videos.length})
 

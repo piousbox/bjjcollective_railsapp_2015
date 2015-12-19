@@ -13,5 +13,13 @@ class ApplicationController < ActionController::Base
   def ads_enabled?
     true
   end
+
+  def create_categories_list c
+    @categories_list = [ c ]
+    while c.category
+      @categories_list.unshift c.category
+      c = c.category
+    end
+  end
   
 end

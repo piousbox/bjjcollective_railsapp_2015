@@ -4,8 +4,12 @@ class CategoriesTasks
   def self.sanity
     return true
   end
+
+  def sanity
+    puts! "I am sane."
+  end
   
-  def self.reindex
+  def reindex
     @categories = {}
     categories = CategoryLegacy.all
     categories.each do |category|
@@ -23,13 +27,16 @@ class CategoriesTasks
     n_category_leafs = 0
     
     @categories.each do |k, v|
+      puts! "Looking at category #{k}."
       c = Category.where( :title => k ).first
       unless c
         c = Category.new :title => k, :order_value => 'jjj', :is_simple => true
         c.save
+        puts! "Saved category #{c.title}."
       end        
       
       v.each do |k1, v1|
+        puts! "Looking at category #{k} - #{k1}."
         c1 = Category.where( :title => k1, :category_id => c.id ).first
         unless c1
           photo1 = Photo.new
@@ -42,18 +49,27 @@ class CategoriesTasks
           end
           c1 = Category.new :title => k1, :order_value => "jjj", :is_simple => false, :category_id => c.id, :photo => photo1
           c1.save
+          puts! "Saved category #{c1.title}."
           photo1.category = c1
-          photo1.save
+          flag = photo1.save
+          if flag
+            puts! "Saved photo."
+          else
+            puts! "Cannot save photo: #{photo1.errors}."
+          end
         end
 
         v1.each do |k2, v2|
+          puts! "Looking at category #{k} - #{k1} - #{k2}."
           c2 = Category.where( :title => k2, :category_id => c1.id ).first
           unless c2
             c2 = Category.new :title => k2, :order_value => "jjj", :is_simple => true, :category_id => c1.id
             c2.save
+            puts! "Saved category #{c2.title}."
           end
           
           v2.each do |k3, v3|
+            puts! "Looking at category #{k} - #{k1} - #{k2} - #{k3}."
             c3 = Category.where( :title => k3, :category_id => c2.id ).first
             unless c3
               photo3 = Photo.new
@@ -68,26 +84,37 @@ class CategoriesTasks
               end
               c3 = Category.new :title => k3, :order_value => "jjj", :is_simple => false, :category_id => c2.id, :photo => photo3
               c3.save
+              puts! "Saved category #{c3.title}."
               photo3.category = c3
-              photo3.save
+              flag = photo3.save
+              if flag
+                puts! "Saved photo."
+              else
+                puts! "Cannot save photo: #{photo3.errors}."
+              end
             end
 
             v3.each do |k4, v4|
+              puts! "Looking at category #{k} - #{k1} - #{k2} - #{k3} - #{k4}."
               c4 = Category.where( :title => k4, :category_id => c3.id ).first
               unless c4
                 c4 = Category.new :title => k4, :order_value => "jjj", :is_simple => true, :category_id => c3.id
                 c4.save
+                puts! "Saved category #{c4.title}."
               end
               v4.each do |k5, v5|
+                puts! "Looking at category #{k} - #{k1} - #{k2} - #{k3} - #{k4} - #{k5}."
                 c5 = Category.where( :title => k5, :category_id => c4.id ).first
                 unless c5
                   c5 = Category.new :title => k5, :order_value => "jjj", :is_simple => true, :category_id => c4.id
                   c5.save
+                  puts! "Saved category #{c5.title}."
                 end
                 n_category_leafs += 1
                 if c5.slug.length < 3
                   c5.slug = v5['link']
                   c5.save
+                  puts! "saved link."
                 end
                 leaf_category = c5
                 category_legacy = CategoryLegacy.find_by_url_name(  leaf_category.slug )
@@ -106,6 +133,11 @@ class CategoriesTasks
                                                   :order_value => "jjj",
                                                   :category_id => leaf_category.id
                     flag = this_modern_video.save
+                    if flag
+                      puts! "Saved video for #{this_modern_video.youtube_id}."
+                    else
+                      puts! "Cannot save video #{this_modern_video.errors}"
+                    end
                   end
                 end
               end

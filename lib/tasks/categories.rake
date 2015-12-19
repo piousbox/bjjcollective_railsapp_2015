@@ -5,7 +5,8 @@ namespace :categories do
   
   desc "take old categories and videos and convergently put them in the new format."
   task :reindex => :environment do
-    CategoriesTasks.sanity
+    task_runner = CategoriesTasks.new
+    task_runner.reindex
   end
 
 end

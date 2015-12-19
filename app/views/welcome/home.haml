@@ -3,12 +3,13 @@
 %h4 Categories
 
 .row
-  .large-5.columns
+  .large-4.columns
     - cache( action_suffix: 'categories_tree' ) do
       .categories-tree
-        = render 'categories/tree', :categories => @categories
+        = raw categories_tree @categories
+        -# = render 'categories/tree', :categories => @categories
                       
-  .large-7.columns
+  .large-8.columns
     - @categories.each do |category|
       %h5 #{category.title} (#{category.categories.length})
       %ul.large-block-grid-5

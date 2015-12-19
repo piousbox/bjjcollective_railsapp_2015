@@ -1,11 +1,14 @@
 
 .categories-show
   .row
-    .large-5.columns
+    .large-4.columns
       - cache( action_suffix: 'categories_tree' ) do
         .categories-tree
-          = render 'categories/tree', :categories => @categories
-    .large-7.columns
+          = raw categories_tree @categories
+          -# = render 'categories/tree', :categories => @categories
+    .large-8.columns
+      = render 'categories/breadcrumbs', :categories => @categories_list, :category => @category
+
       Category
       %h5 #{@category.title}
 
@@ -17,3 +20,5 @@
             = link_to video.title, video_path( video )
 
       = paginate @videos, :param_name => :videos_page
+
+  = render 'ads/leaderboard'

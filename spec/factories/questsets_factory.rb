@@ -1,23 +1,6 @@
 
 FactoryGirl.define do
 
-  factory :category do |f|
-    f.title 'xxtitlexx'
-  end
-  
-  factory :badge, :class => 'MeritBadge' do |f|
-    f.title "Some badge"
-  end
-
-  factory :user do |f|
-    f.email 'user@gmail.com'
-    f.password "s1mple123"
-  end
-  factory :user_2, :class => 'User' do |f|
-    f.email 'user_2@gmail.com'
-    f.password "s1mple123"
-  end
-
   factory :questset do |f|
     f.title 'New Questset'
     f.order_value "jjj" # default    
@@ -39,7 +22,7 @@ FactoryGirl.define do
     after :build do |q|
       q.shaded_photo Photo.new
     end
-  end  
+  end
   
 end
 

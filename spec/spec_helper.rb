@@ -147,9 +147,9 @@ end
 
 def setup_videos
   Video.all.each { |v| v.remove }
-  @video_for_questset = FactoryGirl.create :video_for_questset
+  @video_for_questset   = FactoryGirl.create :video_for_questset
   @video_for_questset_1 = FactoryGirl.create :video_for_questset_1
   @video_for_questset_2 = FactoryGirl.create :video_for_questset_2
-  @video_for_badge = FactoryGirl.create :video_for_merit_badge
+  @video_for_badge      = FactoryGirl.create :video_for_merit_badge
 end
 

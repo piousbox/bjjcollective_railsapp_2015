@@ -2,7 +2,6 @@
 require 'spec_helper'
 
 describe FightersGuild::VideosController do
-
   
   render_views
   
@@ -17,15 +16,15 @@ describe FightersGuild::VideosController do
 
     Questset.all.each { |q| q.remove }
     @questset = FactoryGirl.create :questset
-    
+
     Video.all.each { |v| v.remove }
-    @video_for_badge = Video.create( :title => 'Video for badge', :merit_badge => @badge )
-    @video_for_questset = Video.create( :title => 'Video for questset', :questset => @questset )
+    @video_for_badge    = FactoryGirl.create :video_for_merit_badge, :merit_badge => @badge
+    @video_for_questset = FactoryGirl.create :video_for_questset, :questset => @questset
     @video_for_questset.tasks << Task.new( :title => 'xxtitle' )
     @video_for_questset.save
   end
 
-  it 'show in badge signed-in' do
+  it 'show in badge signed-in' do    
     get :show, :id => @video_for_badge.id
     response.should be_success
     response.should render_template( 'fighters_guild/videos/show' )

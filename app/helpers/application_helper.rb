@@ -21,5 +21,41 @@ module ApplicationHelper
   def category_human_path category
     "/categories/view/#{category.slug}"
   end
-  
+
+  #
+  # see partial categories/_tree for the original
+  #
+  def categories_tree categories
+    out = "<ul>"
+    categories.each do |c|
+      outt = "<li>"
+      if c.categories.length > 0
+        outt += '<span class="category-name">'
+        if c.photo
+          outt +=<<-EOL
+<img src="#{c.photo.photo.url :mini}" alt="" />
+EOL
+        end
+        if c.title
+          outt += c.title
+        end
+        outt += '<a class="addToggle">[+]</a>'
+        outt += categories_tree( c.categories )
+      else
+        outt += '<span class="categori-leaf-name">'
+        if c.photo
+          outt +=<<-EOL
+<img src="#{c.photo.photo.url :mini}" alt="" />
+EOL
+        end
+        outt += link_to c.title, category_human_path( c )
+        # outt += "(#{c.videos.length})" # very slow
+      end
+      outt += "</li>"
+      out += outt
+    end
+    out += "</ul>"
+    return out
+  end
+
 end
