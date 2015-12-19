@@ -1,18 +1,19 @@
 
-%h5.text-center Videos Index
+.manager-videos-index
+  %h5.text-center Videos Index
+  = paginate @videos, :param_name => :videos_page
 
-%ul
-  - @videos.each do |video|    
-    %li
-      %h5= video.title
-      = link_to '[~]', edit_manager_video_path( video ), { :'data-no-turbolink' => true }
-      = video.order_value
-      
-      -# = video.inspect
-      <b>#{video.youtube_id}</b>
-      - if video.merit_badge
-        In badge "#{video.merit_badge.title}"
-      - if video.questset
-        In questset "#{video.questset.title}"
-      = render 'videos/embed_small', :video => video
+  %ul
+    - @videos.each do |video|    
+      %li
+        %h5= video.title
+        = link_to '[~]', edit_manager_video_path( video ), { :'data-no-turbolink' => true }
+        = video.order_value      
+        <b>#{video.youtube_id}</b>
+        - if video.merit_badge
+          In badge "#{video.merit_badge.title}"
+        - if video.questset
+          In questset "#{video.questset.title}"
+        = render 'videos/embed_small', :video => video
     
+  = paginate @videos, :param_name => :videos_page

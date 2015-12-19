@@ -18,13 +18,6 @@ $(document).ready ->
       editor_selector: 'tinymce',
       plugins: 'link image'
 
-  if $("#temp_layout").length > 0
-    MyApp.addInitializer (options) ->
-      venues_view = new Views.Venues.Index
-        collection: options.venues
-
-      MyApp.right_region.show( venues_view )
-
   if $('#carousel').length > 0
     $('#carousel').infiniteCarousel({})
 

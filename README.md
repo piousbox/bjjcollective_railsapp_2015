@@ -34,3 +34,4 @@ Change Log
 ==========
 * 20151122 .htaccess on manager
 * 20151203 tasks from the first email
+* 20151219 - 0.0.1 - Manager video pagination

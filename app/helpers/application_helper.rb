@@ -25,8 +25,14 @@ module ApplicationHelper
   #
   # see partial categories/_tree for the original
   #
-  def categories_tree categories
-    out = "<ul>"
+  def categories_tree categories, category=nil
+    if category
+      out =<<-EOL
+<ul id="#{category.id}">
+EOL
+    else
+      out = "<ul>"
+    end
     categories.each do |c|
       outt = "<li>"
       if c.categories.length > 0
@@ -40,7 +46,7 @@ EOL
           outt += c.title
         end
         outt += '<a class="addToggle">[+]</a>'
-        outt += categories_tree( c.categories )
+        outt += categories_tree( c.categories, c )
       else
         outt += '<span class="categori-leaf-name">'
         if c.photo

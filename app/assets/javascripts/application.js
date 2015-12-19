@@ -12,6 +12,8 @@
 //
 
 $(document).ready(function() {
+  var i, expanded_category_items;
+
   $('.badge-item').mouseover(function() {
     $('.mouseover', this).show();
   });
@@ -49,6 +51,57 @@ $(document).ready(function() {
       $(".task-" + data.task_id + "-status").html(data.status);
     });
   }
+
+  /**
+   * localStorage
+   */
+  if (typeof Storage !== 'undefined') {
+
+    expanded_category_items = localStorage.getItem("expanded_category_items");
+    if ("string" === typeof expanded_category_items) {
+      expanded_category_items = expanded_category_items.split(",");
+
+      console.log("expanded_category_items from local storage:", expanded_category_items);
+
+      for (i=0; i<expanded_category_items.length; i++) {
+        $("ul#"+expanded_category_item[i]).show();
+      }
+    }
+
+    $(".categories-tree .addToggle").click(function() {
+      var expanded_category_items, idx, category_id, is_visible;
+
+      console.log('this is', $(this));
+
+      category_id = $("ul", $(this).next()).attr("id");
+      is_visible = $(this).next().is(":visible") ? true : false;
+      expanded_category_items = localStorage.getItem("expanded_category_items");
+
+      console.log("saving category id", category_id, "as", is_visible);
+
+      if ("string" === typeof expanded_category_items) {
+        expanded_category_items = expanded_category_items.split(",");
+        idx = expanded_category_items.indexOf(category_id);
+        if (!is_visible) { // not visible, let's save that
+          if (idx !== -1) {
+            console.log("Problem: index of not previously hidden category in hidden categories must be -1.");
+          }
+          expanded_category_items.push( category_id );
+          console.log('saving expanded category');
+        } else {
+          if (idx === -1) {
+            console.log("Problem: a previously hidden category_id is not in the hidden list!");
+          }
+          expanded_category_items.splice(idx, 1);
+        }
+        localStorage.setItem("expanded_category_items", expanded_category_items.join(","));
+      } 
+    });
+
+  } else {
+    console.log("localStorage is not defined!");
+  }
+  
 
 });
 

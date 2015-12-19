@@ -4,7 +4,7 @@ class Manager::VideosController < Manager::ManagerController
   before_filter :set_lists
   
   def index
-    @videos = Video.all
+    @videos = Video.all.page( params[:videos_page] ).per( 20 )
     if params[:badge_id]
       @videos = @videos.where( :merit_badge_id => params[:badge_id] )
     end
