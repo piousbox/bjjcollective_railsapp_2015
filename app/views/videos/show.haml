@@ -8,8 +8,11 @@
     .large-4.columns
       - cache( 'categories_tree' ) do
         .categories-tree
-          = raw categories_tree @categories
-          -# = render 'categories/tree', :categories => @categories
+          - if 'helper' == categories_tree_type
+            = raw categories_tree @categories
+          - elsif 'partial' == categories_tree_type
+            = render 'categories/tree', :categories => @categories
+            
     .large-8.columns
       Video
       %h3 #{@video.title}
