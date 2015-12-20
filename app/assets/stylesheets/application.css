@@ -74,6 +74,9 @@ textarea.tinymce {
 .categories-show .videos-list li {
     margin-bottom: 30px;
 }
+.categories--breadcrumbs {
+    margin-top: 10px;
+}
 /**
  * categories-tree
  */

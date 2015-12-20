@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "categories/view/:slug", :to => "categories#show"
   resources :categories
   get "videos/:id", :to => "categories#video"
+  get "video/:legacy_id", :to => "videos#legacy_show"
   
   get 'fighters_guild' => 'fighters_guild/welcome#home', :as => :fg_root
   namespace :fighters_guild, :as => :fg do

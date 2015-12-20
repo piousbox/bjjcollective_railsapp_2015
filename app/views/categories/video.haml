@@ -1,9 +1,10 @@
 
-.videos-showw
+.videos-show
   - if @categories_list.length > 0
     .row
       .large-12.columns
         = render 'categories/breadcrumbs', :categories => @categories_list
+        
   .row
     .large-4.columns
       - cache( 'categories_tree' ) do

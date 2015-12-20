@@ -1,9 +1,10 @@
 
 - category ||= Category.new
 
-%ul.breadcrumbs
-  - categories.each_with_index do |c, idx|
-    - if c.title == category.title
-      %li.current= c.title
-    - else
-      %li= link_to c.title, category_path( c )
+.categories--breadcrumbs
+  %ul.breadcrumbs
+    - categories.each_with_index do |c, idx|
+      - if c.title == category.title
+        %li.current= c.title
+      - else
+        %li= link_to c.title, category_path( c )

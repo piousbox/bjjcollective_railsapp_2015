@@ -40,3 +40,7 @@ Change Log
 * 20151122 .htaccess on manager
 * 20151203 tasks from the first email
 * 20151219 - 0.0.1 - Manager video pagination
+* 0.0.2 - structure for categories
+* 0.0.3 - caching
+* 0.0.4 - leaderboards
+* 0.0.5 - legacy video redirect
