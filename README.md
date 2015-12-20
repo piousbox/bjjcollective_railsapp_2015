@@ -46,3 +46,4 @@ Change Log
 * 0.0.3 - caching
 * 0.0.4 - leaderboards
 * 0.0.5 - legacy video redirect
+* 0.0.6 - let's go angular
