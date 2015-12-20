@@ -37,9 +37,16 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
                 City: ['City', function(City) {
                     return City;
                 }]
+                /* , Category: ['Category', function(Category) {
+                    return Category;
+                }] */
             },
-            controller: ['$scope', '$state', 'City',
-                function( $scope,   $state,   City) {
+            controller: ['$scope', '$state', 'City', 'Category',
+                function( $scope,   $state,   City,   Category) {
+                    console.log('this is home');
+                    Category.index({}, function(categories) {
+                      console.log("categories are", categories);
+                    });
                     City.index({}, function(cities) {
                         $scope.cities = cities;
                         $scope.map = { center: { latitude: 42.1451, longitude: -100.6680 }, zoom: 4 }
