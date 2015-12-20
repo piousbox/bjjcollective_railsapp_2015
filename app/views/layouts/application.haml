@@ -10,11 +10,12 @@
     = render 'main_header'
     .row
       .large-12.columns
-        
-        %p{ :class => :notice}= notice
-        %p{ :class => :alert}= alert
-        = yield
 
-    %hr
+        - if notice
+          %p{ :class => :notice}= notice
+        - if alert
+          %p{ :class => :alert}= alert
+        = yield
+    
     = render 'main_footer'
     = render 'analytics'

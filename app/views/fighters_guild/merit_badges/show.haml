@@ -7,10 +7,3 @@
   .large-9.columns
     = render 'show', :item => @badge
     = link_to "Back to Merit Badges", fg_root_path
-
-%br
-%br
-.row
-  .large-12.columns
-    .text-center
-      = render 'ads/leaderboard' if ads_enabled?

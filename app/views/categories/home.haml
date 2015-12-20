@@ -1,22 +1,25 @@
 
-%h3 BJJ Technique Database
-%h4 Categories
+.categories-home
+  .row
+    .large-12.columns
+      %h3 BJJ Technique Database
+      %h4 Categories
 
-.row
-  .large-4.columns
-    - cache( 'categories_tree' ) do
-      .categories-tree
-        - if 'helper' == categories_tree_type
-          = raw categories_tree @categories, Category.new
-        - elsif 'partial' == categories_tree_type
-          = render 'categories/tree', :categories => @categories, :category => Category.new
-                      
-  .large-8.columns
-    - @categories.each do |category|
-      %h5 #{category.title} (#{category.categories.length})
-      %ul.large-block-grid-5
-        - category.categories.each do |c1|
-          %li
-            = image_tag c1.photo.photo.url( :thumb2 )
-            %br
-            .text-center= c1.title
+  .row
+    .large-4.columns
+      - cache( 'categories_tree' ) do
+        .categories-tree
+          - if 'helper' == categories_tree_type
+            = raw categories_tree @categories, Category.new
+          - elsif 'partial' == categories_tree_type
+            = render 'categories/tree', :categories => @categories, :category => Category.new
+
+    .large-8.columns
+      - @categories.each do |category|
+        %h5 #{category.title} (#{category.categories.length})
+        %ul.large-block-grid-5
+          - category.categories.each do |c1|
+            %li
+              = image_tag c1.photo.photo.url( :thumb2 )
+              %br
+              .text-center= c1.title

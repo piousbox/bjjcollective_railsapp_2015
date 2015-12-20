@@ -1,52 +1,15 @@
 
-.row.fighters-guild-welcome-home
-  .large-3.columns.quests-list
-    %h5.text-center Quests
-    = render 'fighters_guild/questsets/list', :grid => 1, :items => @questsets
+.fighters-guild-welcome-home      
+  .row
+    .large-3.columns.quests-list
+      %h5.text-center Quests
+      = render 'fighters_guild/questsets/list', :grid => 1, :items => @questsets
           
-  .large-9.columns
-    %h5.text-center Merit Badges
-    = render 'fighters_guild/merit_badges/list', :grid => 3, :items => @badges
-
-.row
-  .large-12.columns
-    .text-center
-      = render 'ads/leaderboard' if ads_enabled?
+    .large-9.columns
+      %h5.text-center Merit Badges
+      = render 'fighters_guild/merit_badges/list', :grid => 3, :items => @badges
+      
 
 
 
 
-
-
-
-
-
-
-  
-  - #
-  - # hidden
-  - #
-  - proc do # nothing
-    %ul.large-block-grid-3
-      - @badges.each do |badge|
-        - photo_url = image_tag 'missing.png'
-        - is_accomplished = ''
-        - if badge.shaded_photo
-          - photo_url = badge.shaded_photo.photo.url(:thumb2)
-          - if user_signed_in?
-            - if badge[:player][:is_accomplished] && badge.accomplished_photo
-              - photo_url = badge.accomplished_photo.photo.url(:thumb2)
-              - is_accomplished = "is_accomplished"
-
-        %li{ :class => "badge-item #{is_accomplished}", 'merit-badge-id' => badge.id }
-          = link_to image_tag( photo_url  ), fg_badge_path( badge ), { :'data-no-turbolink' => true }
-          - if '' != is_accomplished
-            .mouseover= badge.accomplished_mouseover
-          - else
-            .mouseover= badge.shaded_mouseover         
-          .text-center
-            = badge.title
-            %br
-            - if badge[:player]
-              #{badge[:player][:percent_done].round}% done
-    

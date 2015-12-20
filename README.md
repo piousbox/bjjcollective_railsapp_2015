@@ -21,6 +21,11 @@ Port 3001 please
 @TODO: Be able to delete questsets
 @TODO: Better s3 creds for BJJC
 
+Deployment
+==========
+
+Hit these three URLs to generate the cache (each takes a few minutes):
+* http://staging.bjjcollective.piousbox.com/
 
 CI/CD Pipeline
 ==============

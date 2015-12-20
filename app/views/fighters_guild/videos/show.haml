@@ -19,10 +19,3 @@
       = link_to "Back to #{@video.questset.title}", fg_questset_path( @video.questset )
     - if @video.merit_badge
       = link_to "Back to Merit Badge #{@video.merit_badge.title}", fg_badge_path( @video.merit_badge )
-
-%br
-%br
-.row
-  .large-12.columns
-    .text-center
-      = render 'ads/leaderboard' if ads_enabled?
