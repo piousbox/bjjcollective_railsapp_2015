@@ -18,7 +18,7 @@ describe CategoriesController do
 
   it "index" do
     get :index
-    response.should render_template "categories#index"
+    response.should render_template "categories/index_2"
     assigns( :categories ).should_not eql nil
   end
 

@@ -11,7 +11,8 @@ class Video
   field :title,        :type => String
   field :descr,        :type => String
   field :order_value,  :type => String, :default => "jjj"
-
+  field :legacy_id,    :type => Integer
+  
   embeds_many :tasks
 
   # @TODO: this should instead be a polymorphic relationship

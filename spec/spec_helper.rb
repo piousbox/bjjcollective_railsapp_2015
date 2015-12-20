@@ -151,5 +151,6 @@ def setup_videos
   @video_for_questset_1 = FactoryGirl.create :video_for_questset_1
   @video_for_questset_2 = FactoryGirl.create :video_for_questset_2
   @video_for_badge      = FactoryGirl.create :video_for_merit_badge
+  @video                = FactoryGirl.create :video
 end
 

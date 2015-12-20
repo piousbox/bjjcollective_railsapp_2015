@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :video do |f|
     f.title "Some video"
     f.youtube_id "1234567890a"
+    f.legacy_id 123
   end
 
   factory :video_for_questset, :class => 'Video' do |f|
