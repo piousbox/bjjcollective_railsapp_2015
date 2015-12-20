@@ -1,5 +1,5 @@
 
-- if 'new' == params[:action]
+- if %w( new create ).include? params[:action]
   %p Create the video first, then add tasks to it. You cannot create tasks in a video that does not exist yet.
 - else # unless 'new' == params[:action]
   .manager-tasks--form

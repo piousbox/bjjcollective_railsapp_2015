@@ -108,6 +108,8 @@ GEM
     minitest (5.8.1)
     mongo (2.1.2)
       bson (~> 3.0)
+    mongo_session_store-rails4 (6.0.0)
+      actionpack (>= 3.1)
     mongoid (5.0.1)
       activemodel (~> 4.0)
       mongo (~> 2.1)
@@ -246,6 +248,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   libv8
+  mongo_session_store-rails4
   mongoid (~> 5.0.0)
   mongoid-paperclip
   mysql2 (~> 0.3.13)
