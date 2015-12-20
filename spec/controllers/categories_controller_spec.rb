@@ -16,12 +16,6 @@ describe CategoriesController do
     end
   end
 
-  it "index" do
-    get :index
-    response.should render_template "categories/index_2"
-    assigns( :categories ).should_not eql nil
-  end
-
   describe "show" do
     it 'does' do
       get :show, :slug => @category.slug

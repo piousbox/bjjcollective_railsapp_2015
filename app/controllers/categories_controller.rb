@@ -1,7 +1,6 @@
 
 class CategoriesController < ApplicationController
 
-
   def home
     @categories = Category.where( :category => nil )
     

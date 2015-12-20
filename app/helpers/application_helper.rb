@@ -71,7 +71,7 @@ EOL
 EOL
         end
         outt += link_to c.title, category_human_path( c )
-        # outt += "(#{c.videos.length})" # very slow
+        outt += " (-)" # very slow
       end
       outt += "</li>"
       out += outt

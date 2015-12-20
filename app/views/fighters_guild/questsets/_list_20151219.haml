@@ -6,7 +6,7 @@
 - grid  ||= 3
 - items ||= @badges
 
-%ul{ :class => "large-block-grid-#{grid} fg-questsets--list" }
+%ul{ :class => "large-block-grid-#{grid}" }
   - items.each_with_index do |item, idx|
     - photo_url = image_tag 'missing.png'
     - is_accomplished = ''
@@ -18,7 +18,7 @@
           - is_accomplished = "is_accomplished"
 
     - # @TODO: remove badge reference from here. Only questset.
-    %li{ :class => "text-center badge-item questset-item #{is_accomplished}", 'merit-badge-id' => item.id, 'questset-id' => item.id }
+    %li{ :class => "badge-item questset-item #{is_accomplished}", 'merit-badge-id' => item.id, 'questset-id' => item.id }
       - if item[:is_available]
         = link_to image_tag( photo_url ), fg_questset_path( item ), { :'data-no-turbolink' => true }
         - if '' != is_accomplished

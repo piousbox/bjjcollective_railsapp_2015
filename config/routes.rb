@@ -10,9 +10,15 @@ Rails.application.routes.draw do
   #            }
 
   get "categories/view/:slug", :to => "categories#show"
-  resources :categories
+  get "categories" => redirect { |params, request| "/" }
+  get "categories/:id", :to => "categories#show"
+  
   get "videos/:id", :to => "categories#video"
   get "video/:legacy_id", :to => "videos#legacy_show"
+
+  namespace :api do
+    resources :categories
+  end
   
   get 'fighters_guild' => 'fighters_guild/welcome#home', :as => :fg_root
   namespace :fighters_guild, :as => :fg do

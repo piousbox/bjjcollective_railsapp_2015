@@ -32,15 +32,11 @@ textarea.tinymce {
     position: relative;
 }
 
-.fighters-guild-welcome-home .quests-list {
-    border-right: 2px solid #dedede;
-    min-height: 800px;
-    margin-bottom: 20px;
-}
 
 
-
-/* main header */
+/**
+ * main header 
+ */
 .main-header {
     margin-top: 10px;
 }
@@ -100,6 +96,27 @@ textarea.tinymce {
   left: 0;
   top: 0;
 }
+
+
+
+/**
+ * fg / merit_badges 
+ */
+.fg-merit-badges-show,
+.fg-welcome-home {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.fg-welcome-home .quests-list {
+    border-right: 2px solid #dedede;
+    min-height: 800px;
+    margin-bottom: 20px;
+    /* background: url('backgrounds/seamless-map.jpg'); */
+}
+.fg-questsets--list li {
+    margin-bottom: 20px;
+}
+
 
 /**
  * videos

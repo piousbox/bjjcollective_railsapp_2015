@@ -6,10 +6,6 @@ describe 'Categories' do
     expect( :get => '/' ).to route_to( 'categories#home' )
   end
 
-  it 'categories' do
-    expect( :get => '/categories' ).to route_to( 'categories#index' )
-  end
-
   it 'show' do
     expect( :get => '/categories/view/some-category' ).to route_to( 'categories#show', :slug => 'some-category' )
     expect( :get => '/categories/123' ).to route_to( 'categories#show', :id => '123' )

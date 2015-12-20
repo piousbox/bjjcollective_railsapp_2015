@@ -26,6 +26,8 @@ Deployment
 
 Hit these three URLs to generate the cache (each takes a few minutes):
 * http://staging.bjjcollective.piousbox.com/
+* http://staging.bjjcollective.piousbox.com/videos/5674a60f2dd1095edb0004de
+* http://staging.bjjcollective.piousbox.com/categories/view/mounts-side-control-side-control-variants-twister-over-arm-top-submissions
 
 CI/CD Pipeline
 ==============

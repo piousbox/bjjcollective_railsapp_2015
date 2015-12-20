@@ -7,12 +7,8 @@
 
   .row
     .large-4.columns
-      - cache( 'categories_tree' ) do
-        .categories-tree
-          - if 'helper' == categories_tree_type
-            = raw categories_tree @categories, Category.new
-          - elsif 'partial' == categories_tree_type
-            = render 'categories/tree', :categories => @categories, :category => Category.new
+      -# = render 'categories_tree'
+      %nbsp
 
     .large-8.columns
       - @categories.each do |category|
