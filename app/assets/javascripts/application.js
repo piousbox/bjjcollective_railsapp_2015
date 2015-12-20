@@ -62,10 +62,18 @@ $(document).ready(function() {
     if ("string" === typeof expanded_category_items) {
       expanded_category_items = expanded_category_items.split(",");
 
+      while(-1 !== expanded_category_items.indexOf("")) {
+        console.log('cleaning up empty category');
+        expanded_category_items.splice(expanded_category_items.indexOf(""), 1);
+        localStorage.setItem("expanded_category_items", expanded_category_items.join(","));
+      }
+
       console.log("expanded_category_items from local storage:", expanded_category_items);
 
       for (i=0; i<expanded_category_items.length; i++) {
-        $("ul#"+expanded_category_items[i]).show();
+        if("" !== expanded_category_items[i]) {
+          $("ul#"+expanded_category_items[i]).show();
+        }
       }
 
     }

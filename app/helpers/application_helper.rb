@@ -15,6 +15,11 @@ module ApplicationHelper
   end
 
   def categories_tree_type
+    return "helper"
+
+    #
+    # trash
+    #
     if Rails.env.production?
       return "partial"
     else
