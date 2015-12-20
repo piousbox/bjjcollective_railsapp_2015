@@ -31,13 +31,8 @@ $(document).ready(function() {
   if ($('.fg-videos-show').length > 0 || $('.fg-videos--tasks').length > 0 ) {
     $('input.task').click(function() {
       var commit = $(this).prop('checked') ? "Complete" : "Undo";
-
       var id = $(this).attr("player-video-id");
-      console.log("id is", id);
-
       var task_id = $(this).attr("task-id");
-      console.log("task id is", task_id);
-
       var data = { commit: commit, id: id, task_id: task_id };
       $.post( "/fighters_guild/player_videos/" + data.id, data ).done(function() {
         $(".video-tasks-response").html("Saved");
@@ -47,7 +42,6 @@ $(document).ready(function() {
 
   if ($(".fg-videos--tasks").length > 0) {
     $(".edit_player_video").on("ajax:success", function(e, data, status, xhr) {
-      console.log(data);
       $(".task-" + data.task_id + "-status").html(data.status);
     });
   }
@@ -56,20 +50,13 @@ $(document).ready(function() {
    * localStorage
    */
   if (typeof Storage !== 'undefined') {
-    // localStorage.clear(); console.log('cleared');
-
     expanded_category_items = localStorage.getItem("expanded_category_items");
     if ("string" === typeof expanded_category_items) {
       expanded_category_items = expanded_category_items.split(",");
-
       while(-1 !== expanded_category_items.indexOf("")) {
-        console.log('cleaning up empty category');
         expanded_category_items.splice(expanded_category_items.indexOf(""), 1);
         localStorage.setItem("expanded_category_items", expanded_category_items.join(","));
       }
-
-      console.log("expanded_category_items from local storage:", expanded_category_items);
-
       for (i=0; i<expanded_category_items.length; i++) {
         if("" !== expanded_category_items[i]) {
           $("ul#"+expanded_category_items[i]).show();
@@ -80,10 +67,6 @@ $(document).ready(function() {
 
     $(".categories-tree .addToggle").click(function() {
       var expanded_category_items, idx, category_id, is_visible;
-
-      console.log('this is', $(this));
-      console.log('next is', $(this).next());
-
       category_id = $(this).next().attr("id");
       expanded_category_items = localStorage.getItem("expanded_category_items")||[];
       if ("string" === typeof expanded_category_items) {
@@ -91,9 +74,6 @@ $(document).ready(function() {
       }
       idx = expanded_category_items.indexOf(category_id);
       is_visible = idx === -1; // ? false : true;
-
-      console.log("saving category id", category_id, "as", is_visible);
-
       if (is_visible) { // just expanded it, let's save that
         if (idx !== -1) {
           console.log("Problem! saving already saved expanded category.");
@@ -108,14 +88,10 @@ $(document).ready(function() {
           expanded_category_items.splice(idx, 1);
         }
       }
-
-      console.log("saving", expanded_category_items);
-
       localStorage.setItem("expanded_category_items", expanded_category_items.join(","));
     });
-
   } else {
-    console.log("localStorage is not defined!");
+    console.log("Problem! localStorage is not defined!");
   }
   
 
