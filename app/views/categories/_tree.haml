@@ -4,7 +4,10 @@
 - # _vp_ 20151218
 - #
 
-%ul{ :id => c.id }
+- unless defined? category
+  - category = Category.new
+  
+%ul{ :id => category.id }
   - categories.each do |c|
     %li
       - if c.categories.length > 0
@@ -20,7 +23,8 @@
           = image_tag c.photo.photo.url :mini
         = link_to c.title, category_human_path( c )
         - #
-        - # this is too slow
+        - # @TODO: _vp_ 20151219
+        - # this is sooo slow, should be a background job
         - #
-        (#{c.videos.length})
+        - # (#{c.videos.length})
 

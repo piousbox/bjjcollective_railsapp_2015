@@ -4,7 +4,7 @@
 
 .row
   .large-4.columns
-    - cache( action_suffix: 'categories_tree' ) do
+    - cache( 'categories_tree' ) do
       .categories-tree
         - if 'helper' == categories_tree_type
           = raw categories_tree @categories
