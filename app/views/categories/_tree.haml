@@ -3,9 +3,6 @@
 - # @obsolete this should be rewritten s.t. it doesn't require a million renders.
 - # _vp_ 20151218
 - #
-
-- unless defined? category
-  - category = Category.new
   
 %ul{ :id => category.id }
   - categories.each do |c|
@@ -16,7 +13,7 @@
           = image_tag c.photo.photo.url :mini
         = c.title
         %a.addToggle [+]
-        = render 'categories/tree', :categories => c.categories
+        = render 'categories/tree', :categories => c.categories, :category => c
       - else
         %span.category-leaf-name
         - if c.photo
@@ -26,5 +23,5 @@
         - # @TODO: _vp_ 20151219
         - # this is sooo slow, should be a background job
         - #
-        - # (#{c.videos.length})
+        (#{c.videos.length})
 

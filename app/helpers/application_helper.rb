@@ -34,10 +34,14 @@ module ApplicationHelper
     "/categories/view/#{category.slug}"
   end
 
+  def video_path video
+    "/videos/#{video.id}"
+  end
+
   #
   # see partial categories/_tree for the original
   #
-  def categories_tree categories, category=nil
+  def categories_tree categories
     if category
       out =<<-EOL
 <ul id="#{category.id}">

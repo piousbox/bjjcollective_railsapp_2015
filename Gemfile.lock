@@ -63,6 +63,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    dalli (2.7.5)
     debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -127,6 +128,8 @@ GEM
       mime-types
       mimemagic (= 0.3.0)
     rack (1.6.4)
+    rack-cache (1.5.1)
+      rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.4)
@@ -234,6 +237,7 @@ DEPENDENCIES
   aws-sdk (< 2.0)
   cancan
   coffee-rails (~> 4.1.0)
+  dalli
   devise
   factory_girl (~> 4.0)
   factory_girl_rails
@@ -246,6 +250,7 @@ DEPENDENCIES
   mongoid-paperclip
   mysql2 (~> 0.3.13)
   paperclip (~> 4.3)
+  rack-cache
   rails (= 4.2.4)
   rspec-html-matchers
   rspec-rails (~> 3.0)
