@@ -18,6 +18,13 @@ class CategoriesController < ApplicationController
     create_categories_list @category
     @videos = @category.videos.page( params[:videos_page] ).per( 10 )
   end
+  
+  def video
+    @categories = Category.where( :category => nil )
+    @video = Video.find( params[:id] )
+    c = @video.category
+    create_categories_list c
+  end
 
 end
 

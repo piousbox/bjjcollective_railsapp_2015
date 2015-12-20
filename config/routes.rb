@@ -1,7 +1,7 @@
 
 Rails.application.routes.draw do
 
-  root :to => 'welcome#home'
+  root :to => 'categories#home'
   
   devise_for :users, controllers: { sessions: 'users/sessions' }
   # devise_for :users, path: "auth", path_names: {
@@ -11,8 +11,8 @@ Rails.application.routes.draw do
 
   get "categories/view/:slug", :to => "categories#show"
   resources :categories
-  resources :videos
-
+  get "videos/:id", :to => "categories#video"
+  
   get 'fighters_guild' => 'fighters_guild/welcome#home', :as => :fg_root
   namespace :fighters_guild, :as => :fg do
     # root :to => 'fighters_guild/welcome#home'

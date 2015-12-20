@@ -9,6 +9,19 @@ describe CategoriesController do
     setup_categories
   end
 
+  describe "#home" do
+    it 'renders' do
+      get :home
+      response.should render_template 'categories/home'
+    end
+  end
+
+  it "index" do
+    get :index
+    response.should render_template "categories#index"
+    assigns( :categories ).should_not eql nil
+  end
+
   describe "show" do
     it 'does' do
       get :show, :slug => @category.slug
