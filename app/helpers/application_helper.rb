@@ -14,6 +14,14 @@ module ApplicationHelper
     true
   end
 
+  def categories_tree_type
+    if Rails.env.production?
+      return "partial"
+    else
+      return "helper"
+    end
+  end
+  
   def logo_image_tag
     image_tag "icons/80x80/bjjc_logo.jpg"
   end

@@ -10,10 +10,6 @@ class ApplicationController < ActionController::Base
     puts args.inspect
   end
 
-  def ads_enabled?
-    true
-  end
-
   def create_categories_list c
     @categories_list = [ c ]
     while c.category
@@ -21,5 +17,5 @@ class ApplicationController < ActionController::Base
       c = c.category
     end
   end
-  
+
 end
