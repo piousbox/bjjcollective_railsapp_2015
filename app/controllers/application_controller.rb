@@ -11,10 +11,14 @@ class ApplicationController < ActionController::Base
   end
 
   def create_categories_list c
-    @categories_list = [ c ]
-    while c.category
-      @categories_list.unshift c.category
-      c = c.category
+    if c.nil?
+      @categories_list = []
+    else
+      @categories_list = [ c ]
+      while c.category
+        @categories_list.unshift c.category
+        c = c.category
+      end
     end
   end
 

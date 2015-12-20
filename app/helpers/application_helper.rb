@@ -30,6 +30,10 @@ module ApplicationHelper
     "/categories/view/#{category.slug}"
   end
 
+  def category_path category
+    "/categories/view/#{category.slug}"
+  end
+
   #
   # see partial categories/_tree for the original
   #

@@ -1,15 +1,30 @@
 
-= render 'categories/breadcrumbs', :categories => @categories_list
+.videos-showw
+  - if @categories_list.length > 0
+    .row
+      .large-12.columns
+        = render 'categories/breadcrumbs', :categories => @categories_list
+  .row
+    .large-4.columns
+      - cache( action_suffix: 'categories_tree' ) do
+        .categories-tree
+          = raw categories_tree @categories
+          -# = render 'categories/tree', :categories => @categories
+    .large-8.columns
+      Video
+      %h3 #{@video.title}
 
-Video
-%h3 #{@video.title}
+      - if @video.category
+        = link_to "Back to category -> #{@video.category.title}", category_path( @video.category )
+        %br
+        %br
+      
+      .text-center
+        = render 'videos/embed', :video => @video
 
-.text-center
-  = render 'videos/embed', :video => @video
+      %br
+      %br
 
-%br
-%br
+      = @video.descr
 
-= @video.descr
-
-= render 'ads/leaderboard'
+  = render 'ads/leaderboard'

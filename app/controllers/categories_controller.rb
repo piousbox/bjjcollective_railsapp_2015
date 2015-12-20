@@ -14,6 +14,7 @@ class CategoriesController < ApplicationController
   def show
     @categories = Category.where( :category => nil )
     @category = Category.where( :slug => params[:slug] ).first
+    @category ||= Category.find params[:id]
     create_categories_list @category
     @videos = @category.videos.page( params[:videos_page] ).per( 10 )
   end

@@ -56,6 +56,7 @@ $(document).ready(function() {
    * localStorage
    */
   if (typeof Storage !== 'undefined') {
+    // localStorage.clear(); console.log('cleared');
 
     expanded_category_items = localStorage.getItem("expanded_category_items");
     if ("string" === typeof expanded_category_items) {
@@ -64,38 +65,45 @@ $(document).ready(function() {
       console.log("expanded_category_items from local storage:", expanded_category_items);
 
       for (i=0; i<expanded_category_items.length; i++) {
-        $("ul#"+expanded_category_item[i]).show();
+        $("ul#"+expanded_category_items[i]).show();
       }
+
     }
 
     $(".categories-tree .addToggle").click(function() {
       var expanded_category_items, idx, category_id, is_visible;
 
       console.log('this is', $(this));
+      console.log('next is', $(this).next());
 
-      category_id = $("ul", $(this).next()).attr("id");
-      is_visible = $(this).next().is(":visible") ? true : false;
-      expanded_category_items = localStorage.getItem("expanded_category_items");
+      category_id = $(this).next().attr("id");
+      expanded_category_items = localStorage.getItem("expanded_category_items")||[];
+      if ("string" === typeof expanded_category_items) {
+        expanded_category_items = expanded_category_items.split(",")
+      }
+      idx = expanded_category_items.indexOf(category_id);
+      is_visible = idx === -1; // ? false : true;
 
       console.log("saving category id", category_id, "as", is_visible);
 
-      if ("string" === typeof expanded_category_items) {
-        expanded_category_items = expanded_category_items.split(",");
-        idx = expanded_category_items.indexOf(category_id);
-        if (!is_visible) { // not visible, let's save that
-          if (idx !== -1) {
-            console.log("Problem: index of not previously hidden category in hidden categories must be -1.");
-          }
-          expanded_category_items.push( category_id );
-          console.log('saving expanded category');
+      if (is_visible) { // just expanded it, let's save that
+        if (idx !== -1) {
+          console.log("Problem! saving already saved expanded category.");
         } else {
-          if (idx === -1) {
-            console.log("Problem: a previously hidden category_id is not in the hidden list!");
-          }
+          expanded_category_items.push( category_id );
+        }
+      }
+      else if (!is_visible) { // not visible, let's save that
+        if (idx === -1) {
+          console.log("Problem! Cannot find saved category to remove it.");
+        } else {
           expanded_category_items.splice(idx, 1);
         }
-        localStorage.setItem("expanded_category_items", expanded_category_items.join(","));
-      } 
+      }
+
+      console.log("saving", expanded_category_items);
+
+      localStorage.setItem("expanded_category_items", expanded_category_items.join(","));
     });
 
   } else {

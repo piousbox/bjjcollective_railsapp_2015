@@ -50,6 +50,7 @@ textarea.tinymce {
 /* 
  * categories
  */
+
 /* legacy */
 .categories-index ol,
 .categories-index ol li {
@@ -67,11 +68,15 @@ textarea.tinymce {
 }
 
 
-/* categories show */
-.categories-show ol.videos-list li {
-    margin-bottom: 10px;
+/**
+ * categories show
+ */
+.categories-show .videos-list li {
+    margin-bottom: 30px;
 }
-/* categories-tree */
+/**
+ * categories-tree
+ */
 .categories-tree * {
     font-size: 12px;
 }
@@ -93,6 +98,12 @@ textarea.tinymce {
   top: 0;
 }
 
+/**
+ * videos
+ */
+.videos-list .title {
+  margin-left: 130px;
+}
 
 
 

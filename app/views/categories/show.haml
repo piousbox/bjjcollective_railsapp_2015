@@ -11,15 +11,11 @@
           = raw categories_tree @categories
           -# = render 'categories/tree', :categories => @categories
     .large-8.columns
-      Category
-      %h5 #{@category.title}
-
-      %ol.videos-list
+      %ul.videos-list.no-bullet
         - @videos.each do |video|
-          %li
-            -# = image_tag video.video_thumbnail.thumbnail
-            = link_to image_tag( "http://img.youtube.com/vi/#{video.youtube_id}/1.jpg" ), video_path( video ), { :'data-no-turbolink' => true }
-            = link_to video.title, video_path( video )
+          %li.clearfix
+            .left.image= link_to image_tag( "http://img.youtube.com/vi/#{video.youtube_id}/1.jpg" ), video_path( video ), { :'data-no-turbolink' => true }
+            .title= link_to video.title, video_path( video )
 
       = paginate @videos, :param_name => :videos_page
 
