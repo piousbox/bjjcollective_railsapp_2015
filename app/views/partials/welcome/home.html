@@ -1,0 +1,46 @@
+
+<!-- partials/welcome/home.html -->
+
+<h4>Home. Cities List</h4>
+
+<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+  <ui-gmap-marker ng-repeat="city in cities | limitTo: 8 "
+                  idKey="city.cityname"
+                  coords="city.coords"
+                  >
+  </ui-gmap-marker>
+</ui-gmap-google-map>
+
+<ul class="large-block-grid-4" >
+  <li ng-repeat="city in cities | limitTo: 8 " ui-sref-active="active" >
+    <a ui-sref="cities.city({cityname: city.cityname})">{{city.name}}</a>
+  </li>
+</ul>
+
+<!-- authentication -->
+<form name="loginForm" ng-controller="LoginController"
+      ng-submit="login(credentials)" novalidate>
+  <label for="email">Email:</label>
+  <input type="text" id="user_email" name="user[email]"
+         ng-model="credentials.email">
+  <label for="password">Password:</label>
+  <input type="password" id="user_password" name="user[password]"
+         ng-model="credentials.password">
+  <button type="submit">Login</button>
+</form>
+
+<form method="post" id="new_user" class="new_user" action="http://api.local/en/users/sign_in" accept-charset="UTF-8">
+  <div style="margin:0;padding:0;display:inline">
+    <input type="hidden" value="✓" name="utf8">
+    <input type="hidden" value="PrDG5v26zcB+JAY9CD74q4162zzhprY84FO979kEHh4=" name="authenticity_token">
+  </div>
+  <div class="r">
+    <label for="user_email">Email</label>
+    <input type="email" value="" name="user[email]" id="user_email" autofocus="autofocus">
+  </div>
+  <div class="r">
+    <label for="user_password">Password</label>
+    <input type="password" name="user[password]" id="user_password">
+  </div>
+  <div class="actions"><input type="submit" value="Sign in" name="commit"></div>
+</form>
