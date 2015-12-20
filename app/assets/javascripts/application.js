@@ -8,7 +8,7 @@
 //= require foundation
 //= require utils
 // 
-//= require_tree .
+//= require_tree ./technique
 //
 
 $(document).ready(function() {

@@ -9,6 +9,9 @@
   .large-5.columns
     %ul
       %li= render 'version'
+      %li $state = {{$state.current.name}}
+      %li $stateParams = {{$stateParams}}
+      %li $state full url = {{$state.$current.url.source }}
   .large-3.columns
     = link_to image_tag( "icons/20x20/lock.gif" ), manager_root_path
     %br
