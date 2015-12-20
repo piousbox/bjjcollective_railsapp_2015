@@ -8,7 +8,7 @@ var myApp = angular.module('myApp');
 
 // myApp.value('Config', { api_endpoint: 'http://staging.api.travel-guide.mobi/api' });
 
-myApp.value('Config', { api_endpoint: 'http://api.local/api' });
+myApp.value('Config', { api_endpoint: 'http://localhost:3001/api' });
 
 
 

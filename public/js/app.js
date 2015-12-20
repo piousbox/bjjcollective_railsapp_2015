@@ -10,6 +10,9 @@ angular.module('myApp', [
   'angulartics',
   'angulartics.google.analytics',
 
+  'myApp.categories',
+  'myApp.categories.service',
+
   'myApp.cities',
   'myApp.cities.service',
 
@@ -32,25 +35,19 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: "partials/welcome/home.html",
+            templateUrl: "/partials/welcome/home.html",
             resolve: {
-                City: ['City', function(City) {
-                    return City;
-                }]
-                /* , Category: ['Category', function(Category) {
+                Category: ['Category', function(Category) {
                     return Category;
-                }] */
+                }] // */
             },
             controller: ['$scope', '$state', 'City', 'Category',
                 function( $scope,   $state,   City,   Category) {
-                    console.log('this is home');
+                    console.log('blah');
+
                     Category.index({}, function(categories) {
-                      console.log("categories are", categories);
-                    });
-                    City.index({}, function(cities) {
-                        $scope.cities = cities;
-                        $scope.map = { center: { latitude: 42.1451, longitude: -100.6680 }, zoom: 4 }
-                    });
+                      $scope.categories = categories;
+                    }); // */
                 }]
             
         })

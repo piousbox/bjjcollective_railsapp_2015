@@ -1,0 +1,27 @@
+!!!
+%html{:lang => "en", "ng-app" => "myApp"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:charset => "utf-8"}
+    %title My AngularJS App
+    %link{:href => "/lib/normalize.css", :rel => "stylesheet"}
+    %link{:href => "/lib/foundation/foundation.css", :rel => "stylesheet"}
+    %link{:href => "/css/app.css", :rel => "stylesheet"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %base{:href => "/"}
+  %body
+    .row
+      .large-12.columns
+        %ul.menu.nav
+          %li
+            %a{"ui-sref" => "home"} Home
+          %li
+            %a{"ui-sref" => "cities"} Cities
+          %li
+            %a{"ui-sref" => "reports"} Reports
+          %li
+            %a{"ui-sref" => "about"} About
+    .row
+      .large-12.columns
+        %div{"ui-view" => ""}
+    = render 'footer_angular'

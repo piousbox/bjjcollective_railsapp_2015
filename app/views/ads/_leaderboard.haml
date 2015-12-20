@@ -1,4 +1,6 @@
 
 - if ads_enabled?
   .text-center
-    = render 'ads_src/leaderboard'
+    .ad-leaderboard
+      - if Rails.env.production?
+        = render 'ads_src/leaderboard'

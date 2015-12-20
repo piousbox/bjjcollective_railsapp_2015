@@ -2,9 +2,10 @@
 %html{ :lang => 'en', :'ng-app' => 'myApp' }
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:charset => "utf-8"}
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %base{ :href => '/' }
-    %title BJJCollective - Fighters Guild
+    %title BJJCollective - Technique Database
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true    
     = javascript_include_tag 'application',               'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -19,7 +20,8 @@
           %p{ :class => :alert}= alert
           
         = yield
-    
+        
     = render 'main_footer'
     = render 'footer_js'
     = render 'analytics'
+    = render 'footer_angular'
