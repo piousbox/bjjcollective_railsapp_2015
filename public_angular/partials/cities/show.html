@@ -1,0 +1,13 @@
+
+<h3>City: {{ city.name }}</h3>
+
+<h4>Reports</h4>
+<ul>
+  <li ng-repeat="report in city.reports">
+    <a ui-sref="cities.report({cityname: city.cityname, name_seo: report.name_seo})">
+      {{ report.name }}
+    </a>
+  </li>
+</ul>
+
+ui-reports:<div ui-view="ui-reports"></div>

@@ -1,0 +1,14 @@
+'use strict';
+
+/**
+ * config the api endpoint please
+ */
+
+var myApp = angular.module('myApp');
+
+// myApp.value('Config', { api_endpoint: 'http://staging.api.travel-guide.mobi/api' });
+
+myApp.value('Config', { api_endpoint: 'http://api.local/api' });
+
+myApp.value('version', '0.0.1');
+
