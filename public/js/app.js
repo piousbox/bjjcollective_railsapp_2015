@@ -23,7 +23,7 @@ run(['$rootScope', '$state', '$stateParams', function(
 config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', function(
          $routeProvider,   $locationProvider,   $stateProvider,   $urlRouterProvider) {
 
-    $locationProvider.html5Mode(true);
+    // $locationProvider.html5Mode(true);
     
     $stateProvider
         .state('home', {
