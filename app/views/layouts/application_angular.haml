@@ -10,18 +10,13 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
     %base{:href => "/"}
   %body
-    .row
-      .large-12.columns
-        %ul.menu.nav
-          %li
-            %a{"ui-sref" => "home"} Home
-          %li
-            %a{"ui-sref" => "cities"} Cities
-          %li
-            %a{"ui-sref" => "reports"} Reports
-          %li
-            %a{"ui-sref" => "about"} About
+    = render 'main_header'
+          
     .row
       .large-12.columns
         %div{"ui-view" => ""}
+
+    = render 'main_footer'
     = render 'footer_angular'
+
+

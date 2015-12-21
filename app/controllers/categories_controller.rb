@@ -2,7 +2,7 @@
 class CategoriesController < ApplicationController
 
   def home
-    # render :layout => 'application_angular'
+    render :layout => 'application_angular'
   end
   
   def index
