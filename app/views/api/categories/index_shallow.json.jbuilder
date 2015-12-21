@@ -26,3 +26,14 @@ json.categories do
     end
   end
 end
+
+if @videos
+  json.videos do
+    json.array! @videos do |v|
+      json.youtube_id   v.youtube_id
+      json.title        v.title
+      json.descr        v.descr
+    end
+  end
+end
+

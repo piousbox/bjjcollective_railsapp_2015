@@ -98,7 +98,12 @@ angular.module('myApp.categories', ['ui.router']).
                          Category.index_2({ slug: $stateParams.slug, slug_0: $stateParams.slug_0, slug_1: $stateParams.slug_1,
                                             slug_2: $stateParams.slug_2, slug_3: $stateParams.slug_3
                                           }, function(data) {
-                           $scope.category = data.category;
+                           $scope.category = {
+                             id:           data.id,
+                             title:        data.title,
+                             slug:         data.slug,
+                             short_slug:   data.short_slug
+                           };
                            $scope.videos   = data.videos;
                          });
                        }]

@@ -8,7 +8,14 @@
 </ul>
 
 <ul class="videos no-bullet">
-  <li ng-repeat="v in videos">
-    <h5>{{ video.youtube_id }}</h5>
+  <li ng-repeat="video in videos">
+    <div class="row">
+      <div class="large-2 columns">
+        <img src="http://img.youtube.com/vi/{{video.youtube_id}}/1.jpg" alt="" />
+      </div>
+      <div class="large-10 columns">
+        <h5>{{ video.title }}</h5>
+      </div>
+    </div>    
   </li>
 </ul>
