@@ -5,12 +5,14 @@ partials/categories/categories_1.html
 
 <h4><a ui-sref="categories">Categories Home</a></h4>
 
+Category: {{ category.title }}
+
 <ul class="categories-top no-bullet">
   <li ng-repeat="c0 in categories">
     <h5>{{ c0.title }}</h5>
     <ul class="large-block-grid-5" >
       <li ng-repeat="c1 in c0.categories">
-        <a ui-sref="categories_1.detail({ slug: c0.slug, slug_detail: c1.short_slug })">
+        <a ui-sref="categories_1.detail({ slug: category.slug, slug_0: c0.short_slug, slug_1: c1.short_slug })">
           <img src="{{ c1.photo_url }}" alt="" />
           {{ c1.title }}
         </a>
@@ -19,3 +21,4 @@ partials/categories/categories_1.html
   </li>
 </ul>
 
+<div ui-view="detail"></div>
