@@ -172,7 +172,6 @@ class CategoriesTasks
         puts! c.errors, "Problem! Cannot save #{c.slug}."
       end
     end
-    
   end
 
   private
@@ -184,7 +183,7 @@ class CategoriesTasks
 
   def get_slug( category )
     category.title ||= "New Category Title"
-    slug = "" == category.slug ? category.title.gsub(/ /, '-').gsub(/[^0-9a-z-]/i, '') : category.slug
+    slug = "" == category.slug ? category.title.gsub(/ /, '-').gsub(/[^0-9a-z-]/i, '').downcase : category.slug
     if category.category
       slug = "#{get_slug( category.category )}-#{slug}"
     end
