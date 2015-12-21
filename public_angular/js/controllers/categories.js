@@ -91,14 +91,13 @@ angular.module('myApp.categories', ['ui.router']).
                   resolve: {
                     Category: ['Category', function(Category) {
                       return Category;
-                    }],
-                    Video: ['Video', function(Video) {
-                      return Video;
                     }]
                   },
-                  controller: ['$scope', '$stateParams', 'Category', 'Video',
-                       function($scope,   $stateParams,  Category,    Video) {
-                         Category.index_2({ slug: $stateParams.slug, slug_0: $stateParams.slug_0, slug_1: $stateParams.slug_1 }, function(data) {
+                  controller: ['$scope', '$stateParams', 'Category',
+                       function($scope,   $stateParams,  Category    ) {
+                         Category.index_2({ slug: $stateParams.slug, slug_0: $stateParams.slug_0, slug_1: $stateParams.slug_1,
+                                            slug_2: $stateParams.slug_2, slug_3: $stateParams.slug_3
+                                          }, function(data) {
                            $scope.category = data.category;
                            $scope.videos   = data.videos;
                          });

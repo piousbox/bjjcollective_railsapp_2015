@@ -2,6 +2,7 @@
 
 angular.module('myApp.categories.service', []).
     factory('Category', ['$resource', 'Config', function($resource, Config) {
+      
         var url = Config.api_endpoint + "/categories/:slug/:slug_detail.json";
         var defaults = {};
         var actions = { index:   { method: 'GET', params: undefined, isArray: false, headers: undefined },
