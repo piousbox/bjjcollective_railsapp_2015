@@ -5,7 +5,7 @@ angular.module('myApp.categories', ['ui.router']).
 
         $stateProvider.
             state('categories', {
-                url: '/',
+                url: '/technique',
                 views: {
                     '': {
                         templateUrl: '/partials/categories/categories.html',
@@ -26,7 +26,7 @@ angular.module('myApp.categories', ['ui.router']).
                 }
             }).
             state('categories.c1', {
-              url: '/:c0_slug/:c1_slug',
+              url: 'technique/:c0_slug/:c1_slug',
               parent: 'categories',
               views: {
                 '': {
