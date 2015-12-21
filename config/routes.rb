@@ -1,7 +1,7 @@
 
 Rails.application.routes.draw do
 
-  root :to => 'welcome#home'
+  root :to => 'technique/categories#home'
   
   devise_for :users, controllers: { sessions: 'users/sessions' }
   # devise_for :users, path: "auth", path_names: {
