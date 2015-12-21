@@ -9,4 +9,10 @@ namespace :categories do
     task_runner.reindex
   end
 
+  desc "if slug of a category is empty, create a new one"
+  task :regenerate_slugs => :environment do
+    task_runner = CategoriesTasks.new
+    task_runner.regenerate_slugs
+  end
+  
 end

@@ -1,12 +1,13 @@
 
-json.array! @categories do |c|
+json.array! @categories do |c| # mounts, guards, ...
   json.id c.id.to_s
   json.title c.title
 
   json.categories do
-    json.array! c.categories do |c_1|
+    json.array! c.categories do |c_1| # DLR guard, x guard, ...
       json.id c_1.id.to_s
       json.title c_1.title
+      json.photo_url c_1.photo.photo.url :thumb2
 
       json.categories do
         json.array! c_1.categories do |c_2|

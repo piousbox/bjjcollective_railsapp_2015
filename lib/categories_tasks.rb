@@ -148,11 +148,47 @@ class CategoriesTasks
     end
   end
 
+  def regenerate_slugs
+    categories = Category.where( :category_id => nil )
+    
+    existing_slugs = []
+    Category.all.each do |c|
+      if c.slug.length > 1
+        if existing_slugs.include? c.slug
+          puts! c, "dublicate slug!"
+        else
+          existing_slugs.push c.slug
+        end
+      end
+    end
+    
+    slugless_categories = Category.where( :slug => "" )
+    puts! slugless_categories.length, "n slugless categories"
+    slugless_categories.each do |c|
+      c.slug = get_slug( c )
+      flag = c.save
+      if flag
+      else
+        puts! c.errors, "Problem! Cannot save #{c.slug}."
+      end
+    end
+    
+  end
+
   private
 
   def puts! args, label=""
     puts "+++ +++ #{label}"
     puts args.inspect
+  end
+
+  def get_slug( category )
+    category.title ||= "New Category Title"
+    slug = "" == category.slug ? category.title.gsub(/ /, '-').gsub(/[^0-9a-z-]/i, '') : category.slug
+    if category.category
+      slug = "#{get_slug( category.category )}-#{slug}"
+    end
+    slug
   end
   
 end
