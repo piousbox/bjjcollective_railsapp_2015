@@ -1,3 +1,4 @@
+'use strict';
 
 angular.module('myApp.categories', ['ui.router']).
     config(['$stateProvider', '$urlRouterProvider', function(
@@ -5,7 +6,7 @@ angular.module('myApp.categories', ['ui.router']).
 
         $stateProvider.
             state('categories', {
-                url: '/technique',
+                url: '/',
                 views: {
                     '': {
                         templateUrl: '/partials/categories/categories.html',
@@ -18,27 +19,44 @@ angular.module('myApp.categories', ['ui.router']).
                         controller: ['$scope', '$state', 'Category',
                             function( $scope,   $state,   Category) {
                               Category.index({}, function(categories) {
-                                console.log("categories are", categories);
                                 $scope.categories = categories;
                               });
                             }]
                     }
                 }
             }).
-            state('categories.c1', {
-              url: '/:c0_slug/:c1_slug',
-              parent: 'categories',
+            state('categories_1', {
+              url: '/:slug',
               views: {
                 '': {
-                  templateUrl: '/partials/categories/categories_c1.html',
+                  templateUrl: '/partials/categories/categories_1.html',
                   resolve: {
                     Category: ['Category', function(Category) {
                       return Category;
                     }]
                   },
-                  controller: ['$scope', '$stateParms', 'Category',
+                  controller: ['$scope', '$stateParams', 'Category',
                        function($scope,   $stateParams,  Category) {
-                         $scope.some_data = 'xxsome_data';
+                         Category.index({ slug: $stateParams.slug }, function(categories) {
+                           $scope.categories = categories;
+                         });
+                       }]
+                }
+              }
+            }).
+            state('categories_1.detail', {
+              url: '/:slug_detail',
+              parent: 'categories_1',
+              views: {
+                'detail': {
+                  templateUrl: '/partials/categories/categories_2.html',
+                  resolve: {
+                    Category: ['Category', function(Category) {
+                      return Category;
+                    }]
+                  },
+                  controller: ['$scope', '$stateParams', 'Category',
+                       function($scope,   $stateParams,  Category) {
                        }]
                 }
               }

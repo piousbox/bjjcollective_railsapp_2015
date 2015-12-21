@@ -1,7 +1,7 @@
 
-<!-- partials/categories/categories.html -->
+<!-- partials/categories/categories_2.html -->
 
-partials/categories/categories.html
+partials/categories/categories_2.html
 
 <h4><a ui-sref="categories">Categories Home</a></h4>
 
@@ -16,5 +16,7 @@ partials/categories/categories.html
         </a>
       </li>
     </ul>
+    <div ng-repeat="c1 in c0.categories" id="{{c1.slug}}">
+    </div>
   </li>
 </ul>

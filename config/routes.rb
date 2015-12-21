@@ -14,9 +14,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     get "categories", :to => "categories#index_shallow"
-    
+    get "categories/:slug", :to => "categories#index_shallow"
     resources :categories
-    
   end
   
   get 'fighters_guild' => 'fighters_guild/welcome#home', :as => :fg_root

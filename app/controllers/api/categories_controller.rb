@@ -9,6 +9,10 @@ class Api::CategoriesController < Api::ApiController
 
   def index_shallow
     @categories = Category.where( :category_id => nil )
+    if params[:slug]
+      category = Category.where( :slug => params[:slug] ).first
+      @categories = Category.where( :category_id => category.id )
+    end
   end
   
 end

@@ -23,12 +23,12 @@ run(['$rootScope', '$state', '$stateParams', function(
 config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', function(
          $routeProvider,   $locationProvider,   $stateProvider,   $urlRouterProvider) {
 
-    var base_url = "/";
+    var base_url = "";
     $locationProvider.html5Mode(true);
     
     $stateProvider.
         state('home', {
-            url: base_url,
+            url: base_url+"/home",
             templateUrl: "/partials/welcome/home.html",
             resolve: {
                 Category: ['Category', function(Category) {

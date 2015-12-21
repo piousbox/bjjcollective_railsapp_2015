@@ -12,3 +12,7 @@ myApp.value('Config', { api_endpoint: 'http://bjjc-angular.local/api' });
 
 
 
+
+
+
+
