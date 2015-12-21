@@ -6,18 +6,11 @@ angular.module('myApp', [
   'ngAnimate',
   'ui.router',
   'ngSanitize',
-  'uiGmapgoogle-maps',
   'angulartics',
   'angulartics.google.analytics',
 
   'myApp.categories',
-  'myApp.categories.service',
-
-  'myApp.cities',
-  'myApp.cities.service',
-
-  'myApp.reports',
-  'myApp.reports.service'
+  'myApp.categories.service'
 
 ]).
 run(['$rootScope', '$state', '$stateParams', function(
@@ -41,8 +34,8 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
                     return Category;
                 }] // */
             },
-            controller: ['$scope', '$state', 'City', 'Category',
-                function( $scope,   $state,   City,   Category) {
+            controller: ['$scope', '$state', 'Category',
+                function( $scope,   $state,   Category) {
                     console.log('blah');
 
                     Category.index({}, function(categories) {
