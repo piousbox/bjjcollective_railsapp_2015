@@ -6,6 +6,7 @@ The fighers guild!
 
 http://bjjcollective.com
 
+Check out the branches! This is a branched repo.
 
 Development
 ===========
@@ -47,3 +48,4 @@ Change Log
 * 0.0.4 - leaderboards
 * 0.0.5 - legacy video redirect
 * 0.0.6 - let's go angular
+* 0.0.7 - angular is out, let's put angular in.

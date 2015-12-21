@@ -1,5 +1,5 @@
 
-class CategoriesController < ApplicationController
+class Technique::CategoriesController < Technique::TechniqueController
 
   def home
     render :layout => 'application_angular'
