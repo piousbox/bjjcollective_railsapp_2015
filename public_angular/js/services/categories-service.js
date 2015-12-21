@@ -8,7 +8,12 @@ angular.module('myApp.categories.service', []).
                         show:    { method: 'GET', isArray: false,
                                    url: Config.api_endpoint + "/category/:slug.json"
                                  },
-                        index_1: { method: 'GET', url: Config.api_endpoint + "/categories/:slug/:slug_0/:slug_1.json" }
+                        index_1: { method: 'GET', 
+                                   url: Config.api_endpoint + "/categories/:slug/:slug_0/:slug_1.json" 
+                                 },
+                        index_2: { method: 'GET',
+                                   url: Config.api_endpoint + "/categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3.json"
+                                 }
                       };
         return $resource(url, defaults, actions);
     }]);

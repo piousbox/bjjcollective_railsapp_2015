@@ -1,0 +1,14 @@
+
+<!-- partials/videos/videos.html -->
+
+<ul>
+  <li>partials/videos/videos.html</li>
+  <li>Category: {{ category.title }}</li>
+  <li>Videos: {{ videos.length }}</li>
+</ul>
+
+<ul class="videos no-bullet">
+  <li ng-repeat="v in videos">
+    <h5>{{ video.youtube_id }}</h5>
+  </li>
+</ul>
