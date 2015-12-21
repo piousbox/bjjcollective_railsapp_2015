@@ -35,7 +35,7 @@ class Manager::MeritBadgesController < Manager::ManagerController
       @badge.shaded_photo = photo
       if @badge.save
       else
-        flash[:alert] = "No Luck: #{photo.errors.inspect}."
+        flash[:alert] = "No Luck: #{photo.errors.messages}"
         render :action => :new and return
       end
     end
@@ -47,7 +47,7 @@ class Manager::MeritBadgesController < Manager::ManagerController
       if photo.save
         ;
       else
-        flash[:alert] = "No Luck: #{photo.errors.inspect}."
+        flash[:alert] = "No Luck: #{photo.errors.messages}"
         render :action => :new and return
       end
     end
@@ -59,7 +59,7 @@ class Manager::MeritBadgesController < Manager::ManagerController
       if photo.save
         ;
       else
-        flash[:alert] = "No Luck: #{photo.errors.inspect}."
+        flash[:alert] = "No Luck: #{photo.errors.messages}"
         render :action => :new and return
       end
     end
@@ -70,7 +70,7 @@ class Manager::MeritBadgesController < Manager::ManagerController
       flash[:notice] = 'Success.'
       redirect_to manager_badges_path
     else
-      flash[:alert] = "#{flash[:alert]} No Luck: #{@badge.errors.inspect}."
+      flash[:alert] = "#{flash[:alert]} No Luck: #{@badge.errors.messages}"
       render :action => :new
     end
   end

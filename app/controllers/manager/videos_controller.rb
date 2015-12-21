@@ -28,7 +28,7 @@ class Manager::VideosController < Manager::ManagerController
       flash[:notice] = 'Success.'
       redirect_to :action => 'index'
     else
-      flash[:alert] = "No Luck. #{@video.errors.inspect}"
+      flash[:alert] = "No Luck. #{@video.errors.messages}"
       render :action => "edit"
     end
   end
@@ -46,7 +46,7 @@ class Manager::VideosController < Manager::ManagerController
       flash[:notice] = 'Success.'
       redirect_to :action => 'index'
     else
-      flash[:alert] = "No Luck. #{@video.errors.inspect}"
+      flash[:alert] = "No Luck. #{@video.errors.messages}"
       render :action => "new"
     end
   end

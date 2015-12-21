@@ -35,7 +35,7 @@ class Manager::QuestsetsController < Manager::ManagerController
       photo.unavailable_badge = @questset
       if photo.save
       else
-        flash[:alert] = "No Luck: #{photo.errors.inspect}."
+        flash[:alert] = "No Luck: #{photo.errors.messages}"
         render :action => :new and return
       end
     end
@@ -46,7 +46,7 @@ class Manager::QuestsetsController < Manager::ManagerController
       photo.shaded_badge = @questset
       if photo.save
       else
-        flash[:alert] = "No Luck: #{photo.errors.inspect}."
+        flash[:alert] = "No Luck: #{photo.errors.messages}"
         render :action => :new and return
       end
     end
@@ -57,7 +57,7 @@ class Manager::QuestsetsController < Manager::ManagerController
       photo.accomplished_badge = @questset
       if photo.save
       else
-        flash[:alert] = "No Luck: #{photo.errors.inspect}."
+        flash[:alert] = "No Luck: #{photo.errors.messages}"
         render :action => :new and return
       end
     end
@@ -68,7 +68,7 @@ class Manager::QuestsetsController < Manager::ManagerController
       photo.title_badge = @questset
       if photo.save
       else
-        flash[:alert] = "No Luck: #{photo.errors.inspect}."
+        flash[:alert] = "No Luck: #{photo.errors.messages}"
         render :action => :new and return
       end
     end
@@ -79,7 +79,7 @@ class Manager::QuestsetsController < Manager::ManagerController
       flash[:notice] = 'Success.'
       redirect_to manager_questsets_path
     else
-      flash[:alert] = "#{flash[:alert]} No Luck: #{@questset.errors.inspect}."
+      flash[:alert] = "#{flash[:alert]} No Luck: #{@questset.errors.messages}"
       render :action => :new
     end
   end
