@@ -23,11 +23,12 @@ run(['$rootScope', '$state', '$stateParams', function(
 config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', function(
          $routeProvider,   $locationProvider,   $stateProvider,   $urlRouterProvider) {
 
-    // $locationProvider.html5Mode(true);
+    var base_url = "/technique";
+    $locationProvider.html5Mode(true);
     
     $stateProvider
         .state('home', {
-            url: '/',
+            url: base_url,
             templateUrl: "/partials/welcome/home.html",
             resolve: {
                 Category: ['Category', function(Category) {
@@ -46,7 +47,7 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
             
         })
         .state('about', {
-            url: '/about',
+            url: base_url+'/about',
             template: "<h5>About template</h5>"
         });
     

@@ -148,6 +148,19 @@ class CategoriesTasks
     end
   end
 
+  def regenerate_short_slugs
+    categories = Category.where( :short_slug => nil )
+    puts! categories.length, "n categories without short slug"
+    categories.each do |c|
+      c.title ||= "Uncategorized"
+      c.short_slug = c.title.downcase
+      if c.save
+      else
+        puts! c.errors, "No luck. #{c.errors}"
+      end
+    end
+  end
+  
   def regenerate_slugs
     categories = Category.where( :category_id => nil )
     

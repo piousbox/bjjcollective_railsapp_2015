@@ -1,0 +1,23 @@
+
+.categories-show
+  .row
+    .large-12.columns
+      = render 'categories/breadcrumbs', :categories => @categories_list, :category => @category
+
+  .row
+    .large-4.columns
+      - cache( 'categories_tree' ) do
+        .categories-tree
+          - if 'helper' == categories_tree_type
+            = raw categories_tree @categories, Category.new
+          - elsif 'partial' == categories_tree_type
+            = render 'categories/tree', :categories => @categories, :category => Category.new
+            
+    .large-8.columns
+      %ul.videos-list.no-bullet
+        - @videos.each do |video|
+          %li.clearfix
+            .left.image= link_to image_tag( "http://img.youtube.com/vi/#{video.youtube_id}/1.jpg" ), video_path( video ), { :'data-no-turbolink' => true }
+            .title= link_to video.title, video_path( video )
+
+      = paginate @videos, :param_name => :videos_page

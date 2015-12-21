@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   #              sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification',
   #              unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in'
   #            }
+  
+  get "videos/:id",            :to => "categories#video"
+  get "video/:legacy_id", :to => "videos#legacy_show"
 
   namespace :api do
     resources :categories
@@ -44,13 +47,11 @@ Rails.application.routes.draw do
   end
 
   namespace :technique do
+    root :to => "categories#home"
+    
     get "categories/view/:slug", :to => "categories#show"
-    get "categories" => redirect { |params, request| "/" }
-    get "categories/:id", :to => "categories#show"
-  
-    get "videos/:id", :to => "categories#video"
-    get "video/:legacy_id", :to => "videos#legacy_show"
-
+    get "categories",            :to => "categories#home"
+    get "categories/:id",        :to => "categories#show"
   end
   
 end

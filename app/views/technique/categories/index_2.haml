@@ -1,0 +1,38 @@
+
+.categories-index
+  .row
+    .large-12.columns
+      %ol.c0
+        - @categories.each do |c0| # instead of .each do |key, value|
+          %li
+            .name= c0[0]
+            %ol.large-block-grid-5.c1
+              - c0[1].each do |c1|
+                %li
+                  .name
+                    = image_tag "category_images/#{c0[0]}/fm-#{c1[0]}.jpg"
+                    %br
+                    = c1[0]
+                  %ol.c2
+                    - c1[1].each do |c2|
+                      %li
+                        .name= c2[0]
+                        %ol.c3
+                          - c2[1].each do |c3|
+                            %li
+                              .name
+                                = image_tag "category_images/#{c0[0]}/#{c1[0]}/#{c2[0]}/fm-#{c3[0]}.jpg"
+                                %br
+                                = c3[0]
+                              %ol.c4
+                                - c3[1].each do |c4|
+                                  %li
+                                    .name= c4[0]
+                                    %ol.c5
+                                      - c4[1].each do |c5|
+                                        %li
+                                          -# .name= c5[0]
+                                          = link_to c5[0], category_path( c5[1]['link'] )
+                                        
+
+

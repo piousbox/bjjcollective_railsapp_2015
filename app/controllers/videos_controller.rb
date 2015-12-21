@@ -1,5 +1,5 @@
 
-class Technique::VideosController < Technique::TechniqueController
+class VideosController < ApplicationController
 
   def legacy_show
     @video = Video.where( :legacy_id => params[:legacy_id] ).first
