@@ -148,12 +148,19 @@ class CategoriesTasks
     end
   end
 
+  def clear_short_slugs
+    Category.all.each do |c|
+      c.short_slug = nil
+      c.save :validate => false
+    end
+  end
+  
   def regenerate_short_slugs
     categories = Category.where( :short_slug => nil )
     puts! categories.length, "n categories without short slug"
     categories.each do |c|
       c.title ||= "Uncategorized"
-      c.short_slug = c.title.downcase
+      c.short_slug = c.title.gsub(/ /, '-').gsub(/[^0-9a-z-]/i, '').downcase
       if c.save
       else
         puts! c.errors, "No luck. #{c.errors}"
@@ -175,7 +182,7 @@ class CategoriesTasks
       end
     end
     
-    slugless_categories = Category.where( :slug => "" )
+    slugless_categories = Category.where( :slug => nil )
     puts! slugless_categories.length, "n slugless categories"
     slugless_categories.each do |c|
       c.slug = get_slug( c )

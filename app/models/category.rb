@@ -5,7 +5,7 @@ class Category
   include Mongoid::Timestamps
 
   field :title,         :type => String # validates_uniqueness_of :title # This cannot be done without scope as there are many subcategories "Top"
-  field :slug,          :type => String,  :default => ""
+  field :slug,          :type => String
   validates_uniqueness_of :slug
   field :short_slug,    :type => String
   field :subhead,       :type => String
