@@ -4,7 +4,7 @@
 <ul>
   <li>partials/videos/videos.html</li>
   <li>Category: {{ category.title }}</li>
-  <li>Videos: {{ videos.length }}</li>
+  <li>Videos: {{ n_videos }}</li>
 </ul>
 
 <ul class="videos no-bullet">
@@ -19,3 +19,13 @@
     </div>    
   </li>
 </ul>
+
+<div class="pagination">
+  Pages:
+  <span ng-repeat=" i in n_pages ">
+    <a ui-sref="categories_1.detail.videos_paged({ slug: $stateParams.slug, slug_0: $stateParams.slug_0, slug_1: $stateParams.slug_1,
+                                                 slug_2: $stateParams.slug_2, slug_3: $stateParams.slug_3, videos_page: i
+                                              })">{{ i }}</a>                                              
+  </span>
+
+</div>

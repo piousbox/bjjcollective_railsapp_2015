@@ -28,6 +28,8 @@ json.categories do
 end
 
 if @videos
+  json.n_videos @n_videos
+  json.n_pages @n_pages
   json.videos do
     json.array! @videos do |v|
       json.youtube_id   v.youtube_id

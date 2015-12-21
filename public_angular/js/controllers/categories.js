@@ -95,6 +95,8 @@ angular.module('myApp.categories', ['ui.router']).
                   },
                   controller: ['$scope', '$stateParams', 'Category',
                        function($scope,   $stateParams,  Category    ) {
+                         var i, n_pages=[];
+                         
                          Category.index_2({ slug: $stateParams.slug, slug_0: $stateParams.slug_0, slug_1: $stateParams.slug_1,
                                             slug_2: $stateParams.slug_2, slug_3: $stateParams.slug_3
                                           }, function(data) {
@@ -105,6 +107,45 @@ angular.module('myApp.categories', ['ui.router']).
                              short_slug:   data.short_slug
                            };
                            $scope.videos   = data.videos;
+                           for (i=1; i<=data.n_pages; i++) {
+                             n_pages.push( i );
+                           }
+                           $scope.n_pages  = n_pages;
+                         });
+                       }]
+                }
+              }
+            }).
+            state('categories_1.detail.videos_paged', {
+              url: '/:slug_2/:slug_3/videos/page/:videos_page', // "/:slug/:slug_0/:slug_1" is prepended from parent.
+              parent: 'categories_1.detail',
+              views: {
+                'videos': {
+                  templateUrl: '/partials/videos/videos.html',
+                  resolve: {
+                    Category: ['Category', function(Category) {
+                      return Category;
+                    }]
+                  },
+                  controller: ['$scope', '$stateParams', 'Category',
+                       function($scope,   $stateParams,  Category    ) {
+                         var i, n_pages=[];
+                         
+                         Category.index_2({ slug: $stateParams.slug, slug_0: $stateParams.slug_0, slug_1: $stateParams.slug_1,
+                                            slug_2: $stateParams.slug_2, slug_3: $stateParams.slug_3, videos_page: $stateParams.videos_page
+                                          }, function(data) {
+                           $scope.category = {
+                             id:           data.id,
+                             title:        data.title,
+                             slug:         data.slug,
+                             short_slug:   data.short_slug
+                           };
+                           $scope.videos   = data.videos;
+                           for (i=1; i<=data.n_pages; i++) {
+                             n_pages.push( i );
+                           }
+                           $scope.n_pages  = n_pages;
+                           $scope.n_videos = data.n_videos;
                          });
                        }]
                 }

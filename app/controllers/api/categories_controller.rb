@@ -16,7 +16,9 @@ class Api::CategoriesController < Api::ApiController
         if params[:slug_3]
           @category = Category.where( :short_slug => params[:slug_2], :category_id => @category.id ).first
           @category = Category.where( :short_slug => params[:slug_3], :category_id => @category.id ).first
+          @n_videos = @category.videos.length
           @videos = @category.videos.page( params[:videos_page] ).per( 10 )
+          @n_pages = ( @category.videos.length.to_f / 10 ).ceil
         end
       end
       @categories = Category.where( :category_id => @category.id )
