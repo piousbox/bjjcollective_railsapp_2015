@@ -1,5 +1,16 @@
 
 <!-- partials/welcome/home.html -->
 
-<h4>Home. Categories</h4>
+<h4>Categories Home</h4>
 <h5>partials/welcome/home.html</h5>
+
+<ul class="categories-top">
+  <li ng-repeat="c in categories">
+    <h5>{{ c.title }}</h5>
+    <ul class="large-block-grid-5" >
+      <li ng-repeat="c1 in c.categories">
+        { c1.title }}
+      </li>
+    </ul>
+  </li>
+</ul>

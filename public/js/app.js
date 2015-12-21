@@ -36,11 +36,12 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
             },
             controller: ['$scope', '$state', 'Category',
                 function( $scope,   $state,   Category) {
-                    console.log('blah');
+                  Category.index({}, function(categories) {
 
-                    Category.index({}, function(categories) {
-                      $scope.categories = categories;
-                    }); // */
+                    console.log("categories are", categories);
+
+                    $scope.categories = categories;
+                  }); // */
                 }]
             
         })
