@@ -4,7 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %meta{:charset => "utf-8"}
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
-    %base{ :href => '/' }
+    -# %base{ :href => '/' }
     %title BJJCollective - Technique Database
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true    
     = javascript_include_tag 'application',               'data-turbolinks-track' => true
@@ -22,6 +22,5 @@
         = yield
         
     = render 'main_footer'
-    = render 'footer_js'
+    -# = render 'footer_js' # this is only angular stuff
     = render 'analytics'
-    = render 'footer_angular'
