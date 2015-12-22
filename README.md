@@ -12,6 +12,8 @@ Development
 ===========
 
 Port 3001 please
+bjjc.local runs on port 81
+bjjc-angular.local is required to run
 
 @TODO: There needs to be disaster recovery
 @TODO: Show of a merit badge should have human url
