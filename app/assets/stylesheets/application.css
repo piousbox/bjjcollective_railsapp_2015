@@ -118,6 +118,9 @@ textarea.tinymce {
     margin-bottom: 20px;
     /* background: url('backgrounds/seamless-map.jpg'); */
 }
+.fg-questsets-show {
+    margin: 20px 0;
+}
 .fg-questsets--list li {
     margin-bottom: 20px;
 }

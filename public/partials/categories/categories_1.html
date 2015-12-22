@@ -1,5 +1,7 @@
 
-<!-- partials/categories/categories.html -->
+<!-- partials/categories/categories_1.html -->
+
+Category: {{ category.title }}
 
 <div class="row">
   <div class="large-8 columns">
@@ -8,7 +10,7 @@
         <h5>{{ c0.title }}</h5>
         <ul class="large-block-grid-5" >
           <li ng-repeat="c1 in c0.categories">
-            <a ui-sref="categories_1({ slug: c1.slug })">
+            <a ui-sref="categories_1.detail({ slug: category.slug, slug_0: c0.short_slug, slug_1: c1.short_slug })">
               <img src="{{ c1.photo_url }}" alt="" />
               {{ c1.title }}
             </a>
@@ -19,7 +21,8 @@
   </div>
   
   <div class="large-4 columns">
+    <div ui-view="detail" class="slide" ></div>
   </div>
 </div>
+    
 
-<div ui-view="videos-list"></div>
