@@ -87,6 +87,9 @@ angular.module('myApp.categories', ['ui.router']).
               parent: 'categories_1.detail',
               views: {
                 'videos': {
+                  template: "The videos"
+                },
+                'videos-list@': {
                   templateUrl: '/partials/videos/videos.html',
                   resolve: {
                     Category: ['Category', function(Category) {
@@ -111,6 +114,7 @@ angular.module('myApp.categories', ['ui.router']).
                              n_pages.push( i );
                            }
                            $scope.n_pages  = n_pages;
+                           $scope.n_videos = data.n_videos;
                          });
                        }]
                 }
