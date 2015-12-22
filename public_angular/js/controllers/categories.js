@@ -76,7 +76,7 @@ angular.module('myApp.categories', ['ui.router']).
                              title:        data.title,
                              slug:         data.slug,
                              short_slug:   data.short_slug
-                          };
+                           };
                          });
                        }]
                 }
@@ -86,9 +86,6 @@ angular.module('myApp.categories', ['ui.router']).
               url: '/:slug_2/:slug_3/videos', // "/:slug/:slug_0/:slug_1" is prepended from parent.
               parent: 'categories_1.detail',
               views: {
-                'videos': {
-                  template: "The videos"
-                },
                 'videos-list@': {
                   templateUrl: '/partials/videos/videos.html',
                   resolve: {
@@ -124,7 +121,7 @@ angular.module('myApp.categories', ['ui.router']).
               url: '/:slug_2/:slug_3/videos/page/:videos_page', // "/:slug/:slug_0/:slug_1" is prepended from parent.
               parent: 'categories_1.detail',
               views: {
-                'videos': {
+                'videos-list@': {
                   templateUrl: '/partials/videos/videos.html',
                   resolve: {
                     Category: ['Category', function(Category) {
