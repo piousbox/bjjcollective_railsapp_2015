@@ -13,7 +13,6 @@ gem 'therubyracer'
 gem 'libv8'
 
 gem 'jquery-rails'
-# gem 'turbolinks' # this fucks everything up!
 gem 'jbuilder', '~> 2.0'
 
 # bundle exec rake doc:rails generates the API under doc/api.
