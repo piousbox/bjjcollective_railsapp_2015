@@ -1,6 +1,4 @@
 
-/.bundle
-
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
@@ -8,12 +6,11 @@
 !/log/.keep
 /tmp
 
+.\#*
+\#*#
 *~
 *.trash
 
 config/database.yml
-
 config/initializers/s3.rb
 
-.\#*
-\#*#
