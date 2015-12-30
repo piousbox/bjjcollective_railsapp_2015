@@ -1,4 +1,6 @@
 
+Mongo::Logger.logger = ::Logger.new('mongo.log')
+
 class CategoriesTasks
 
   def self.sanity
