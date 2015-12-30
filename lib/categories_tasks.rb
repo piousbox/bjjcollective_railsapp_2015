@@ -182,7 +182,7 @@ class CategoriesTasks
       end
     end
     
-    slugless_categories = Category.where( :slug => nil )
+    slugless_categories = Category.where( :slug => "" )
     puts! slugless_categories.length, "n slugless categories"
     slugless_categories.each do |c|
       c.slug = get_slug( c )
