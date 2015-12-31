@@ -86,6 +86,13 @@ angular.module('myApp.categories', ['ui.router']).
               url: '/:slug_2/:slug_3/videos', // "/:slug/:slug_0/:slug_1" is prepended from parent.
               parent: 'categories_1.detail',
               views: {
+                'detail': {
+                  templateUrl: "/partials/empty.html",
+                  controller: ['$scope', '$stateParams',
+                       function($scope,   $stateParams) {
+                         console.log("ctrl of categories_1.detail.videos view `detail`.");
+                       }]
+                },
                 'videos-list@': {
                   templateUrl: '/partials/videos/videos.html',
                   resolve: {
@@ -97,6 +104,8 @@ angular.module('myApp.categories', ['ui.router']).
                        function($scope,   $stateParams,  Category    ) {
                          var i, n_pages=[];
                          
+                         console.log('blah blah blah');
+
                          Category.index_2({ slug: $stateParams.slug, slug_0: $stateParams.slug_0, slug_1: $stateParams.slug_1,
                                             slug_2: $stateParams.slug_2, slug_3: $stateParams.slug_3
                                           }, function(data) {
