@@ -1,5 +1,5 @@
 
-Mongo::Logger.logger = ::Logger.new('mongo.log')
+Mongo::Logger.logger = ::Logger.new('log/mongo.log')
 
 class CategoriesTasks
 
