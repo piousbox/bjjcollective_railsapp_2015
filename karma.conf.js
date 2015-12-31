@@ -57,7 +57,8 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    // reporters: ['progress'],
+    reporters: ['dots', 'junit'], // _vp_ 20151230
 
 
     // web server port
@@ -79,12 +80,12 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'], // _vp_ 20151230 ['Chrome'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true, // _vp_ 20151230
 
     // Concurrency level
     // how many browser should be started simultaneous
