@@ -15,8 +15,8 @@ angular.module('myApp.categories', ['ui.router']).
                                 return Category;
                             }]
                         },
-                        // controller: 'CategoriesIndexController' 
-                        controller: ['$scope', '$state', 'Category',
+                        controller: 'CategoriesIndexController' 
+                        /* controller: ['$scope', '$state', 'Category',
                             function( $scope,   $state,   Category) {
                               Category.index({}, function(data) {
                                 $scope.categories = data.categories;
@@ -27,7 +27,7 @@ angular.module('myApp.categories', ['ui.router']).
                                   short_slug:   data.short_slug
                                 };
                               });
-                            }]
+                            }] */
                     }
                 }
             }).
@@ -86,33 +86,75 @@ angular.module('myApp.categories', ['ui.router']).
               url: '/:slug_2/:slug_3/videos', // "/:slug/:slug_0/:slug_1" is prepended from parent.
               parent: 'categories_1.detail',
               views: {
-                'videos-list@': {
-                  templateUrl: '/partials/videos/videos.html',
-                  resolve: {
-                    Category: ['Category', function(Category) {
-                      return Category;
-                    }]
-                  },
-                  controller: ['$scope', '$stateParams', 'Category',
-                       function($scope,   $stateParams,  Category    ) {
-                         var i, n_pages=[];
-                         
-                         Category.index_2({ slug: $stateParams.slug, slug_0: $stateParams.slug_0, slug_1: $stateParams.slug_1,
-                                            slug_2: $stateParams.slug_2, slug_3: $stateParams.slug_3
-                                          }, function(data) {
+                '@': {
+                    templateUrl: "/partials/empty.html",
+                    resolve: {
+                      Category: ['Category', function(Category) {
+                        return Category;
+                      }]
+                    },
+                    controller: ['$scope', '$stateParams', 'Category',
+                       function($scope,   $stateParams,  Category) {
+                         Category.index_1({ slug: $stateParams.slug, slug_0: $stateParams.slug_0, slug_1: $stateParams.slug_1 }, function(data) {
+                           $scope.categories = data.categories;
                            $scope.category = {
                              id:           data.id,
                              title:        data.title,
                              slug:         data.slug,
                              short_slug:   data.short_slug
                            };
-                           $scope.videos   = data.videos;
-                           for (i=1; i<=data.n_pages; i++) {
-                             n_pages.push( i );
-                           }
-                           $scope.n_pages  = n_pages;
-                           $scope.n_videos = data.n_videos;
                          });
+                       }]
+                },
+                'detail@categories_1': {
+                  templateUrl: '/partials/categories/categories_1_detail.html',
+                  resolve: {
+                    Category: ['Category', function(Category) {
+                      return Category;
+                    }]
+                  },
+                  controller: ['$scope', '$stateParams', 'Category',
+                       function($scope,   $stateParams,  Category) {
+                         Category.index_1({ slug: $stateParams.slug, slug_0: $stateParams.slug_0, slug_1: $stateParams.slug_1 }, function(data) {
+                           $scope.categories = data.categories;
+                           $scope.category = {
+                             id:           data.id,
+                             title:        data.title,
+                             slug:         data.slug,
+                             short_slug:   data.short_slug
+                           };
+                         });
+                       }]
+                },
+                'videos-list@': {
+                    templateUrl: '/partials/videos/videos.html',
+                    resolve: {
+                        Category: ['Category', function(Category) {
+                            return Category;
+                        }]
+                    },
+                    controller: ['$scope', '$stateParams', 'Category',
+                       function($scope,   $stateParams,  Category    ) {
+                           var i, n_pages=[];
+                           
+                           console.log('aaa');
+                         
+                           Category.index_2({ slug: $stateParams.slug, slug_0: $stateParams.slug_0, slug_1: $stateParams.slug_1,
+                                              slug_2: $stateParams.slug_2, slug_3: $stateParams.slug_3
+                                            }, function(data) {
+                             $scope.category = {
+                               id:           data.id,
+                               title:        data.title,
+                               slug:         data.slug,
+                               short_slug:   data.short_slug
+                             };
+                             $scope.videos   = data.videos;
+                             for (i=1; i<=data.n_pages; i++) {
+                               n_pages.push( i );
+                             }
+                             $scope.n_pages  = n_pages;
+                             $scope.n_videos = data.n_videos;
+                           });
                        }]
                 }
               }
