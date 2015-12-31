@@ -52,3 +52,4 @@ Change Log
 * 0.0.6 - let's go angular
 * 0.0.7 - angular is out, let's put angular in.
 * 0.0.8 - better data migrations, test-driven lib/ tasks, regenerate slugs.
+* 0.0.9 - making categories_1 disappear when videos are listed. And test-driving it!
