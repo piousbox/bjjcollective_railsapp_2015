@@ -27,7 +27,19 @@ module.exports = function(config) {
       'public_angular/lib/angular/angular-ui-router.js',
       'public_angular/lib/angular/angular-sanitize.js',
 
-      'test-angular/unit/*js'
+      'public_angular/lib/angulartics.min.js',
+      'public_angular/lib/angulartics-google-analytics.min.js',
+
+      'test/lib/angular/angular-mocks.js',
+
+      'public_angular/js/app.js',
+      'public_angular/js/config.js',
+      'public_angular/js/controllers/categories.js',
+      'public_angular/js/controllers/categories_controllers.js',
+      'public_angular/js/services/services.js',
+      'public_angular/js/services/categories-service.js',
+
+      'test-angular/unit/categoriesSpec.js'
     ],
 
 
