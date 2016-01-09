@@ -1,0 +1,34 @@
+# CHANGELOG for bjjc rails app bjjcollective_railsapp_2015
+
+## 0.0.11:
+* fixing the button where you can tick off done tasks
+
+## 0.0.10:
+* expansion into the angular app
+
+## 0.0.6:
+* 0.0.6 - let's go angular
+
+## 0.0.5:
+* 0.0.5 - legacy video redirect
+
+## 0.0.4:
+* 0.0.4 - leaderboards
+
+## 0.0.3:
+* 0.0.3 - caching
+
+## 0.0.2:
+* 0.0.2 - structure for categories
+
+## 0.0.1:
+* 20151219 - 0.0.1 - Manager video pagination
+
+## 0.0.0:
+* 20151122 .htaccess on manager
+* 20151203 tasks from the first email
+
+- - -
+Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
+
+The [Github Flavored Markdown page](http://github.github.com/github-flavored-markdown/) describes the differences between markdown on github and standard markdown.
