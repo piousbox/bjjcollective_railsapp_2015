@@ -7,10 +7,11 @@
 
       %ul.video-tasks
         - video.tasks.each do |task|
-          %li
-            = task.title
-            .mouseover= task.mouseover
-            .row
+          %li.row
+            .large-6.columns
+              = task.title
+              .mouseover= task.mouseover
+            .large-6.columns
               - if tasks_hash[task.id.to_s]
                 .large-4.columns
                   Completed
