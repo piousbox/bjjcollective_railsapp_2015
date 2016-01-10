@@ -1,0 +1,27 @@
+
+- #
+- # @obsolete this should be rewritten s.t. it doesn't require a million renders.
+- # _vp_ 20151218
+- #
+  
+%ul{ :id => category.id }
+  - categories.each do |c|
+    %li
+      - if c.categories.length > 0
+        %span.category-name
+        - if c.photo
+          = image_tag c.photo.photo.url :mini
+        = c.title
+        %a.addToggle [+]
+        = render 'categories/tree', :categories => c.categories, :category => c
+      - else
+        %span.category-leaf-name
+        - if c.photo
+          = image_tag c.photo.photo.url :mini
+        = link_to c.title, category_human_path( c )
+        - #
+        - # @TODO: _vp_ 20151219
+        - # this is sooo slow, should be a background job
+        - #
+        (#{c.videos.length})
+

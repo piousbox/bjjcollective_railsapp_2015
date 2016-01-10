@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="/lib/normalize.css" />
+  <link rel="stylesheet" href="/lib/foundation/foundation.css" />
+  <link rel="stylesheet" href="/css/app.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/technique/">
+</head>
+<body>
+  <%= render 'main_header' %>
+  
+  <div class="row">
+    <div class="large-12 columns">
+      <h4><a ui-sref="categories">Technique</a></h4>
+      <div ui-view class="slide" ></div>
+      <div ui-view="videos-list" class="slide" ></div>
+    </div>
+  </div>
+  
+  <hr />
+  <div class="row">
+    <div class="large-12 columns">
+<pre>
+$state = {{$state.current.name}}
+$stateParams = {{$stateParams}}
+$state full url = {{$state.$current.url.source }}
+</pre>
+    </div>
+  </div>
+  <hr />
+
+  <!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  -->
+
+  <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+  
+  <script src="/lib/modernizr.js"></script>
+  <script src="/lib/jquery/jquery.js"></script>
+  <script src="/lib/foundation/foundation.js"></script>
+  <script src="/lib/lodash.min.js"></script>
+
+  <script src="/lib/angular/angular.js"></script>
+  <script src="/lib/angular/angular-route.js"></script>
+  <script src="/lib/angular/angular-resource.js"></script>
+  <script src="/lib/angular/angular-animate.js"></script>
+  <script src="/lib/angular/angular-ui-router.js"></script>
+  <script src="/lib/angular/angular-sanitize.js"></script>
+  <script src="/lib/angular/angular-simple-logger.js"></script>
+  <script src="/lib/angular/angular-google-maps.min.js"></script>
+
+  <script src="/lib/angulartics.min.js"></script>
+  <script src="/lib/angulartics-google-analytics.min.js"></script>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/config.js"></script>
+
+  <script src="/js/controllers/categories.js"></script>
+  <script src="/js/controllers/cities.js"></script>
+  <script src="/js/controllers/reports.js"></script>
+  <script src="/js/controllers/videos.js"></script>
+  
+  <script src="/js/services/services.js"></script>
+  <script src="/js/services/categories-service.js"></script>
+  <script src="/js/services/cities-service.js"></script>
+  <script src="/js/services/reports-service.js"></script>
+  <script src="/js/services/videos-service.js"></script>
+  
+  <script>
+    $(document).foundation();
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-53077236-3', 'auto');
+  </script>
+  
+</body>
+</html>

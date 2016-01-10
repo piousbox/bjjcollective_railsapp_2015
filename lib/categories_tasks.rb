@@ -1,4 +1,6 @@
 
+Mongo::Logger.logger = ::Logger.new('log/mongo.log')
+
 class CategoriesTasks
 
   def self.sanity
@@ -148,6 +150,26 @@ class CategoriesTasks
     end
   end
 
+  def clear_short_slugs
+    Category.all.each do |c|
+      c.short_slug = nil
+      c.save :validate => false
+    end
+  end
+  
+  def regenerate_short_slugs
+    categories = Category.where( :short_slug => nil )
+    puts! categories.length, "n categories without short slug"
+    categories.each do |c|
+      c.title ||= "Uncategorized"
+      c.short_slug = c.title.gsub(/ /, '-').gsub(/[^0-9a-z-]/i, '').downcase
+      if c.save
+      else
+        puts! c.errors, "No luck. #{c.errors}"
+      end
+    end
+  end
+  
   def regenerate_slugs
     categories = Category.where( :category_id => nil )
     

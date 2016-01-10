@@ -2,15 +2,14 @@
 About
 =====
 
-The fighers guild!
-
-http://bjjcollective.com
-
+The fighers guild! http://bjjcollective.com
 
 Development
 ===========
 
 Port 3001 please
+bjjc.local runs on port 81
+bjjc-angular.local is required to run
 
 @TODO: There needs to be disaster recovery
 @TODO: Show of a merit badge should have human url
@@ -28,6 +27,10 @@ Hit these three URLs to generate the cache (each takes a few minutes):
 * http://staging.bjjcollective.piousbox.com/
 * http://staging.bjjcollective.piousbox.com/videos/5674a60f2dd1095edb0004de
 * http://staging.bjjcollective.piousbox.com/categories/view/mounts-side-control-side-control-variants-twister-over-arm-top-submissions
+
+* Don't forget to enable sites and restart apache2!
+
+
 
 CI/CD Pipeline
 ==============
@@ -47,3 +50,7 @@ Change Log
 * 0.0.4 - leaderboards
 * 0.0.5 - legacy video redirect
 * 0.0.6 - let's go angular
+* 0.0.7 - angular is out, let's put angular in.
+* 0.0.8 - better data migrations, test-driven lib/ tasks, regenerate slugs.
+* 0.0.9 - making categories_1 disappear when videos are listed. And test-driving it!
+* 0.0.10 - introducing karma for CLI js testing

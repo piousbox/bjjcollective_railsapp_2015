@@ -14,5 +14,17 @@ namespace :categories do
     task_runner = CategoriesTasks.new
     task_runner.regenerate_slugs
   end
+
+  desc "regenerate short slugs"
+  task :regenerate_short_slugs => :environment do
+    task_runner = CategoriesTasks.new
+    task_runner.regenerate_short_slugs
+  end
+
+  desc "clear short slugs"
+  task :clear_short_slugs => :environment do
+    CategoriesTasks.new.clear_short_slugs
+  end
+
   
 end
