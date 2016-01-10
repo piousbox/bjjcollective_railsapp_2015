@@ -1,6 +1,4 @@
 
-/.bundle
-
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
@@ -11,11 +9,10 @@
 *~
 *.trash
 
-config/database.yml
-
-config/initializers/s3.rb
+/config/database.yml
+/config/initializers/s3.rb
 
 .\#*
 \#*#
 
-vendor/bundle
+/vendor/bundle
