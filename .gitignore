@@ -18,4 +18,4 @@ config/initializers/s3.rb
 .\#*
 \#*#
 
-vendor
+vendor/bundle

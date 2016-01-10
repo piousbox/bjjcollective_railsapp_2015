@@ -1,41 +1,36 @@
 
 .fg-videos--tasks
-  .b
-    %h4 Tasks
-    - if defined?( player_video ) && player_video
+  %h4 Tasks
+  - if defined?( player_video ) && player_video
+    = form_for [:fg, player_video], :url => false do |f|
       %div.player-video-id{ :'player-video-id' => player_video.id }
 
       %ul.video-tasks
         - video.tasks.each do |task|
           %li.row
             .large-6.columns
-              = task.title
-              .mouseover= task.mouseover
+              .task-title
+                = task.title
+                .mouseover= task.mouseover
             .large-6.columns
               - if tasks_hash[task.id.to_s]
                 .large-4.columns
                   Completed
-                .large-4.columns
-                  = form_for [ :fg, player_video ], :remote => true do |f|
-                    .hide
-                      = text_field_tag :task_id, task.id.to_s
-                    = f.submit "Undo", :class => [ :button, :small ]
               - else
                 .large-4.columns
                   Not Completed
-                .large-4.columns
-                  = form_for [ :fg, player_video ], :remote => true do |f|
-                    .hide= text_field_tag :task_id, task.id.to_s
-                    = f.submit "Complete", :class => [ :button, :small ]
+              .large-4.columns
+                = f.check_box "task_#{task.id.to_s}", :checked => tasks_hash[task.id.to_s], :'task-id' => task.id.to_s, :'player-video-id' => player_video.id.to_s, :class => [ :task ]
+                -# .undo-task= button_tag "Undo", :class => [ :tiny ], :'task-id' => task.id.to_s, :'player-video-id' => player_video.id.to_s
               .large-4.columns
                 %span{ :class => "task-#{task.id}-status" }
             
-    - else
-      %ul.video-tasks
-        - video.tasks.each do |task|
-          %li
-            = task.title
-            .mouseover= task.mouseover
-    %span.video-tasks-response
-      - unless user_signed_in?
-        Sign up or Sign in to be able to click off tasks!
+  - else
+    %ul.video-tasks
+      - video.tasks.each do |task|
+        %li
+          = task.title
+          .mouseover= task.mouseover
+  %span.video-tasks-response
+    - unless user_signed_in?
+      Sign up or Sign in to be able to click off tasks!
