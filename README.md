@@ -32,6 +32,11 @@ Hit these three URLs to generate the cache (each takes a few minutes):
 
 
 
+Package
+=======
+* Merge the latest x.x.x branch to master and precompile assets.
+
+
 CI/CD Pipeline
 ==============
 

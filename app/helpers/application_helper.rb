@@ -5,6 +5,10 @@ module ApplicationHelper
     "/categories/#{string}"
   end
 
+  def shop_path
+    "http://staging.shop.piousbox.com"
+  end
+
   def puts! args, label=""
     puts "+++ +++ #{label}"
     puts args.inspect
