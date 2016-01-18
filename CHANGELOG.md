@@ -1,7 +1,10 @@
 # CHANGELOG for bjjc rails app bjjcollective_railsapp_2015
 
-## 0.0.12:
+## 0.0.13:
 * ad on the homepage in angular.
+
+## 0.0.12:
+* I wish I knew... Lotsa changes though.
 
 ## 0.0.11:
 * fixing the button where you can tick off done tasks
