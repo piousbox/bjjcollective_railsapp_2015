@@ -33,6 +33,8 @@ if @videos
   json.videos do
     json.array! @videos do |v|
       json.youtube_id   v.youtube_id
+      json.id           v.id.to_s
+      json.legacy_id    v.legacy_id
       json.title        v.title
       json.descr        v.descr
     end

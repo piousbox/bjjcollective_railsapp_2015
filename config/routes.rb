@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   #              unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in'
   #            }
   
+  get "categories/view/:slug", :to => "categories#show"
+  get "categories",            :to => "categories#home"
+  get "categories/:id",        :to => "categories#show"
+
   get "videos/:id",            :to => "categories#video"
   get "video/:legacy_id", :to => "videos#legacy_show"
 

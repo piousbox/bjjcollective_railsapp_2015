@@ -2,6 +2,11 @@
 
 ## 0.0.13
 * empty mouseover is not displayed
+* ad on the homepage in angular.
+
+## 0.0.12:
+* I wish I knew... Lotsa changes though.
+>>>>>>> d90d846efcfde5f4c29bb7faa9464b8658b8573f
 
 ## 0.0.11:
 * fixing the button where you can tick off done tasks
