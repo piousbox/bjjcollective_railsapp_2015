@@ -1,5 +1,8 @@
 # CHANGELOG for bjjc rails app bjjcollective_railsapp_2015
 
+## 0.0.13
+* empty mouseover is not displayed
+
 ## 0.0.11:
 * fixing the button where you can tick off done tasks
 
