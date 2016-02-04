@@ -18,9 +18,11 @@
     %li{ :class => "badge-item #{is_accomplished}", 'merit-badge-id' => item.id }
       = link_to image_tag( photo_url ), path, { :'data-no-turbolink' => true }
       - if '' != is_accomplished
-        .mouseover= item.accomplished_mouseover
+        - if item.accomplished_mouseover && item.accomplished_mouseover.length > 1
+          .mouseover= item.accomplished_mouseover
       - else
-        .mouseover= item.shaded_mouseover         
+        - if item.shaded_mouseover && item.shaded_mouseover.length > 1
+          .mouseover= item.shaded_mouseover
       .text-center
         = item.title
         %br
