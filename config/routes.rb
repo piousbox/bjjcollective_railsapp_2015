@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get "video/:legacy_id", :to => "videos#legacy_show"
 
   namespace :api do
+    root :to => 'api#home'
+    
     get "categories",                                                           :to => "categories#index_shallow"
     get "categories/:slug",                                                     :to => "categories#index_shallow"
     get "categories/:slug/:slug_0/:slug_1",                                     :to => "categories#index_shallow"
