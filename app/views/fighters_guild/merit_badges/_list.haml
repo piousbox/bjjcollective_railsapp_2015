@@ -1,9 +1,14 @@
 
+- #
+- # merit_badges  _list
+- #
+
 - grid  ||= 3
 - items ||= @badges
 
 %ul{ :class => "large-block-grid-#{grid}" }
   - items.each do |item|
+    
     - photo_url = image_tag 'missing.png'
     - path      = "Questset" == item.class.name ? fg_questset_path( item ) : fg_badge_path( item )
     - show_path = "Questset" == item.class.name ? fg_questset_path( item ) : fg_badge_path( item )

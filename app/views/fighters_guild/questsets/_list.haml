@@ -22,9 +22,11 @@
       - if item[:is_available]
         = link_to image_tag( photo_url ), fg_questset_path( item ), { :'data-no-turbolink' => true }
         - if '' != is_accomplished
-          .mouseover= item.accomplished_mouseover
+          - if item.accomplished_mouseover && item.accomplished_mouseover.length > 1
+            .mouseover= item.accomplished_mouseover
         - else
-          .mouseover= item.shaded_mouseover         
+          - if item.shaded_mouseover && item.shaded_mouseover.length > 1
+            .mouseover= item.shaded_mouseover         
         .text-center
           = link_to item.title, fg_questset_path( item ), { :'data-no-turbolink' => true }
           %br
@@ -35,5 +37,6 @@
           = image_tag( item.unavailable_photo.photo.url :thumb2 )
         - else
           = image_tag 'missing.png'
-        .mouseover= item.unavailable_mouseover
+        - if item.unavailable_mouseover && item.unavailable_mouseover.length > 1
+          .mouseover= item.unavailable_mouseover
         .text-center= item.title

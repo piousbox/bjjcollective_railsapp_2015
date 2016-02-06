@@ -53,6 +53,7 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
         badge[:player][:percent_done] = 100 * badge[:player][:n_done].to_f / ( 0.0001 + badge[:player][:n_done] + badge[:player][:n_not_done] )
       else
         badge[:player][:percent_done] = 0
+        badge[:player][:is_accomplished] = false
       end
     end
     if 0 == videos.length
