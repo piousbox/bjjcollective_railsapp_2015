@@ -21,6 +21,15 @@
           
         = yield
         
-    = render 'main_footer'
+    = render 'main_footer' # no js there _vp_ 20160205
     -# = render 'footer_js' # this is only angular stuff
     = render 'analytics'
+    
+    = javascript_include_tag "foundation/foundation.min"
+    = javascript_include_tag "foundation/foundation.accordion"
+
+    :javascript
+      $(document).ready(function() {
+        $(document).foundation();
+      });
+      

@@ -24,7 +24,7 @@ module BjjcollectiveRailsapp2015
     config.active_record.raise_in_transactional_callbacks = true
 
     config.assets.precompile += [ 'application.css' ]
-    config.assets.precompile += [ 'application.js' ]
+    config.assets.precompile += %w{ application.js foundation/foundation.min.js foundation/foundation.accordion.js }
     config.assets.enabled = true
     config.assets.version = '1.0'
 

@@ -5,9 +5,6 @@
 //= require jquery
 //= require jquery_ujs
 // 
-//= require foundation/foundation.min
-//= require foundation/foundation.accordion
-// 
 //= require utils
 // 
 //= require_tree ./technique
