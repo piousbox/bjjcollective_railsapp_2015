@@ -12,7 +12,6 @@ describe Api::CategoriesController do
   it 'index' do
     get :index, :format => :json
     response.should render_template 'api/categories/index'
-      
   end
   
 end

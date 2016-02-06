@@ -17,8 +17,9 @@ class Manager::ManagerController < ApplicationController
 
   def set_lists
     @merit_badges_list = MeritBadge.all.list
-    @questsets_list = Questset.all.list
+    @questsets_list    = Questset.all.list
+    @categories_list   = Category.all.list
   end
   
-  
 end
+
