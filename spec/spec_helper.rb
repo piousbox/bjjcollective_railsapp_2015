@@ -142,6 +142,11 @@ def setup_merit_badges
   @merit_badge = FactoryGirl.create :merit_badge
 end
 
+def setup_players
+  Player.all.each { |p| p.remove }
+  @player = Player.create :user_id => @user.id
+end
+
 def setup_users
   User.all.each { |u| u.remove }
   @user = FactoryGirl.create :user

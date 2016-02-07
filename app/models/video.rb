@@ -21,6 +21,8 @@ class Video
   belongs_to :questset
   
   belongs_to :category
+  belongs_to :mastered_player, :class_name => 'Player', :inverse_of => :mastered_videos
+  belongs_to :todo_player,     :class_name => 'Player', :inverse_of => :todo_videos
 
   has_many :player_videos
 

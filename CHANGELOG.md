@@ -1,5 +1,12 @@
 # CHANGELOG for bjjc rails app bjjcollective_railsapp_2015
 
+## 0.0.15
+* can put video in a category
+
+## 0.0.14
+* mix
+* bugs of appcomplished on homepage
+
 ## 0.0.13
 * empty mouseover is not displayed
 * ad on the homepage in angular.
