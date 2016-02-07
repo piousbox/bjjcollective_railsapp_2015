@@ -1,7 +1,7 @@
 
 require 'spec_helper'
 
-describe Api::CategoriesController do
+describe Api::ApiController do
 
   render_views
   

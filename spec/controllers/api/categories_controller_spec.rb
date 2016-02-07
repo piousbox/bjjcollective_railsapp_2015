@@ -9,9 +9,9 @@ describe Api::CategoriesController do
     setup_categories
   end
 
-  it 'index' do
-    get :index, :format => :json
-    response.should render_template 'api/categories/index'
+  it 'index_shallow' do
+    get :index_shallow, :format => :json
+    response.should render_template 'api/categories/index_shallow'
   end
   
 end

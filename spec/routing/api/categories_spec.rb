@@ -7,7 +7,7 @@ describe 'Categories' do
   end
   
   it 'home' do
-    expect( :get => '/api/categories.json' ).to route_to( 'api/categories#index', :format => 'json' )
+    expect( :get => '/api/categories.json' ).to route_to( 'api/categories#index_shallow', :format => 'json' )
   end
   
 end

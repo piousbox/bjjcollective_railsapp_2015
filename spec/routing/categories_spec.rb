@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Categories' do
 
   it 'home' do
-    expect( :get => '/' ).to route_to( 'categories#home' )
+    expect( :get => '/' ).to route_to( 'welcome#home' )
   end
 
   it 'show' do
