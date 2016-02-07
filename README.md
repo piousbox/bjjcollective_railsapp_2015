@@ -1,16 +1,13 @@
-
-About
-=====
-
-The fighers guild! http://bjjcollective.com
-
 Development
 ===========
+* ror app, port 3001
+* bjjc.local:80 (virtual site)
+** /technique -> bjjc-angular.local:80
+* bjjc-angular.local (virtual site)
+** /api -> bjjc.local:80/api
 
-Port 3001 please
-bjjc.local runs on port 81
-bjjc-angular.local is required to run
-
+TODO
+====
 @TODO: There needs to be disaster recovery
 @TODO: Show of a merit badge should have human url
 @TODO: Video2 is video. video is video_legacy
