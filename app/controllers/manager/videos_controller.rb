@@ -69,7 +69,7 @@ class Manager::VideosController < Manager::ManagerController
   end
   
   def permitted_params
-    return [ :youtube_id, :title, :descr, :merit_badge_id, :questset_id, :badge_id, :order_value ]
+    return [ :youtube_id, :title, :descr, :merit_badge_id, :questset_id, :badge_id, :category_id, :order_value ]
   end
   
 end

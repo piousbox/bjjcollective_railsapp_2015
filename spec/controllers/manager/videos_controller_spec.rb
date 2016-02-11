@@ -8,6 +8,10 @@ describe Manager::VideosController do
   before :each do
     MeritBadge.all.each { |b| b.remove }
     @badge = FactoryGirl.create :badge
+
+    setup_categories
+    
+    setup_videos
   end
 
   it '#index' do
@@ -29,6 +33,21 @@ describe Manager::VideosController do
     response.should be_success
     response.should render_template( 'manager/videos/new' )
     assigns( :video ).should_not eql nil
+  end
+
+  it '#create' do
+    ;
+  end
+
+  it '#edit' do
+    ;
+  end
+
+  it '#update' do
+    @video.category_id.should eql nil
+    post :update, :id => @video.id, :video => { :category_id => @category.id }
+    result = Video.find @video.id
+    result.category.title.should eql @category.title
   end
   
 end
