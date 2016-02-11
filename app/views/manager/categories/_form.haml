@@ -1,0 +1,36 @@
+
+= form_for [:manager, category] do |f|
+  = f.label :title
+  = f.text_field :title
+
+  = f.label :slug
+  = f.text_field :slug
+
+  = f.label :short_slug
+  = f.text_field :short_slug
+
+  = f.label :subhead
+  = f.text_area :subhead
+
+  = f.label :descr
+  = f.text_area :descr, { :class => :tinymce }
+
+  .a
+    = f.label :is_simple
+    = f.check_box :is_simple
+
+  = f.label :order_value
+  = f.text_field :order_value
+
+  = f.label :category_id, 'Parent Category'
+  = f.select :category_id, @categories_list
+
+  .row
+    .large-3.columns
+      = image_tag @category.photo.photo.url :thumb2 unless @category.photo.blank?
+    .large-9.columns
+      = f.label :photo
+      = f.file_field :photo
+
+  = f.submit nil, :class => [ :button, :small ]
+  

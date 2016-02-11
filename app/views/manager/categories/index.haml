@@ -1,0 +1,13 @@
+
+.manager-categories-index
+  %h5.text-center Categories Index
+  = paginate @categories, :param_name => :categories_page
+
+  %ul.large-block-grid-4
+    - @categories.each do |category|
+      %li
+        %h5
+          = link_to category.title, manager_category_path( category )
+          = link_to '[~]', edit_manager_category_path( category ), { :'data-no-turbolink' => true }
+
+  = paginate @categories, :param_name => :categories_page

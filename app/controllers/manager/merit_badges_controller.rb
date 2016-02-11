@@ -45,7 +45,6 @@ class Manager::MeritBadgesController < Manager::ManagerController
       photo.photo = params[:merit_badge][:accomplished_photo]
       photo.accomplished_badge = @badge
       if photo.save
-        ;
       else
         flash[:alert] = "No Luck: #{photo.errors.messages}"
         render :action => :new and return
@@ -57,7 +56,6 @@ class Manager::MeritBadgesController < Manager::ManagerController
       photo.photo = params[:merit_badge][:title_photo]
       photo.title_badge = @badge
       if photo.save
-        ;
       else
         flash[:alert] = "No Luck: #{photo.errors.messages}"
         render :action => :new and return

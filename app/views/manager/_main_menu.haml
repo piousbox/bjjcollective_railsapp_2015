@@ -5,14 +5,20 @@
     %li= link_to "Fighters Guild", fg_root_path
     %li= link_to "Technique Database", root_path
     
+  %ul.inline-list
     %li
-      = link_to "Merit Badges", manager_badges_path, { :class => :inline }
-      (#{MeritBadge.all.length})
-      = link_to "[+]", new_manager_badge_path, { :class => :inline, :'data-no-turbolink' => true }
+      = link_to 'Categories', manager_categories_path, { :class => :inline }
+      (#{Category.all.length})
+      = link_to '[+]', new_manager_category_path, { :class => :inline, :'data-no-turboline' => true }
     %li
       = link_to "Questsets", manager_questsets_path, { :class => :inline }
       (#{Questset.all.length})
       = link_to '[+]', new_manager_questset_path, { :class => :inline, :'data-no-turbolink' => true }
+    
+    %li
+      = link_to "Merit Badges", manager_badges_path, { :class => :inline }
+      (#{MeritBadge.all.length})
+      = link_to "[+]", new_manager_badge_path, { :class => :inline, :'data-no-turbolink' => true }
     %li
       = link_to 'Videos', manager_videos_path, { :class => :inline }
       (#{Video.all.length})
