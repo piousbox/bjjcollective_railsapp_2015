@@ -38,9 +38,6 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
             controller: ['$scope', '$state', 'Category',
                 function( $scope,   $state,   Category) {
                   Category.index({}, function(categories) {
-
-                    console.log("categories are", categories);
-
                     $scope.categories = categories;
                   });
                 }]

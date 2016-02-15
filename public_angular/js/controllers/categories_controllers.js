@@ -3,7 +3,7 @@
 var myApp = angular.module('myApp');
 
 myApp.controller('CategoriesIndexController', ['$scope', '$state', 'Category',
-                                      function( $scope, $state,   Category) {
+                                      function( $scope,   $state,   Category) {
   Category.index({}, function(data) {
     $scope.categories = data.categories;
     $scope.category = {
@@ -12,6 +12,5 @@ myApp.controller('CategoriesIndexController', ['$scope', '$state', 'Category',
       slug:         data.slug,
       short_slug:   data.short_slug
     };
-    $scope.sanity = 'I am sane.';
   });
 }]);

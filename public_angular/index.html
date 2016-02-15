@@ -44,12 +44,14 @@
       (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
   </div>
-  
+
+  <!--
+    -- main content
+    -->
   <div class="row">
     <div class="large-12 columns">
       <h4><a ui-sref="categories">Technique</a></h4>
-      <div ui-view               class="slide" ></div>
-      <div ui-view="videos-list" class="slide" ></div>
+      <div ui-view class="slide" ></div>
     </div>
   </div>
 
@@ -65,7 +67,7 @@
     </script>
   </div>
 
-<!--  <hr />
+  <hr />
   <div class="row">
     <div class="large-12 columns">
 <pre>
@@ -74,7 +76,7 @@ $stateParams = {{$stateParams}}
 $state full url = {{$state.$current.url.source }}
 </pre>
     </div>
-  </div>  -->
+  </div>
   <hr />
 
   <!-- In production use:
@@ -114,6 +116,8 @@ $state full url = {{$state.$current.url.source }}
   <script src="/js/services/cities-service.js"></script>
   <script src="/js/services/reports-service.js"></script>
   <script src="/js/services/videos-service.js"></script>
+
+  <script src="/js/directives/categories/bjjc-category-directive.js"></script>
   
   <script>
     $(document).foundation();

@@ -1,6 +1,14 @@
 
 .manager-categories-index
   %h5.text-center Categories Index
+
+  = form_tag manager_categories_search_path do
+    .row
+      .large-10.columns
+        = text_field_tag :q
+      .large-2.columns
+        = submit_tag 'Search'
+    
   = paginate @categories, :param_name => :categories_page
 
   %ul.large-block-grid-4

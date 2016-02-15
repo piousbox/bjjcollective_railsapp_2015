@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     root :to => 'api#home'
+
+    get 'categories/show/*all', :to => 'categories#show'
+    get 'category/*all', :to => 'categories#show'
     
     get "categories",                                                           :to => "categories#index_shallow"
     get "categories/:slug",                                                     :to => "categories#index_shallow"
@@ -40,8 +43,11 @@ Rails.application.routes.draw do
 
   namespace :manager do
     root :to => 'welcome#home'
+
+    get 'categories/search', :as => :categories_search, :to => 'categories#search'
     resources :categories do
     end
+    
     resources :merit_badges, :as => :badges do
       resources :videos
     end

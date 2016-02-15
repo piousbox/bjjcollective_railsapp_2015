@@ -12,7 +12,7 @@ json.categories do
     json.title        c.title
     json.slug         c.slug
     json.short_slug   c.short_slug
-  
+
     json.categories do
       json.array!        c.categories do |c_1| # DLR guard, x guard, ...
         json.id          c_1.id.to_s
@@ -24,6 +24,7 @@ json.categories do
         json.short_slug  c_1.short_slug
       end
     end
+    
   end
 end
 

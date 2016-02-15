@@ -1,24 +1,24 @@
 
 <!-- partials/categories/categories.html -->
 
+partials / categories / categories.html
+
 <div class="row">
-  <div class="large-8 columns">
+  <div class="large-12 columns">
+
     <ul class="categories-top no-bullet">
       <li ng-repeat="c0 in categories">
-        <h5>{{ c0.title }}</h5>
+        <h5>
+          <a ui-sref="categories({ path: c0.path })">{{ c0.title }}</a>
+        </h5>
+
         <ul class="large-block-grid-5" >
-          <li ng-repeat="c1 in c0.categories">
-            <a ui-sref="categories_1({ slug: c1.slug })">
-              <img src="{{ c1.photo_url }}" alt="" />
-              {{ c1.title }}
-            </a>
-          </li>
+          <bjj-category ng-repeat="c1 in c0.categories" category="c1"></bjj-category>
         </ul>
+
       </li>
     </ul>
-  </div>
-  
-  <div class="large-4 columns">
+
   </div>
 </div>
 

@@ -7,9 +7,17 @@ class Api::CategoriesController < Api::ApiController
     @categories = Category.where( :category_id => nil )
   end
 
-  def index_shallow      
+  def show
+    slugs = params[:all].split('/')
+    @category = Category.where( :category_id => nil, :short_slug => slugs[0] ).first
+  end
+
+  
+  def index_shallow
     if params[:slug]
       @category = Category.where( :slug => params[:slug] ).first
+      # puts! @category
+      
       if params[:slug_1]
         @category = Category.where( :short_slug => params[:slug_0], :category_id => @category.id ).first
         @category = Category.where( :short_slug => params[:slug_1], :category_id => @category.id ).first
