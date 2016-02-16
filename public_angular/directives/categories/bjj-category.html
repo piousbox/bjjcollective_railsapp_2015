@@ -6,9 +6,10 @@
     <img src="{{ category.photo_url }}" alt="" />
     {{ category.title }}
   </a>
+  <span class="white">{{ category.id }}</span>
 
   <ul class="large-block-grid-5" >
-    <li bjj-category="" ng-repeat="category_1 in category.categories" category="category_1"></li>
+    <bjj-category ng-repeat="category_1 in category.categories" category="category_1"></bjj-category>
   </ul>
 
 </li>

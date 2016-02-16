@@ -2,7 +2,7 @@
 .manager-categories-index
   %h5.text-center Categories Index
 
-  = form_tag manager_categories_search_path do
+  = form_tag manager_categories_path, :method => :get do
     .row
       .large-10.columns
         = text_field_tag :q
@@ -11,11 +11,13 @@
     
   = paginate @categories, :param_name => :categories_page
 
-  %ul.large-block-grid-4
+  -# %ul.large-block-grid-4
+  %ul
     - @categories.each do |category|
       %li
         %h5
           = link_to category.title, manager_category_path( category )
           = link_to '[~]', edit_manager_category_path( category ), { :'data-no-turbolink' => true }
-
+        = category.slug
+        
   = paginate @categories, :param_name => :categories_page

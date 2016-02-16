@@ -5,6 +5,9 @@ class Manager::CategoriesController < Manager::ManagerController
   
   def index
     @categories = Category.all.page( params[:categories_page] ).per( 20 * 4 ) # b/c it's a large-block-grid-4
+    if params[:q]
+      @categories = @categories.where( :title => /.*#{params[:q]}.*/i )
+    end
   end
 
   def new

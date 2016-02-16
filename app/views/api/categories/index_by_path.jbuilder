@@ -11,6 +11,9 @@ def render_categories json, categories, path
       json.short_slug  c.short_slug
       json.path        c.path
       json.kind        c.kind
+      if c.photo
+          json.photo_url   c.photo.photo.url :thumb2
+      end
       
       if c.categories && c.categories.length > 0
         if path[0] == c.short_slug || 'simple' == c.kind
