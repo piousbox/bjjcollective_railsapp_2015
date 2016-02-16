@@ -1,5 +1,7 @@
 
 = form_for [:manager, category] do |f|
+  = f.submit nil, :class => [ :button, :small ]  
+  
   = f.label :title
   = f.text_field :title
 
@@ -11,6 +13,9 @@
 
   = f.label :path
   = f.text_field :path
+
+  = f.label :kind
+  = f.text_field :kind
   
   = f.label :subhead
   = f.text_area :subhead

@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     root :to => 'api#home'
 
     get 'categories/show/*all', :to => 'categories#show'
+    get 'categories-by-path', :to => 'categories#index_by_path'
     get 'category/*all', :to => 'categories#show'
     
     get "categories",                                                           :to => "categories#index_shallow"

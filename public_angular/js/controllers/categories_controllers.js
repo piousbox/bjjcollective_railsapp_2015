@@ -2,9 +2,10 @@
 
 var myApp = angular.module('myApp');
 
-myApp.controller('CategoriesIndexController', ['$scope', '$state', 'Category',
-                                      function( $scope,   $state,   Category) {
-  Category.index({}, function(data) {
+myApp.controller('CategoriesIndexController', ['$scope', '$state', '$stateParams', 'Category',
+                                      function( $scope,   $state,   $stateParams,   Category) {
+
+  Category.index_by_path({ path: $stateParams.path }, function(data) {
     $scope.categories = data.categories;
     $scope.category = {
       id:           data.id,

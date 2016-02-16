@@ -1,11 +1,14 @@
 'use strict';
 
 angular.module('myApp.categories.service', []).
-    factory('Category', ['$resource', 'Config', function($resource, Config) {
-      
+    factory('Category', ['$resource', 'Config',
+                 function($resource,   Config ) {
+
         var url = Config.api_endpoint + "/categories/:slug/:slug_detail.json";
         var defaults = { videos_page: 1 };
-        var actions = { index:   { method: 'GET', params: undefined, isArray: false, headers: undefined },
+        var actions = { index_by_path:   { method: 'GET', isArray: false, headers: undefined,
+                                           url: Config.api_endpoint + "/categories-by-path.json"
+                                         },
                         show:    { method: 'GET', isArray: false,
                                    url: Config.api_endpoint + "/categories/:short_slug.json"
                                  },

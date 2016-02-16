@@ -8,9 +8,18 @@ class Manager::CategoriesController < Manager::ManagerController
   end
 
   def new
+    @category = Category.new
   end
 
   def create
+    @category = Category.create params[:category].permit permitted_params
+    if @category.save
+      flash[:notice] = 'Success.'
+      redirect_to :action => 'index'
+    else
+      flash[:alert] = "No Luck. #{@category.errors.messages}"
+      render :action => 'new'
+    end
   end
 
   def show
@@ -43,7 +52,8 @@ class Manager::CategoriesController < Manager::ManagerController
   private
 
   def permitted_params
-    return [ :title, :slug, :short_slug, :path, :subhead, :descr, :is_simple, :order_value, :category, :category_id ]
+    return [ :title, :slug, :short_slug, :path, :kind,
+             :subhead, :descr, :is_simple, :order_value, :category, :category_id ]
   end
   
 

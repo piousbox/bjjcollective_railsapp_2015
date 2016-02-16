@@ -1,9 +1,14 @@
 
+def puts! args, label=''
+  puts "+++ +++ #{label}"
+  puts args.inspect
+end
+
 class Category
 
   include Mongoid::Document
   include Mongoid::Timestamps
-
+  
   field :title,         :type => String
 
   field :slug,          :type => String, :default => ""
@@ -13,6 +18,8 @@ class Category
   
   field :path,          :type => String, :default => ""
   validates_uniqueness_of :path
+
+  field :kind,          :type => String, :default => '' # can be `simple` or `full` so far
   
   field :subhead,       :type => String
   field :descr,         :type => String
@@ -36,6 +43,7 @@ class Category
       end
       categories.push [this_title, c.id]
       unless c.categories.empty?
+        puts! c.categories
         c.categories.each do |c2|
           traverse_categories.call this_title, c2
         end
