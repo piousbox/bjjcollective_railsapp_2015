@@ -1,17 +1,17 @@
 
 angular.module('myApp.categories').
-directive('bjjCategory', function($compile) {
+directive('bjjCategory', ['RecursionHelper',
+                  function(RecursionHelper) {
   return {
     restrict: "E",
-    replace: true,
-    scope: {
-      category: "="
-    },
+    scope: { categories: "=", 
+             category: '=' },
     templateUrl: "/directives/categories/bjj-category.html",
-    link: function(scope, element, attrs, controller, transcludeFn) {
+    compile: function(element) {
+      return RecursionHelper.compile(element);
     }
-  }
-});
+  };
+}]);
 
 
 

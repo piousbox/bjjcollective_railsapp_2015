@@ -5,20 +5,9 @@ partials / categories / categories.html
 
 <div class="row">
   <div class="large-12 columns">
-
-    <ul class="categories-top no-bullet">
-      <li ng-repeat="c0 in categories">
-        <h5>
-          <a ui-sref="categories({ path: c0.path })">{{ c0.title }}</a>
-        </h5>
-
-        <ul class="large-block-grid-5" >
-          <bjj-category ng-repeat="c1 in c0.categories" category="c1"></bjj-category>
-        </ul>
-
-      </li>
+    <ul>
+      <li bjj-category="" category="category" ng-repeat="category in categories" ></li>
     </ul>
-
   </div>
 </div>
 

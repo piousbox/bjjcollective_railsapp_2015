@@ -1,9 +1,15 @@
 
+
 <li>
+
   <a ui-sref="categories({ path: category.path })" >
     <img src="{{ category.photo_url }}" alt="" />
     {{ category.title }}
   </a>
-</li>
 
+  <ul class="large-block-grid-5" >
+    <li bjj-category="" ng-repeat="category_1 in category.categories" category="category_1"></li>
+  </ul>
+
+</li>
 

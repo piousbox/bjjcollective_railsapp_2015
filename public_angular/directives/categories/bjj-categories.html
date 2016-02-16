@@ -1,0 +1,14 @@
+
+<ul class="large-block-grid-5" >
+  <li ng-repeat="category in category.categories">
+
+    <a ui-sref="categories({ path: category.path })" >
+      <img src="{{ category.photo_url }}" alt="" />
+      {{ category.title }}
+    </a>
+
+    <bjj-categories categories="category.categories"></bjj-categories>
+
+  </li>
+</ul>
+
