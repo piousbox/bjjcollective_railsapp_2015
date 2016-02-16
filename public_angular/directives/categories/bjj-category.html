@@ -1,7 +1,9 @@
 
 <li>
-  <img src="{{ category.photo_url }}" alt="" />
-  {{ category.title }}
+  <a ui-sref="categories({ path: category.path })" >
+    <img src="{{ category.photo_url }}" alt="" />
+    {{ category.title }}
+  </a>
 </li>
 
 

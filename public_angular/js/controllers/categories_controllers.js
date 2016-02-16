@@ -10,7 +10,8 @@ myApp.controller('CategoriesIndexController', ['$scope', '$state', 'Category',
       id:           data.id,
       title:        data.title,
       slug:         data.slug,
-      short_slug:   data.short_slug
+      short_slug:   data.short_slug,
+      path:         data.path
     };
   });
 }]);

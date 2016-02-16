@@ -1,12 +1,22 @@
 'use strict';
 
 angular.module('myApp.categories', ['ui.router']).
-    config(['$stateProvider', '$urlRouterProvider', function(
-             $stateProvider,   $urlRouterProvider) {
+    config(['$stateProvider', '$urlRouterProvider', '$urlMatcherFactoryProvider', function(
+             $stateProvider,   $urlRouterProvider,   $urlMatcherFactoryProvider ) {
 
+        function valToString(val) {
+            if (undefined === val) { val = null }
+            return val !== null ? val.toString() : val;
+        }         
+        $urlMatcherFactoryProvider.type('nonURIEncoded', {
+            encode: valToString,
+            decode: valToString,
+            is: function () { return true; }
+        });
+                 
         $stateProvider.
             state('categories', {
-                url: '/',
+                url: '/{path:nonURIEncoded}',
                 views: {
                     '': {
                         templateUrl: '/partials/categories/categories.html',
@@ -36,7 +46,8 @@ angular.module('myApp.categories', ['ui.router']).
                              id: data.id,
                              title: data.title,
                              slug: data.slug,
-                             short_slug: data.short_slug
+                             short_slug: data.short_slug,
+                             path: data.path
                            }
                          });
                        }]

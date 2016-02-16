@@ -4,6 +4,7 @@ if @category
   json.title        @category.title
   json.slug         @category.slug
   json.short_slug   @category.short_slug
+  json.path         @category.path
 end
 
 json.categories do
@@ -12,6 +13,7 @@ json.categories do
     json.title        c.title
     json.slug         c.slug
     json.short_slug   c.short_slug
+    json.path         c.path
 
     json.categories do
       json.array!        c.categories do |c_1| # DLR guard, x guard, ...
@@ -22,6 +24,7 @@ json.categories do
         end
         json.slug        c_1.slug
         json.short_slug  c_1.short_slug
+        json.path        c_1.path
       end
     end
     

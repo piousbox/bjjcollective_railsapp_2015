@@ -43,7 +43,7 @@ class Manager::CategoriesController < Manager::ManagerController
   private
 
   def permitted_params
-    return [ :title, :slug, :short_slug, :subhead, :descr, :is_simple, :order_value, :category, :category_id ]
+    return [ :title, :slug, :short_slug, :path, :subhead, :descr, :is_simple, :order_value, :category, :category_id ]
   end
   
 
