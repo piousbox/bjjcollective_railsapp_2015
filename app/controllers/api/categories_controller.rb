@@ -36,13 +36,8 @@ class Api::CategoriesController < Api::ApiController
   end
 
   def index_by_path
-    path = URI.decode( params[:path]||'' ).split '/'
-    @categories = Category.where( :category_id => nil ).to_a
-    @categories.each do |category|
-      if 'simple' == category.kind
-        category.categories = Category.where( :category_id => category.id )
-      end
-    end
+    @path = URI.decode( params[:path]||'' ).split '/'
+    @categories = Category.where( :category_id => nil )
   end
   
 end
