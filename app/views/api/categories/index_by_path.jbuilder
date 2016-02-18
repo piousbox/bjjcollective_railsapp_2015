@@ -11,6 +11,8 @@ def render_categories json, categories, path
       json.short_slug  c.short_slug
       json.path        c.path
       json.kind        c.kind
+      json.is_expanded ( c.kind == 'simple' ) ? true : false
+      
       if c.photo
           json.photo_url   c.photo.photo.url :thumb2
       end

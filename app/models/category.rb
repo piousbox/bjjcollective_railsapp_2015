@@ -17,23 +17,28 @@ class Category
   include Mongoid::Timestamps
   
   field :title,         :type => String
+  index :title => 1
 
   field :slug,          :type => String, :default => ""
   validates_uniqueness_of :slug
+  index :slug => 1
   
   field :short_slug,    :type => String, :default => ""
+  index :short_slug => 1
   
   field :path,          :type => String, :default => ""
   validates_uniqueness_of :path
-
+  index :path => 1
+  
   field :kind,          :type => String, :default => 'full' # can be `simple` or `full` so far
   
   field :subhead,       :type => String
   field :descr,         :type => String
 
   field :is_simple,     :type => Boolean, :default => false
-  # field :is_top,        :type => Boolean, :default => true # @deprecated
+  
   field :order_value,   :type => String,  :default => 'jjj'
+  index :order_value => 1
   
   has_many    :videos
   has_many    :categories

@@ -15,9 +15,25 @@
   %ul
     - @categories.each do |category|
       %li
+        .right.gray= category.id
         %h5
           = link_to category.title, manager_category_path( category )
           = link_to '[~]', edit_manager_category_path( category ), { :'data-no-turbolink' => true }
-        = category.slug
-        
+        .row
+          .large-6.columns
+            %ul
+              %li
+                %b slug:
+                = category.slug
+              %li
+                %b short slug:
+                = category.short_slug
+              %li
+                %b path:
+                = category.path
+          .large-6.columns
+            %ul
+              %li
+                %b parent:
+                = category.category.title unless category.category.blank?
   = paginate @categories, :param_name => :categories_page

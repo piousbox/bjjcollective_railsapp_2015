@@ -6,6 +6,8 @@ Development
 * bjjc-angular.local (virtual site)
 ** /api -> bjjc.local:80/api
 
+ be rake db:mongoid:create_indexes
+
 TODO
 ====
 @TODO: There needs to be disaster recovery

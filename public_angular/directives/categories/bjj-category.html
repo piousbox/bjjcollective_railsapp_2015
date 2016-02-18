@@ -3,14 +3,25 @@
 <li>
 
   <a ui-sref="categories({ path: category.path })" >
-    <img src="{{ category.photo_url }}" alt="" />
+    <div ng-if="is_expanded">
+      <img src="{{ category.photo_url }}" alt="" />
+    </div>
     {{ category.title }}
   </a>
   <span class="white">{{ category.id }}</span>
 
-  <ul class="large-block-grid-5" >
-    <bjj-category ng-repeat="category_1 in category.categories" category="category_1"></bjj-category>
-  </ul>
+  <div ng-if="category.is_expanded">
+    expanded
+    <ul>
+      <bjj-category ng-repeat="category_1 in category.categories" category="category_1"></bjj-category>
+    </ul>
+  </div>
+  <div ng-if="!category.is_expanded">
+    not expanded
+    <ul>
+      <bjj-category ng-repeat="category_1 in category.categories" category="category_1" is_expanded="false" ></bjj-category>
+    </ul>
+  </div>
 
 </li>
 
