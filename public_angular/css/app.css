@@ -1,3 +1,4 @@
+
 /* app css stylesheet */
 
 .menu {
@@ -33,35 +34,20 @@
 }
 
 .white {
-  color: #efefef;
-  font-size: .6em;
+    color: #efefef;
+    font-size: .6em;
 }
-
+span.debug {
+    float: right;
+}
 /**
- * animation to slide
+ * categories / category directives
  */
-.slide.ng-leave {
-  position: relative;
+li.category h5.simple {
+    background: #b3e6ff;
 }
-.slide.ng-enter {
-  position: absolute;
+li.category img.thumb {
+    min-width: 50px !important;
+    min-height: 50px !important;
+    border: 1px solid gray !important;
 }
-.slide.ng-enter, .slide.ng-leave {
-  -webkit-transition: -webkit-transform 0.3s ease-in, opacity 0.3s ease-in;
-     -moz-transition: -moz-transform 0.3s ease-in, opacity 0.3s ease-in;
-       -o-transition: -o-transform 0.3s ease-in, opacity 0.3s ease-in;
-          transition: transform 0.3s ease-in, opacity 0.3s ease-in;
-}
-.slide.ng-enter, .slide.ng-leave.ng-leave-active {
-  -webkit-transform: scaleX(0.0001);
-       -o-transform: scaleX(0.0001);
-          transform: scaleX(0.0001);
-  opacity: 0;
-}
-.slide, .slide.ng-enter.ng-enter-active {
-  -webkit-transform: scaleX(1);
-       -o-transform: scaleX(1);
-          transform: scaleX(1);
-  opacity: 1;
-}
-  content: "|";
