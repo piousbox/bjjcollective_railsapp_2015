@@ -26,5 +26,9 @@ namespace :categories do
     CategoriesTasks.new.clear_short_slugs
   end
 
+  desc "assign kind"
+  task :assign_kind => :environment do
+    CategoriesTasks.new.assign_kind
+  end
   
 end

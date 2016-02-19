@@ -1,10 +1,9 @@
 
-# class Symbol
-#   def camelize
-#     'Category'
-#   end
-# end
-
+class Symbol
+  def camelize
+    'Category'
+  end
+end
 
 def puts! args, label=''
   puts "+++ +++ #{label}"

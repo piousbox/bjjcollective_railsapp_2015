@@ -196,6 +196,24 @@ class CategoriesTasks
     end
   end
 
+  def assign_kind
+    Category.each do |category|
+      if category.kind.blank? && category.photo.blank? && !category.categories[0].photo.blank?
+        category.kind = 'thumbs'
+        category.save
+        puts "Saved thumbs category: #{category.title}"
+      elsif category.photo.blank?
+        category.kind = 'simple'
+        category.save
+        puts "Saved simple category: #{category.title}"
+      else
+        category.kind = 'thumb'
+        category.save
+        puts "Saved thumb category: #{category.title}"
+      end
+    end
+  end
+
   private
 
   def puts! args, label=""
