@@ -1,13 +1,13 @@
 
 
 <li class="category" >
-  <span class="debug">{{ category.id }}</span>
 
   <div ng-if="'simple' == category.kind">
     <h5 class="simple">
       <a ui-sref="categories({ path: category.path })" >
         {{ category.title }}
       </a>
+      <span class="debug">{{ category.id }}</span>
     </h5>
     <ul>
       <bjj-category ng-repeat="category_1 in category.categories" category="category_1"></bjj-category>
