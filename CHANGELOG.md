@@ -1,5 +1,8 @@
 # CHANGELOG for bjjc rails app bjjcollective_railsapp_2015
 
+## 0.0.17
+better recusrive categories in angular
+
 ## 0.0.15
 * can put video in a category
 
