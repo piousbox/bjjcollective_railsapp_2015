@@ -1,7 +1,6 @@
 
 
 <li class="category" >
-
   <div ng-if="'simple' == category.kind">
     <h5 class="simple">
       <a ui-sref="categories({ path: category.path })" >
@@ -29,6 +28,13 @@
     </ul>
   </div>
   <div ng-if="'thumb' == category.kind">
+    <a ui-sref="categories({ path: category.path })" >
+      <img src="{{ category.photo_url }}" class="thumb" alt="" />
+      <br />
+      {{ category.title }}
+    </a>
+  </div>
+  <div ng-if="'full' == category.kind">
     <a ui-sref="categories({ path: category.path })" >
       <img src="{{ category.photo_url }}" class="thumb" alt="" />
       <br />

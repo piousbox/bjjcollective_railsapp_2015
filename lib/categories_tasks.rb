@@ -214,6 +214,34 @@ class CategoriesTasks
     end
   end
 
+  def normalize_kind_and_path
+    Category.where( :category_id => nil ).each do |c|
+      c.kind = 'thumbs'
+      c.path = c.short_slug
+      c.save || puts!( c.errors )
+      c.categories.each do |c_1|
+        c_1.kind = 'full'
+        c_1.path = "#{c.short_slug}/#{c_1.short_slug}"
+        c_1.save || puts!( c_1.errors )
+        c_1.categories.each do |c_2|
+          c_2.kind = "simple"
+          c_2.path = "#{c.short_slug}/#{c_1.short_slug}/#{c_2.short_slug}"
+          c_2.save || puts!( c_2.errors )
+          c_2.categories.each do |c_3|
+            c_3.kind = "simple"
+            c_3.path = "#{c.short_slug}/#{c_1.short_slug}/#{c_2.short_slug}/#{c_3.short_slug}"
+            c_3.save || puts!( c_3.errors )
+            c_3.categories.each do |c_4|
+              c_4.kind = "line"
+              c_4.path = "#{c.short_slug}/#{c_1.short_slug}/#{c_2.short_slug}/#{c_3.short_slug}/#{c_4.short_slug}"
+              c_4.save || puts!( c_4.errors )
+            end
+          end
+        end
+      end
+    end
+  end
+
   private
 
   def puts! args, label=""

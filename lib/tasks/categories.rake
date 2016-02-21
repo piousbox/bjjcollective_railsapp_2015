@@ -26,9 +26,14 @@ namespace :categories do
     CategoriesTasks.new.clear_short_slugs
   end
 
-  desc "assign kind"
+  desc "assign kind - @obsolete, use normalize_kind_and_path. 20160220"
   task :assign_kind => :environment do
     CategoriesTasks.new.assign_kind
+  end
+
+  desc "normalize kind and path"
+  task :normalize_kind_and_path => :environment do
+    CategoriesTasks.new.normalize_kind_and_path
   end
   
 end
