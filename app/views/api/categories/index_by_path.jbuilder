@@ -1,5 +1,10 @@
 
 if @category
+  json.id          @category.id
+  json.title       @category.title
+  json.slug        @category.slug
+  json.short_slug  @category.short_slug
+  json.path        @category.path
 end
 
 def render_categories json, categories, path

@@ -38,6 +38,15 @@ class Api::CategoriesController < Api::ApiController
   def index_by_path
     @path = URI.decode( params[:path]||'' ).split '/'
     @categories = Category.where( :category_id => nil )
+
+    temp_path = @path
+    @category = Category.where( :category_id => nil, :short_slug => temp_path[0] ).first
+    temp_path = temp_path.drop( 1 )
+    while temp_path.length > 0
+      @category = @category.categories.where( :short_slug => temp_path[0] ).first
+      temp_path = temp_path.drop( 1 )
+    end
+   
   end
   
 end
