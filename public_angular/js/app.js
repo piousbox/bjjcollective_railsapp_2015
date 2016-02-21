@@ -13,13 +13,11 @@ angular.module('myApp', [
   'myApp.categories.service'
 
 ]).
-run(['$rootScope', '$state', '$stateParams', function(
-      $rootScope,   $state,   $stateParams) {
+run(['$rootScope', '$state', '$stateParams', '$anchorScroll', function(
+      $rootScope,   $state,   $stateParams,   $anchorScroll) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-    }
-  ]
-).
+}]).
 config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', function(
          $routeProvider,   $locationProvider,   $stateProvider,   $urlRouterProvider) {
 

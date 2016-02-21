@@ -15,5 +15,9 @@ myApp.controller('CategoriesIndexController', ['$scope', '$location', '$anchorSc
       path:         data.path
     };
     $location.hash(data.id);
+    setTimeout(function() {
+      $anchorScroll();
+      console.log('trigger anchorScroll');
+    }, 50);
   });
 }]);
