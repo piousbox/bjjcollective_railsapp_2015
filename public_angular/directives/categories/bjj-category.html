@@ -13,7 +13,7 @@
     </ul>
   </div>
   <div ng-if="'line' == category.kind">
-    <a ui-sref="categories({ path: category.path })" >
+    <a href="/categories/{{ category.id }}" >
       {{ category.title }}
     </a>
   </div>
