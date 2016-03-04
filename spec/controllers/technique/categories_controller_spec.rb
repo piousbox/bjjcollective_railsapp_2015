@@ -1,7 +1,7 @@
 
 require 'spec_helper'
 
-describe CategoriesController do
+describe Technique::CategoriesController do
 
   render_views
   
@@ -18,6 +18,9 @@ describe CategoriesController do
 
   describe "show" do
     it 'does' do
+      @category.should_not eql nil
+      @category.slug.class.name.should eql "String"
+      
       get :show, :slug => @category.slug
       response.should render_template 'categories/show'
       

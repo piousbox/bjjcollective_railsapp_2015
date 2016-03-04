@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   namespace :api do
     root :to => 'api#home'
 
-    get 'categories/show/*all', :to => 'categories#show'
-    get 'categories-by-path', :to => 'categories#index_by_path'
-    get 'category/*all', :to => 'categories#show'
+    get 'categories/show/*all',         :to => 'categories#show'
+    get 'categories-by-path',           :to => 'categories#index_by_path'
+    get 'category-simple-expanded/:id', :to => 'categories#show_simple_expanded'
+    get 'category/*all',                :to => 'categories#show'
     
     get "categories",                                                           :to => "categories#index_shallow"
     get "categories/:slug",                                                     :to => "categories#index_shallow"

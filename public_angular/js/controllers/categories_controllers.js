@@ -3,8 +3,7 @@
 var myApp = angular.module('myApp');
 
 myApp.controller('CategoriesIndexController', ['$scope', '$location', '$anchorScroll', '$state', '$stateParams', 'Category',
-                                      function( $scope,   $location,   $anchorScroll,   $state,   $stateParams,   Category) {
-
+                                      function( $scope,   $location,   $anchorScroll,   $state,   $stateParams,   Category) {S
   Category.index_by_path({ path: $stateParams.path }, function(data) {
     $scope.categories = data.categories;
     $scope.category = {
@@ -18,5 +17,12 @@ myApp.controller('CategoriesIndexController', ['$scope', '$location', '$anchorSc
     setTimeout(function() {
       $anchorScroll();
     }, 50);
+  });
+}]);
+
+myApp.controller('CategoriesIndexSimpleExpandedController', ['$scope', '$location', '$anchorScroll', '$state', '$stateParams', 'Category',
+                                                    function( $scope,   $location,   $anchorScroll,   $state,   $stateParams,   Category) {
+  Category.show_simple_expanded({ id: $stateParams.id }, function(data) {
+    $scope.category = data.category;
   });
 }]);

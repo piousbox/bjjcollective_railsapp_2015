@@ -1,0 +1,46 @@
+
+
+<li class="category" id="{{ category.id }}" >
+  <div ng-if="'simple' == category.kind">
+    <h5 class="simple">
+      <a ui-sref="categories({ path: category.path })" >
+        {{ category.title }}
+      </a>
+      <span class="debug">{{ category.id }}</span>
+    </h5>
+    <ul>
+      <bjj-category ng-repeat="category_1 in category.categories" category="category_1"></bjj-category>
+    </ul>
+  </div>
+  <div ng-if="'line' == category.kind">
+    <a href="/categories/{{ category.id }}" >
+      {{ category.title }}
+    </a>
+  </div>
+  <div ng-if="'thumbs' == category.kind">
+    <h5 class="simple">
+      <a ui-sref="categories({ path: category.path })" >
+        {{ category.title }}
+      </a>
+    </h5>
+    <ul class="large-block-grid-5">
+      <bjj-category ng-repeat="category_1 in category.categories" category="category_1"></bjj-category>
+    </ul>
+  </div>
+  <div ng-if="'thumb' == category.kind">
+    <a ui-sref="categories({ path: category.path })" >
+      <img src="{{ category.photo_url }}" class="thumb" alt="" />
+      <br />
+      {{ category.title }}
+    </a>
+  </div>
+  <div ng-if="'full' == category.kind">
+    <a ui-sref="categories({ path: category.path })" >
+      <img src="{{ category.photo_url }}" class="thumb" alt="" />
+      <br />
+      {{ category.title }}
+    </a>
+  </div>
+
+</li>
+

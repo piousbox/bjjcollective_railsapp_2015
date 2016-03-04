@@ -29,6 +29,20 @@ angular.module('myApp.categories', ['ui.router']).
                     }
                 }
             }).
+            state('category', {
+                url: '/category/:id',
+                views: {
+                    '': {
+                        templateUrl: '/partials/categories/categories.html',
+                        resolve: {
+                            Category: ['Category', function(Category) {
+                                 return Category;
+                            }]
+                        },
+                        controller: 'CategoriesIndexSimpleExpandedController' 
+                    }
+                }
+            }).
             state('categories.categories', {
               url: '/:short_slug', /* /categories is prepended */
               views: {

@@ -40,7 +40,7 @@ config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProv
                   });
                 }]
             
-        }). // */
+        }).
         state('about', {
             url: base_url+'/about',
             template: "<h5>About template</h5>"
