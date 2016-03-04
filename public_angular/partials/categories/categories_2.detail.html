@@ -1,0 +1,14 @@
+
+<!-- partials/categories/categories_2.detail.html -->
+
+<ul>
+  <li ng-repeat="c_1 in categories">
+  <h5>{{ c_1.title }}</h5>
+    <ul>
+      <li ng-repeat="c_2 in c_1.categories" >
+        <a href="#">{{ c_2.title }}</a>
+      </li>
+    </ul>
+  </li>
+</ul>
+

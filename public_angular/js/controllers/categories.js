@@ -34,7 +34,7 @@ angular.module('myApp.categories', ['ui.router']).
                 views: {
                     '': {
                         templateUrl: '/partials/categories/categories_2.html',
-                        controller: 'LegacyCategoryDetailController'
+                        controller: 'CategoriesIndexSimpleExpandedController' 
                     }
                 }
             }).
@@ -43,7 +43,11 @@ angular.module('myApp.categories', ['ui.router']).
                 views: {
                     '': {
                         templateUrl: '/partials/categories/categories_2.html',
-                        controller: 'LegacyCategoryDetailController'
+                        controller: 'CategoriesIndexSimpleExpandedController'
+                    },
+                    'detail': {
+                        templateUrl: '/partials/categories/categories_2.detail.html',
+                       controller: 'LegacyCategoryDetailController'
                     }
                 }
             }).

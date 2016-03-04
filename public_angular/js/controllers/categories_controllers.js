@@ -24,6 +24,7 @@ myApp.controller('CategoriesIndexSimpleExpandedController', ['$scope', '$locatio
                                                     function( $scope,   $location,   $anchorScroll,   $state,   $stateParams,   Category) {
   Category.show_simple_expanded({ id: $stateParams.id }, function(data) {
     $scope.categories = data.categories;
+    $scope.selectedId = $stateParams.id
     $scope.category = {
       id:           data.id,
       title:        data.title,
@@ -36,14 +37,7 @@ myApp.controller('CategoriesIndexSimpleExpandedController', ['$scope', '$locatio
 
 myApp.controller('LegacyCategoryDetailController', ['$scope', '$location', '$anchorScroll', '$state', '$stateParams', 'Category',
                                            function( $scope,   $location,   $anchorScroll,   $state,   $stateParams,   Category) {
-  Category.show_simple_expanded({ id: $stateParams.id }, function(data) {
+  Category.show_simple_expanded({ id: $stateParams.detail_id }, function(data) {
     $scope.categories = data.categories;
-    $scope.category = {
-      id:           data.id,
-      title:        data.title,
-      slug:         data.slug,
-      short_slug:   data.short_slug,
-      path:         data.path
-    };
   });
 }]);

@@ -7,7 +7,7 @@
       <span class="debug">{{ category.id }}</span>
     </h5>
     <ul>
-      <bjj-category-legacy ng-repeat="category_1 in category.categories" category="category_1"></bjj-category-legacy>
+      <bjj-category-legacy ng-repeat="category_1 in category.categories" category="category_1" ></bjj-category-legacy>
     </ul>
   </div>
   <div ng-if="'thumbs' == category.kind">
@@ -15,7 +15,7 @@
       {{ category.title }}
     </h5>
     <ul class="large-block-grid-5">
-      <bjj-category-legacy ng-repeat="category_1 in category.categories" category="category_1"></bjj-category-legacy>
+      <bjj-category-legacy ng-repeat="category_1 in category.categories" category="category_1" ></bjj-category-legacy>
     </ul>
   </div>
   <div ng-if="'full' == category.kind">

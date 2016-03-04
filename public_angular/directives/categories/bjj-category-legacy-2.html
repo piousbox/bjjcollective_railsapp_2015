@@ -7,7 +7,7 @@
       <span class="debug">{{ category.id }}</span>
     </h5>
     <ul>
-      <bjj-category-legacy-2 ng-repeat="category_1 in category.categories" category="category_1"></bjj-category-legacy-2>
+      <bjj-category-legacyy ng-repeat="category_1 in category.categories" category="category_1" parent-id="parentId" ></bjj-category-legacyy>
     </ul>
   </div>
   <div ng-if="'thumbs' == category.kind">
@@ -15,18 +15,18 @@
       {{ category.title }}
     </h5>
     <ul class="large-block-grid-5">
-      <bjj-category-legacy-2 ng-repeat="category_1 in category.categories" category="category_1"></bjj-category-legacy-2>
+      <bjj-category-legacyy ng-repeat="category_1 in category.categories" category="category_1" parent-id="parentId" ></bjj-category-legacyy>
     </ul>
   </div>
   <div ng-if="'thumb' == category.kind">
-    <a ui-sref="category.detail({ id: category.id })" >
+    <a ui-sref="legacy-category-2.detail({ id: parentId, detail_id: category.id })" >
       <img src="{{ category.photo_url }}" class="thumb" alt="" />
       <br />
       {{ category.title }}
     </a>
   </div>
   <div ng-if="'full' == category.kind">
-    <a ui-sref="legacy-category-2({ id: category.id })" >
+    <a ui-sref="legacy-category-2.detail({ id: parentId, detail_id: category.id })" >
       <img src="{{ category.photo_url }}" class="thumb" alt="" />
       <br />
       {{ category.title }}
