@@ -1,6 +1,10 @@
 
 module ApplicationHelper
 
+  def technique_root_path
+    "/technique/legacy-category"
+  end
+  
   def show_category_path string
     "/categories/#{string}"
   end

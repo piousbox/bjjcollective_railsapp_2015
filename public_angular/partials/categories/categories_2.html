@@ -1,0 +1,18 @@
+
+<!-- partials/categories/categories_2.html -->
+
+<span class="debug">partials / categories / categories_2.html</span>
+
+<div class="row">
+  <div class="large-9 columns">
+    {{ category.title }}
+    <ul class="technique-categories">
+      <bjj-category-legacyy category="category" ng-repeat="category in categories" ></bjj-category-legacyy>
+    </ul>
+  </div>
+  <div class="large-3 columns">
+    <div ui-view="detail"></div>
+  </div>
+</div>
+
+<div ui-view="videos-list"></div>

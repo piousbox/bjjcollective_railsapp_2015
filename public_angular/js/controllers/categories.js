@@ -15,22 +15,8 @@ angular.module('myApp.categories', ['ui.router']).
         });
                  
         $stateProvider.
-            state('categories', {
-                url: '/{path:nonURIEncoded}',
-                views: {
-                    '': {
-                        templateUrl: '/partials/categories/categories.html',
-                        resolve: {
-                            Category: ['Category', function(Category) {
-                                return Category;
-                            }]
-                        },
-                        controller: 'CategoriesIndexController' 
-                    }
-                }
-            }).
-            state('category', {
-                url: '/category/:id',
+            state('legacy-category', {
+                url: '/legacy-category',
                 views: {
                     '': {
                         templateUrl: '/partials/categories/categories.html',
@@ -42,6 +28,26 @@ angular.module('myApp.categories', ['ui.router']).
                         controller: 'CategoriesIndexSimpleExpandedController' 
                     }
                 }
+            }).
+            state('legacy-category-2', {
+                url: '/legacy-category/:id',
+                views: {
+                    '': {
+                        templateUrl: '/partials/categories/categories_2.html',
+                        controller: 'LegacyCategoryDetailController'
+                    }
+                }
+            }).
+            state('legacy-category-2.detail', {
+                url: '/detail/:detail_id',
+                views: {
+                    '': {
+                        templateUrl: '/partials/categories/categories_2.html',
+                        controller: 'LegacyCategoryDetailController'
+                    }
+                }
+            }).
+            state('legacy-category.detail.videos', {
             }).
             state('categories.categories', {
               url: '/:short_slug', /* /categories is prepended */
@@ -67,5 +73,19 @@ angular.module('myApp.categories', ['ui.router']).
                        }]
                 }
               }
+            }).
+            state('categories', {
+                url: '/categories-by-path/{path:nonURIEncoded}',
+                views: {
+                    '': {
+                        templateUrl: '/partials/categories/categories.html',
+                        resolve: {
+                            Category: ['Category', function(Category) {
+                                return Category;
+                            }]
+                        },
+                        controller: 'CategoriesIndexController' 
+                    }
+                }
             });
     }]);

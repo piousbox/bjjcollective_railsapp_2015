@@ -14,8 +14,18 @@ describe Api::CategoriesController do
     response.should render_template 'api/categories/index_shallow'
   end
 
-  it 'show_simple_expanded' do
-    false.should eql true
+  describe 'show_simple_expanded' do
+    it 'normal, with id' do
+      get :show_simple_expanded, :format => :json, :id => @category.id
+      response.should be_success
+      response.should render_template 'api/categories/index_shallow'
+    end
+
+    it 'without id' do
+      get :show_simple_expanded, :format => :json
+      response.should be_success
+      response.should render_template 'api/categories/index_shallow'
+    end
   end
   
 end

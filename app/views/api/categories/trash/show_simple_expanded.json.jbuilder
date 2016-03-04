@@ -5,7 +5,6 @@ if @category
   json.slug         @category.slug
   json.short_slug   @category.short_slug
   json.path         @category.path
-  json.kind         @category.kind
 end
 
 json.categories do
@@ -15,8 +14,7 @@ json.categories do
     json.slug         c.slug
     json.short_slug   c.short_slug
     json.path         c.path
-    json.kind         c.kind
-    
+
     json.categories do
       json.array!        c.categories do |c_1| # DLR guard, x guard, ...
         json.id          c_1.id.to_s
@@ -27,7 +25,6 @@ json.categories do
         json.slug        c_1.slug
         json.short_slug  c_1.short_slug
         json.path        c_1.path
-        json.kind         c.kind
       end
     end
     

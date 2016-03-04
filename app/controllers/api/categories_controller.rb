@@ -12,6 +12,17 @@ class Api::CategoriesController < Api::ApiController
     @category = Category.where( :category_id => nil, :short_slug => slugs[0] ).first
   end
 
+  def show_simple_expanded
+    @path = URI.decode( params[:path]||'' ).split '/'    
+    if params[:id]
+      @category = Category.find params[:id]
+      @categories = @category.categories
+    else
+      @category = nil
+      @categories = Category.where( :category_id => nil )
+    end
+    render 'index_by_path'
+  end
   
   def index_shallow
     if params[:slug]
