@@ -45,23 +45,25 @@ class Category
   embeds_one  :photo
 
   def self.list
-    categories = [['',nil]]
-    traverse_categories = lambda do |title, c|
-      if '' == title
-        this_title = c.title
-      else
-        this_title = "#{title} - #{c.title}"
-      end
-      categories.push [this_title, c.id]
-      unless c.categories.empty?
-        c.categories.each do |c2|
-          traverse_categories.call this_title, c2
+    Rails.cache.fetch( "Category.all.list", :expires_in => 12.hours ) do
+      categories = [['',nil]]
+      traverse_categories = lambda do |title, c|
+        if '' == title
+          this_title = c.title
+        else
+          this_title = "#{title} - #{c.title}"
+        end
+        categories.push [this_title, c.id]
+        unless c.categories.empty?
+          c.categories.each do |c2|
+            traverse_categories.call this_title, c2
+          end
         end
       end
+      top_categories = Category.all.where( :category_id => nil )
+      top_categories.each { |c| traverse_categories.call('', c) }
+      categories
     end
-    top_categories = Category.all.where( :category_id => nil )
-    top_categories.each { |c| traverse_categories.call('', c) }
-    return categories
   end
 
 
