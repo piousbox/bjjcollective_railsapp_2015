@@ -47,14 +47,21 @@ angular.module('myApp.categories', ['ui.router']).
                     },
                     'detail': {
                         templateUrl: '/partials/categories/categories_2.detail.html',
-                       controller: 'LegacyCategoryDetailController'
+                        controller: 'LegacyCategoryDetailController'
                     }
                 }
             }).
-            state('legacy-category.detail.videos', {
+            state('legacy-category-2.detail.videos', {
+              url: '/videos/:videos_id',
+              views: {
+                'videos-list@': {
+                  templateUrl: '/partials/videos/videos.html',
+                  controller: 'LegacyCategoryVideosController'
+                }
+              }
             }).
             state('categories.categories', {
-              url: '/:short_slug', /* /categories is prepended */
+              url: '/videos/:videos_id',
               views: {
                 'subcategory': {
                   templateUrl: '/partials/categories/categories.html',

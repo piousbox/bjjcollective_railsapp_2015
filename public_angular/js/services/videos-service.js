@@ -8,7 +8,8 @@ angular.module('myApp.videos.service', []).
         var url = Config.api_endpoint + "/videos/in/:category_id/page/:videos_page.json";
         var defaults = {};
         var actions = { 
-                        index: { method: 'GET', url: "" }
+                        index:    { method: 'GET', url: "" },
+                        index_in: { method: 'GET', url: "" }
                       };
         return $resource(url, defaults, actions);
     }]);

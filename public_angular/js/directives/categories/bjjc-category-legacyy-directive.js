@@ -7,8 +7,7 @@ directive('bjjCategoryLegacyy', ['RecursionHelper',
     replace: true,
     scope: { categories: "=", 
              category: '=',
-             parentId: '=',
-             selectedId: '='
+             parentId: '='
            },
     templateUrl: "/directives/categories/bjj-category-legacy-2.html",
     compile: function(element) {

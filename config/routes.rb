@@ -30,7 +30,10 @@ Rails.application.routes.draw do
     get "categories/:slug/:slug_0/:slug_1",                                     :to => "categories#index_shallow"
     get "categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3",                     :to => "categories#index_shallow"
     get "categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3/page/:videos_page",   :to => "categories#index_shallow"
-    # resources :categories
+
+    get 'videos/in/:category_id',                   :to => 'videos#index'
+    get 'videos/in/:category_id/page',              :to => 'videos#index'
+    get 'videos/in/:category_id/page/:videos_page', :to => 'videos#index'
   end
   
   get 'fighters_guild' => 'fighters_guild/welcome#home', :as => :fg_root

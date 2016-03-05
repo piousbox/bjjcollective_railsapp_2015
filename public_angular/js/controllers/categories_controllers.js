@@ -41,3 +41,14 @@ myApp.controller('LegacyCategoryDetailController', ['$scope', '$location', '$anc
     $scope.categories = data.categories;
   });
 }]);
+
+myApp.controller('LegacyCategoryVideosController', ['$scope', '$location', '$state', '$stateParams', 'Category', 'Video',
+                                           function( $scope,   $location,   $state,   $stateParams,   Category,   Video) {
+  Video.index_in({ category_id: $stateParams.videos_id }, function(data) {
+    $scope.videos   = data.videos;
+    $scope.category = data.category;
+    $scope.n_videos = data.n_videos;
+  });
+}]);
+
+

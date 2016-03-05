@@ -10,7 +10,9 @@ angular.module('myApp', [
   'angulartics.google.analytics',
 
   'myApp.categories',
-  'myApp.categories.service'
+  'myApp.categories.service',
+  'myApp.videos',
+  'myApp.videos.service'
 
 ]).
 run(['$rootScope', '$state', '$stateParams', '$anchorScroll', function(
