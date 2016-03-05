@@ -60,6 +60,19 @@ angular.module('myApp.categories', ['ui.router']).
                 }
               }
             }).
+            state('legacy-category-video', {
+              url: '/video/:video_id/in/:videos_id', // videos_id is the id of the category that has this video
+              views: {
+                'videos-list@': {
+                  templateUrl: '/partials/videos/videos.html',
+                  controller: 'LegacyCategoryVideosController'
+                },
+                '': {
+                  templateUrl: '/partials/videos/video.html',
+                  controller: 'VideoController'
+                }
+              }
+            }).
             state('categories.categories', {
               url: '/videos/:videos_id',
               views: {

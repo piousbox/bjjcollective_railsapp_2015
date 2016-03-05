@@ -17,7 +17,9 @@ partials / videos / videos.html
         <img src="http://img.youtube.com/vi/{{video.youtube_id}}/1.jpg" alt="" />
       </div>
       <div class="large-10 columns">
-        <h5><a href="/videos/{{ video.id }}">{{ video.title }}</a></h5>
+        <h5>
+          <a ui-sref="legacy-category-video({ video_id: video.id, videos_id: category.id })" >{{ video.title }}</a>
+        </h5>
       </div>
     </div>    
   </li>

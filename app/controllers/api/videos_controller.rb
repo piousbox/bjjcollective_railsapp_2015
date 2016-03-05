@@ -9,6 +9,10 @@ class Api::VideosController < Api::ApiController
     @videos = @category.videos.page( params[:videos_page]||0 ).per( 20 )
   end
 
+  def show_one
+    @video = Video.find params[:id]
+  end
+  
   def show
     slugs = params[:all].split('/')
     @category = Category.where( :category_id => nil, :short_slug => slugs[0] ).first

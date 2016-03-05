@@ -51,4 +51,20 @@ myApp.controller('LegacyCategoryVideosController', ['$scope', '$location', '$sta
   });
 }]);
 
+myApp.controller('VideoController', ['$scope', '$location', '$state', '$stateParams', 'Video',
+                            function( $scope,   $location,   $state,   $stateParams,   Video) {
+  Video.show({ video_id: $stateParams.video_id }, function(data) {
+    $scope.video = data.video;
+    $scope.getIframeSrc = function(videoId) {
+      return "http://www.youtube.com/embed/" + videoId;
+    }
+  });
+}]);
+
+
+
+
+
+
+
 

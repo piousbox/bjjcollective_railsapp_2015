@@ -22,5 +22,14 @@ describe Api::VideosController do
       assigns( :videos ).should_not eql nil
     end
   end
+
+  describe 'show' do
+    it 'show_one' do
+      get :show_one, :id => @video.id
+      response.should be_success
+      response.should render_template('videos/show_one')
+      assigns( :video ).should_not eql nil
+    end
+  end
   
 end

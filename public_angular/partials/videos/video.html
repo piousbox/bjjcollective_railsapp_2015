@@ -1,17 +1,15 @@
 
 <!-- partials/videos/videos.html -->
 
+partials / videos / video.html
+
+<!--
 <ul>
   <li>partials/videos/videos.html</li>
   <li>Category: {{ category.title }}</li>
   <li>Videos: {{ videos.length }}</li>
 </ul>
+-->
 
-<ul class="videos no-bullet">
-  <li ng-repeat="video in videos">
-    <h5>{{ video.t }}</h5>
-    <div class="video-embed">
-      <iframe width="560" height="315" src="http://www.youtube.com/embed/#{{ video.youtube_id }}" frameborder="0" allowfullscreen=""></iframe>
-    </div>
-  </li>
-</ul>
+<h5>{{ video.title }}</h5>
+<div embedded-youtube youtube-id="video.youtube_id"></div>

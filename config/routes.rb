@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     get 'videos/in/:category_id',                   :to => 'videos#index'
     get 'videos/in/:category_id/page',              :to => 'videos#index'
     get 'videos/in/:category_id/page/:videos_page', :to => 'videos#index'
+    get 'video/:id', :to => 'videos#show_one'
   end
   
   get 'fighters_guild' => 'fighters_guild/welcome#home', :as => :fg_root
