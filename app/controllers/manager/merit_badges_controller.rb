@@ -1,12 +1,18 @@
 
 class Manager::MeritBadgesController < Manager::ManagerController
 
+  before_filter :set_lists
+
+  PERMITTED_PARAMS = [:title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover, :order_value, :questpage, :questpage_id]
+  
   def index
     @badges = MeritBadge.all.order_by( :order_value => 'asc' ).to_a
   end
 
   def new
     @badge = MeritBadge.new
+    puts! @questpages_list, 'questpages_list'
+    
   end
 
   def edit
@@ -14,14 +20,14 @@ class Manager::MeritBadgesController < Manager::ManagerController
   end
 
   def create
-    @badge = MeritBadge.new params[:merit_badge].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover, :order_value )
+    @badge = MeritBadge.new params[:merit_badge].permit( PERMITTED_PARAMS )
     do_update_photos
     do_save
   end
 
   def update
     @badge = MeritBadge.find params[:id]
-    @badge.update_attributes( params[:merit_badge].permit( :title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover, :order_value ) )
+    @badge.update_attributes( params[:merit_badge].permit( PERMITTED_PARAMS ) )
     do_update_photos
     do_save
   end

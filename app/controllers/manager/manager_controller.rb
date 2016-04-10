@@ -19,6 +19,7 @@ class Manager::ManagerController < ApplicationController
     @merit_badges_list = MeritBadge.all.list
     @questsets_list    = Questset.all.list
     @categories_list   = Category.all.list
+    @questpages_list   = Questpage.all.list
   end
   
 end

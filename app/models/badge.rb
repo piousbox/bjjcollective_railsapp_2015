@@ -24,6 +24,8 @@ class Badge
   
   has_many :videos
 
+  belongs_to :questpage
+  
   def self.list
     out = self.order_by( :title => :asc )
     [['', nil]] + out.map { |item| [ item.title, item.id ] }

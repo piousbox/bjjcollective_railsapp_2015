@@ -1,6 +1,8 @@
 
 class Manager::QuestsetsController < Manager::ManagerController
 
+  before_filter :set_lists
+
   def index
     @questsets = Questset.all.order_by( :order_value => 'asc' )
   end
