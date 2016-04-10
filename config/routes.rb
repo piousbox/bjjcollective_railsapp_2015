@@ -47,7 +47,7 @@ Rails.application.routes.draw do
     post "player_videos/:id", :to => "player_videos#update", :as => :player_video
     resources :player_videos
     
-    resources :quest_pages, :as => :qp do
+    resources :questpages, :as => :qp do
       resources :merit_badges
       resources :questsets
     end

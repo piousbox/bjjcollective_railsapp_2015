@@ -7,6 +7,7 @@ class Ability
     can [ :home, :about ], Ability
 
     can [ :show ], MeritBadge
+    can [ :show ], Questpage
     can [ :show ], Questset
     can [ :show ], Video
 

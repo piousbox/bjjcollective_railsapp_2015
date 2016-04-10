@@ -1,12 +1,13 @@
 
-class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
+class FightersGuild::QuestpagesController < FightersGuild::FightersGuildController
 
-  def home
-    authorize! :home, Ability
-
-    @questpages = Questpage.all
+  def show
+    authorize! :show, Questpage
     
-    @badges = MeritBadge.all.order_by( :order_value => 'asc' ).to_a
+    @questpages = Questpage.all
+    @questpage = Questpage.find params[:id]
+
+    @badges = MeritBadge.all.where( :questpage_id => @questpage.id ).order_by( :order_value => 'asc' ).to_a
     if user_signed_in?
       @badges.each_with_index do |badge, idx|
         # have I accomplished this badge?
@@ -16,10 +17,10 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
       end
     end
 
-    @questsets = Questset.all.order_by( :order_value => 'asc' ).to_a
+    @questsets = Questset.all.where( :questpage_id => @questpage.id ).order_by( :order_value => 'asc' ).to_a
     if user_signed_in?
       @questsets.each_with_index do |q, idx|
-        # have I accomplished thiswquestset?
+        # have I accomplished this questset?
         @questsets[idx][:player] = { :is_accomplished => true, :n_done => 0, :n_not_done => 0 }
         videos = Video.where( :questset_id => q.id )
         churn_badge :badge => @questsets[idx], :videos => videos
@@ -28,11 +29,7 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
     # have I accomplished this questset?
     churn_questsets @questsets
     
-  end
-
-  def about
-    authorize! :about, Ability
+    render 'fighters_guild/welcome/home'
   end
 
 end
-

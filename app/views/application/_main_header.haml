@@ -5,7 +5,10 @@
       %ul.inline-list
         %li= link_to logo_image_tag, root_path
         %li= link_to "Technique Database", technique_root_path
-        %li= link_to 'Fighters Guild', fg_root_path
+        %li
+          %ul
+            - @questpages.each do |qp|
+              %li= link_to qp.title, fg_qp_path( qp )
         %li= link_to "Shop", shop_path
       
     .large-3.columns
