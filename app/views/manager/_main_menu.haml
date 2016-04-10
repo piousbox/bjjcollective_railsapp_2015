@@ -11,10 +11,13 @@
       (#{Category.all.length})
       = link_to '[+]', new_manager_category_path, { :class => :inline, :'data-no-turboline' => true }
     %li
+      = link_to "Questpages", manager_questpages_path, { :class => :inline }
+      (#{Questpage.all.length})
+      = link_to '[+]', new_manager_questpage_path, { :class => :inline, :'data-no-turbolink' => true }          
+    %li
       = link_to "Questsets", manager_questsets_path, { :class => :inline }
       (#{Questset.all.length})
-      = link_to '[+]', new_manager_questset_path, { :class => :inline, :'data-no-turbolink' => true }
-    
+      = link_to '[+]', new_manager_questset_path, { :class => :inline, :'data-no-turbolink' => true }    
     %li
       = link_to "Merit Badges", manager_badges_path, { :class => :inline }
       (#{MeritBadge.all.length})

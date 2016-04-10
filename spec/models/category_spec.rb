@@ -15,7 +15,7 @@ describe Category do
     end
     
     it 'does' do
-      expected = [['',nil]]
+      expected = [['', nil]]
       expected.push [ 'top 1', @c1.id ]
       expected.push [ 'top 1 - L 1', @c2.id ]
       expected.push [ 'top 2', @c3.id ]

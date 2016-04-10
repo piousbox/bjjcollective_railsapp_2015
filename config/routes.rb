@@ -36,16 +36,21 @@ Rails.application.routes.draw do
     get 'videos/in/:category_id/page/:videos_page', :to => 'videos#index'
     get 'video/:id', :to => 'videos#show_one'
   end
+
   
   get 'fighters_guild' => 'fighters_guild/welcome#home', :as => :fg_root
   namespace :fighters_guild, :as => :fg do
-    # root :to => 'fighters_guild/welcome#home'
     get "about", :to => "welcome#about"
     resources :merit_badges, :as => :badges
-    post "player_videos/:id", :to => "player_videos#update", :as => :player_video
-    resources :player_videos
     resources :questsets
     resources :videos
+    post "player_videos/:id", :to => "player_videos#update", :as => :player_video
+    resources :player_videos
+    
+    resources :quest_pages, :as => :qp do
+      resources :merit_badges
+      resources :questsets
+    end
   end
 
   namespace :manager do
@@ -54,7 +59,11 @@ Rails.application.routes.draw do
     get 'categories/search', :as => :categories_search, :to => 'categories#search'
     resources :categories do
     end
-    
+
+    resources :questpages do
+      resources :merit_badges
+      resources :questsets
+    end
     resources :merit_badges, :as => :badges do
       resources :videos
     end
