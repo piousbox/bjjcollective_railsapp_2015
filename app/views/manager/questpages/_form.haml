@@ -1,0 +1,10 @@
+
+-# manager questpage _form
+
+= form_for questpage, :url => url do |f|
+  .row
+    .large-12.columns
+      = f.label :title
+      = f.text_field :title
+      = f.submit nil, :class => [ :button, :small ]
+

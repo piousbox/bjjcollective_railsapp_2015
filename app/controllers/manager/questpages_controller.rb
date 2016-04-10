@@ -2,7 +2,7 @@
 class Manager::QuestpagesController < Manager::ManagerController
 
   def index
-    @questpages = Questpage.all.order_by( :order_value => 'asc' )
+    @questpages = Questpage.all
   end
 
   def new

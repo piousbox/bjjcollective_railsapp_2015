@@ -25,6 +25,7 @@ describe FightersGuild::WelcomeController do
     response.should render_template( 'fighters_guild/welcome/home' )
     assigns( :badges ).should_not eql nil
     assigns( :questsets ).should_not eql nil
+    assigns( :questpages ).should_not eql nil
   end
 
   describe 'home - signed in' do

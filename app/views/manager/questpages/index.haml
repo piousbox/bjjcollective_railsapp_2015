@@ -1,0 +1,18 @@
+
+-#
+-# manager questpages index
+-#
+  
+.row
+  .large-12.columns
+    %h3
+      Questpages
+      -# = link_to '[+]', new_manager_questpage_path, { 'data-no-turbolink' => true }
+
+.row
+  .large-12.columns
+    %ul
+      - @questpages.each do |qp|
+        %li
+          = qp.title
+          = link_to '[~]', edit_manager_questpage_path( qp )
