@@ -1,8 +1,12 @@
 
 class FightersGuild::QuestpagesController < FightersGuild::FightersGuildController
 
+  def index
+    authorize! :home, Ability
+  end
+  
   def show
-    authorize! :show, Questpage
+    authorize! :home, Ability
     
     @questpage = Questpage.find params[:id]
 
@@ -27,8 +31,6 @@ class FightersGuild::QuestpagesController < FightersGuild::FightersGuildControll
     end
     # have I accomplished this questset?
     churn_questsets @questsets
-    
-    render 'fighters_guild/welcome/home'
   end
 
 end

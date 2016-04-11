@@ -1,0 +1,22 @@
+
+-# fighters_guild questpages show
+  
+.row
+  .large-12.columns
+    .text-center
+      %h1 Questpage #{@questpage.title}
+    
+.fg-welcome-home      
+  .row
+    .large-3.columns.quests-list
+      %h4.text-center Quests
+      = render 'fighters_guild/questsets/list', :grid => 1, :items => @questsets
+          
+    .large-9.columns
+      %h4.text-center Merit Badges
+      = render 'fighters_guild/merit_badges/list', :grid => 3, :items => @badges
+      
+
+
+
+

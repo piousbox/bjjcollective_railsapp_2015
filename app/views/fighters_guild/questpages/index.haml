@@ -1,0 +1,7 @@
+
+.row
+  .large-12.columns
+    %h1 Quest pages
+    %ul
+      - @questpages.each do |qp|
+        %li= link_to qp.title, fg_qp_path( qp )
