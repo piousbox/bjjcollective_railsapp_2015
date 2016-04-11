@@ -89,7 +89,9 @@ class Manager::QuestsetsController < Manager::ManagerController
   def permit_params
     [ :title, :subhead, :descr,
       :unavailable_mouseover, :shaded_mouseover, :accomplished_mouseover,
-      :order_value ]
+      :order_value,
+      :questpage, :questpage_id
+    ]
   end
 
   

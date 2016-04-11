@@ -3,8 +3,6 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
 
   def home
     authorize! :home, Ability
-
-    @questpages = Questpage.all
     
     @badges = MeritBadge.all.order_by( :order_value => 'asc' ).to_a
     if user_signed_in?

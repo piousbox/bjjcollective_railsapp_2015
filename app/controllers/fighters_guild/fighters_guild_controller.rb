@@ -7,7 +7,13 @@ class FightersGuild::FightersGuildController < ApplicationController
     redirect_to new_user_registration_path, :alert => exception.message
   end
 
+  before_filter :set_lists
+  
   protected
+
+  def set_lists
+    @questpages = Questpage.all
+  end
 
   def churn_badge args={}
     badge  = args[:badge]

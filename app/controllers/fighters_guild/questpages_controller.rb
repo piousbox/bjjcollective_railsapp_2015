@@ -4,7 +4,6 @@ class FightersGuild::QuestpagesController < FightersGuild::FightersGuildControll
   def show
     authorize! :show, Questpage
     
-    @questpages = Questpage.all
     @questpage = Questpage.find params[:id]
 
     @badges = MeritBadge.all.where( :questpage_id => @questpage.id ).order_by( :order_value => 'asc' ).to_a
