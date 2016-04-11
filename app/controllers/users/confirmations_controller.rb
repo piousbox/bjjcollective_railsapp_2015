@@ -1,4 +1,9 @@
 class Users::ConfirmationsController < Devise::ConfirmationsController
+  before_filter :set_lists
+  def set_lists
+    @questpages = Questpage.all
+  end
+
   # GET /resource/confirmation/new
   # def new
   #   super

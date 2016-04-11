@@ -1,4 +1,9 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  before_filter :set_lists
+  def set_lists
+    @questpages = Questpage.all
+  end
+
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 

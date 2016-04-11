@@ -1,4 +1,9 @@
 class Users::UnlocksController < Devise::UnlocksController
+  before_filter :set_lists
+  def set_lists
+    @questpages = Questpage.all
+  end
+
   # GET /resource/unlock/new
   # def new
   #   super

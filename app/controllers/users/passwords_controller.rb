@@ -1,4 +1,9 @@
 class Users::PasswordsController < Devise::PasswordsController
+  before_filter :set_lists
+  def set_lists
+    @questpages = Questpage.all
+  end
+
   # GET /resource/password/new
   # def new
   #   super
