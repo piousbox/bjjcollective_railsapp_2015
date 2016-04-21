@@ -5,8 +5,8 @@ class Video
   include Mongoid::Timestamps
 
   field                   :youtube_id, :type => String
-  validates_uniqueness_of :youtube_id
-  validates_length_of     :youtube_id, :mimimum => 11, :maximum => 11
+  # validates_uniqueness_of :youtube_id
+  # validates_length_of     :youtube_id, :mimimum => 11, :maximum => 11
   
   field :title,        :type => String
   field :descr,        :type => String
