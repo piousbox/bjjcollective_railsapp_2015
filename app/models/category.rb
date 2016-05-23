@@ -21,7 +21,7 @@ class Category
   field :slug,          :type => String, :default => ""
   validates_uniqueness_of :slug
   index :slug => 1
-  
+
   field :short_slug,    :type => String, :default => ""
   index :short_slug => 1
   
@@ -29,12 +29,13 @@ class Category
   validates_uniqueness_of :path
   index :path => 1
   
-  field :kind,          :type => String, :default => 'full' # can be `simple` or `full` so far
+  KIND_SIMPLE = :category_kind_simple
+  KIND_FULL = :category_kind_full
+  field :kind, :type => Symbol, :default => KIND_FULL
+  field :is_simple,     :type => Boolean, :default => false
   
   field :subhead,       :type => String
   field :descr,         :type => String
-
-  field :is_simple,     :type => Boolean, :default => false
   
   field :order_value,   :type => String,  :default => 'jjj'
   index :order_value => 1
@@ -44,9 +45,12 @@ class Category
   belongs_to  :category
   embeds_one  :photo
 
+  #
+  # This is tested. _vp_ 20160522
+  #
   def self.list
     Rails.cache.fetch( "Category.all.list", :expires_in => 12.hours ) do
-      categories = [['',nil]]
+      categories = [ [ '', nil ] ]
       traverse_categories = lambda do |title, c|
         if '' == title
           this_title = c.title

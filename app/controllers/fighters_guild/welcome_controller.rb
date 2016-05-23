@@ -4,7 +4,7 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
   def home
     authorize! :home, Ability
     
-    render 'questpages/index'
+    render 'fighters_guild/questpages/index'
   end
   
   def _20160409_home_trash
