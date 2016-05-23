@@ -21,3 +21,4 @@
 /vendor/bundle
 
 /public/api
+/coverage

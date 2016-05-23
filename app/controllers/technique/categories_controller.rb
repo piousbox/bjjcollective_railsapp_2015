@@ -1,6 +1,8 @@
 
 class Technique::CategoriesController < Technique::TechniqueController
 
+  before_filter :set_these_lists
+  
   def home
     render :layout => 'application_angular'
   end
@@ -28,6 +30,12 @@ class Technique::CategoriesController < Technique::TechniqueController
     @video = Video.find( params[:id] )
     c = @video.category
     create_categories_list c
+  end
+
+  private
+
+  def set_these_lists
+    @questpages = Questpage.all
   end
 
 end

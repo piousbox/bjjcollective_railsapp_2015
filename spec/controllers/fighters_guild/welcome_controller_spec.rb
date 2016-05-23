@@ -22,9 +22,9 @@ describe FightersGuild::WelcomeController do
   it '#home - not signed in' do
     get :home
     response.should be_success
-    response.should render_template( 'fighters_guild/welcome/home' )
-    assigns( :badges ).should_not eql nil
-    assigns( :questsets ).should_not eql nil
+    response.should render_template( 'fighters_guild/questpages/index' )
+    # assigns( :badges ).should_not eql nil
+    # assigns( :questsets ).should_not eql nil
     assigns( :questpages ).should_not eql nil
   end
 
@@ -38,44 +38,29 @@ describe FightersGuild::WelcomeController do
     it 'renders' do
       response.should be_success
       questsets = assigns( :questsets )
-    end
-    
-  end
-  
-  describe 'questsets at #home' do
-    before :each do
-      sign_out :user
-      setup_questsets
-      get :home
-    end
-    
-    it 'correct ordering of questsets' do
-      questsets = assigns( :questsets )
-      questsets.length.should >= 2
-      questsets.each_with_index do |q, idx|
-        break unless questsets[idx+1]
-        # break if idx + 1 == questsets.length
-        questsets[idx].order_value.should < questsets[idx+1].order_value
-      end
-    end
+    end  
   end
 
   describe 'accomplished' do
     before :each do
+      sign_in :user, @user
+
       @badge.title = 'Accomplished Title'
       @badge.save
       
       pv = PlayerVideo.new :video_id => @video.id, :user_id => @user.id
       pv.save
     end
-    
+
+=begin
     it 'home - accomplished, 1 video' do
-      sign_in :user, @user
       get :home
       response.should be_success
+      response.should render_template( 'fighters_guild/questpages/index' )
       assert_select('.is_accomplished')
     end
-
+=end
+    
     describe '2 video' do
       before :each do
       end

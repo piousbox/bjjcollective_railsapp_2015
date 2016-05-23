@@ -40,6 +40,8 @@ group :development, :test do
   gem 'rspec-html-matchers'
   gem 'factory_girl', "~> 4.0"
   gem 'factory_girl_rails'
+
+  gem 'simplecov'
 end
 
 group :development do

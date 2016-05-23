@@ -25,7 +25,7 @@ describe Api::VideosController do
 
   describe 'show' do
     it 'show_one' do
-      get :show_one, :id => @video.id
+      get :show_one, :id => @video.id, :format => :json
       response.should be_success
       response.should render_template('videos/show_one')
       assigns( :video ).should_not eql nil

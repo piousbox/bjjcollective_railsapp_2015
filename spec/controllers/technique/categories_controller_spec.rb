@@ -7,6 +7,7 @@ describe Technique::CategoriesController do
   
   before :each do
     setup_categories
+    setup_questpages
   end
 
   describe "#home" do

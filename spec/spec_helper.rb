@@ -1,4 +1,6 @@
 
+require 'simplecov'
+SimpleCov.start
 
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
@@ -116,6 +118,11 @@ end
 def setup_categories
   Category.all.each { |c| c.remove }
   @category = FactoryGirl.create :category
+end
+
+def setup_questpages
+  Questpage.all.each { |q| q.remove }
+  @questpage = FactoryGirl.create :questpage
 end
 
 def setup_questsets
