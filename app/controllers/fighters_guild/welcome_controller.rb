@@ -6,7 +6,8 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
     
     render 'fighters_guild/questpages/index'
   end
-  
+
+=begin
   def _20160409_home_trash
     authorize! :home, Ability
     
@@ -16,7 +17,7 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
         # have I accomplished this badge?
         @badges[idx][:player] = { :is_accomplished => true, :n_done => 0, :n_not_done => 0 }
         videos = Video.where( :merit_badge_id => badge.id )
-        churn_badge :badge => @badges[idx], :videos => videos
+        churn_badge :badge => @badges[idx], :videos => videos, :user => current_user
       end
     end
 
@@ -26,14 +27,14 @@ class FightersGuild::WelcomeController < FightersGuild::FightersGuildController
         # have I accomplished thiswquestset?
         @questsets[idx][:player] = { :is_accomplished => true, :n_done => 0, :n_not_done => 0 }
         videos = Video.where( :questset_id => q.id )
-        churn_badge :badge => @questsets[idx], :videos => videos
+        churn_badge :badge => @questsets[idx], :videos => videos, :user => current_user
       end
     end
     # have I accomplished this questset?
     churn_questsets @questsets
-    
   end
-
+=end
+  
   def about
     authorize! :about, Ability
   end

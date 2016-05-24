@@ -12,8 +12,10 @@ class Badge
   field :shaded_mouseover,          :type => String
   field :accomplished_mouseover,    :type => String
 
-  field :order_value,               :type => String, :default => "jjj"
-
+  field :unaccomplished_order_value,  :type => String, :default => 'jjj'
+  field :accomplished_order_value,  :type => String, :default => 'jjj'
+  attr_accessor :order_value
+  
   embeds_many :tasks
   
   embeds_one :shaded_photo,       :class_name => 'Photo', :inverse_of => :shaded_badge
@@ -22,7 +24,7 @@ class Badge
   embeds_one :unavailable_photo,  :class_name => 'Photo', :inverse_of => :unavailable_badge
   embeds_many :photos,                                    :inverse_of => :badge
   
-  has_many :videos
+  # has_many :videos # @TODO: why can't this be here?
 
   belongs_to :questpage
   

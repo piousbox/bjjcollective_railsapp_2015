@@ -12,7 +12,7 @@ class Manager::QuestsetsController < Manager::ManagerController
   end
 
   def create
-    @questset = Questset.new params[:questset].permit( permit_params )
+    @questset = Questset.new params[:questset].permit! # ( permit_params )
     do_update_photos
     do_save
   end
@@ -23,7 +23,7 @@ class Manager::QuestsetsController < Manager::ManagerController
 
   def update
     @questset = Questset.find params[:id]
-    @questset.update_attributes params[:questset].permit( permit_params )
+    @questset.update_attributes params[:questset].permit! # ( permit_params )
     do_update_photos
     do_save
   end
@@ -85,7 +85,8 @@ class Manager::QuestsetsController < Manager::ManagerController
       render :action => :new
     end
   end
-
+  
+=begin
   def permit_params
     [ :title, :subhead, :descr,
       :unavailable_mouseover, :shaded_mouseover, :accomplished_mouseover,
@@ -93,6 +94,6 @@ class Manager::QuestsetsController < Manager::ManagerController
       :questpage, :questpage_id
     ]
   end
-
+=end
   
 end

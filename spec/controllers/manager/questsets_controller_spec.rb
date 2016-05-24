@@ -41,10 +41,10 @@ describe Manager::QuestsetsController do
 
   describe 'updates' do
     it 'order_value' do
-      @questset.order_value.should eql 'jjj'
-      post :update, :id => @questset.id, :questset => { :order_value => 'aaa' }
+      @questset[:unaccomplished_order_value].should eql 'jjj'
+      post :update, :id => @questset.id, :questset => { :unaccomplished_order_value => 'aaa' }
       result = Questset.find @questset.id
-      result.order_value.should eql 'aaa'
+      result[:unaccomplished_order_value].should eql 'aaa'
     end
   end
   

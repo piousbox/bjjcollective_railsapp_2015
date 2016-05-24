@@ -7,8 +7,16 @@
     - videos_path = "Questset" == item.class.name ? manager_questset_videos_path( item )    :  manager_badge_videos_path( item )
     - new_path    = "Questset" == item.class.name ? new_manager_questset_video_path( item ) : new_manager_badge_video_path( item )
     %li
-      %h5= item.title
-      = link_to '[edit]', edit_path, { 'data-no-turbolink' => true }
+      %h5
+        = link_to '[~]', edit_path, { 'data-no-turbolink' => true }
+        = item.title
+        %ul
+          %li= item.order_value
+          %li
+            = link_to 'Videos', videos_path
+            (#{item.videos.length})
+            = link_to '[+]', new_path
+      
       - if item.unavailable_photo
         = image_tag item.unavailable_photo.photo.url(:mini)
       - if item.shaded_photo
@@ -17,7 +25,3 @@
         = image_tag item.accomplished_photo.photo.url(:mini)
       - if item.title_photo
         = image_tag item.title_photo.photo.url(:mini)
-      = item.order_value
-      = link_to 'Videos', videos_path
-      (#{item.videos.length})
-      = link_to '[+]', new_path

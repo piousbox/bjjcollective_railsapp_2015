@@ -42,6 +42,7 @@ group :development, :test do
   gem 'factory_girl_rails'
 
   gem 'simplecov'
+  gem 'byebug'
 end
 
 group :development do

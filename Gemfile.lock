@@ -51,6 +51,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bson (3.2.6)
     builder (3.2.2)
+    byebug (9.0.4)
     cancan (1.6.10)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -251,6 +252,7 @@ PLATFORMS
 DEPENDENCIES
   aws-s3
   aws-sdk (< 2.0)
+  byebug
   cancan
   coffee-rails (~> 4.1.0)
   dalli

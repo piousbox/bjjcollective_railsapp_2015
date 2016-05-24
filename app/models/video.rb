@@ -19,6 +19,7 @@ class Video
   # @TODO: this should instead be a polymorphic relationship
   belongs_to :merit_badge
   belongs_to :questset
+  # belongs_to :badge # ???
   
   belongs_to :category
   belongs_to :mastered_player, :class_name => 'Player', :inverse_of => :mastered_videos

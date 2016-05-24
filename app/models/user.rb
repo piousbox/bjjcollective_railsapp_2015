@@ -59,5 +59,6 @@ class User
   field :group_id, :type => Integer, :default => 3
 
   has_one :player
+  has_many :player_videos
 
 end
