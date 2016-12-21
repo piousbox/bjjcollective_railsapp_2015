@@ -1,4 +1,3 @@
-
 class Manager::MeritBadgesController < Manager::ManagerController
 
   before_filter :set_lists

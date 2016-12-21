@@ -1,16 +1,17 @@
+
 development:
   clients:
     default:
       database: bjjc_development
       hosts:
-        - 10.0.1.12:27017
+        - 127.0.0.1:27017
         
 development-production:
   clients:
     default:
       database: bjjc_development
       hosts:
-        - 10.0.1.12:27017
+        - 127.0.0.1:27017
 
 production:
   clients:
@@ -24,7 +25,7 @@ test:
     default:
       database: bjjc_test
       hosts:
-        - 10.0.1.12:27017
+        - 127.0.0.1:27017
       options:
         read:
           mode: :primary

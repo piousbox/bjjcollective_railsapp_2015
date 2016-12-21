@@ -1,4 +1,3 @@
-
 class Manager::QuestpagesController < Manager::ManagerController
 
   before_filter :set_lists
@@ -91,6 +90,5 @@ class Manager::QuestpagesController < Manager::ManagerController
       :unavailable_mouseover, :shaded_mouseover, :accomplished_mouseover,
       :order_value ]
   end
-
-  
 end
+

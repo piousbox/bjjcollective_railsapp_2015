@@ -1,3 +1,11 @@
+
+Install
+=======
+ sudo apt-get install libmysqlclient-dev -y
+ sudo apt-get install mysql-client-core-5.6 -y
+ https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-14-04
+ https://ubuntu.flowconsult.at/en/mysql-set-change-reset-root-password/
+
 Development
 ===========
 * ror app, port 3001
