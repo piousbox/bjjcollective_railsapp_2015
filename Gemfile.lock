@@ -136,6 +136,9 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    paypal-sdk-rest (1.6.0)
+      multi_json (~> 1.0)
+      xml-simple
     rack (1.6.4)
     rack-cache (1.5.1)
       rack (>= 0.4)
@@ -270,6 +273,7 @@ DEPENDENCIES
   mongoid-paperclip
   mysql2 (~> 0.3.13)
   paperclip (~> 4.3)
+  paypal-sdk-rest
   rack-cache
   rails (= 4.2.4)
   rspec-html-matchers
@@ -285,4 +289,4 @@ DEPENDENCIES
   will_paginate
 
 BUNDLED WITH
-   1.12.1
+   1.14.5

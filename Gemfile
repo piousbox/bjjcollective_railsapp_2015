@@ -29,6 +29,8 @@ gem 'devise'
 gem 'cancan'
 
 gem "paperclip", "~> 4.3"
+gem 'paypal-sdk-rest'
+
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'aws-sdk', '< 2.0'
 gem "aws-s3",            :require => "aws/s3"

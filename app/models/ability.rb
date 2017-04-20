@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
     
-    can [ :home, :about ], Ability
+    can [ :home, :about, :donate ], Ability
 
     can [ :show ], MeritBadge
     can [ :show ], Questpage

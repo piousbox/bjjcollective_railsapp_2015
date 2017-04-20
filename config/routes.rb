@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get "categories/view/:slug", :to => "categories#show"
   get "categories",            :to => "categories#home"
   get "categories/:id",        :to => "categories#show"
+
+  get 'donate',                :to => 'welcome#donate'
     
   get "videos/:id",            :to => "categories#video"
   get "video/:legacy_id", :to => "videos#legacy_show"
@@ -41,16 +43,20 @@ Rails.application.routes.draw do
   get 'fighters_guild' => 'fighters_guild/welcome#home', :as => :fg_root
   namespace :fighters_guild, :as => :fg do
     get "about", :to => "welcome#about"
+
     resources :merit_badges, :as => :badges
-    resources :questsets
-    resources :videos
+
     post "player_videos/:id", :to => "player_videos#update", :as => :player_video
     resources :player_videos
-    
+
+    resources :questsets
     resources :questpages, :as => :qp do
       resources :merit_badges
       resources :questsets
     end
+
+    resources :videos    
+
   end
 
   namespace :manager do

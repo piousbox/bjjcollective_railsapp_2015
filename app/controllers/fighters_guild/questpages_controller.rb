@@ -7,7 +7,7 @@ class FightersGuild::QuestpagesController < FightersGuild::FightersGuildControll
   
   def show
     authorize! :home, Ability
-    
+
     @questpage = Questpage.find params[:id]
     @badges = @questpage.merit_badges.to_a
     
