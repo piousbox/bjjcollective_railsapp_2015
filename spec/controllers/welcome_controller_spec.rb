@@ -13,7 +13,7 @@ describe WelcomeController do
 
   it '#donate' do
     get :donate
-    response.should be_success
+    response.should be_redirect
   end
  
 end
