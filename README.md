@@ -1,4 +1,15 @@
 
+About
+=====
+
+Well, there is the fighters guild,
+then there is the shop,
+then there is the legacy site,
+then there is the manager,
+
+then there is the v2 of categories (encyclopedia). 
+I want it in both react and rails views.
+
 Install
 =======
  sudo apt-get install libmysqlclient-dev -y
@@ -18,14 +29,12 @@ Development
 
 TODO
 ====
-@TODO: There needs to be disaster recovery
 @TODO: Show of a merit badge should have human url
 @TODO: Video2 is video. video is video_legacy
 @TODO: Video link should be human-readable
 @TODO: I should not be able to create a video linked to both a badge and a questset. (polymorphism)
 @TODO: All questsets are shaded, and once you accomplish a questset, the pic changes, and the next one opens up
 @TODO: Be able to delete questsets
-@TODO: Better s3 creds for BJJC
 
 Deployment
 ==========
@@ -51,18 +60,3 @@ CI/CD Pipeline
  sudo apt-get install mysql-client-core-5.6 -y
 
 
-
-Change Log
-==========
-* 20151122 .htaccess on manager
-* 20151203 tasks from the first email
-* 20151219 - 0.0.1 - Manager video pagination
-* 0.0.2 - structure for categories
-* 0.0.3 - caching
-* 0.0.4 - leaderboards
-* 0.0.5 - legacy video redirect
-* 0.0.6 - let's go angular
-* 0.0.7 - angular is out, let's put angular in.
-* 0.0.8 - better data migrations, test-driven lib/ tasks, regenerate slugs.
-* 0.0.9 - making categories_1 disappear when videos are listed. And test-driving it!
-* 0.0.10 - introducing karma for CLI js testing

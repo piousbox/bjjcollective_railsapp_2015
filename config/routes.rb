@@ -1,6 +1,4 @@
-
 Rails.application.routes.draw do
-
   root :to => 'welcome#home'
   
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
@@ -55,8 +53,7 @@ Rails.application.routes.draw do
       resources :questsets
     end
 
-    resources :videos    
-
+    resources :videos
   end
 
   namespace :manager do

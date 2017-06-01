@@ -1,3 +1,25 @@
-
+20151122 .htaccess on manager
+20151203 tasks from the first email
+20151219 - 0.0.1 - Manager video pagination
+0.0.1 - 20151219 - 0.0.1 - Manager video pagination
+0.0.2 - structure for categories
+0.0.3 - caching
+0.0.4 - leaderboards
+0.0.5 - legacy video redirect
+0.0.6 - let's go angular
+0.0.7 - angular is out, let's put angular in.
+0.0.8 - better data migrations, test-driven lib/ tasks, regenerate slugs.
+0.0.9 - making categories_1 disappear when videos are listed. And test-driving it!
+0.0.10 - introducing karma for CLI js testing
+         expansion into the angular app
+0.0.11 - fixing the button where you can tick off done tasks
+0.0.12 - I wish I knew... Lotsa changes though.
+0.0.13
+  empty mouseover is not displayed 
+  ad on the homepage in angular.
+0.0.14 - bugs of appcomplished on homepage
+0.0.15 - can put video in a category
+0.0.17 - better recusrive categories in angular
 0.0.23 - adding data backup, re-deploying
          will do microtransactions
+0.0.24 - restart after a while. Let's generate thousands of pages

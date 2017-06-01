@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rack-cache'
+gem 'rack-cors'
 gem 'dalli'
 gem 'rails', '4.2.4'
 gem 'sass-rails', '~> 5.0'

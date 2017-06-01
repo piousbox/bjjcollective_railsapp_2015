@@ -1,6 +1,8 @@
 
 class CategoriesController < ApplicationController
 
+  before_action :set_lists
+
   def home
     render :layout => 'application_angular'
   end
@@ -28,6 +30,12 @@ class CategoriesController < ApplicationController
     @video = Video.find( params[:id] )
     c = @video.category
     create_categories_list c
+  end
+
+  private
+
+  def set_lists
+    @questpages = Questpage.all
   end
 
 end

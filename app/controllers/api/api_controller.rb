@@ -1,8 +1,8 @@
-
 class Api::ApiController < ApplicationController
+  layout :false
 
   def home
-    render :json => :ok
+    render :json => { :status => :ok }
   end
   
 end
