@@ -30,5 +30,5 @@ describe Technique::CategoriesController do
       assigns( :videos     ).should_not eql nil
     end
   end
-  
+
 end

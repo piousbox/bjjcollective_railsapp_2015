@@ -2,7 +2,7 @@
 FactoryGirl.define do
   
   factory :category do |f|
-    f.title 'xxtitlexx'
+    f.title 'some-title'
   end
 
 end
