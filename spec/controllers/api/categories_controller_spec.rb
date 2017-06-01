@@ -12,13 +12,12 @@ describe Api::CategoriesController do
     end
 
     it 'two levels deep' do
-      get :index_shallow, :slug => 'mounts', :slug_0 => 'side-control', :format => 'json'
+      get :index_shallow, :slug => @mounts.short_slug, :slug_0 => @side_control.short_slug, :format => 'json'
       response.should render_template 'api/categories/index_shallow'
       result = JSON.parse response.body
-      result[:title].should eql 'Side Control'
+      result[:title].should eql @side_control.title
     end
   end
-
 
   describe 'show_simple_expanded' do
     it 'normal, with id' do
