@@ -1,0 +1,5 @@
+rvm:
+  - 2.3.1
+services: mongodb
+before_install:
+  - cp config/initializers/s3.rb-example config/initializers/s3.rb
