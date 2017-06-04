@@ -39,10 +39,11 @@ class Api::CategoriesController < Api::ApiController
         end
       end
       @n_videos = @category.videos.length
-      @videos = @category.videos.page( params[:videos_page] ).per( 10 )
+      @videos = @category.videos.page( params[:videos_page] ).per( 6 )
       @n_pages = ( @category.videos.length.to_f / 10 ).ceil
       @categories = Category.where( :category_id => @category.id )
     else
+      @category = Category.new :title => 'Technique', :slug => 'technique', :short_slug => 'technique', :path => '/'
       @categories = Category.where( :category_id => nil )
     end
   end

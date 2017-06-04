@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get "categories/:slug",                                                     :to => "categories#index_shallow"
     get "categories/:slug/:slug_0",                                             :to => "categories#index_shallow"
     get "categories/:slug/:slug_0/:slug_1",                                     :to => "categories#index_shallow"
+    get "categories/:slug/:slug_0/:slug_1/:slug_2",                             :to => "categories#index_shallow"
     get "categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3",                     :to => "categories#index_shallow"
     get "categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3/page/:videos_page",   :to => "categories#index_shallow"
 
