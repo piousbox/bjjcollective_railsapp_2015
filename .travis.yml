@@ -2,6 +2,7 @@ rvm:
   - 2.3.1
 services: mongodb
 before_install:
+  - mysql -e 'CREATE DATABASE BJJCDB_TEST;'
   - cp config/initializers/s3.rb-example config/initializers/s3.rb
   - cp config/database.yml-example config/database.yml
   - cp config/mongoid.yml-example config/mongoid.yml
