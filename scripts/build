@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -x
+
+branch=`git branch | grep -e "^*" | cut -d' ' -f 2`
+
+bundle &&
+
+RAILS_ENV=production bundle exec rake assets:precompile &&
+
+git checkout master &&
+git merge "$branch" &&
+git add . &&
+git commit -m "autobuild `date "+%Y%m%d"`" 
+git push origin master &&
+git checkout "$branch" &&
+git merge master &&
+git push &&
+
+echo "bjjc api build ok"
