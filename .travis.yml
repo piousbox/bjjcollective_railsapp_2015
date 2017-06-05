@@ -4,4 +4,5 @@ services: mongodb
 before_install:
   - cp config/initializers/s3.rb-example config/initializers/s3.rb
   - cp config/database.yml-example config/database.yml
+  - cp config/mongoid.yml-example config/mongoid.yml
 

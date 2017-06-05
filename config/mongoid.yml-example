@@ -1,24 +1,4 @@
 
-development:
-  clients:
-    default:
-      database: bjjc_development
-      hosts:
-        - 127.0.0.1:27017
-        
-development-production:
-  clients:
-    default:
-      database: bjjc_development
-      hosts:
-        - 127.0.0.1:27017
-
-production:
-  clients:
-    default:
-      database: bjjc_development
-      hosts:
-        - 10.0.1.12:27017
 
 test:
   clients:
