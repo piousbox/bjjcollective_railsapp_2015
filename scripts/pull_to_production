@@ -2,12 +2,14 @@
 
 set -x
 
-git pull 
-git fetch
-git reset origin master --hard
+cd /home/ubuntu/projects/bjjcollective_railsapp_2015 &&
 
-~/.rbenv/versions/2.3.1/bin/bundle 
+git pull &&
+git fetch &&
+git reset origin master --hard &&
 
-sudo service bjjcollective-app restart
+~/.rbenv/versions/2.3.1/bin/bundle  &&
+
+sudo service bjjcollective-app restart &&
 
 echo "bjjc api pulled to production ok"
