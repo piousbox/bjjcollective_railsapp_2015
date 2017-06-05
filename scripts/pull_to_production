@@ -6,7 +6,7 @@ cd /home/ubuntu/projects/bjjcollective_railsapp_2015 &&
 
 git pull &&
 git fetch &&
-git reset origin master --hard &&
+git reset origin/master --hard &&
 
 ~/.rbenv/versions/2.3.1/bin/bundle  &&
 
