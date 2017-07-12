@@ -1,0 +1,6 @@
+- if categories.count > 0
+  %ul
+    - categories.each do |child|
+      %li
+        = link_to child.title, edit_manager_category_path( child )
+        = render 'form_children', :categories => child.categories

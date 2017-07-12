@@ -14,5 +14,6 @@ json.video do
   json.id          @video.id.to_s
   json.youtube_id  @video.youtube_id
   json.title       @video.title
+  json.descr       @video.descr
 end
 

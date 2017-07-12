@@ -34,6 +34,15 @@ class Api::CategoriesController < Api::ApiController
             @category = Category.where( :short_slug => params[:slug_2], :category_id => @category.id ).first 
             if params[:slug_3]
               @category = Category.where( :short_slug => params[:slug_3], :category_id => @category.id ).first
+              if params[:slug_4]
+                @category = Category.where( :short_slug => params[:slug_4], :category_id => @category.id ).first
+                if params[:slug_5]
+                  @category = Category.where( :short_slug => params[:slug_5], :category_id => @category.id ).first
+                  if params[:slug_6]
+                    @category = Category.where( :short_slug => params[:slug_6], :category_id => @category.id ).first
+                  end
+                end
+              end
             end
           end
         end

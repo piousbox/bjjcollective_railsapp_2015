@@ -10,7 +10,11 @@ class Api::VideosController < Api::ApiController
   end
 
   def show_one
-    @video = Video.find params[:id]
+    if params[:id]
+      @video = Video.find params[:id]
+    elsif params[:youtube_id]
+      @video = Video.find_by :youtube_id => params[:youtube_id]
+    end
   end
   
   def show

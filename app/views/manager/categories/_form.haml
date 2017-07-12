@@ -41,4 +41,24 @@
       = f.file_field :photo
 
   = f.submit nil, :class => [ :button, :small ]
-  
+
+.row
+  .small-6.columns
+    %h4 Children
+    = render 'form_children', :categories => @category.categories
+  .small-6.columns
+    %h5 Parent
+    = @category.category.inspect
+
+%hr
+
+- if @category.videos.count > 0
+  .row
+    .small-6.columns
+      %h5 Videos
+      %ul
+        - @category.videos.each do |video|
+          %li
+            = link_to '[~]', edit_manager_video_path( video )
+            = video.title
+            

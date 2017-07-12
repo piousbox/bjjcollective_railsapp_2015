@@ -25,18 +25,24 @@ Rails.application.routes.draw do
     get 'category-simple-expanded',     :to => 'categories#show_simple_expanded'
     get 'category/*all',                :to => 'categories#show'
     
-    get "categories",                                                           :to => "categories#index_shallow"
-    get "categories/:slug",                                                     :to => "categories#index_shallow"
-    get "categories/:slug/:slug_0",                                             :to => "categories#index_shallow"
-    get "categories/:slug/:slug_0/:slug_1",                                     :to => "categories#index_shallow"
-    get "categories/:slug/:slug_0/:slug_1/:slug_2",                             :to => "categories#index_shallow"
-    get "categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3",                     :to => "categories#index_shallow"
+    get "categories",                                                                       :to => "categories#index_shallow"
+    get "categories/:slug",                                                                 :to => "categories#index_shallow"
+    get "categories/:slug/:slug_0",                                                         :to => "categories#index_shallow"
+    get "categories/:slug/:slug_0/:slug_1",                                                 :to => "categories#index_shallow"
+    get "categories/:slug/:slug_0/:slug_1/:slug_2",                                         :to => "categories#index_shallow"
+    get "categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3",                                 :to => "categories#index_shallow"
+    get "categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3/:slug_4",                         :to => "categories#index_shallow"
+    get "categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3/:slug_4/:slug_5",                 :to => "categories#index_shallow"
+    get "categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3/:slug_4/:slug_5/:slug_6",         :to => "categories#index_shallow"
+    get "categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3/:slug_4/:slug_5/:slug_6/:slug_7", :to => "categories#index_shallow"
+
     get "categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3/page/:videos_page",   :to => "categories#index_shallow"
 
     get 'videos/in/:category_id',                   :to => 'videos#index'
     get 'videos/in/:category_id/page',              :to => 'videos#index'
     get 'videos/in/:category_id/page/:videos_page', :to => 'videos#index'
-    get 'video/:id', :to => 'videos#show_one'
+    get 'video/:id',               :to => 'videos#show_one'
+    get 'videos/view/:youtube_id', :to => 'videos#show_one'
   end
 
   

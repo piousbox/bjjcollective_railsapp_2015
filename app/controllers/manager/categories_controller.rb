@@ -4,10 +4,11 @@ class Manager::CategoriesController < Manager::ManagerController
   before_filter :set_lists
   
   def index
-    @categories = Category.all.page( params[:categories_page] ).per( 20 * 4 ) # b/c it's a large-block-grid-4
+    @categories = Category.all
     if params[:q]
       @categories = @categories.where( :title => /.*#{params[:q]}.*/i )
     end
+    @categories = @categories.page( params[:categories_page] ).per( 20 * 4 ) # b/c it's a large-block-grid-4
   end
 
   def new
