@@ -9,6 +9,8 @@ class Video
   # validates_length_of     :youtube_id, :mimimum => 11, :maximum => 11
   
   field :title,        :type => String
+  validates :title, :presence => true
+
   field :descr,        :type => String
   field :order_value,  :type => String, :default => "jjj"
   field :legacy_id,    :type => Integer

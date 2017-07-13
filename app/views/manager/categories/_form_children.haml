@@ -1,6 +1,13 @@
-- if categories.count > 0
-  %ul
-    - categories.each do |child|
-      %li
-        = link_to child.title, edit_manager_category_path( child )
-        = render 'form_children', :categories => child.categories
+
+-#
+-# manager / categories / _form_children
+-# 20170713 _vp_ 
+-#
+  
+- if depth > 0
+  - if categories.count > 0
+    %ul
+      - categories.each do |child|
+        %li
+          = link_to child.title, edit_manager_category_path( child )
+          = render 'form_children', :categories => child.categories, :depth => depth - 1

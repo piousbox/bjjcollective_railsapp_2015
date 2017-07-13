@@ -69,6 +69,7 @@ Rails.application.routes.draw do
 
     get 'categories/search', :as => :categories_search, :to => 'categories#search'
     resources :categories do
+      resources :videos
     end
 
     resources :questpages do

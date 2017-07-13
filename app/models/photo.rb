@@ -1,5 +1,6 @@
 
 class Photo
+  require 'aws-sdk'
 
   include Mongoid::Document
   include Mongoid::Timestamps

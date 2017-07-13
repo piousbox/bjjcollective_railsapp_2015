@@ -35,6 +35,7 @@ class Manager::VideosController < Manager::ManagerController
   
   def new
     @video = Video.new
+    @category = Category.find( params[:category_id] ) if params[:category_id]
   end
 
   def create
@@ -43,8 +44,12 @@ class Manager::VideosController < Manager::ManagerController
     do_update_tasks
     
     if @video.save
-      flash[:notice] = 'Success.'
-      redirect_to :action => 'index'
+      flash[:notice] = "Saved video #{@video.youtube_id}."
+      if @video.category
+        redirect_to :controller => 'categories', :action => 'edit', :id => @video.category.id
+      else
+        redirect_to :action => 'index'
+      end
     else
       flash[:alert] = "No Luck. #{@video.errors.messages}"
       render :action => "new"

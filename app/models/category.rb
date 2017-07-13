@@ -70,6 +70,4 @@ class Category
     end
   end
 
-
 end
-

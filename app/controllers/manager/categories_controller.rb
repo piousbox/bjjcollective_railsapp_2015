@@ -16,7 +16,7 @@ class Manager::CategoriesController < Manager::ManagerController
   end
 
   def create
-    @category = Category.create params[:category].permit permitted_params
+    @category = Category.create params[:category].permit!
     if @category.save
       flash[:notice] = 'Success.'
       redirect_to :action => 'index'
@@ -28,6 +28,7 @@ class Manager::CategoriesController < Manager::ManagerController
 
   def show
     @category = Category.find params[:id]
+    redirect_to :action => 'edit', :id => @category.id
   end
 
   def edit
@@ -35,14 +36,14 @@ class Manager::CategoriesController < Manager::ManagerController
   end
 
   def update
-    @category = Category.find params[:id]
-    @category.update params[:category].permit permitted_params
-    
     if params[:category][:photo]
-      photo = Photo.new
-      photo.photo = params[:category][:photo]
-      @category.photo = photo
+      photo = Photo.new params[:category][:photo].permit!
     end
+
+    params[:category].delete :photo
+    @category = Category.find params[:id]
+    @category.photo = photo if photo
+    @category.update params[:category].permit!
     
     if @category.save
       flash[:notice] = 'Success.'
@@ -54,12 +55,6 @@ class Manager::CategoriesController < Manager::ManagerController
   end
 
   private
-
-  def permitted_params
-    return [ :title, :slug, :short_slug, :path, :kind,
-             :subhead, :descr, :is_simple, :order_value, :category, :category_id ]
-  end
-  
 
 end
 

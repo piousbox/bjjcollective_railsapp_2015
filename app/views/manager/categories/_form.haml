@@ -1,5 +1,5 @@
 
-= form_for [:manager, category] do |f|
+= form_for [:manager, category], :html => { :multipart => true } do |f|
   = f.submit nil, :class => [ :button, :small ]  
   
   = f.label :title
@@ -45,20 +45,19 @@
 .row
   .small-6.columns
     %h4 Children
-    = render 'form_children', :categories => @category.categories
+    = render 'form_children', :categories => @category.categories, :depth => 2
   .small-6.columns
     %h5 Parent
     = @category.category.inspect
 
 %hr
 
-- if @category.videos.count > 0
-  .row
-    .small-6.columns
-      %h5 Videos
-      %ul
-        - @category.videos.each do |video|
-          %li
-            = link_to '[~]', edit_manager_video_path( video )
-            = video.title
-            
+.row
+  .small-6.columns
+    %h5 Videos (#{@category.videos.count}) #{link_to '[+]', new_manager_category_video_path( @category )}
+    %ul
+      - @category.videos.each do |video|
+        %li
+          = link_to '[~]', edit_manager_video_path( video )
+          = video.title
+          

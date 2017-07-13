@@ -1,4 +1,9 @@
 
+%p
+  Not implemented, it seems!
+  = link_to '[~]', edit_manager_category_path( @category )
+
 = @category.inspect
 
-= image_tag @category.photo.photo.url :small
+- if @category.photo && @category.photo.photo
+  = image_tag @category.photo.photo.url :small
