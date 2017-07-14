@@ -29,8 +29,12 @@ class Category
   validates_uniqueness_of :path
   index :path => 1
   
-  KIND_SIMPLE = :category_kind_simple
+  KIND_SIMPLE = :simple
   KIND_FULL = :category_kind_full
+  KIND_LINE = :line
+  KIND_THUMB = :thumb
+  KIND_THUMBS = :thumbs
+  KINDS = [ KIND_SIMPLE, KIND_FULL, KIND_LINE, KIND_THUMB, KIND_THUMBS ]
   field :kind, :type => Symbol, :default => KIND_FULL
   field :is_simple,     :type => Boolean, :default => false
   

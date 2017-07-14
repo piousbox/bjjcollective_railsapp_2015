@@ -37,17 +37,19 @@ class Manager::CategoriesController < Manager::ManagerController
 
   def update
     if params[:category][:photo]
-      photo = Photo.new params[:category][:photo].permit!
+      photo = Photo.new 
+      photo.photo = params[:category][:photo]
     end
 
     params[:category].delete :photo
     @category = Category.find params[:id]
+
     @category.photo = photo if photo
     @category.update params[:category].permit!
     
     if @category.save
       flash[:notice] = 'Success.'
-      redirect_to :action => 'index'
+      redirect_to :action => 'edit', :id => @category.id
     else
       flash[:alert] = "No Luck. #{@category.errors.messages}"
       render :action => 'edit'

@@ -30,5 +30,11 @@ describe Manager::CategoriesController do
     response.should be_success
     assigns( :categories_list ).should_not eql nil
   end
+
+  context '#update' do
+    it 'validates kind' do
+      raise 'not implemented'
+    end
+  end
   
 end

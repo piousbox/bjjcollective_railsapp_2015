@@ -17,8 +17,7 @@
       %li
         .right.gray= category.id
         %h5
-          = link_to category.title, manager_category_path( category )
-          = link_to '[~]', edit_manager_category_path( category ), { :'data-no-turbolink' => true }
+          = link_to category.title, edit_manager_category_path( category ), { :'data-no-turbolink' => true }
         .row
           .large-6.columns
             %ul

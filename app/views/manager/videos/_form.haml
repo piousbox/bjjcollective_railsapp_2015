@@ -15,7 +15,7 @@
   = f.select :questset_id, @questsets_list, { :selected => (@video.questset_id||params[:questset_id]) }
 
   = f.label :category
-  = f.select :category_id, options_for_select( @categories_list, :selected => params[:category_id] )
+  = f.select :category_id, options_for_select( @categories_list, :selected => params[:category_id] || @video.category_id )
   
   = f.label :title
   = f.text_field :title

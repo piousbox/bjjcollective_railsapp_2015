@@ -30,6 +30,7 @@ gem 'testoaster', '~> 0.0.4'
 
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem 'aws-sdk', "~> 2"
+gem 'aws-sdk-v1' # for legacy, I guess _vp_ 20170713
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'

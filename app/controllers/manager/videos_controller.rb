@@ -25,7 +25,7 @@ class Manager::VideosController < Manager::ManagerController
     do_update_tasks
     
     if @video.save
-      flash[:notice] = 'Success.'
+      flash[:notice] = "Saved video #{@video.id}, youtube id #{@video.youtube_id}, category id #{@video.category_id}."
       redirect_to :action => 'index'
     else
       flash[:alert] = "No Luck. #{@video.errors.messages}"
@@ -44,7 +44,7 @@ class Manager::VideosController < Manager::ManagerController
     do_update_tasks
     
     if @video.save
-      flash[:notice] = "Saved video #{@video.youtube_id}."
+      flash[:notice] = "Saved video #{@video.id}, youtube id #{@video.youtube_id}, category id #{@video.category_id}."
       if @video.category
         redirect_to :controller => 'categories', :action => 'edit', :id => @video.category.id
       else
