@@ -16,7 +16,10 @@ json.categories do
     json.short_slug   c.short_slug
     json.path         c.path
     json.kind         c.kind
-    
+    if c.photo
+      json.photo_url  c.photo.photo.url :thumb2
+    end
+
     json.categories do
       json.array!        c.categories do |c_1| # DLR guard, x guard, ...
         json.id          c_1.id.to_s

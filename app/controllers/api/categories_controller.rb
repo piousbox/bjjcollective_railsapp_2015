@@ -22,10 +22,10 @@ class Api::CategoriesController < Api::ApiController
   end
   
   def index_shallow
+    @category = Category.find_by :title => 'Technique'
+
     if params[:slug]
-      @category = Category.where( :slug => params[:slug] ).first
-      # puts! @category, 'category'
-      
+      @category = Category.where( :short_slug => params[:slug], :catgegory_id => @category_id ).first      
       if params[:slug_0]
         @category = Category.where( :short_slug => params[:slug_0], :category_id => @category.id ).first
         if params[:slug_1]
@@ -47,14 +47,12 @@ class Api::CategoriesController < Api::ApiController
           end
         end
       end
-      @n_videos = @category.videos.length
-      @videos = @category.videos.page( params[:videos_page] ).per( 6 )
-      @n_pages = ( @category.videos.length.to_f / 10 ).ceil
-      @categories = Category.where( :category_id => @category.id )
-    else
-      @category = Category.find_or_create_by :title => 'Technique', :slug => 'technique', :short_slug => 'technique', :path => '/'
-      @categories = Category.where( :category_id => nil )
     end
+
+    @categories = Category.where( :category_id => @category.id )
+    @videos = @category.videos.page( params[:videos_page] ).per( 6 )
+    @n_videos = @category.videos.length
+    @n_pages = ( @category.videos.length.to_f / 10 ).ceil
   end
 
   def index_by_path

@@ -17,6 +17,19 @@ describe Api::CategoriesController do
       result = JSON.parse response.body
       result[:title].should eql @side_control.title
     end
+   
+    # @TODO: this has never been run! _vp_ 20170713
+    it 'shows a photo if there is one, regardless of the kind' do
+      c = FactoryGirl.create :next_category, :category_id => @category
+      c.photo = Photo.new
+      c.save
+      
+      get :index_shallow, :slug => @category.slug
+
+      result = JSON.parse response.body
+      result[:categories][0][:photo_url].should_not eql nil
+    end
+
   end
 
   describe 'show_simple_expanded' do

@@ -35,5 +35,14 @@ namespace :categories do
   task :normalize_kind_and_path => :environment do
     CategoriesTasks.new.normalize_kind_and_path
   end
-  
+
+  desc 'init Technique category'
+  task :init_technique => :environment do
+    technique = Category.find_or_create_by :title => 'Technique', :slug => 'technique', :short_slug => 'technique', :path => '/'
+    orphan_categories = Category.where( :category_id => nil )
+    if orphan_categories.count > 0
+      orphan_categories.update_all :category_id => technique
+    end
+  end
+
 end

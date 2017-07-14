@@ -38,6 +38,9 @@
 
   %br
   = f.submit nil, :class => [ :button, :small ]
+  
+.row
+  = button_to 'Delete', manager_category_path( @category.id ), :method => 'delete', :data => { :confirm => 'Are you sure?' }
 
 .row
   .small-6.columns
@@ -45,6 +48,10 @@
     = render 'form_children', :categories => @category.categories, :depth => 2
   .small-6.columns
     %h5 Parent
+    - if @category.category
+      = link_to @category.category.title, edit_manager_category_path( @category.category )
+      %br
+      %br
     = @category.category.inspect
 
 %hr

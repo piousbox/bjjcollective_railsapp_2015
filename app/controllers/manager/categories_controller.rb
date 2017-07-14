@@ -56,6 +56,20 @@ class Manager::CategoriesController < Manager::ManagerController
     end
   end
 
+  def destroy
+    c = Category.find params[:id]
+    parent = c.category
+    # flag = c.destroy
+    if flag
+      flash[:notice] = "Deleted category."
+      redirect_to :action => 'edit', :category_id => parent.id
+    else
+      flash[:alert] = "Cannot delete category: #{c.errors.messages}"
+      redirect_to :action => 'edit', :category_id => c.id
+    end
+    
+  end
+
   private
 
 end
