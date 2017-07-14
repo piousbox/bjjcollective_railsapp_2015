@@ -49,7 +49,7 @@ class Api::CategoriesController < Api::ApiController
       end
     end
 
-    @categories = Category.where( :category_id => @category.id )
+    @categories = Category.where( :category_id => @category.id ).order_by( :order_value => :asc )
     @videos = @category.videos.page( params[:videos_page] ).per( 6 )
     @n_videos = @category.videos.length
     @n_pages = ( @category.videos.length.to_f / 10 ).ceil
