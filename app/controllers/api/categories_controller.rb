@@ -22,7 +22,7 @@ class Api::CategoriesController < Api::ApiController
   end
   
   def index_shallow
-    @category = Category.find_by :title => 'Technique'
+    @category = Category.find_or_create_by :title => 'Technique'
 
     if params[:slug]
       @category = Category.where( :short_slug => params[:slug], :catgegory_id => @category_id ).first      

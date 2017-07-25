@@ -36,6 +36,34 @@ namespace :categories do
     CategoriesTasks.new.normalize_kind_and_path
   end
 
+  desc 'all categories with path == id, convert to path that makes sense. 20170724'
+  task :convert_path_20170724 => :environment do
+    categories = Hash.new
+    Category.all.map do |c|
+      if c.path.to_s == c.id.to_s
+        categories[c.id] = c.id
+      end
+    end
+    puts! categories.count, "this many categories to process"
+
+    categories.each do |c1, c2|
+      c = Category.find c1
+      c.path = c.category.path + "/" + c.short_slug
+      flag = c.save
+      if !flag
+        puts! c.errors.messages
+      end
+    end
+
+    categories = Hash.new
+    Category.all.map do |c|
+      if c.path.to_s == c.id.to_s
+        categories[c.id] = c.id
+      end
+    end
+    puts! categories.count, "this many categories to process"
+  end
+
   desc 'init Technique category'
   task :init_technique => :environment do
     technique = Category.find_or_create_by :title => 'Technique', :slug => 'technique', :short_slug => 'technique', :path => '/'

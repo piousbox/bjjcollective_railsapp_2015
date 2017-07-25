@@ -10,6 +10,13 @@ then there is the manager,
 then there is the v2 of categories (encyclopedia). 
 I want it in both react and rails views.
 
+-=----- instructions on how to set it up
+* get the code
+* install mongodb
+* setup s3
+* get some test data
+* run tests
+
 Install
 =======
  sudo apt-get install libmysqlclient-dev -y

@@ -10,10 +10,14 @@ describe Manager::TasksController do
     
     setup_questsets
 
-    Video.all.each { |v| v.remove }
-    @video = Video.create :youtube_id => '0234567890a'
+    Video.unscoped.destroy
+    @video = Video.create :youtube_id => '0234567890a', :title => 'some title'
     @video.merit_badge_id = @merit_badge.id
-    @video.save.should eql true
+    flag = @video.save
+    if !flag
+      puts! @video.errors.messages, 'cannot save video'
+    end
+    @video.save.should.should eql true
   end
 
   describe 'for video in merit badge / questset' do

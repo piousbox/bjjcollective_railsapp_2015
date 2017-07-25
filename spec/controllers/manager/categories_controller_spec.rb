@@ -1,17 +1,10 @@
-
 require 'spec_helper'
-
 describe Manager::CategoriesController do
-
   render_views
-  
   before :each do
     setup_categories
-    
     setup_merit_badges
-    
     setup_questsets
-
     setup_videos
   end
 
