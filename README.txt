@@ -66,6 +66,7 @@ CI/CD Pipeline
  sudo apt-get install libmysqlclient-dev -y
  sudo apt-get install mysql-client-core-5.6 -y
 
+port 3001
 
 
 

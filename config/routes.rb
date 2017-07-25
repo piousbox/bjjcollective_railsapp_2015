@@ -89,6 +89,8 @@ Rails.application.routes.draw do
       resources :tasks do
       end
     end
+
+    get 'sitemap', :to => 'sitemaps#show', :format => :xml
   end
 
   namespace :technique do

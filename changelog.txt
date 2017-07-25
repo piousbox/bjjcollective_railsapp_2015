@@ -23,3 +23,4 @@
 0.0.23 - adding data backup, re-deploying
          will do microtransactions
 0.0.24 - restart after a while. Let's generate thousands of pages
+20170725 - sitemap is in, with some categories (no videos)
