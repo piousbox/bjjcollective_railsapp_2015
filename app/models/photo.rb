@@ -32,8 +32,9 @@ class Photo
   embedded_in :shaded_badge,         :class_name => 'Badge', :inverse_of => :shaded_photo
   embedded_in :accomplished_badge,   :class_name => 'Badge', :inverse_of => :accomplished_photo
   embedded_in :title_badge,          :class_name => 'Badge', :inverse_of => :title_photo
-  embedded_in :badge,                                        :inverse_of => :photos
   embedded_in :category
+  embedded_in :badge,                                        :inverse_of => :photos
+  embedded_in :bg_badge,             :class_name => 'Badge', :inverse_of => :background_image
 
   set_callback(:create, :before) do |doc|
 #    if doc.is_public

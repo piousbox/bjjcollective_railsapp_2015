@@ -12,7 +12,7 @@ class Manager::QuestsetsController < Manager::ManagerController
   end
 
   def create
-    @questset = Questset.new params[:questset].permit! # ( permit_params )
+    @questset = Questset.new params[:questset].permit!
     do_update_photos
     do_save
   end
@@ -23,7 +23,7 @@ class Manager::QuestsetsController < Manager::ManagerController
 
   def update
     @questset = Questset.find params[:id]
-    @questset.update_attributes params[:questset].permit! # ( permit_params )
+    @questset.update_attributes params[:questset].permit!
     do_update_photos
     do_save
   end
@@ -31,6 +31,13 @@ class Manager::QuestsetsController < Manager::ManagerController
   private
 
   def do_update_photos
+    if params[:background_image]
+      photo = Photo.create :photo => params[:background_image], :bg_badge => @questset
+      geometry = Paperclip::Geometry.from_file(params[:background_image])
+      width, height = geometry.split 'x'
+      @questset.update_attributes :background_image => photo, :background_image_width => width, :background_image_height => height
+    end
+
     if params[:questset][:unavailable_photo]
       photo = Photo.new
       photo.photo = params[:questset][:unavailable_photo]
@@ -85,15 +92,5 @@ class Manager::QuestsetsController < Manager::ManagerController
       render :action => :new
     end
   end
-  
-=begin
-  def permit_params
-    [ :title, :subhead, :descr,
-      :unavailable_mouseover, :shaded_mouseover, :accomplished_mouseover,
-      :order_value,
-      :questpage, :questpage_id
-    ]
-  end
-=end
   
 end

@@ -15,6 +15,8 @@ class Video
   field :order_value,  :type => String, :default => "jjj"
   field :legacy_id,    :type => Integer
   field :tag_string,   :type => String, :default => ''
+
+  field :transcript_url, :type => String
   
   embeds_many :tasks
 

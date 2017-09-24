@@ -9,7 +9,7 @@
     - else
       - url = manager_badges_path
 
-= form_for item, :url => url do |f|
+= form_for item, :url => url, :html => { :multipart => true } do |f|
   .row
     .large-12.columns
       = f.submit nil, :class => [ :button, :small ]
@@ -20,6 +20,15 @@
       = f.label :questpage
       = f.select :questpage_id, @questpages_list
 
+  .row
+    .large-6.columns
+      .panel
+        = f.label :location_name
+        = f.text_field :location_name
+        = f.label :background_image
+        = file_field_tag :background_image
+        - if item.background_image
+          = image_tag item.background_image.photo.url(:thumb2)
   .row
     .large-3.columns
       = f.label :unavailable_photo

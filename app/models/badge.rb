@@ -22,8 +22,12 @@ class Badge
   embeds_one :accomplished_photo, :class_name => 'Photo', :inverse_of => :accomplished_badge
   embeds_one :title_photo,        :class_name => 'Photo', :inverse_of => :title_badge
   embeds_one :unavailable_photo,  :class_name => 'Photo', :inverse_of => :unavailable_badge
+
+  embeds_one :background_image,   :class_name => 'Photo', :inverse_of => :bg_badge
+  field :background_image_width,  :type => Integer
+  field :background_image_height, :type => Integer
+
   embeds_many :photos,                                    :inverse_of => :badge
-  
   # has_many :videos # @TODO: why can't this be here?
 
   belongs_to :questpage
