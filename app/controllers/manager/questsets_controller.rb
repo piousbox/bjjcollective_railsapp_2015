@@ -34,7 +34,7 @@ class Manager::QuestsetsController < Manager::ManagerController
     if params[:background_image]
       photo = Photo.create :photo => params[:background_image], :bg_badge => @questset
       geometry = Paperclip::Geometry.from_file(params[:background_image])
-      width, height = geometry.split 'x'
+      width, height = geometry.to_s.split 'x'
       @questset.update_attributes :background_image => photo, :background_image_width => width, :background_image_height => height
     end
 
