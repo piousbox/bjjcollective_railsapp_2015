@@ -5,10 +5,13 @@ class Profile
   
   belongs_to :user
 
+  field :name
   field :email
+
   field :fb_access_token
   field :fb_long_access_token
-  field :name
+  field :fb_id
+  field :signed_request
 
   field :n_stars, :type => Integer, :default => 0
 

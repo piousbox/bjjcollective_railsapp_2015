@@ -41,7 +41,11 @@ class Api::UsersController < Api::ApiController
       begin
         @profile      = Profile.find_by :email => me['email']
       rescue Mongoid::Errors::DocumentNotFound
-        @profile = Profile.create :user => @user, :email => me['email']
+        @profile = Profile.create :user => @user, :email => me['email'], 
+                                  :fb_access_token => params[:accessToken],
+                                  :fb_id => params[:id],
+                                  :name => params[:name],
+                                  :signed_request => params[:signedRequest]
       end
       render :action => 'fb_sign_in'
     rescue Koala::Facebook::AuthenticationError => e
