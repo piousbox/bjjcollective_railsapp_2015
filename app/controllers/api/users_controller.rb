@@ -40,7 +40,7 @@ class Api::UsersController < Api::ApiController
       @user         = User.find_or_create_by :email => me['email']
       begin
         @profile      = Profile.find_by :email => me['email']
-      rescue Mongoid::DocumentNotFound
+      rescue Mongoid::Errors::DocumentNotFound
         @profile = Profile.create :user => @user, :email => me['email']
       end
       render :action => 'fb_sign_in'
