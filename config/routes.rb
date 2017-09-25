@@ -41,6 +41,11 @@ Rails.application.routes.draw do
     get "locations/:location_name", :to => "questsets#show"
     get "questsets/:id",            :to => "questsets#show"
 
+    post 'users/fb_sign_in',     :to => 'users#fb_sign_in'
+    post 'users/profile',        :to => 'users#show'
+    post 'users/profile/update', :to => 'users#update'
+    get  'users/profile',        :to => 'users#show' # @TODO: only for testing! accessToken must be hidden
+
     get 'videos/in/:category_id',                   :to => 'videos#index'
     get 'videos/in/:category_id/page',              :to => 'videos#index'
     get 'videos/in/:category_id/page/:videos_page', :to => 'videos#index'

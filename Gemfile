@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'fb_graph'
+
 gem 'rack-cache'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rails', '4.2.4'
@@ -20,6 +22,7 @@ gem 'unicorn'
 gem 'mongoid', '~> 5.0.0'
 gem "mongo_session_store-rails4"
 gem 'kaminari'
+gem 'koala'
 
 gem 'devise'
 gem 'cancan'

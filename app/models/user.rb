@@ -3,6 +3,8 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  has_one :profile
+
   # Setup accessible (or protected) attributes for your model
   # attr_accessible :email, :password, :password_confirmation, :remember_me
 
