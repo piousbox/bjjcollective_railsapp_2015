@@ -7,6 +7,9 @@ class Profile
 
   field :email
   field :fb_access_token
+  field :fb_long_access_token
   field :name
+
+  field :n_stars, :type => Integer, :default => 0
 
 end
