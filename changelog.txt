@@ -25,3 +25,4 @@
 0.0.24 - restart after a while. Let's generate thousands of pages
 20170725 - sitemap is in, with some categories (no videos)
 0.0.26 - let's integrate this into a nice react frontend, with gameui
+0.1.0 - let's add koala, transactions.
