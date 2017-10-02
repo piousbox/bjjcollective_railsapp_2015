@@ -58,10 +58,11 @@
 
 .row
   .small-6.columns
-    %h5 Videos (#{@category.videos.count}) #{link_to '[+]', new_manager_category_video_path( @category )}
-    %ul
-      - @category.videos.each do |video|
-        %li
-          = link_to '[~]', edit_manager_video_path( video )
-          = video.title
+    - if @category.persisted?
+      %h5 Videos (#{@category.videos.count}) #{link_to '[+]', new_manager_category_video_path( @category )}
+      %ul
+        - @category.videos.each do |video|
+          %li
+            = link_to '[~]', edit_manager_video_path( video )
+            = video.title
           
