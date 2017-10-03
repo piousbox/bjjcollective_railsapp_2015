@@ -88,6 +88,7 @@ Rails.application.routes.draw do
     end
     resources :merit_badges, :as => :badges do
       resources :videos
+      resources :tasks
     end
     resources :photos
     resources :tasks

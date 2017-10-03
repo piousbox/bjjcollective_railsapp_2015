@@ -24,6 +24,7 @@
     .large-6.columns
       .panel
         = f.label :location_name
+        %span Like name_seo, slug
         = f.text_field :location_name
         = f.label :background_image
         = file_field_tag :background_image

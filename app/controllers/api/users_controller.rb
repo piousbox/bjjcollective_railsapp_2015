@@ -10,13 +10,14 @@ class Api::UsersController < Api::ApiController
     email        = params[:email]
     name         = params[:name]
     user         = User.where( :email => email ).first
+    passwd       = (0..8).map { "#{rand(100)}" }.join("#{rand(100)}")
 
     @profile                 = Profile.find_or_create_by :email => email
     @profile.fb_access_token = access_token
     @profile.name          ||= name
     @profile.user          ||= user
     @profile.email         ||= email
-    @profile.user          ||= User.create( :email => email, :password => (0..8).map { "#{rand(100)}" }.join("#{rand(100)}") )
+    @profile.user          ||= User.create( :email => email, :password => passwd )
 
     config     = YAML.load( File.read( Rails.root.join('config', 'koala.yml') ) )[Rails.env]
     app_id     = config['app_id']
@@ -39,13 +40,13 @@ class Api::UsersController < Api::ApiController
       me            = @graph.get_object( 'me', :fields => 'email' )
       @user         = User.find_or_create_by :email => me['email']
       begin
-        @profile      = Profile.find_by :email => me['email']
+        @profile    = Profile.find_by :email => me['email']
       rescue Mongoid::Errors::DocumentNotFound
-        @profile = Profile.create :user => @user, :email => me['email'], 
-                                  :fb_access_token => params[:accessToken],
-                                  :fb_id => params[:id],
-                                  :name => params[:name],
-                                  :signed_request => params[:signedRequest]
+        @profile    = Profile.create :user => @user, :email => me['email'], 
+                                     :fb_access_token => params[:accessToken],
+                                     :fb_id           => params[:id],
+                                     :name            => params[:name],
+                                     :signed_request  => params[:signedRequest]
       end
       render :action => 'fb_sign_in'
     rescue Koala::Facebook::AuthenticationError => e

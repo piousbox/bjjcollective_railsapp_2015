@@ -5,6 +5,11 @@ class Badge
   include Mongoid::Timestamps
 
   field :title,                     :type => String
+
+  # like slug, name_seo
+  field :location_name, :type => String
+  index({ :location_name => 1 }, { :unique => true })
+
   field :subhead,                   :type => String
   field :descr,                     :type => String
 
@@ -38,9 +43,6 @@ class Badge
 
   field :bg_pos_x, :type => Integer
   field :bg_pos_y, :type => Integer
-
-  field :location_name, :type => String
-  index({ :location_name => 1 }, { :unique => true })
 
   attr_accessor :is_unavailable
 

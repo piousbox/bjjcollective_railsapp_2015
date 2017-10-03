@@ -21,6 +21,11 @@
   display: inline !important;
 }
 
+.box {
+  padding: 1em;
+  border: 1px solid yellow;
+}
+
 textarea.tinymce {
   min-height: 300px;
 }
