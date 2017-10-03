@@ -1,34 +1,69 @@
 
-.main-menu
+%nav.navbar.navbar-default
+  .container-fuild
+    .navbar-header
+      %button.navbar-toggle.collapsed{ :type => 'button', 'data-toggle' => 'collapse', 'data-target' => '#navbar-collapse-1', 'aria-expanded' => 'false' }
+        %span.sr-only Toggle Navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar            
+      %a.navbar-brand BJJC Manager
+    .collapse.navbar-collapse#navbar-collapse-1
+      %ul.nav.navbar-nav.nav-pills
+        
+        %li.dropdown{ :class => params[:controller] == "manager/categories" ? 'active' : '' }
+          %a.dropdown-toggle{ :href => 'javascript:;', 'data-toggle' => 'dropdown', :role => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' }
+            Categories
+            %i.caret
+          %ul.dropdown-menu
+            %li= link_to "See all #{Category.all.count}", manager_categories_path
+            %li
+              %a{ :href => new_manager_category_path}
+                Create new
+                %i.fa.fa-plus-square
 
-  %ul.inline-list.hide
-    %li= link_to "Manager", manager_root_path
-    %li= link_to "Fighters Guild", fg_root_path
-    %li= link_to "Technique Database", root_path
+        %li.dropdown{ :class => params[:controller] == "manager/questpages" ? 'active' : '' }
+          %a.dropdown-toggle{ :href => 'javascript:;', 'data-toggle' => 'dropdown', :role => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' }
+            Questpages
+            %i.caret
+          %ul.dropdown-menu
+            %li= link_to "See all #{Questpage.all.count}", manager_questpages_path
+            %li
+              %a{ :href => new_manager_questpage_path}
+                Create new
+                %i.fa.fa-plus-square
 
-  %nav.navbar.navbar-default
-    .container-fuild
-      .navbar-header
-        .navbar-brand
-          %a BJJC Manager
-    %ul.nav.navbar-nav
-      %li
-        = link_to 'Categories', manager_categories_path, { :class => :inline }
-        (#{Category.all.length})
-        = link_to '[+]', new_manager_category_path, { :class => :inline, :'data-no-turboline' => true }
-      %li
-        = link_to "Questpages", manager_questpages_path, { :class => :inline }
-        (#{Questpage.all.length})
-        = link_to '[+]', new_manager_questpage_path, { :class => :inline, :'data-no-turbolink' => true }          
-      %li
-        = link_to "Questsets", manager_questsets_path, { :class => :inline }
-        (#{Questset.all.length})
-        = link_to '[+]', new_manager_questset_path, { :class => :inline, :'data-no-turbolink' => true }    
-      %li
-        = link_to "Merit Badges", manager_badges_path, { :class => :inline }
-        (#{MeritBadge.all.length})
-        = link_to "[+]", new_manager_badge_path, { :class => :inline, :'data-no-turbolink' => true }
-      %li
-        = link_to 'Videos', manager_videos_path, { :class => :inline }
-        (#{Video.all.length})
-        = link_to '[+]', new_manager_video_path, { :class => :inline, :'data-no-turbolink' => true }
+        %li.dropdown{ :class => params[:controller] == "manager/questsets" ? 'active' : '' }
+          %a.dropdown-toggle{ :href => 'javascript:;', 'data-toggle' => 'dropdown', :role => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' }
+            Questsets
+            %i.caret
+          %ul.dropdown-menu
+            %li= link_to "See all #{Questset.all.count}", manager_questsets_path
+            %li
+              %a{ :href => new_manager_questset_path}
+                Create new
+                %i.fa.fa-plus-square
+
+        %li.dropdown{ :class => params[:controller] == "manager/merit_badges" ? 'active' : '' }
+          %a.dropdown-toggle{ :href => 'javascript:;', 'data-toggle' => 'dropdown', :role => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' }
+            Merit Badges
+            %i.caret
+          %ul.dropdown-menu
+            %li= link_to "See all #{MeritBadge.all.count}", manager_badges_path
+            %li
+              %a{ :href => new_manager_badge_path}
+                Create new
+                %i.fa.fa-plus-square
+
+        %li.dropdown{ :class => params[:controller] == "manager/videos" ? 'active' : '' }
+          %a.dropdown-toggle{ :href => 'javascript:;', 'data-toggle' => 'dropdown', :role => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' }
+            Videos
+            %i.caret
+          %ul.dropdown-menu
+            %li= link_to "See all #{Video.all.count}", manager_videos_path
+            %li
+              %a{ :href => new_manager_video_path}
+                Create new
+                %i.fa.fa-plus-square
+                  
+-# = render 'manager/main_menu_2'

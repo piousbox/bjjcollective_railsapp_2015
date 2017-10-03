@@ -10,6 +10,7 @@ class Manager::CategoriesController < Manager::ManagerController
       @categories = @categories.where( :title => /.*#{params[:q]}.*/i )
     end
     @categories = @categories.page( params[:categories_page] ).per( 20 * 4 ) # b/c it's a large-block-grid-4
+    render :layout => 'manager_bootstrap'
   end
 
   def new

@@ -24,6 +24,7 @@
     = render 'main_footer'
     = render 'analytics'
     
-    = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+    %script{ :src => "//code.jquery.com/jquery-3.2.1.min.js", :integrity => "sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=", :crossorigin => 'anonymous' }
+    = javascript_include_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
     = javascript_include_tag '//tinymce.cachefly.net/4.2/tinymce.min.js'
     = javascript_include_tag 'manager'

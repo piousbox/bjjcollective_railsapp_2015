@@ -1,8 +1,4 @@
 
 .row
   .col-lg-12
-    %h3
-      Merit Badges
-      = link_to '[+]', new_manager_badge_path, { 'data-no-turbolink' => true }
-
     = render 'manager/merit_badges/list', :items => @badges

@@ -1,37 +1,36 @@
 
 - items ||= @badges
-
-
 - items.each do |item|
-  .panel
-    - edit_path   = "Questset" == item.class.name ? edit_manager_questset_path( item )      : edit_manager_badge_path( item )
-    - videos_path = "Questset" == item.class.name ? manager_questset_videos_path( item )    :  manager_badge_videos_path( item )
-    - new_path    = "Questset" == item.class.name ? new_manager_questset_video_path( item ) : new_manager_badge_video_path( item )
-    %h5
-      = link_to '[~]', edit_path, { 'data-no-turbolink' => true }
-      = item.title
-      %ul
-        %li <b>Order Value:</b> #{item.order_value}
-        %li
-          %b= link_to 'Videos', videos_path
-          (#{item.videos.length})
-          = link_to '[+]', new_path
-        %li
-          %b= link_to 'Tasks', manager_badge_tasks_path( item )
-          (#{item.tasks.count})
-          = link_to '[+]', new_manager_badge_task_path( item )
-          
-        - if item.unavailable_photo || item.shaded_photo || item.accomplished_photo || item.title_photo
-          %li.box
-            - if item.unavailable_photo
-              unavailable:
-              = image_tag item.unavailable_photo.photo.url(:thumb)
-            - if item.shaded_photo
-              shaded:
-              = image_tag item.shaded_photo.photo.url(:thumb)
-            - if item.accomplished_photo
-              accomplished:
-              = image_tag item.accomplished_photo.photo.url(:thumb)
-            - if item.title_photo
-              title:
-              = image_tag item.title_photo.photo.url(:thumb)
+  .panel.panel-default
+    .panel-body
+      - edit_path   = "Questset" == item.class.name ? edit_manager_questset_path( item )      : edit_manager_badge_path( item )
+      - videos_path = "Questset" == item.class.name ? manager_questset_videos_path( item )    :  manager_badge_videos_path( item )
+      - new_path    = "Questset" == item.class.name ? new_manager_questset_video_path( item ) : new_manager_badge_video_path( item )
+      %h5
+        = link_to '[~]', edit_path, { 'data-no-turbolink' => true }
+        = item.title
+        %ul
+          %li <b>Order Value:</b> #{item.order_value}
+          %li
+            %b= link_to 'Videos', videos_path
+            (#{item.videos.length})
+            = link_to '[+]', new_path
+          %li
+            %b= link_to 'Tasks', manager_badge_tasks_path( item )
+            (#{item.tasks.count})
+            = link_to '[+]', new_manager_badge_task_path( item )
+
+          - if item.unavailable_photo || item.shaded_photo || item.accomplished_photo || item.title_photo
+            %li.box
+              - if item.unavailable_photo
+                unavailable:
+                = image_tag item.unavailable_photo.photo.url(:thumb)
+              - if item.shaded_photo
+                shaded:
+                = image_tag item.shaded_photo.photo.url(:thumb)
+              - if item.accomplished_photo
+                accomplished:
+                = image_tag item.accomplished_photo.photo.url(:thumb)
+              - if item.title_photo
+                title:
+                = image_tag item.title_photo.photo.url(:thumb)
