@@ -2,8 +2,6 @@ class Manager::MeritBadgesController < Manager::ManagerController
 
   before_filter :set_lists
 
-  PERMITTED_PARAMS = [:title, :subhead, :descr, :shaded_mouseover, :accomplished_mouseover, :order_value, :questpage, :questpage_id]
-  
   def index
     @badges = MeritBadge.all.order_by( :order_value => 'asc' ).to_a
   end
@@ -18,15 +16,16 @@ class Manager::MeritBadgesController < Manager::ManagerController
   end
 
   def create
-    @badge = MeritBadge.new params[:merit_badge].permit( PERMITTED_PARAMS )
+    @badge = MeritBadge.new 
     do_update_photos
+    @badge.update_attributes params[:merit_badge].permit!
     do_save
   end
 
   def update
     @badge = MeritBadge.find params[:id]
-    @badge.update_attributes( params[:merit_badge].permit( PERMITTED_PARAMS ) )
     do_update_photos
+    @badge.update_attributes params[:merit_badge].permit!
     do_save
   end
 
@@ -42,6 +41,7 @@ class Manager::MeritBadgesController < Manager::ManagerController
         flash[:alert] = "No Luck: #{photo.errors.messages}"
         render :action => :new and return
       end
+      params[:merit_badge].delete :shaded_photo
     end
 
     if params[:merit_badge][:accomplished_photo]
@@ -53,6 +53,7 @@ class Manager::MeritBadgesController < Manager::ManagerController
         flash[:alert] = "No Luck: #{photo.errors.messages}"
         render :action => :new and return
       end
+      params[:merit_badge].delete :accomplished_photo
     end
 
     if params[:merit_badge][:title_photo]
@@ -64,7 +65,21 @@ class Manager::MeritBadgesController < Manager::ManagerController
         flash[:alert] = "No Luck: #{photo.errors.messages}"
         render :action => :new and return
       end
+      params[:merit_badge].delete :title_photo
     end
+
+    if params[:merit_badge][:unavailable_photo]
+      photo = Photo.new
+      photo.photo = params[:merit_badge][:unavailable_photo]
+      photo.unavailable_badge = @badge
+      if photo.save
+      else
+        flash[:alert] = "No Luck: #{photo.errors.messages}"
+        render :action => :new and return
+      end
+      params[:merit_badge].delete :unavailable_photo
+    end
+
   end
 
   def do_save
@@ -78,4 +93,4 @@ class Manager::MeritBadgesController < Manager::ManagerController
   end
 
 end
-
+  

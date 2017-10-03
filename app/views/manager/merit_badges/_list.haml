@@ -18,10 +18,14 @@
             = link_to '[+]', new_path
       
       - if item.unavailable_photo
-        = image_tag item.unavailable_photo.photo.url(:mini)
+        unavailable:
+        = image_tag item.unavailable_photo.photo.url(:thumb)
       - if item.shaded_photo
-        = image_tag item.shaded_photo.photo.url(:mini)
+        shaded:
+        = image_tag item.shaded_photo.photo.url(:thumb)
       - if item.accomplished_photo
-        = image_tag item.accomplished_photo.photo.url(:mini)
+        accomplished:
+        = image_tag item.accomplished_photo.photo.url(:thumb)
       - if item.title_photo
-        = image_tag item.title_photo.photo.url(:mini)
+        title:
+        = image_tag item.title_photo.photo.url(:thumb)

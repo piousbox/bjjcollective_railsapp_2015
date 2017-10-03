@@ -31,7 +31,9 @@
           = image_tag item.background_image.photo.url(:thumb2)
     .large-6.columns
       .panel
-        %h5 Position on parent location
+        %h4 Position on parent location
+        %span Shaded, accomplished images go on the map.
+        %br
         = f.label "Parent Badge/Questset/Location"
         = f.select :badge_id, @merit_badges_list
         .row
