@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %title BjjcollectiveRailsapp2015
+    = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+    = stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'
+    = stylesheet_link_tag 'manager_bootstrap'
+    = csrf_meta_tags
+  %body  
+    .container
+      .row
+        .col-xs-12
+          = render 'manager/main_menu'
+          
+          -if notice
+            %p.notice= notice
+          - if alert
+            %p.alert= alert
+          
+      = yield
+        
+    %hr
+    = render 'main_footer'
+    = render 'analytics'
+    
+    = javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'
+    = javascript_include_tag '//tinymce.cachefly.net/4.2/tinymce.min.js'
+    = javascript_include_tag 'manager'

@@ -4,6 +4,7 @@ class Manager::MeritBadgesController < Manager::ManagerController
 
   def index
     @badges = MeritBadge.all.order_by( :order_value => 'asc' ).to_a
+    render :layout => 'manager_bootstrap'
   end
 
   def new
@@ -27,6 +28,10 @@ class Manager::MeritBadgesController < Manager::ManagerController
     do_update_photos
     @badge.update_attributes params[:merit_badge].permit!
     do_save
+  end
+
+  def show
+    @badge = Badge.find params[:id]
   end
 
   private

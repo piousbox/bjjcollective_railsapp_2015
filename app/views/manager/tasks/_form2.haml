@@ -1,0 +1,13 @@
+
+= form_for task, :url => manager_badge_tasks_path( task.badge_id ) do |f|
+  .row
+    .large-4.columns
+      = f.label :title
+      = f.text_field :title
+    .large-4.columns
+      = f.label :mouseover
+      = f.text_field :mouseover
+    .large-2.columns
+      = f.submit nil, :class => [ :button, :small ]
+    .large-2.columns
+      %div{ :class => "video-task-#{task.id}-status" }

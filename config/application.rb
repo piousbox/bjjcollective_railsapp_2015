@@ -23,7 +23,7 @@ module BjjcollectiveRailsapp2015
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.assets.precompile += [ 'application.css' ]
+    config.assets.precompile += %w{ application.css manager_bootstrap.css }
     config.assets.precompile += %w{ application.js foundation/foundation.min.js foundation/foundation.accordion.js }
     config.assets.enabled = true
     config.assets.version = '1.0'

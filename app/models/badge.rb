@@ -23,8 +23,9 @@ class Badge
   field :accomplished_order_value,    :type => String, :default => 'jjj'
   attr_accessor :order_value
   
-  embeds_many :tasks
-  
+  # embeds_many :tasks
+  has_many :tasks
+
   embeds_one :shaded_photo,       :class_name => 'Photo', :inverse_of => :shaded_badge
   embeds_one :accomplished_photo, :class_name => 'Photo', :inverse_of => :accomplished_badge
   embeds_one :title_photo,        :class_name => 'Photo', :inverse_of => :title_badge

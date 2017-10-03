@@ -18,7 +18,8 @@ class Video
 
   field :transcript_url, :type => String
   
-  embeds_many :tasks
+  # embeds_many :tasks
+  has_many :tasks
 
   # @TODO: this should instead be a polymorphic relationship
   belongs_to :merit_badge
