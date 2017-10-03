@@ -31,7 +31,11 @@ class Manager::MeritBadgesController < Manager::ManagerController
   end
 
   def show
-    @badge = Badge.find params[:id]
+    begin
+      @badge = Badge.find params[:id]
+    rescue Mongoid::Errors::DocumentNotFound
+      @badge = Badge.find_by :location_name => params[:id]
+    end
   end
 
   private
