@@ -1,6 +1,11 @@
 
 .manager-categories-index
-  %h5.text-center Categories Index
+  %h3.text-center Categories Index
+
+  %h4 Top Level
+  %ul
+    - @toplevel_categories.each do |category|
+      %li= link_to category.title, edit_manager_category_path( category )
 
   = form_tag manager_categories_path, :method => :get do
     .row

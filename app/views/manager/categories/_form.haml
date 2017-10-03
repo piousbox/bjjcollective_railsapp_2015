@@ -1,17 +1,27 @@
 
 = form_for [:manager, category], :html => { :multipart => true } do |f|
-  = f.submit nil, :class => [ :button, :small ]  
-  
+  .row
+    .small-6.columns
+      = f.submit nil, :class => [ :button, :small ]  
+    .small-6.columns
+      = f.label :category_id, 'Parent Category'
+      - if params[:category_id]
+        = f.select :category_id, options_for_select( @simple_categories_list, params[:category_id] )
+      - else
+        = f.select :category_id, @categories_list
+
   = f.label :title
   = f.text_field :title
 
   = f.label :slug
+  %b `${short-slug}-${short-slug}...`
   = f.text_field :slug
 
   = f.label :short_slug
   = f.text_field :short_slug
 
   = f.label :path
+  %b cannot start with slash
   = f.text_field :path
 
   = f.label :kind
@@ -25,9 +35,6 @@
 
   = f.label :order_value
   = f.text_field :order_value
-
-  = f.label :category_id, 'Parent Category'
-  = f.select :category_id, @categories_list
 
   .row
     .large-3.columns
@@ -44,7 +51,9 @@
 
 .row
   .small-6.columns
-    %h4 Children
+    %h4
+      Children
+      = link_to '[+]', new_manager_category_path( :category_id => @category.id )
     = render 'form_children', :categories => @category.categories, :depth => 2
   .small-6.columns
     %h5 Parent

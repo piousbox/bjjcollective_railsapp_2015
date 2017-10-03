@@ -4,6 +4,7 @@ class Manager::CategoriesController < Manager::ManagerController
   before_filter :set_lists
   
   def index
+    @toplevel_categories = Category.where( :category_id => nil )
     @categories = Category.all
     if params[:q]
       @categories = @categories.where( :title => /.*#{params[:q]}.*/i )
@@ -13,6 +14,7 @@ class Manager::CategoriesController < Manager::ManagerController
 
   def new
     @category = Category.new
+    @simple_categories_list = [ [ nil, nil ] ] + Category.all.map { |c| [ c.title, c.id ] }
   end
 
   def create
@@ -70,6 +72,9 @@ class Manager::CategoriesController < Manager::ManagerController
     
   end
 
+  #
+  # private
+  #
   private
 
 end

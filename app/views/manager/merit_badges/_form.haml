@@ -29,6 +29,18 @@
         = file_field_tag :background_image
         - if item.background_image
           = image_tag item.background_image.photo.url(:thumb2)
+    .large-6.columns
+      .panel
+        %h5 Position on parent location
+        = f.label "Parent Badge/Questset/Location"
+        = f.select :badge_id, @merit_badges_list
+        .row
+          .small-6.columns
+            = f.label :bg_pos_x
+            = f.number_field :bg_pos_x
+          .small-6.columns
+            = f.label :bg_pos_y
+            = f.number_field :bg_pos_y
   .row
     .large-3.columns
       = f.label :unavailable_photo

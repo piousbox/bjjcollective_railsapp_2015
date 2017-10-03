@@ -10,8 +10,7 @@ class Manager::MeritBadgesController < Manager::ManagerController
 
   def new
     @badge = MeritBadge.new
-    puts! @questpages_list, 'questpages_list'
-    
+    # puts! @questpages_list, 'questpages_list'
   end
 
   def edit
