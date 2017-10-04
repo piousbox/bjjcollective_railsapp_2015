@@ -1,6 +1,3 @@
 
-class MeritBadge < Badge
-
-  has_many :videos
-  
+class MeritBadge < Badge  
 end

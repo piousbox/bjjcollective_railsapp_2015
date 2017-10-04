@@ -36,18 +36,15 @@ class Badge
   field :background_image_height, :type => Integer
 
   embeds_many :photos,                                    :inverse_of => :badge
-
-  belongs_to :questpage
-
-  belongs_to :badge
-  has_many :badges
+  belongs_to  :questpage
+  belongs_to  :badge
+  has_many    :badges
+  has_many    :videos
 
   field :bg_pos_x, :type => Integer
   field :bg_pos_y, :type => Integer
 
   attr_accessor :is_unavailable
-
-  has_many :videos
 
   def self.list
     out = self.order_by( :title => :asc )
