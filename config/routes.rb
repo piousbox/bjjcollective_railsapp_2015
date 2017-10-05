@@ -42,6 +42,8 @@ Rails.application.routes.draw do
 
     get "categories/:slug/:slug_0/:slug_1/:slug_2/:slug_3/page/:videos_page",   :to => "categories#index_shallow"
 
+    get 'chapters', :to => 'questpages#index'
+
     get "locations/:location_name", :to => "questsets#show"
     get "questsets/:id",            :to => "questsets#show"
 

@@ -1,6 +1,7 @@
 class Manager::QuestpagesController < Manager::ManagerController
 
   before_filter :set_lists
+  layout 'manager_bootstrap'
 
   def index
     @questpages = Questpage.all

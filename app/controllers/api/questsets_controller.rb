@@ -8,6 +8,11 @@ class Api::QuestsetsController < Api::ApiController
       @questset = Questset.find_by :location_name => params[:location_name]
     end
 
+    if params[:debug] == 'abba'
+      render 'show_tgm3'
+      return
+    end
+
     case request.headers[:version]
     when 'tgm3'
       render 'show_tgm3'

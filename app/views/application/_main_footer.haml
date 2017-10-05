@@ -1,23 +1,21 @@
 
--# = render 'ads/leaderboard'
-
 %hr
-
-.row
-  .large-4.columns
-    ^__^
-  .large-5.columns
-    %ul
-      %li= render 'version'
-  .large-3.columns
-    = link_to image_tag( "icons/20x20/lock.gif" ), manager_root_path
-    %br
-    %br
-    %br
-    %br
-    %br
-    %br
-    %br
-    %br
-    %br
-    %br
+.container
+  .row
+    .col-sm-4
+      ^__^
+    .col-sm-4
+      %ul
+        %li= render 'version'
+    .col-sm-4
+      = link_to image_tag( "icons/20x20/lock.gif" ), manager_root_path
+      %br
+      %br
+      %br
+      %br
+      %br
+      %br
+      %br
+      %br
+      %br
+      %br

@@ -8,19 +8,22 @@
     = stylesheet_link_tag 'manager_bootstrap'
     = csrf_meta_tags
   %body  
-    .container
+    .container-fluid
       .row
         .col-xs-12
           = render 'manager/main_menu'
           
-          -if notice
-            %p.notice= notice
-          - if alert
-            %p.alert= alert
-          
+    .container          
+      -if notice
+        .alert.alert-success= notice
+      - if alert
+        .alert.alert-danger= alert
+      - if flash[:alert]
+        .alert.alert-danger= flash[:alert]
+      - if flash[:notice]
+        .alert.alert-success= flash[:notice]
       = yield
         
-    %hr
     = render 'main_footer'
     = render 'analytics'
     

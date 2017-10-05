@@ -1,7 +1,10 @@
 
 class Api::UsersController < Api::ApiController
 
+  before_action :set_config
+
   ## @TODO: actually not used, users#show is used?
+=begin
   def fb_sign_in
     authorize! :fb_sign_in, Ability
     params.permit!
@@ -19,10 +22,6 @@ class Api::UsersController < Api::ApiController
     @profile.email         ||= email
     @profile.user          ||= User.create( :email => email, :password => passwd )
 
-    config     = YAML.load( File.read( Rails.root.join('config', 'koala.yml') ) )[Rails.env]
-    app_id     = config['app_id']
-    app_secret = config['app_secret']
-
     auth                   = Koala::Facebook::OAuth.new( app_id, app_secret, "//localhost:3001" )
     @profile.fb_long_access_token = auth.exchange_access_token access_token
 
@@ -32,18 +31,31 @@ class Api::UsersController < Api::ApiController
       render :json => { :status => :not_ok, :errors => @profile.errors.messages }
     end
   end
+=end
 
   def show
     authorize! :fb_sign_in, Ability
     begin
-      @graph        = Koala::Facebook::API.new( params[:accessToken] )
-      me            = @graph.get_object( 'me', :fields => 'email' )
-      @user         = User.find_or_create_by :email => me['email']
+      @graph            = Koala::Facebook::API.new( params[:accessToken] )
+      me                = @graph.get_object( 'me', :fields => 'email' )
+      @user             = User.find_or_create_by :email => me['email']
+      @oauth            = Koala::Facebook::OAuth.new( @app_id, @app_secret )
+
+      byebug
+
+      signed_request    = @oauth.parse_signed_request( params[:signedRequest] )
       begin
-        @profile    = Profile.find_by :email => me['email']
+        @long_lived_token = @oauth.get_access_token signed_request['code']
+      rescue Koala::Facebook::OAuthTokenRequestError
+      end
+
+      begin
+        @profile      = Profile.find_or_create_by :email => me['email']
+        @profile.update_attributes({ :fb_access_token => @long_lived_token,
+                                     :fb_long_access_token => @long_lived_token })
       rescue Mongoid::Errors::DocumentNotFound
-        @profile    = Profile.create :user => @user, :email => me['email'], 
-                                     :fb_access_token => params[:accessToken],
+        @profile    = Profile.create :user => @user, :email => me['email'],
+                                     :fb_access_token => @long_lived_token,
                                      :fb_id           => params[:id],
                                      :name            => params[:name],
                                      :signed_request  => params[:signedRequest]
@@ -77,4 +89,15 @@ class Api::UsersController < Api::ApiController
     end
   end
   
+  #
+  # private
+  #
+  private
+
+  def set_config
+    @config     = YAML.load( File.read( Rails.root.join('config', 'koala.yml') ) )[Rails.env]
+    @app_id     = @config['app_id']
+    @app_secret = @config['app_secret']
+  end
+
 end

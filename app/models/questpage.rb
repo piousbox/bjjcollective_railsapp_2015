@@ -5,6 +5,9 @@ class Questpage
   include Mongoid::Timestamps
 
   field :title, :type => String
+  field :slug
+  field :subtitle
+  field :description
 
   has_many :questsets
   has_many :merit_badges

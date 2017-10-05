@@ -4,13 +4,9 @@
 -#
   
 .row
-  .large-12.columns
-    %h3
-      Questpages
-      -# = link_to '[+]', new_manager_questpage_path, { 'data-no-turbolink' => true }
-
-.row
-  .large-12.columns
+  .col-sm-12
+    %p Questpages are like chapters in the book. Each chapter has a bunch of questsets, which in turn have tasks.
+    %h3 Questpages #{link_to '[+]', new_manager_questpage_path}
     %ul
       - @questpages.each do |qp|
         %li

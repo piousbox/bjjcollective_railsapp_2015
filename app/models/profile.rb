@@ -9,7 +9,7 @@ class Profile
   field :email
 
   field :fb_access_token
-  field :fb_long_access_token
+  field :fb_long_access_token # not used, the long-lived token is in :fb_access_token
   field :fb_id
   field :signed_request
 
