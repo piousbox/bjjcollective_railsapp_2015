@@ -4,8 +4,9 @@
 #
 
 json.array! @questpages do |page|
-  json.title page.title
-  json.subtitle page.subtitle
+  json.title       page.title
+  json.slug        page.slug
+  json.subtitle    page.subtitle
   json.description page.description
 
   json.questsets do

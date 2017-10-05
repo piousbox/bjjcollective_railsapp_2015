@@ -12,7 +12,7 @@ class Manager::QuestpagesController < Manager::ManagerController
   end
 
   def create
-    @questpage = Questpage.new params[:questpage].permit( permit_params )
+    @questpage = Questpage.new params[:questpage].permit!
     do_update_photos
     do_save
   end
@@ -23,7 +23,7 @@ class Manager::QuestpagesController < Manager::ManagerController
 
   def update
     @questpage = Questpage.find params[:id]
-    @questpage.update_attributes params[:questpage].permit( permit_params )
+    @questpage.update_attributes params[:questpage].permit!
     do_update_photos
     do_save
   end

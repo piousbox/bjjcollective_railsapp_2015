@@ -14,10 +14,6 @@
           = render 'manager/main_menu'
           
     .container          
-      -if notice
-        .alert.alert-success= notice
-      - if alert
-        .alert.alert-danger= alert
       - if flash[:alert]
         .alert.alert-danger= flash[:alert]
       - if flash[:notice]
