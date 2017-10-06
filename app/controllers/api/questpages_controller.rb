@@ -6,4 +6,9 @@ class Api::QuestpagesController < Api::ApiController
     authorize! :index, Questpage
   end
 
+  def show
+    @questpage = Questpage.find_by :slug => params[:slug]
+    authorize! :show, Questpage
+  end
+
 end

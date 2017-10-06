@@ -3,7 +3,7 @@ class Manager::ManagerController < ApplicationController
 
   before_filter :authenticate
 
-  layout 'manager'
+  layout 'manager_bootstrap'
   
   protected
   

@@ -54,7 +54,7 @@ class Category
   # remove caching  _vp_ 20171002
   #
   def self.list
-    # Rails.cache.fetch( "Category.all.list", :expires_in => 12.hours ) do
+    Rails.cache.fetch( "Category.all.list", :expires_in => 12.hours ) do
       categories = [ [ '', nil ] ]
       traverse_categories = lambda do |title, c|
         if '' == title
@@ -72,7 +72,7 @@ class Category
       top_categories = Category.all.where( :category_id => nil )
       top_categories.each { |c| traverse_categories.call('', c) }
       categories
-    # end
+    end
   end
 
 end

@@ -30,6 +30,8 @@ gem 'cancan'
 gem "paperclip" # , "~> 4.3"
 gem 'paypal-sdk-rest'
 
+gem 'rack-mini-profiler'
+
 gem 'stripe'
 
 gem 'testoaster', '~> 0.0.4'

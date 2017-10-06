@@ -162,6 +162,8 @@ GEM
     rack-cache (1.5.1)
       rack (>= 0.4)
     rack-cors (0.4.1)
+    rack-mini-profiler (0.10.5)
+      rack (>= 1.2.0)
     rack-oauth2 (1.6.2)
       activesupport (>= 2.3)
       attr_required (>= 0.0.5)
@@ -301,6 +303,7 @@ DEPENDENCIES
   paypal-sdk-rest
   rack-cache
   rack-cors
+  rack-mini-profiler
   rails (= 4.2.4)
   rspec-html-matchers
   rspec-rails (~> 3.0)
