@@ -1,37 +1,33 @@
 
 class Manager::TasksController < Manager::ManagerController
 
+  before_action :set_lists
+
   def new
     @task = Task.new
     @task.badge_id = params[:badge_id] if params[:badge_id]
   end
 
   def create
-    task = Task.new params[:task].permit( :title, :mouseover )
+    @task = Task.new params[:task].permit!
+    authorize! :create, @task
 
-    if params[:video_id]
-      video = Video.find params[:video_id]
-      video.tasks << task
-      if video.save
-        render :json => { :status => :ok, :id => task.id.to_s }
-      else
-        puts! video.errors, "Cannot save video when manager creates a task."
-        render :json => { :status => :not_ok, :errors => video.errors.to_json }
-      end
+    params[:task].delete( :video_id ) if params[:task][:video_id].blank?
+    params[:task].delete( :badge_id ) if params[:task][:badge_id].blank?
+    
+    if params[:task][:video_id] && params[:task][:badge_id]
+      flash[:alert] = "Let's select only either a video or a badge."
+      render :action => :new
       return
     end
 
-    if params[:badge_id]
-      task[:badge_id] = params[:badge_id]
-      if task.save
-        redirect_to manager_badge_path( params[:badge_id] ), :notice => 'success'
-      else
-        flash[:alert] = 'Cannot save task: ', task.errors.messages
-        render :action => :new
-      end
-      return
+    if @task.save
+      flash[:notice] = "Saved the task."
+      redirect_to :action => :index
+    else
+      flash[:alert] = "Cannot save task: #{@task.errors.messages}"
+      render :action => :new
     end
-
   end
 
   def update
@@ -45,6 +41,21 @@ class Manager::TasksController < Manager::ManagerController
       puts! video.errors, "Cannot update task in a video."
       render :json => { :status => :not_ok }
     end
+  end
+
+  def index
+    @tasks = Task.all
+    authorize! :index, Task
+  end
+
+  #
+  # private
+  #
+  private
+
+  def set_lists
+    @videos_list = Video.list
+    @badges_list = Badge.list
   end
 
 end

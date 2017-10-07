@@ -6,28 +6,29 @@
 
 = form_for @video, :url => url do |f|
   = f.submit nil, :class => [ :button, :small ]
-
-  = f.label :merit_badge
-  -# = select :video, :merit_badge_id, @merit_badges_list, { :selected => (@video.merit_badge_id||params[:merit_badge_id]) }
-  = f.select :merit_badge_id, @merit_badges_list, { :selected => (@video.merit_badge_id||params[:merit_badge_id]) }
+  %br
   
-  = f.label :questset
-  = f.select :questset_id, @questsets_list, { :selected => (@video.questset_id||params[:questset_id]) }
-
+  = f.label "Badge/Questset"
+  = f.select :badge_id, @merit_badges_list, { :selected => (@video.badge_id||params[:badge_id]) }
+  %br
+  
   = f.label :category
   = f.select :category_id, options_for_select( @categories_list, :selected => params[:category_id] || @video.category_id )
-  
-  = f.label :title
-  = f.text_field :title
 
-  = f.label :tag_string
-  = f.text_field :tag_string
-  
-  = f.label :youtube_id
-  = f.text_field :youtube_id
-
-  = f.label :order_value
-  = f.text_field :order_value
+  .panel.panel-default
+    .panel-body
+      .a
+        = f.label :title
+        = f.text_field :title
+      .a
+        = f.label :tag_string
+        = f.text_field :tag_string
+      .a
+        = f.label :youtube_id
+        = f.text_field :youtube_id
+      .a
+        = f.label :order_value
+        = f.text_field :order_value
   
   - if @video.youtube_id
     = image_tag( "http://img.youtube.com/vi/#{@video.youtube_id}/1.jpg" )
@@ -40,19 +41,15 @@
   %br
   = f.submit nil, :class => [ :button, :small ]
 
+.panel.panel-default
+  .panel-body
+    .row
+      .col-sm-6
+        %h4 Tasks (#{@video.tasks.length})
+      .col-sm-6
+        %h4 New Task
+        = render 'manager/tasks/form', :task => Task.new, :video => @video
+        .video-task-new-status
+        - @video.tasks.each do |task|
+          = render 'manager/tasks/form', :task => task, :video => @video
 
-- # Tasks
-%hr
-.a
-  %h5 New Task
-  = render 'manager/tasks/form', :task => Task.new, :video => @video
-  .video-task-new-status
-  
-  %h4
-    Tasks (
-    %span.tasks-length= @video.tasks.length
-    )
-    
-  - @video.tasks.each do |task|
-    = render 'manager/tasks/form', :task => task, :video => @video
-      

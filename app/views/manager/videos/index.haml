@@ -10,10 +10,10 @@
         = link_to '[~]', edit_manager_video_path( video ), { :'data-no-turbolink' => true }
         = video.order_value      
         <b>#{video.youtube_id}</b>
-        - if video.merit_badge
-          In badge "#{video.merit_badge.title}"
-        - if video.questset
-          In questset "#{video.questset.title}"
+        - if video.badge
+          In badge "#{video.badge.title}"
+        -# - if video.questset
+        -#   In questset "#{video.questset.title}"
         = render 'videos/embed_small', :video => video
     
   = paginate @videos, :param_name => :videos_page

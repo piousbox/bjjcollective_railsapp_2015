@@ -11,96 +11,106 @@
 
 = form_for item, :url => url, :html => { :multipart => true } do |f|
   .row
-    .large-12.columns
+    .col-sm-12
       = f.submit nil, :class => [ :button, :small ]
-  
+      
       = f.label :title
       = f.text_field :title
-
+      
       = f.label :questpage
       = f.select :questpage_id, @questpages_list
 
   .row
-    .large-6.columns
-      .panel
-        = f.label :location_name
-        %span Like name_seo, slug
-        = f.text_field :location_name
-        = f.label :background_image
-        = file_field_tag :background_image
-        - if item.background_image
-          = image_tag item.background_image.photo.url(:thumb2)
-    .large-6.columns
-      .panel
-        %h4 Position on parent location
-        %span Shaded, accomplished images go on the map.
-        %br
-        = f.label "Parent Badge/Questset/Location"
-        = f.select :badge_id, @merit_badges_list
-        .row
-          .small-6.columns
-            = f.label :bg_pos_x
-            = f.number_field :bg_pos_x
-          .small-6.columns
-            = f.label :bg_pos_y
-            = f.number_field :bg_pos_y
-  .row
-    .large-3.columns
-      = f.label :unavailable_photo
-      = f.file_field :unavailable_photo
-      - if item.unavailable_photo
-        = image_tag item.unavailable_photo.photo.url(:thumb2)
-    .large-3.columns
-      = f.label :shaded_photo
-      = f.file_field :shaded_photo
-      - if item.shaded_photo
-        = image_tag item.shaded_photo.photo.url(:thumb2)
-    .large-3.columns
-      = f.label :accomplished_photo
-      = f.file_field :accomplished_photo
-      - if item.accomplished_photo
-        = image_tag item.accomplished_photo.photo.url(:thumb2)
-    .large-3.columns
-      = f.label :title_photo
-      = f.file_field :title_photo
-      - if item.title_photo
-        = image_tag item.title_photo.photo.url(:thumb2)
-        
-  .row
-    .large-6.columns
-      = f.label :unavailable_mouseover
-      = f.text_field :unavailable_mouseover
+    .col-sm-12
+      .panel.panel-default
+        .panel-body
+          = f.label :location_name
+          %span Like name_seo, slug
+          = f.text_field :location_name
+          %br
+          
+          = f.label :background_image
+          = file_field_tag :background_image
+          - if item.background_image
+            = image_tag item.background_image.photo.url(:thumb2)
+            
+    .col-sm-12
+      .panel.panel-default
+        .panel-body
+          %h4 Position on parent location
+          %span Shaded, accomplished images go on the map.
+          %br
+          = f.label "Parent Badge/Questset/Location"
+          = f.select :badge_id, @merit_badges_list
+          .row
+            .col-sm-6
+              = f.label :bg_pos_x
+              = f.number_field :bg_pos_x
+            .col-sm-6
+              = f.label :bg_pos_y
+              = f.number_field :bg_pos_y
 
-      = f.label :shaded_mouseover
-      = f.text_field :shaded_mouseover
-      
-      = f.label :accomplished_mouseover
-      = f.text_field :accomplished_mouseover
-    .large-6.columns      
-      = f.label :unaccomplished_order_value
-      = f.text_field :unaccomplished_order_value
-      
-      = f.label :accomplished_order_value
-      = f.text_field :accomplished_order_value
-      
-  .row
-    .large-12.columns
-      = render 'manager/photos/subform', :merit_badge => @badge, :questset => @questset
-      
-  .row
-    .large-12.columns
-      = f.label :subhead
-      = f.text_field :subhead
+  .panel.panel-default
+    .panel-body
+      .row
+        .col-md-3
+          = f.label :unavailable_photo
+          = f.file_field :unavailable_photo
+          - if item.unavailable_photo
+            = image_tag item.unavailable_photo.photo.url(:thumb2)
+        .col-md-3
+          = f.label :shaded_photo
+          = f.file_field :shaded_photo
+          - if item.shaded_photo
+            = image_tag item.shaded_photo.photo.url(:thumb2)
+        .col-md-3
+          = f.label :accomplished_photo
+          = f.file_field :accomplished_photo
+          - if item.accomplished_photo
+            = image_tag item.accomplished_photo.photo.url(:thumb2)
+        .col-md-3
+          = f.label :title_photo
+          = f.file_field :title_photo
+          - if item.title_photo
+            = image_tag item.title_photo.photo.url(:thumb2)
+            
+  .panel.panel-default
+    .panel-body
+      .row
+        .col-md-6
+          .a
+            = f.label :unavailable_mouseover
+            = f.text_field :unavailable_mouseover
+          .a
+            = f.label :shaded_mouseover
+            = f.text_field :shaded_mouseover
+          .a
+            = f.label :accomplished_mouseover
+            = f.text_field :accomplished_mouseover
+        .col-md-6
+          .a
+            = f.label :unaccomplished_order_value
+            = f.text_field :unaccomplished_order_value
+          .a
+            = f.label :accomplished_order_value
+            = f.text_field :accomplished_order_value
 
-      = f.label :descr
-      = f.text_area :descr, { :class => :tinymce }
-
-  .row
-    .large-6.columns
-    .large-6.columns
+  .panel.panel-default
+    .panel-body
+      .row
+        .col-sm-12
+          = render 'manager/photos/subform', :merit_badge => @badge, :questset => @questset
       
   .row
-    .large-12.columns
+    .col-sm-12
+      .a
+        = f.label :subhead
+        = f.text_field :subhead
+      .a
+        = f.label :descr
+        = f.text_area :descr, { :class => :tinymce }
+
+  .row
+    .col-sm-12
       = f.submit nil, :class => [ :button, :small ]
   
-%hr

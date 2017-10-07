@@ -38,6 +38,9 @@ class Manager::MeritBadgesController < Manager::ManagerController
     end
   end
 
+  #
+  # private
+  #
   private
 
   def do_update_photos

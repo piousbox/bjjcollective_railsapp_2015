@@ -1,5 +1,5 @@
 
-= form_for task, :url => manager_badge_tasks_path( task.badge_id ) do |f|
+= form_for task, :url => manager_tasks_path( task.badge_id ) do |f|
   .row
     .large-4.columns
       = f.label :title
@@ -7,6 +7,12 @@
     .large-4.columns
       = f.label :mouseover
       = f.text_field :mouseover
+    .a
+      = f.label 'Video'
+      = f.select :video_id, @videos_list
+    .a
+      = f.label 'Badge'
+      = f.select :badge_id, @badges_list
     .large-2.columns
       = f.submit nil, :class => [ :button, :small ]
     .large-2.columns

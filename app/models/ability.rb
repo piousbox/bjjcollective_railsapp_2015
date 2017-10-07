@@ -2,6 +2,14 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    #
+    # manager
+    #
+    if true || user.group_id == 1 # not used
+      can [ :manage ], Task
+      can [ :manage ], Video
+    end
+
     user ||= User.new # guest user (not logged in)
     
     can [ :home, :about, :donate, :fb_sign_in, :buy_stars ], Ability

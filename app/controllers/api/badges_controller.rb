@@ -7,6 +7,7 @@ class Api::BadgesController < Api::ApiController
     rescue Mongoid::Errors::DocumentNotFound
       @badge = Badge.find params[:badgename]
     end
+    authorize! :show, @badge
   end
 
 end

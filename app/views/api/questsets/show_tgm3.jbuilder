@@ -8,12 +8,13 @@
 questset ||= @questset
 
 json.location do
+  
+  # trash
   if questset.background_image
     json.background_image_path   questset.background_image.photo( :original )
     json.background_image_width  questset.background_image_width
     json.background_image_height questset.background_image_height
   end
-
   unless questset.badges.blank?
     json.badges do
       json.array! questset.badges do |badge|
@@ -21,6 +22,8 @@ json.location do
       end
     end
   end
+
+  json.partial! 'show', :questset => questset
 end
 
 json.story do

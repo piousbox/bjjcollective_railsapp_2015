@@ -22,9 +22,7 @@ class Video
   has_many :tasks
 
   # @TODO: this should instead be a polymorphic relationship
-  belongs_to :merit_badge
-  belongs_to :questset
-  # belongs_to :badge # ???
+  belongs_to :badge
   
   belongs_to :category
   belongs_to :mastered_player, :class_name => 'Player', :inverse_of => :mastered_videos
@@ -33,5 +31,10 @@ class Video
   has_many :player_videos
 
   default_scope proc { order_by( :order_value => 'asc' ) }
+
+  def self.list
+    out = self.order_by( :title => :asc )
+    [['', nil]] + out.map { |item| [ item.title, item.id ] }
+  end
   
 end

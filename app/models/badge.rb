@@ -8,9 +8,14 @@ class Badge
 
   # like slug, name_seo
   field :location_name, :type => String
+  validates_presence_of :location_name
   index({ :location_name => 1 }, { :unique => true })
 
   field :subhead,                   :type => String
+  def subtitle
+    return subhead
+  end
+
   field :descr,                     :type => String
 
   field :is_questset, :type => Boolean, :default => false

@@ -20,7 +20,7 @@ class Manager::VideosController < Manager::ManagerController
 
   def update
     @video = Video.find params[:id]
-    @video.update params[:video].permit( permitted_params )
+    @video.update params[:video].permit!
 
     do_update_tasks
     
@@ -39,7 +39,7 @@ class Manager::VideosController < Manager::ManagerController
   end
 
   def create
-    @video = Video.create params[:video].permit( permitted_params ) # :youtube_id, :title, :descr, :merit_badge_id, :questset_id, :badge_id )
+    @video = Video.create params[:video].permit!
 
     do_update_tasks
     
