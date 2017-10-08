@@ -19,6 +19,8 @@ class Badge
   field :descr,                     :type => String
 
   field :is_questset, :type => Boolean, :default => false
+  field :is_premium,  :type => Boolean, :default => false
+  attr_accessor :is_unavailable
 
   field :unavailable_mouseover,     :type => String
   field :shaded_mouseover,          :type => String
@@ -48,8 +50,6 @@ class Badge
 
   field :bg_pos_x, :type => Integer
   field :bg_pos_y, :type => Integer
-
-  attr_accessor :is_unavailable
 
   def self.list
     out = self.order_by( :title => :asc )

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'fb_graph'
-
+gem 'httparty'
 gem 'rack-cache'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'rails', '4.2.4'

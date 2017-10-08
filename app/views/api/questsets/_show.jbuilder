@@ -20,6 +20,8 @@ if questset.background_image
   json.background_image_height questset.background_image_height
 end
 
+json.is_premium questset.is_premium
+
 unless questset.badges.blank?
   json.badges do
     json.array! questset.badges do |badge|

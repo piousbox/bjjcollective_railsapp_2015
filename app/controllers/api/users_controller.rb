@@ -40,14 +40,7 @@ class Api::UsersController < Api::ApiController
       me                = @graph.get_object( 'me', :fields => 'email' )
       @user             = User.find_or_create_by :email => me['email']
       @oauth            = Koala::Facebook::OAuth.new( @app_id, @app_secret )
-
-      byebug
-
-      signed_request    = @oauth.parse_signed_request( params[:signedRequest] )
-      begin
-        @long_lived_token = @oauth.get_access_token signed_request['code']
-      rescue Koala::Facebook::OAuthTokenRequestError
-      end
+      @long_lived_token = get_long_lived_token( params[:accessToken] )
 
       begin
         @profile      = Profile.find_or_create_by :email => me['email']
@@ -98,6 +91,14 @@ class Api::UsersController < Api::ApiController
     @config     = YAML.load( File.read( Rails.root.join('config', 'koala.yml') ) )[Rails.env]
     @app_id     = @config['app_id']
     @app_secret = @config['app_secret']
+  end
+
+  def get_long_lived_token accessToken
+    url = "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&" +
+          "client_id=#{@config['app_id']}&client_secret=#{@config['app_secret']}&fb_exchange_token=#{accessToken}"
+    result = HTTParty.get url
+    token = JSON.parse result.body
+    return token['access_token']
   end
 
 end

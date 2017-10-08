@@ -15,4 +15,6 @@ class Profile
 
   field :n_stars, :type => Integer, :default => 0
 
+  has_many :badges
+
 end

@@ -9,7 +9,10 @@ questset ||= @questset
 
 json.location do
   
+  json.partial! 'show', :questset => questset
+
   # trash
+=begin
   if questset.background_image
     json.background_image_path   questset.background_image.photo( :original )
     json.background_image_width  questset.background_image_width
@@ -22,8 +25,8 @@ json.location do
       end
     end
   end
+=end
 
-  json.partial! 'show', :questset => questset
 end
 
 json.story do

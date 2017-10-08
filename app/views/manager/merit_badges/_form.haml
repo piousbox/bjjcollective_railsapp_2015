@@ -13,13 +13,19 @@
   .row
     .col-sm-12
       = f.submit nil, :class => [ :button, :small ]
+      %br
       
       = f.label :title
       = f.text_field :title
+      %br
       
       = f.label :questpage
       = f.select :questpage_id, @questpages_list
+      %br
 
+      = f.label 'Premium?'
+      = f.check_box :is_premium
+      
   .row
     .col-sm-12
       .panel.panel-default

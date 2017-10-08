@@ -44,15 +44,16 @@ class Manager::MeritBadgesController < Manager::ManagerController
   private
 
   def do_update_photos
+    if params[:merit_badge][:unavailable_photo]
+      photo = Photo.new
+      photo.photo = params[:merit_badge][:unavailable_photo]
+      @badge.unavailable_photo = photo
+      params[:merit_badge].delete :unavailable_photo
+    end
     if params[:merit_badge][:shaded_photo]
       photo = Photo.new
       photo.photo = params[:merit_badge][:shaded_photo]
       @badge.shaded_photo = photo
-      if @badge.save
-      else
-        flash[:alert] = "No Luck: #{photo.errors.messages}"
-        render :action => :new and return
-      end
       params[:merit_badge].delete :shaded_photo
     end
 

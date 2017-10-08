@@ -53,8 +53,6 @@ Hit these three URLs to generate the cache (each takes a few minutes):
 
 * Don't forget to enable sites and restart apache2!
 
-
-
 Package
 =======
 * Merge the latest x.x.x branch to master and precompile assets.
