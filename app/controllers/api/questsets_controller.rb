@@ -1,8 +1,6 @@
 
 class Api::QuestsetsController < Api::ApiController
 
-  before_action :set_profile
-
   def show
     if params[:id]
       @questset = Questset.find params[:id]
@@ -23,21 +21,6 @@ class Api::QuestsetsController < Api::ApiController
     else
       render
     end
-  end
-
-  #
-  # private
-  #
-  private
-
-  def set_profile
-    accessToken = request.headers[:accessToken]
-
-    if params[:debug] == 'abba' && Rails.env.development?
-      accessToken = params[:accessToken]
-    end
-
-    @profile = Profile.find_by :fb_long_access_token => accessToken
   end
 
 end
