@@ -3,6 +3,10 @@ class Manager::QuestsetsController < Manager::ManagerController
 
   before_filter :set_lists
 
+  def show
+    redirect_to :action => :edit
+  end
+
   def index
     @questsets = Questset.all.order_by( :order_value => 'asc' )
   end
@@ -12,7 +16,8 @@ class Manager::QuestsetsController < Manager::ManagerController
   end
 
   def create
-    @questset = Questset.new params[:questset].permit!
+    @item = params[:questset] || params[:badge]
+    @questset = Questset.new @item.permit!
     do_update_photos
     do_save
   end
@@ -22,66 +27,16 @@ class Manager::QuestsetsController < Manager::ManagerController
   end
 
   def update
+    @item = params[:questset] || params[:badge]
+    @item[:badge_ids].delete ''
+    # byebug
     @questset = Questset.find params[:id]
-    @questset.update_attributes params[:questset].permit!
+    @questset.update_attributes @item.permit!
     do_update_photos
     do_save
   end
   
   private
-
-  def do_update_photos
-    if params[:background_image]
-      photo = Photo.create :photo => params[:background_image], :bg_badge => @questset
-      geometry = Paperclip::Geometry.from_file(params[:background_image])
-      width, height = geometry.to_s.split 'x'
-      @questset.update_attributes :background_image => photo, :background_image_width => width, :background_image_height => height
-    end
-
-    if params[:questset][:unavailable_photo]
-      photo = Photo.new
-      photo.photo = params[:questset][:unavailable_photo]
-      photo.unavailable_badge = @questset
-      if photo.save
-      else
-        flash[:alert] = "No Luck: #{photo.errors.messages}"
-        render :action => :new and return
-      end
-    end
-
-    if params[:questset][:shaded_photo]
-      photo = Photo.new
-      photo.photo = params[:questset][:shaded_photo]
-      photo.shaded_badge = @questset
-      if photo.save
-      else
-        flash[:alert] = "No Luck: #{photo.errors.messages}"
-        render :action => :new and return
-      end
-    end
-
-    if params[:questset][:accomplished_photo]
-      photo = Photo.new
-      photo.photo = params[:questset][:accomplished_photo]
-      photo.accomplished_badge = @questset
-      if photo.save
-      else
-        flash[:alert] = "No Luck: #{photo.errors.messages}"
-        render :action => :new and return
-      end
-    end
-
-    if params[:questset][:title_photo]
-      photo = Photo.new
-      photo.photo = params[:questset][:title_photo]
-      photo.title_badge = @questset
-      if photo.save
-      else
-        flash[:alert] = "No Luck: #{photo.errors.messages}"
-        render :action => :new and return
-      end
-    end
-  end
 
   def do_save
     if @questset.save

@@ -1,3 +1,4 @@
+require_relative '../../app/models/badge.rb'
 
 FactoryGirl.define do
   

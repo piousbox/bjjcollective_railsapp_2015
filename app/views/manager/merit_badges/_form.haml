@@ -47,7 +47,7 @@
           %span Shaded, accomplished images go on the map.
           %br
           = f.label "Parent Badge/Questset/Location"
-          = f.select :badge_id, @merit_badges_list
+          = f.select :badge_id, options_for_select( @merit_badges_list, :selected => item.badge_id || params[:badge_id] )
           .row
             .col-sm-6
               = f.label :bg_pos_x
@@ -116,12 +116,25 @@
         = f.label :descr
         = f.text_area :descr, { :class => :tinymce }
 
-  .row
-    .col-sm-12
-      .input-field
-        = f.label 'Children Merit Badges / Questsets'
-        = f.select :badges, options_for_select( @merit_badges_list ), {}, { :multiple => true, :size => 20  }
+  %br
+  .panel
+    .panel-body.dark
+      .row
+        .col-md-6
+          .input-field
+            %h4 Child Merit Badges (#{item.badges.count}) #{link_to '[+]', new_manager_badge_path( :badge_id => item.id )}
+            %ul
+              - item.badges.each do |b|
+                %li= b.title
 
+            = f.label 'Children Merit Badges / Questsets / Locations'
+            = f.select :badge_ids, options_for_select( @merit_badges_list, :selected => item.badges.map(&:id) ), {}, { :multiple => true, :size => 20  }
+        .col-md-6
+          %h4 Parent Badge
+          - if item.badge
+            = link_to item.badge.title, manager_badge_path( item.badge.id )
+          - else
+            No parent badge
   .row
     .col-sm-12
       = f.submit nil, :class => [ :button, :small ]
