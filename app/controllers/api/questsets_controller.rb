@@ -1,6 +1,7 @@
-
 class Api::QuestsetsController < Api::ApiController
+  # before_action :set_profile
 
+  ## Let's set profile only on private show
   def show
     if params[:id]
       @questset = Questset.find params[:id]

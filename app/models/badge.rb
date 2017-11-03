@@ -51,9 +51,15 @@ class Badge
   field :bg_pos_x, :type => Integer
   field :bg_pos_y, :type => Integer
 
+  field :is_questset, :type => Boolean, :default => true
+
   def self.list
     out = self.order_by( :title => :asc )
     [['', nil]] + out.map { |item| [ item.title, item.id ] }
   end
   
 end
+
+Questset   = Badge  
+Location   = Badge # tentatively
+MeritBadge = Badge

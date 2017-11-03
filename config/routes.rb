@@ -80,7 +80,7 @@ Rails.application.routes.draw do
   end
 
   namespace :manager do
-    root :to => 'welcome#home'
+    root :to => 'manager#home'
 
     get 'categories/search', :as => :categories_search, :to => 'categories#search'
     resources :categories do
@@ -91,6 +91,8 @@ Rails.application.routes.draw do
       resources :merit_badges
       resources :questsets
     end
+    resources :questsets
+
     resources :merit_badges, :as => :badges do
       resources :videos
       resources :tasks

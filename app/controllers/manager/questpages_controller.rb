@@ -3,6 +3,10 @@ class Manager::QuestpagesController < Manager::ManagerController
   before_filter :set_lists
   layout 'manager_bootstrap'
 
+  def show
+    @questpage = Questpage.find params[:id]
+  end
+
   def index
     @questpages = Questpage.all
   end

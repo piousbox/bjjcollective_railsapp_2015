@@ -1,0 +1,48 @@
+
+.row
+  .large-12.columns
+
+    %h1 Welcome home, manager!
+
+    .row
+      .col-md-8.col-md-offset-2
+        .row
+          .col-md-4
+            .panel
+              .panel-body.dark
+                tavern
+          .col-md-4
+            .panel
+              .panel-body.dark
+                %ul{ :style => "margin: 0; padding: 0" }
+                  %li
+                    = link_to 'chapters (map)', manager_questpages_path
+                    %ul
+                      %li
+                        questsets
+                        %ul
+                          %li
+                            quests/badges
+                            %ul
+                              %li tasks
+                        
+          .col-md-4
+            .panel
+              .panel-body.dark
+                %ul{ :style => "margin: 0; padding: 0" }
+                  %li
+                    = link_to 'technique (book) / categories', manager_categories_path
+                    %ul
+                      %li
+                        = link_to 'videos', manager_videos_path
+        .row
+          .col-md-4
+            .panel
+              .panel-body.dark
+                Shop
+          .col-md-4
+            .panel
+              .panel-body.dark
+                site News
+        
+          

@@ -38,6 +38,10 @@ textarea.tinymce {
   position: relative;
 }
 
+.dark {
+  background: #cecece;
+}
+
 .fg-welcome-home .quests-list {
   border-right: 2px solid #dedede;
   min-height: 800px;

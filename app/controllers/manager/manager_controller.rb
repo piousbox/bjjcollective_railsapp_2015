@@ -1,10 +1,12 @@
 
 class Manager::ManagerController < ApplicationController
-
   before_filter :authenticate
-
   layout 'manager_bootstrap'
   
+  def home
+  end
+
+
   protected
   
   def authenticate

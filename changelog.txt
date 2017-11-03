@@ -27,3 +27,5 @@
 0.0.26 - let's integrate this into a nice react frontend, with gameui
 0.1.0 - let's add koala, transactions.
 0.1.1 - let's make sure knowledge base works okay
+        let's make sure the homepage looks acceptable with the chapters
+        let's make sure that a basic story can be told on gameui

@@ -10,5 +10,5 @@
     %ul
       - @questpages.each do |qp|
         %li
-          = qp.title
           = link_to '[~]', edit_manager_questpage_path( qp )
+          = link_to qp.title, manager_questpage_path( qp )

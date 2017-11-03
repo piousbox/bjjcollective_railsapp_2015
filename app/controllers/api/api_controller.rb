@@ -2,8 +2,7 @@ class Api::ApiController < ApplicationController
   layout :false
   protect_from_forgery :with => :null_session
   before_action :set_config
-  before_action :set_profile
-
+  # before_action :set_profile
   check_authorization
 
   def home

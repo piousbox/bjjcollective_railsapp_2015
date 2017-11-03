@@ -1,3 +1,0 @@
-
-class MeritBadge < Badge  
-end

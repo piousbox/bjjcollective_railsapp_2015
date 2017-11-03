@@ -12,7 +12,7 @@
 = form_for item, :url => url, :html => { :multipart => true } do |f|
   .row
     .col-sm-12
-      = f.submit nil, :class => [ :button, :small ]
+      = f.submit nil, :class => [ :btn ]
       %br
       
       = f.label :title
@@ -20,7 +20,7 @@
       %br
       
       = f.label :questpage
-      = f.select :questpage_id, @questpages_list
+      = f.select :questpage_id, options_for_select(@questpages_list, :selected => item.questpage_id || params[:questpage_id])
       %br
 
       = f.label 'Premium?'
@@ -115,6 +115,12 @@
       .a
         = f.label :descr
         = f.text_area :descr, { :class => :tinymce }
+
+  .row
+    .col-sm-12
+      .input-field
+        = f.label 'Children Merit Badges / Questsets'
+        = f.select :badges, options_for_select( @merit_badges_list ), {}, { :multiple => true, :size => 20  }
 
   .row
     .col-sm-12
