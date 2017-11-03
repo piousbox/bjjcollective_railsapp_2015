@@ -125,7 +125,7 @@
             %h4 Child Merit Badges (#{item.badges.count}) #{link_to '[+]', new_manager_badge_path( :badge_id => item.id )}
             %ul
               - item.badges.each do |b|
-                %li= b.title
+                %li= link_to b.title, edit_manager_badge_path( b )
 
             = f.label 'Children Merit Badges / Questsets / Locations'
             = f.select :badge_ids, options_for_select( @merit_badges_list, :selected => item.badges.map(&:id) ), {}, { :multiple => true, :size => 20  }

@@ -11,6 +11,8 @@
         = item.title
         %ul
           %li <b>Order Value:</b> #{item.order_value}
+          - if item.badge
+            %li <b>Parent:</b> #{link_to item.badge.title, edit_manager_badge_path( item.badge.id )}
           %li
             %b= link_to 'Videos', videos_path
             (#{item.videos.length})
