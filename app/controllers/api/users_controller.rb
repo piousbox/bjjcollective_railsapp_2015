@@ -1,16 +1,27 @@
 
 class Api::UsersController < Api::ApiController
 
+  before_action :set_profile 
+
+  # profile
   def show
     authorize! :fb_sign_in, Ability
+
     render :action => 'fb_sign_in'
   end
   
+  def fb_sign_in
+    authorize! :fb_sign_in, Ability    
+  end
+
+  # profile update
   def update
     authorize! :fb_sign_in, Ability
 
+    @long_token = get_long_token
+
     begin
-      @graph        = Koala::Facebook::API.new( params[:accessToken] )
+      @graph        = Koala::Facebook::API.new( @long_token )
       me            = @graph.get_object( 'me', :fields => 'email' )
       @user         = User.find_by( :email => me['email'] )
       @user_profile = Profile.find_by :email => me['email']
@@ -28,4 +39,10 @@ class Api::UsersController < Api::ApiController
     end
   end
   
+  #
+  # private
+  # see api_controller
+  #
+  private
+
 end

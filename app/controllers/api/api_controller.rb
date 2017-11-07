@@ -16,6 +16,7 @@ class Api::ApiController < ApplicationController
 
   def set_profile
     accessToken   = request.headers[:accessToken]
+    accessToken ||= params[:fb_long_access_token]
     accessToken ||= params[:accessToken] # if (params[:debug] == 'abba' && Rails.env.development?)
     
     begin
@@ -23,7 +24,7 @@ class Api::ApiController < ApplicationController
       me                = @graph.get_object( 'me', :fields => 'email' )
       @user             = User.find_or_create_by :email => me['email']
       @oauth            = Koala::Facebook::OAuth.new( @app_id, @app_secret )
-      @long_lived_token = get_long_lived_token( accessToken )
+      @long_lived_token = get_long_token( accessToken )
 
       begin
         @profile = Profile.find_by :email => me['email']
@@ -43,7 +44,7 @@ class Api::ApiController < ApplicationController
     end
   end
 
-  def get_long_lived_token accessToken
+  def get_long_token accessToken
     url = "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&" +
           "client_id=#{@config['app_id']}&client_secret=#{@config['app_secret']}&fb_exchange_token=#{accessToken}"
     result = HTTParty.get url
