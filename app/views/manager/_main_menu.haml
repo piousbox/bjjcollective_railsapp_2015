@@ -73,5 +73,16 @@
           %ul.dropdown-menu
             %li= link_to "See all #{Task.all.count}", manager_tasks_path
             %li= link_to 'Create New', new_manager_task_path
+
+        %li.dropdown{ :class => params[:controller] == "manager/profiles" ? 'active' : '' }
+          %a.dropdown-toggle{ :href => 'javascript:;', 'data-toggle' => 'dropdown', :role => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' }
+            Profiles
+            %i.caret
+          %ul.dropdown-menu
+            %li= link_to "See all #{Profile.all.count}", manager_profiles_path
+            %li= link_to 'Create New', new_manager_profile_path
+
             
 -# = render 'manager/main_menu_2'
+
+  

@@ -33,6 +33,7 @@ gem 'paypal-sdk-rest'
 gem 'rack-mini-profiler'
 
 gem 'stripe'
+gem 'omniauth-stripe-connect'
 
 gem 'testoaster', '~> 0.0.4'
 

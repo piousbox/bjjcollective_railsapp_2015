@@ -17,4 +17,10 @@ class Profile
 
   has_many :badges
 
+  # stripe
+  field :stripe_account_id
+  index({ :stripe_account_id => -1 }, { :unique => true })
+
+  field :total_money_earned, :type => Float
+
 end

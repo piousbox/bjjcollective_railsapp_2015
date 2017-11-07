@@ -1,0 +1,6 @@
+
+%h5 All profiles
+
+%ul
+  - @profiles.each do |profile|
+    %li= link_to profile.email, manager_profile_path( profile )

@@ -4,6 +4,7 @@ class User
   include Mongoid::Timestamps
 
   has_one :profile
+  has_many :accounts
 
   # Setup accessible (or protected) attributes for your model
   # attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -44,7 +45,7 @@ class User
   # :lockable, :timeoutable, :confirmable
   devise :registerable, :validatable
   devise :database_authenticatable, :authentication_keys => [ :email ]
-  # devise :omniauthable, :omniauth_providers => [ :facebook ]
+  devise :omniauthable, :omniauth_providers => [ :stripe_connect ]
   # devise :encryptable, :encryptor => :sha1base64
   #
   #

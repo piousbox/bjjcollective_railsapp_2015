@@ -1,6 +1,11 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+
+  # client id ca_BFW2Dj8PWfvZ4iEmd0I0Mw4IgEN8UbAs
+  # config.omniauth :stripe_connect, "STRIPE_CONNECT_CLIENT_ID", "STRIPE_SECRET"
+  config.omniauth :stripe_connect, "ca_BFW2Dj8PWfvZ4iEmd0I0Mw4IgEN8UbAs", "sk_test_ARuaXffdANoXLKAwUXDcp0v0"
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.

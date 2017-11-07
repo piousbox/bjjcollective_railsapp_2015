@@ -1,0 +1,13 @@
+
+= form_for [ :manager, profile ] do |f|
+  .input-field
+    = f.label :name
+    = f.text_field :name
+  .input-field
+    = f.label :email
+    = f.text_field :email
+  .input-field
+    = f.label :stripe_account_id
+    = f.text_field :stripe_account_id
+  = f.submit 'Save'
+  
