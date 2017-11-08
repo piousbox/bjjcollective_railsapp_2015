@@ -1,8 +1,11 @@
 class Api::QuestsetsController < Api::ApiController
-  # before_action :set_profile
+  before_action :set_profile
 
   ## Let's set profile only on private show
   def show
+    # puts! request.headers['version'], 'headers.version'
+    # puts! request.headers['accessToken'], 'headers.accessToken'
+
     if params[:id]
       @questset = Questset.find params[:id]
     elsif params[:location_name]

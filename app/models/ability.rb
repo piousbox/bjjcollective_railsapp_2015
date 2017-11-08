@@ -14,7 +14,7 @@ class Ability
     
     can [ :home, :about, :donate, :fb_sign_in, :buy_stars ], Ability
 
-    can [ :show ], MeritBadge
+    can [ :show, :buy ], MeritBadge
     can [ :show, :index ], Questpage
     can [ :show ], Questset
     can [ :show ], Video

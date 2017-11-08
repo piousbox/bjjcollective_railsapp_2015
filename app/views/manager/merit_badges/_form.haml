@@ -23,12 +23,17 @@
       = f.select :questpage_id, options_for_select(@questpages_list, :selected => item.questpage_id || params[:questpage_id])
       %br
 
-      .input-field
-        = f.label 'Premium?'
-        = f.check_box :is_premium
-      .input-field
-        = f.label 'owner'
-        = f.select :profile, options_for_select( @profiles_list, :selected => item.profile_id )
+      .panel.panel-default
+        .panel-body
+          .input-field
+            = f.label 'Premium?'
+            = f.check_box :is_premium
+          .input-field
+            = f.label 'created by'
+            = f.select :created_profile, options_for_select( @profiles_list, :selected => item.created_profile )
+          .input-field
+            = f.label :cost
+            = f.number_field :cost, :step => 0.01, :placeholder => 0.0
       
   .row
     .col-sm-12

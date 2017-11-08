@@ -45,8 +45,7 @@ class Badge
   embeds_many :photos,                                    :inverse_of => :badge
   belongs_to  :questpage
   belongs_to  :badge
-  belongs_to              :created_profile, :class_name => 'Profile'
-  has_and_belongs_to_many :bought_profiles, :class_name => 'Profile'
+
   has_many    :badges
   has_many    :videos
 
@@ -54,6 +53,10 @@ class Badge
   field :bg_pos_y, :type => Integer
 
   field :is_questset, :type => Boolean, :default => true
+
+  belongs_to              :created_profile, :class_name => 'Profile', :inverse_of => :created_badges
+  has_and_belongs_to_many :bought_profiles, :class_name => 'Profile', :inverse_of => :bought_badges
+  field :cost, :type => Float
 
   def self.list
     out = self.order_by( :title => :asc )

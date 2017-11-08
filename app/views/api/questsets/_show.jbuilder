@@ -21,6 +21,14 @@ if questset.background_image
 end
 
 json.is_premium questset.is_premium
+if questset.is_premium
+  # do I already own it?
+  if @current_profile && @current_profile.bought_badges.include?( questset )
+    json.is_bought true
+  end
+  json.cost          questset.cost
+  json.created_email questset.created_profile.email
+end
 
 unless questset.badges.blank?
   json.badges do

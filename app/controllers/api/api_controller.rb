@@ -18,29 +18,33 @@ class Api::ApiController < ApplicationController
     accessToken   = request.headers[:accessToken]
     accessToken ||= params[:fb_long_access_token]
     accessToken ||= params[:accessToken] # if (params[:debug] == 'abba' && Rails.env.development?)
-    
-    begin
-      @graph            = Koala::Facebook::API.new( accessToken )
-      me                = @graph.get_object( 'me', :fields => 'email' )
-      @user             = User.find_or_create_by :email => me['email']
-      @oauth            = Koala::Facebook::OAuth.new( @app_id, @app_secret )
-      @long_lived_token = get_long_token( accessToken )
-
+    # byebug
+    if accessToken
       begin
-        @profile = Profile.find_by :email => me['email']
-        @profile.update_attributes({ :fb_access_token      => @long_lived_token,
-                                     :fb_long_access_token => @long_lived_token })
-      rescue Mongoid::Errors::DocumentNotFound
-        @profile = Profile.create :user => @user, :email => me['email'],
-                                  :fb_access_token       => @long_lived_token,
-                                  :fb_long_access_token  => @long_lived_token,
-                                  :fb_id                 => params[:id],
-                                  :name                  => params[:name],
-                                  :signed_request        => params[:signedRequest]
+        @graph            = Koala::Facebook::API.new( accessToken )
+        me                = @graph.get_object( 'me', :fields => 'email' )
+        @user             = User.find_or_create_by :email => me['email']
+        @oauth            = Koala::Facebook::OAuth.new( @app_id, @app_secret )
+        @long_lived_token = get_long_token( accessToken )
+
+        begin
+          @profile = Profile.find_by :email => me['email']
+          @profile.update_attributes({ :fb_access_token      => @long_lived_token,
+                                       :fb_long_access_token => @long_lived_token })
+        rescue Mongoid::Errors::DocumentNotFound
+          @profile = Profile.create :user => @user, :email => me['email'],
+                                    :fb_access_token       => @long_lived_token,
+                                    :fb_long_access_token  => @long_lived_token,
+                                    :fb_id                 => params[:id],
+                                    :name                  => params[:name],
+                                    :signed_request        => params[:signedRequest]
+        end
+        @current_user    = @user
+        @current_profile = @profile
+      rescue Koala::Facebook::AuthenticationError => e
+        render :json => { :status => :not_ok, :errors => "Probably expired token: #{accessToken}" }
+        return
       end
-    rescue Koala::Facebook::AuthenticationError => e
-      render :json => { :status => :not_ok, :errors => "Probably expired token: " + (accessToken||'') }
-      return
     end
   end
 
