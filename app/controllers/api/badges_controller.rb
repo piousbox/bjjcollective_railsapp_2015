@@ -21,7 +21,7 @@ class Api::BadgesController < Api::ApiController
 
     puts! @current_profile, 'current_profile'
     
-    ::Stripe.api_key = "sk_test_ARuaXffdANoXLKAwUXDcp0v0"
+    ::Stripe.api_key = STRIPE[:secret]
     created_account = Stripe::Account.retrieve(@badge.created_profile.stripe_account_id)
     amount = @badge.cost * 100 
     # byebug

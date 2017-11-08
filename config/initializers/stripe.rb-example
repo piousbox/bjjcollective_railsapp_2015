@@ -1,0 +1,5 @@
+
+STRIPE ||= {
+  :key => 'pk_test_UnB4uh0vErYIishvckNYtF4c',
+  :secret => 'sk_test_0TZTuqgUBC3bbnUDx2q5sk6R'
+}

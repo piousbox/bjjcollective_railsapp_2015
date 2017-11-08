@@ -13,6 +13,8 @@
 
 /config/database.yml
 /config/initializers/s3.rb
+/config/initializers/00_s3.rb
+/config/initializers/stripe.rb
 /config/mongoid.yml
 
 .\#*
