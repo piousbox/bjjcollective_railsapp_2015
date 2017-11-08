@@ -27,7 +27,7 @@ if questset.is_premium
     json.is_bought true
   end
   json.cost          questset.cost
-  json.created_email questset.created_profile.email
+  json.created_email questset.created_profile ? questset.created_profile.email : nil
 end
 
 unless questset.badges.blank?
