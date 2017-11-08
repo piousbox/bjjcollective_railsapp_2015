@@ -22,17 +22,17 @@ class Api::ApiController < ApplicationController
     if accessToken
       begin
         @graph            = Koala::Facebook::API.new( accessToken )
-        me                = @graph.get_object( 'me', :fields => 'email' )
-        @user             = User.find_or_create_by :email => me['email']
+        @me               = @graph.get_object( 'me', :fields => 'email' )
+        @user             = User.find_or_create_by :email => @me['email']
         @oauth            = Koala::Facebook::OAuth.new( @app_id, @app_secret )
         @long_lived_token = accessToken # get_long_token( accessToken )
 
         begin
-          @profile = Profile.find_by :email => me['email']
+          @profile = Profile.find_by :email => @me['email']
           # @profile.update_attributes({ :fb_access_token      => @long_lived_token,
           #                              :fb_long_access_token => @long_lived_token })
         rescue Mongoid::Errors::DocumentNotFound
-          @profile = Profile.create :user => @user, :email => me['email'],
+          @profile = Profile.create :user => @user, :email => @me['email'],
                                     # :fb_access_token       => @long_lived_token,
                                     :fb_long_access_token  => @long_lived_token,
                                     :fb_id                 => params[:id],
