@@ -19,12 +19,17 @@ class Api::QuestsetsController < Api::ApiController
       return
     end
 
+    render 'show_tgm3'
+
+=begin
     case request.headers[:version]
-    when 'tgm3'
-      render 'show_tgm3'
-    else
+    when 'legacy'
       render
+    else
+      render 'show_tgm3'
     end
+=end
+
   end
 
 end
