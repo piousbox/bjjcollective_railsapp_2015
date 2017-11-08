@@ -8,13 +8,13 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     puts! auth_params, 'auth_params'
 
     p = Profile.where( :stripe_account_id => auth_params['uid'] ).first
+    p ||= Profile.where( :email => params['state'] ).first
     if !p
-      p = Profile.new( :stripe_account_id => auth_params['uid'] )
-      if params['state']
-        p.email = params['state']
-      end
+      p = Profile.new( :stripe_account_id => auth_params['uid'], :email => params['state'] )
       flag = p.save
     end
+    p.email             ||= params['state']
+    p.stripe_account_id ||= auth_params['uid']
     if flag
       render :json => { :status => :ok }
     else

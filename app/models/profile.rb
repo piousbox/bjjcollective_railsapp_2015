@@ -7,6 +7,7 @@ class Profile
 
   field :name
   field :email
+  index({ :email => -1 }, { :unique => true })
 
   field :fb_access_token
   field :fb_long_access_token # not used, the long-lived token is in :fb_access_token
@@ -15,12 +16,17 @@ class Profile
 
   field :n_stars, :type => Integer, :default => 0
 
-  has_many :badges
+  has_many                :created_badges, :class_name => 'Badge'
+  has_and_belongs_to_many :bought_badges,  :class_name => 'Badge'
 
   # stripe
   field :stripe_account_id
   index({ :stripe_account_id => -1 }, { :unique => true })
 
   field :total_money_earned, :type => Float
+
+  def self.list
+    [['Select...', nil]] + self.all.map { |i| [i.email, i.id] }
+  end
 
 end

@@ -29,3 +29,5 @@
 0.1.1 - let's make sure knowledge base works okay
         let's make sure the homepage looks acceptable with the chapters
         let's make sure that a basic story can be told on gameui
+        stripe auth
+        stripe connect

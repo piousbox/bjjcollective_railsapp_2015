@@ -20,4 +20,14 @@ class Manager::ProfilesController < Manager::ManagerController
     redirect_to :action => 'index'
   end
 
+  def destroy 
+    @profile = Profile.find params[:id]
+    if @profile.destroy
+      flash[:notice] = "Destroyed profile #{params[:id]}"
+    else
+      flash[:alert] = "Cannot destroy profile: #{@profile.errors.messages}"
+    end
+    redirect_to :action => 'index'
+  end
+
 end

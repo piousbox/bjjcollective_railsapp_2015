@@ -1,2 +1,4 @@
 
 = render 'form', :profile => @profile
+
+= button_to '[x]', manager_profile_path( @profile ), :method => :delete, :data => { :confirm => 'Are you sure?' }

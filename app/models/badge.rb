@@ -8,8 +8,8 @@ class Badge
 
   # like slug, name_seo
   field :location_name, :type => String
-  validates_presence_of :location_name
-  index({ :location_name => 1 }, { :unique => true })
+  validates_uniqueness_of :location_name, :allow_nil => true
+  # index({ :location_name => 1 }, { :unique => true })
 
   field :subhead,                   :type => String
   def subtitle
@@ -45,6 +45,8 @@ class Badge
   embeds_many :photos,                                    :inverse_of => :badge
   belongs_to  :questpage
   belongs_to  :badge
+  belongs_to              :created_profile, :class_name => 'Profile'
+  has_and_belongs_to_many :bought_profiles, :class_name => 'Profile'
   has_many    :badges
   has_many    :videos
 
@@ -60,6 +62,6 @@ class Badge
   
 end
 
-Questset   = Badge  
-Location   = Badge # tentatively
-MeritBadge = Badge
+Questset   ||= Badge  
+Location   ||= Badge # tentatively
+MeritBadge ||= Badge

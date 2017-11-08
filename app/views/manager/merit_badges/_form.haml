@@ -23,8 +23,12 @@
       = f.select :questpage_id, options_for_select(@questpages_list, :selected => item.questpage_id || params[:questpage_id])
       %br
 
-      = f.label 'Premium?'
-      = f.check_box :is_premium
+      .input-field
+        = f.label 'Premium?'
+        = f.check_box :is_premium
+      .input-field
+        = f.label 'owner'
+        = f.select :profile, options_for_select( @profiles_list, :selected => item.profile_id )
       
   .row
     .col-sm-12
