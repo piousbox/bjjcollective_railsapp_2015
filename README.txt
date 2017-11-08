@@ -53,6 +53,12 @@ Hit these three URLs to generate the cache (each takes a few minutes):
 
 * Don't forget to enable sites and restart apache2!
 
+ mysql root:awesome_passw0rd
+
+ RAILS_ENV=production ~/.rbenv/versions/2.3.1/bin/bundle exec rails c
+ be cap vm deploy
+ be cap aws_staging deploy
+
 Package
 =======
 * Merge the latest x.x.x branch to master and precompile assets.
