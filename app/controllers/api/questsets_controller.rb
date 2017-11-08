@@ -3,8 +3,8 @@ class Api::QuestsetsController < Api::ApiController
 
   ## Let's set profile only on private show
   def show
-    # puts! request.headers['version'], 'headers.version'
-    # puts! request.headers['accessToken'], 'headers.accessToken'
+    puts! request.headers['version'], 'headers.version'
+    puts! request.headers['accessToken'], 'headers.accessToken'
 
     if params[:id]
       @questset = Questset.find params[:id]
