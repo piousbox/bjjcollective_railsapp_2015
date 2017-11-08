@@ -54,5 +54,10 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'html2haml'
+
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-ext'
+  gem 'capistrano-bundler'
 end
 
