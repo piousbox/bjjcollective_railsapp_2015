@@ -1,4 +1,17 @@
 
 = render 'form', :profile => @profile
-
 = button_to '[x]', manager_profile_path( @profile ), :method => :delete, :data => { :confirm => 'Are you sure?' }
+%hr
+
+.row
+  .col-md-6
+    %h5 Created badges (#{@profile.created_badges.count}):
+    %ul
+      - @profile.created_badges.each do |b|
+        %li #{b.id} :: #{b.location_name}
+  .col-md-6
+    %h5 Bought badges (#{@profile.bought_badges.count}):
+    %ul
+      - @profile.bought_badges.each do |b|
+        %li #{b.id} :: #{b.location_name}
+

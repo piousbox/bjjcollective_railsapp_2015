@@ -24,7 +24,7 @@ class Profile
   index({ :stripe_account_id => -1 }, { :unique => true })
 
   field :total_money_earned, :type => Float
-  field :commission, :type => Float # percent, 0-1 value
+  field :commission,         :type => Float, :default => 0.15 # percent, 0-1 value
 
   def self.list
     [['Select...', nil]] + self.all.map { |i| [i.email, i.id] }
