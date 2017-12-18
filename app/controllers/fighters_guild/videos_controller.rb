@@ -9,6 +9,8 @@ class FightersGuild::VideosController < FightersGuild::FightersGuildController
       @badge = MeritBadge.find @video.badge_id
       @videos = Video.where( :merit_badge_id => @badge.id )
       @videos = @videos.to_a
+    else
+      @videos = []
     end
         
     if user_signed_in?
