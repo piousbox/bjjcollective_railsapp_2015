@@ -4,29 +4,13 @@ class FightersGuild::VideosController < FightersGuild::FightersGuildController
   def show
     authorize! :show, Video
 
-    #
-    # video
-    #
     @video = Video.find params[:id]    
     if @video.badge_id
       @badge = MeritBadge.find @video.badge_id
-    elsif @video.questset_id
-      @questset = Questset.find @video.questset_id
-    end
-    
-    #
-    # videos
-    #
-    if @badge
       @videos = Video.where( :merit_badge_id => @badge.id )
-    elsif @questset
-      @videos = Video.where( :questset_id => @questset.id )
+      @videos = @videos.to_a
     end
-    @videos = @videos.to_a
-    
-    #
-    # player_video for this video
-    #
+        
     if user_signed_in?
       @videos.each do |v|
         v[:player_video] = v.player_videos.where( :user_id => current_user.id ).first || PlayerVideo.create( :user_id => current_user.id, :video_id => v.id )
