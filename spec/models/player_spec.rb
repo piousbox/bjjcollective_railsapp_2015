@@ -1,10 +1,8 @@
-
 require 'spec_helper'
-
 describe Player do
-
   before :each do
-    setup_users
+    User.all.destroy
+    @user = FactoryGirl.create :user
     setup_players
   end
   

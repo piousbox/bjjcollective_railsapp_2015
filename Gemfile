@@ -44,8 +44,8 @@ gem 'aws-sdk-v1' # for legacy, I guess _vp_ 20170713
 group :development, :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'rspec-html-matchers'
-  gem 'factory_girl', "~> 4.0"
-  gem 'factory_girl_rails'
+  gem 'factory_bot' # girl', "~> 4.0"
+  gem 'factory_bot_rails' # girl?
   gem 'simplecov'
   gem 'byebug'
 end

@@ -1,5 +1,5 @@
 
-FactoryGirl.define do
+FactoryBot.define do
 
   factory :questset do |f|
     f.title 'New Questset'

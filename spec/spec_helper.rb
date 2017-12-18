@@ -14,7 +14,7 @@ RSpec.configure do |config|
   
   config.infer_spec_type_from_file_location!
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include FactoryGirl::Syntax::Methods
   config.include RSpecHtmlMatchers
   
@@ -79,6 +79,7 @@ end
 def setup_users
   User.all.each { |u| u.remove }
   @user = FactoryGirl.create :user
+  sign_in @user, :scope => :user
 end
 
 def setup_videos
