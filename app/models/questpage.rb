@@ -1,6 +1,5 @@
 
 class Questpage
-
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -8,6 +7,8 @@ class Questpage
   field :slug
   field :subtitle
   field :description
+
+  field :is_trash, :type => Boolean
 
   has_many :questsets
   has_many :merit_badges

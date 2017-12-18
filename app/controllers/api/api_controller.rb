@@ -18,22 +18,22 @@ class Api::ApiController < ApplicationController
     accessToken   = request.headers[:accessToken]
     accessToken ||= params[:fb_long_access_token]
     accessToken ||= params[:accessToken] # if (params[:debug] == 'abba' && Rails.env.development?)
-    # byebug
+
     if accessToken
       begin
         @graph            = Koala::Facebook::API.new( accessToken )
         @me               = @graph.get_object( 'me', :fields => 'email' )
         @user             = User.find_or_create_by :email => @me['email']
         @oauth            = Koala::Facebook::OAuth.new( @app_id, @app_secret )
-        @long_lived_token = accessToken # get_long_token( accessToken )
+        @long_lived_token = get_long_token( accessToken )
 
         begin
           @profile = Profile.find_by :email => @me['email']
-          # @profile.update_attributes({ :fb_access_token      => @long_lived_token,
-          #                              :fb_long_access_token => @long_lived_token })
+          @profile.update_attributes({ :fb_access_token      => @long_lived_token,
+                                       :fb_long_access_token => @long_lived_token })
         rescue Mongoid::Errors::DocumentNotFound
           @profile = Profile.create :user => @user, :email => @me['email'],
-                                    # :fb_access_token       => @long_lived_token,
+                                    :fb_access_token       => @long_lived_token,
                                     :fb_long_access_token  => @long_lived_token,
                                     :fb_id                 => params[:id],
                                     :name                  => params[:name],
@@ -52,7 +52,8 @@ class Api::ApiController < ApplicationController
     url = "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&" +
           "client_id=#{@config['app_id']}&client_secret=#{@config['app_secret']}&fb_exchange_token=#{accessToken}"
     result = HTTParty.get url
-    token = JSON.parse result.body
+    token  = JSON.parse result.body
+    puts! token['access_token'], "long access token is"
     return token['access_token']
   end
 

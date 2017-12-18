@@ -62,6 +62,8 @@ class Badge
     out = self.order_by( :title => :asc )
     [['', nil]] + out.map { |item| [ item.title, item.id ] }
   end
+
+  # field :is_trash, :type => Boolean, :default => false
   
 end
 

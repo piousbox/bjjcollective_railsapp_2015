@@ -12,3 +12,15 @@
 .dark {
   background: #cecece;
 }
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+.c, .clear {
+  clear: both;
+}
+.inline {
+  display: inline-block;
+}

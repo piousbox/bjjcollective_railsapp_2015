@@ -35,7 +35,7 @@
 
         %li.dropdown{ :class => params[:controller] == "manager/questsets" ? 'active' : '' }
           %a.dropdown-toggle{ :href => 'javascript:;', 'data-toggle' => 'dropdown', :role => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' }
-            Questsets
+            Questsets (locations)
             %i.caret
           %ul.dropdown-menu
             %li= link_to "See all #{Questset.all.count}", manager_questsets_path

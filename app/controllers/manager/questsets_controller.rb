@@ -35,7 +35,19 @@ class Manager::QuestsetsController < Manager::ManagerController
     do_update_photos
     do_save
   end
-  
+
+  def destroy
+    @item = Questset.find params[:id]
+    flag = @item.destroy
+    # flag = @item.update_attributes :is_trash => true
+    if flag
+      flash[:notice] = 'Deleted item'
+    else
+      flash[:alert] = "Cannot delete questset: #{@item.errors.messages}"
+    end
+    redirect_to request.referrer
+  end
+
   private
 
   def do_save

@@ -88,4 +88,8 @@ EOL
     return out
   end
 
+  def image_edit
+    return '[~]'
+  end
+
 end

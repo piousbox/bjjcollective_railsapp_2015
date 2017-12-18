@@ -10,7 +10,10 @@ class Ability
       can [ :manage ], Video
     end
 
-    user ||= User.new # guest user (not logged in)
+    #
+    # guest user (not logged in)
+    #
+    user ||= User.new 
     
     can [ :home, :about, :donate, :fb_sign_in, :buy_stars ], Ability
 
@@ -23,6 +26,8 @@ class Ability
       player_video.user_id == user.id
     end
     
+    can [ :shallow_index ], Category
+
     # The first argument to `can` is the action you are giving the user 
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

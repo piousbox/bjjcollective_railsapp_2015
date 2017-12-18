@@ -1,11 +1,15 @@
 
-%h2= @questpage.title
+%h2
+  = link_to image_edit, edit_manager_questpage_path( @questpage.id )
+  = @questpage.title
 
 %h3
   Questsets
   = link_to '[+]', new_manager_questset_path( :questpage_id => @questpage.id )
 %ul
   - @questpage.questsets.each do |q|
-    %li
+    %li.c
       = link_to '[~]', edit_manager_questset_path( q )
+      .float-left= button_to '[x]', manager_questset_path( q ), :method => :delete, :data => { :confirm => 'are you sure?' }
       = link_to q.title, manager_questset_path( q )
+      

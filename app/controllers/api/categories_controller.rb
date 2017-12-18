@@ -23,6 +23,7 @@ class Api::CategoriesController < Api::ApiController
   
   def index_shallow
     @category = Category.find_or_create_by :title => 'Technique'
+    authorize! :shallow_index, @category
 
     if params[:slug]
       @category = Category.where( :short_slug => params[:slug], :catgegory_id => @category_id ).first      

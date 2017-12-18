@@ -16,6 +16,9 @@
       .a
         = f.label :description
         = f.text_area :description
+      .input-field
+        = f.label :is_trash
+        = f.check_box :is_trash
       .a
         = f.submit nil, :class => [ :button, :small ]
 
