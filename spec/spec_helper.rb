@@ -66,9 +66,10 @@ def setup_questsets
 end
 
 def setup_merit_badges
-  MeritBadge.all.each { |b| b.remove }
-  @merit_badge = FactoryGirl.create :merit_badge
+  MeritBadge.all.destroy
+  @merit_badge = @badge = FactoryGirl.create :merit_badge
 end
+def setup_badges; setup_merit_badges; end
 
 def setup_players
   Player.all.each { |p| p.remove }

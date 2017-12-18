@@ -1,5 +1,5 @@
 
-json.quest do
+json.badge do
   json.id            @badge.id.to_s
   json.location_name @badge.location_name
   json.title         @badge.title
