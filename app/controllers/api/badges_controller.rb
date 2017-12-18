@@ -24,7 +24,6 @@ class Api::BadgesController < Api::ApiController
     ::Stripe.api_key = STRIPE[:secret]
     created_account = Stripe::Account.retrieve(@badge.created_profile.stripe_account_id)
     amount = @badge.cost * 100 
-    # byebug
     destination_amount = ( amount * (1-@badge.created_profile.commission) ).to_i
     charge = Stripe::Charge.create(
       :amount => amount.to_i,

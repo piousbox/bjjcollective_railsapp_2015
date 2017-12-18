@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   namespace :api do
     root :to => 'api#home'
 
+    get 'badges/view/:badgename',     :to => 'badges#show'
     get 'badges/:badgename',          :to => 'badges#show'
     post 'badges/:location_name/buy', :to => 'badges#buy'
 

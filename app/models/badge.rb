@@ -8,7 +8,7 @@ class Badge
 
   # like slug, name_seo
   field :location_name, :type => String
-  validates_uniqueness_of :location_name, :allow_nil => true
+  validates_uniqueness_of :location_name # , :allow_nil => true
   # index({ :location_name => 1 }, { :unique => true })
 
   field :subhead,                   :type => String
