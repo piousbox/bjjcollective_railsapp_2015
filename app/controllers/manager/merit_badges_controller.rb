@@ -28,7 +28,6 @@ class Manager::MeritBadgesController < Manager::ManagerController
     @item = params[:merit_badge] || params[:badge] 
     @item.permit!
     @item[:badge_ids].delete ''
-    @item[:location_name] = nil if @item[:location_name] == ''
     @badge = MeritBadge.find params[:id]
     do_update_photos
     @badge.update_attributes @item
@@ -49,6 +48,7 @@ class Manager::MeritBadgesController < Manager::ManagerController
   private
 
   def do_save
+    @badge[:location_name] = nil if @badge[:location_name] == ''
     if @badge.save
       flash[:notice] = 'Success.'
       redirect_to request.referrer

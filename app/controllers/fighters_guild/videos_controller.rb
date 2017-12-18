@@ -8,13 +8,11 @@ class FightersGuild::VideosController < FightersGuild::FightersGuildController
     # video
     #
     @video = Video.find params[:id]    
-    if @video.merit_badge_id
-      @badge = MeritBadge.find @video.merit_badge_id
+    if @video.badge_id
+      @badge = MeritBadge.find @video.badge_id
     elsif @video.questset_id
       @questset = Questset.find @video.questset_id
     end
-
-
     
     #
     # videos
@@ -25,9 +23,7 @@ class FightersGuild::VideosController < FightersGuild::FightersGuildController
       @videos = Video.where( :questset_id => @questset.id )
     end
     @videos = @videos.to_a
-
-
-
+    
     #
     # player_video for this video
     #
@@ -44,7 +40,6 @@ class FightersGuild::VideosController < FightersGuild::FightersGuildController
       else
         @player_video = PlayerVideo.create( :video_id => @video.id, :user_id => current_user.id )
       end
-    else
     end
   end
   

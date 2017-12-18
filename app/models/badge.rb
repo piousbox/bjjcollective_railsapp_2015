@@ -48,6 +48,7 @@ class Badge
 
   has_many    :badges
   has_many    :videos
+  has_many    :player_videos
 
   field :bg_pos_x, :type => Integer
   field :bg_pos_y, :type => Integer

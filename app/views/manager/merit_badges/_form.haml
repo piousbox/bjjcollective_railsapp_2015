@@ -148,3 +148,8 @@
     .col-sm-12
       = f.submit nil, :class => [ :button, :small ]
   
+
+  .panel
+    %h5 Tasks (#{item.tasks.count})
+    - item.tasks.each do |task|
+      .a= task.inspect
