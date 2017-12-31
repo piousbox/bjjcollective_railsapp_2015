@@ -1,4 +1,4 @@
-lock "3.10.0"
+lock "3.10.1"
 
 set :application, "bjjc_api"
 set :repo_url, "git@github.com:piousbox/bjjcollective_railsapp_2015.git"
