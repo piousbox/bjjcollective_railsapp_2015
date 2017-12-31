@@ -22,6 +22,7 @@ gem 'unicorn'
 gem 'mongoid', '~> 5.0.0'
 gem "mongo_session_store-rails4"
 gem 'kaminari'
+gem 'kaminari-mongoid'
 gem 'koala'
 
 gem 'devise'

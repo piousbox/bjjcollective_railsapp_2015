@@ -26,7 +26,7 @@ class Ability
       player_video.user_id == user.id
     end
     
-    can [ :shallow_index ], Category
+    can [ :shallow_index, :videos ], Category
 
     # The first argument to `can` is the action you are giving the user 
     # permission to do.

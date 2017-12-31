@@ -18,6 +18,7 @@ class Category
   field :title,         :type => String
   index :title => 1
 
+  # what is this? Is this legacy?
   field :slug,          :type => String, :default => ""
   validates_uniqueness_of :slug
   index :slug => 1
@@ -25,18 +26,19 @@ class Category
   field :short_slug,    :type => String, :default => ""
   index :short_slug => 1
   
+  # should be canonical absolute, denormalized, slash-separated?
   field :path,          :type => String, :default => ""
   validates_uniqueness_of :path
   index :path => 1
   
-  KIND_SIMPLE = :simple
-  KIND_FULL = :category_kind_full
-  KIND_LINE = :line
-  KIND_THUMB = :thumb
-  KIND_THUMBS = :thumbs
+  KIND_SIMPLE = :simple # the title, expanded with children that are lines.
+  KIND_FULL = :full # 'technique', children are expanded?
+  KIND_LINE = :line # the leaf categories on the branch
+  KIND_THUMB = :thumb # the children expand inline (simple+line) without reroute
+  KIND_THUMBS = :thumbs # 'guards', it is expanded: a title and thumbs for children
   KINDS = [ KIND_SIMPLE, KIND_FULL, KIND_LINE, KIND_THUMB, KIND_THUMBS ]
   field :kind, :type => Symbol, :default => KIND_FULL
-  field :is_simple,     :type => Boolean, :default => false
+  field :is_simple,     :type => Boolean, :default => false # wtf is this?
   
   field :subhead,       :type => String
   field :descr,         :type => String

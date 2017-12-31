@@ -30,7 +30,7 @@ json.categories do
         json.slug        c_1.slug
         json.short_slug  c_1.short_slug
         json.path        c_1.path
-        json.kind         c.kind
+        json.kind        c_1.kind
       end
     end
     
