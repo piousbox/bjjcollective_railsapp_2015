@@ -11,7 +11,10 @@ Rails.application.configure do
   config.assets.js_compressor = :uglifier
   config.assets.compile = false
   config.assets.digest = true
+
+  config.logger = Logger.new(STDOUT)
   config.log_level = :debug
+
   config.cache_store = :file_store, "tmp/cache/rails-cache" # :mem_cache_store
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.i18n.fallbacks = true
