@@ -31,8 +31,6 @@ gem 'cancan'
 gem "paperclip" # , "~> 4.3"
 gem 'paypal-sdk-rest'
 
-gem 'rack-mini-profiler'
-
 gem 'stripe'
 gem 'omniauth-stripe-connect'
 
@@ -55,10 +53,10 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'html2haml'
-
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-ext'
   gem 'capistrano-bundler'
+  gem 'rack-mini-profiler'
 end
 
