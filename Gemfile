@@ -9,7 +9,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'haml'
-gem 'mysql2', '~> 0.3.13'
 gem 'will_paginate'
 gem 'therubyracer'
 gem 'libv8'
@@ -58,5 +57,6 @@ group :development do
   gem 'capistrano-ext'
   gem 'capistrano-bundler'
   gem 'rack-mini-profiler'
+  gem 'mysql2', '~> 0.3.13'
 end
 
