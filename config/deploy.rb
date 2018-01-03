@@ -16,7 +16,7 @@ namespace :deploy do
 
   task :migrate do
     on roles(:web) do
-      execute "cd /home/#{fetch(:app_user)}/projects/bjjcollective/current && sudo /home/#{fetch(:app_user)}/.rbenv/versions/2.3.1/bin/bundle exec rake migrate"
+      execute "cd /home/#{fetch(:app_user)}/projects/bjjcollective/current && sudo RAILS_ENV=production /home/#{fetch(:app_user)}/.rbenv/versions/2.3.1/bin/bundle exec rake migrate"
     end
   end
 
