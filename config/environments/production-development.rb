@@ -12,7 +12,7 @@ Rails.application.configure do
   config.assets.compile = false
   config.assets.digest = true
 
-  # config.logger = Logger.new(STDOUT)
+  config.logger = Logger.new("#{Rails.roow}/log/my.log")
   config.log_level = :debug
 
   config.cache_store = :file_store, "tmp/cache/rails-cache" # :mem_cache_store
