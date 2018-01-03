@@ -14,6 +14,12 @@ namespace :deploy do
     end
   end
 
+  task :migrate do
+    on roles(:web) do
+      execute "cd /home/#{fetch(:app_user)}/projects/bjjcollective/current && sudo /home/#{fetch(:app_user)}/.rbenv/versions/2.3.1/bin/bundle exec rake migrate"
+    end
+  end
+
   task :restart_nginx do
     on roles(:web) do
       execute "sudo systemctl restart nginx.service"
@@ -23,6 +29,6 @@ end
 
 after "deploy:published", "restart_nginx"
 after "deploy:published", "bundle"
-after "deploy:published", "bundle exec rake migrate"
+after "deploy:published", "migrate"
 after "deploy:published", "restart_nginx"
 
