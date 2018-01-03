@@ -8,7 +8,8 @@ class Questpage
   field :subtitle
   field :description
 
-  field :is_trash, :type => Boolean
+  field :is_trash, :type => Boolean, :default => false
+  field :is_active, :type => Boolean, :default => true
 
   has_many :questsets
   has_many :merit_badges
