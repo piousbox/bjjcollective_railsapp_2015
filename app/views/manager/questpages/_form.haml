@@ -1,6 +1,8 @@
 
--# manager questpage _form
-
+-#
+-# manager / questpages / _form
+-#
+  
 = form_for questpage, :url => url do |f|
   .row
     .large-12.columns
@@ -19,6 +21,9 @@
       .input-field
         = f.label :is_trash
         = f.check_box :is_trash
+      .input-field
+        = f.label :is_active
+        = f.check_box :is_active
       .a
         = f.submit nil, :class => [ :button, :small ]
 

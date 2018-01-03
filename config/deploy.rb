@@ -21,6 +21,8 @@ namespace :deploy do
   end
 end
 
+after "deploy:published", "restart_nginx"
 after "deploy:published", "bundle"
+after "deploy:published", "bundle exec rake migrate"
 after "deploy:published", "restart_nginx"
 
