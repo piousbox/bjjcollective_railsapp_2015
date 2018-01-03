@@ -32,3 +32,4 @@
         stripe auth
         stripe connect
 0.1.2 - a healthy grok
+       lets not display trash chapters
