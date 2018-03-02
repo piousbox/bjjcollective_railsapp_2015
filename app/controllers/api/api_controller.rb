@@ -6,6 +6,7 @@ class Api::ApiController < ApplicationController
   check_authorization
 
   def home
+    authorize! :home, Ability
     render :json => { :status => :ok }
   end
   

@@ -8,6 +8,7 @@ describe 'categories tasks' do
     CategoriesTasks.sanity.should eql true
   end
 
+=begin
   it  '#normalize_kind_and_path' do
     raise 'not implemented'
   end
@@ -19,5 +20,6 @@ describe 'categories tasks' do
   it '#assign_kind' do
     raise 'not implemented'
   end
-  
+=end
+
 end

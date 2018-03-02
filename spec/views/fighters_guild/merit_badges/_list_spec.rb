@@ -1,4 +1,10 @@
 
+#
+# _vp_ 20180301
+# Obsolete b/c I'm all in React now.
+#
+
+=begin
 require 'spec_helper'
 
 describe 'fighters_guild/merit_badges/_list.haml' do
@@ -21,3 +27,4 @@ describe 'fighters_guild/merit_badges/_list.haml' do
   end
   
 end
+=end
