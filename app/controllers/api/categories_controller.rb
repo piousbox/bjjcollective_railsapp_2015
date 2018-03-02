@@ -10,6 +10,7 @@ class Api::CategoriesController < Api::ApiController
   end
 
   def show_simple_expanded
+    authorize! :home, Ability
     @path = URI.decode( params[:path]||'' ).split '/'    
     if params[:id]
       @category = Category.find params[:id]
@@ -22,11 +23,12 @@ class Api::CategoriesController < Api::ApiController
   end
   
   def index_shallow
-    @category = Category.find_or_create_by :title => 'Technique'
+    @category = Category.find_or_create_by :title => 'Technique', :path => '/' # , :slug => 'technique'
+
     authorize! :shallow_index, @category
 
     if params[:slug]
-      @category = Category.where( :short_slug => params[:slug], :catgegory_id => @category_id ).first      
+      @category = Category.where( :short_slug => params[:slug], :category_id => @category.id ).first      
       if params[:slug_0]
         @category = Category.where( :short_slug => params[:slug_0], :category_id => @category.id ).first
         if params[:slug_1]

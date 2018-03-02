@@ -34,7 +34,9 @@ end
 
 def setup_categories
   Category.all.each { |c| c.remove }
+  @technique =  Category.find_or_create_by :title => 'Technique', :path => '/'
   @category = @category_0 = FactoryGirl.create :category
+  @next_category = FactoryGirl.create :next_category
 
   @mounts       = Category.create :title => 'Mounts', :slug => 'mounts'
   @side_control = Category.create :title => 'Side Control', :slug => 'mounts-side-control', :path => 'mounts/side-control', 

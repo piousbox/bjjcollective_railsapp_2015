@@ -6,6 +6,7 @@ if @category
   json.short_slug   @category.short_slug
   json.path         @category.path
   json.kind         @category.kind
+  json.photo        @category.photo.photo.url :thumb2  
 end
 
 json.categories do

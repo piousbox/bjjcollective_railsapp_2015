@@ -20,14 +20,12 @@ describe Api::CategoriesController do
    
     # @TODO: this has never been run! _vp_ 20170713
     it 'shows a photo if there is one, regardless of the kind' do
-      c = FactoryGirl.create :next_category, :category_id => @category
-      c.photo = Photo.new
-      c.save
-      
-      get :index_shallow, :slug => @category.slug
+      @next_category.photo = Photo.new
+      @next_category.save
 
+      get :index_shallow, :slug => @next_category.short_slug
       result = JSON.parse response.body
-      result[:categories][0][:photo_url].should_not eql nil
+      result['photo'].should_not eql nil
     end
 
   end
